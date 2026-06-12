@@ -35,10 +35,13 @@
   z-index: 2;
   padding-top: 120px;
   padding-bottom: 80px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .hero__text {
-  max-width: 620px;
+  max-width: 580px;
+  text-align: left;
   opacity: 0;
   transform: translateY(40px);
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
