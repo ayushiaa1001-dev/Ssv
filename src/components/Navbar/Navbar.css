@@ -4,14 +4,14 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 8px 0;
+  padding: 2px 0;
   transition: var(--transition-medium);
   background: #ffffff !important;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
 }
 
 .navbar--scrolled {
-  padding: 4px 0;
+  padding: 1px 0;
   background: #ffffff !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
