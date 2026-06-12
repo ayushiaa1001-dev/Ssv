@@ -27,9 +27,9 @@ const Navbar = () => {
 
   // Search state
   const [searchQuery, setSearchQuery] = useState('')
-  const [searchOpen, setSearchOpen] = useState(false)
   const [searchResults, setSearchResults] = useState([])
   const [highlightIndex, setHighlightIndex] = useState(-1)
+  const [dropdownVisible, setDropdownVisible] = useState(false)
   const searchRef = useRef(null)
   const inputRef = useRef(null)
 
@@ -39,13 +39,11 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close search on outside click
+  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
-        setSearchOpen(false)
-        setSearchQuery('')
-        setSearchResults([])
+        setDropdownVisible(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -57,6 +55,7 @@ const Navbar = () => {
     setHighlightIndex(-1)
     if (!query.trim()) {
       setSearchResults([])
+      setDropdownVisible(false)
       return
     }
     const q = query.toLowerCase()
@@ -66,6 +65,7 @@ const Navbar = () => {
       item.keywords.some(k => k.includes(q))
     )
     setSearchResults(results)
+    setDropdownVisible(true)
   }
 
   const handleSelect = (section) => {
@@ -73,9 +73,9 @@ const Navbar = () => {
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
-    setSearchOpen(false)
     setSearchQuery('')
     setSearchResults([])
+    setDropdownVisible(false)
   }
 
   const handleKeyDown = (e) => {
@@ -92,15 +92,10 @@ const Navbar = () => {
         handleSelect(searchResults[0].section)
       }
     } else if (e.key === 'Escape') {
-      setSearchOpen(false)
       setSearchQuery('')
       setSearchResults([])
+      setDropdownVisible(false)
     }
-  }
-
-  const openSearch = () => {
-    setSearchOpen(true)
-    setTimeout(() => inputRef.current?.focus(), 50)
   }
 
   return (
@@ -160,70 +155,62 @@ const Navbar = () => {
         {/* Right Side Actions */}
         <div className="navbar__actions">
 
-          {/* Search Bar */}
+          {/* Search Bar — always expanded */}
           <div className="navbar__search" ref={searchRef}>
-            {!searchOpen ? (
-              <button className="navbar__search-icon-btn" onClick={openSearch} aria-label="Open search" id="search-toggle">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
-                <span>Search...</span>
-              </button>
-            ) : (
-              <div className="navbar__search-box">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="navbar__search-icon">
-                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
-                <input
-                  ref={inputRef}
-                  id="search-input"
-                  type="text"
-                  className="navbar__search-input"
-                  placeholder="Search sections, products..."
-                  value={searchQuery}
-                  onChange={e => handleSearch(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  autoComplete="off"
-                />
-                {searchQuery && (
-                  <button className="navbar__search-clear" onClick={() => { setSearchQuery(''); setSearchResults([]); inputRef.current?.focus() }} aria-label="Clear search">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                  </button>
-                )}
+            <div className="navbar__search-box">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="navbar__search-icon">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <input
+                ref={inputRef}
+                id="search-input"
+                type="text"
+                className="navbar__search-input"
+                placeholder="Search sections, products..."
+                value={searchQuery}
+                onChange={e => handleSearch(e.target.value)}
+                onKeyDown={handleKeyDown}
+                onFocus={() => searchQuery && setDropdownVisible(true)}
+                autoComplete="off"
+              />
+              {searchQuery && (
+                <button className="navbar__search-clear" onClick={() => { setSearchQuery(''); setSearchResults([]); setDropdownVisible(false); inputRef.current?.focus() }} aria-label="Clear search">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              )}
 
-                {/* Dropdown Results */}
-                {searchOpen && searchQuery && (
-                  <div className="navbar__search-dropdown" id="search-results">
-                    {searchResults.length > 0 ? (
-                      searchResults.map((item, i) => (
-                        <button
-                          key={i}
-                          className={`navbar__search-result ${i === highlightIndex ? 'navbar__search-result--active' : ''}`}
-                          onClick={() => handleSelect(item.section)}
-                          onMouseEnter={() => setHighlightIndex(i)}
-                        >
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                          </svg>
-                          <div>
-                            <span className="navbar__search-result-title">{item.title}</span>
-                            <span className="navbar__search-result-desc">{item.description}</span>
-                          </div>
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="navbar__search-arrow">
-                            <polyline points="9 18 15 12 9 6"/>
-                          </svg>
-                        </button>
-                      ))
-                    ) : (
-                      <div className="navbar__search-empty">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        <span>No results for "<strong>{searchQuery}</strong>"</span>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
+              {/* Dropdown Results */}
+              {dropdownVisible && searchQuery && (
+                <div className="navbar__search-dropdown" id="search-results">
+                  {searchResults.length > 0 ? (
+                    searchResults.map((item, i) => (
+                      <button
+                        key={i}
+                        className={`navbar__search-result ${i === highlightIndex ? 'navbar__search-result--active' : ''}`}
+                        onClick={() => handleSelect(item.section)}
+                        onMouseEnter={() => setHighlightIndex(i)}
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                        <div>
+                          <span className="navbar__search-result-title">{item.title}</span>
+                          <span className="navbar__search-result-desc">{item.description}</span>
+                        </div>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="navbar__search-arrow">
+                          <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                      </button>
+                    ))
+                  ) : (
+                    <div className="navbar__search-empty">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                      <span>No results for "<strong>{searchQuery}</strong>"</span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
 
           <a href="#contact" className="btn navbar__cta" id="contact-btn">Contact Us</a>
