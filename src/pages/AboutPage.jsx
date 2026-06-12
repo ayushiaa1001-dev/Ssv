@@ -1,11 +1,24 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './AboutPage.css'
 
 const AboutPage = () => {
+  const location = useLocation()
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    if (location.state?.scrollTo) {
+      const targetId = location.state.scrollTo
+      // Clear state to prevent scrolling again on reload
+      window.history.replaceState({}, document.title)
+      
+      // Delay slightly to ensure elements are rendered
+      setTimeout(() => {
+        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [location])
 
   return (
     <div className="about-page">
@@ -37,7 +50,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── Our Story / About Us Section ── */}
-      <section className="ap-section ap-who">
+      <section className="ap-section ap-who" id="about-story">
         <div className="container ap-who__inner">
           <div className="ap-who__content">
             <span className="section-label">Our Story</span>
@@ -85,7 +98,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── Our Philosophy / Vision & Values Section ── */}
-      <section className="ap-section ap-philosophy">
+      <section className="ap-section ap-philosophy" id="about-philosophy">
         <div className="container">
           <div className="ap-section-header">
             <span className="section-label">Our Philosophy</span>
@@ -165,7 +178,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── Our Journey / Milestones & Recognition Section ── */}
-      <section className="ap-section ap-journey">
+      <section className="ap-section ap-journey" id="about-journey">
         <div className="container">
           <div className="ap-section-header">
             <span className="section-label">Our Journey</span>
@@ -239,7 +252,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── Our Standards / Quality Section ── */}
-      <section className="ap-section ap-standards">
+      <section className="ap-section ap-standards" id="about-standards">
         <div className="container ap-standards__inner">
           {/* Left Column: Copy & Certifications */}
           <div className="ap-standards__content">

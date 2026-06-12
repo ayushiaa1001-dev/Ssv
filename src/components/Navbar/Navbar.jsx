@@ -115,6 +115,22 @@ const Navbar = () => {
     setActiveDropdown(null)
   }
 
+  // Navigate to About page section safely with HashRouter and location state
+  const scrollToAboutSection = (sectionId) => {
+    const isAbout = window.location.hash.includes('/about')
+    if (isAbout) {
+      if (sectionId) {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    } else {
+      navigate('/about', { state: { scrollTo: sectionId } })
+    }
+    setMobileOpen(false)
+    setActiveDropdown(null)
+  }
+
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} id="navbar">
       <div className="navbar__inner container">
@@ -139,10 +155,26 @@ const Navbar = () => {
             </Link>
             {activeDropdown === 'about' && (
               <ul className="navbar__dropdown">
-                <li><Link to="/about" onClick={() => setActiveDropdown(null)}>Who We Are</Link></li>
-                <li><Link to="/about" onClick={() => setActiveDropdown(null)}>Vision & Values</Link></li>
-                <li><Link to="/about" onClick={() => setActiveDropdown(null)}>Milestones</Link></li>
-                <li><Link to="/about" onClick={() => setActiveDropdown(null)}>Quality</Link></li>
+                <li>
+                  <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-story'); }}>
+                    Who We Are
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-philosophy'); }}>
+                    Vision & Values
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-journey'); }}>
+                    Milestones
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-standards'); }}>
+                    Quality
+                  </Link>
+                </li>
               </ul>
             )}
           </li>
@@ -252,14 +284,14 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="navbar__mobile" id="mobile-menu">
-          <button onClick={() => scrollToSection('hero')}>Home</button>
-          <Link to="/about" onClick={() => setMobileOpen(false)}>About Us</Link>
-          <button onClick={() => scrollToSection('vision')}>Vision & Values</button>
-          <button onClick={() => scrollToSection('milestones')}>Milestones</button>
-          <button onClick={() => scrollToSection('products')}>Products</button>
-          <button onClick={() => scrollToSection('quality')}>Quality & Certifications</button>
-          <button onClick={() => scrollToSection('careers')}>Careers</button>
-          <button className="btn btn-dark" style={{ marginTop: '10px' }} onClick={() => scrollToSection('contact')}>Contact Us</button>
+          <Link to="/" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>Home</Link>
+          <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-story'); }}>About Us</Link>
+          <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-philosophy'); }}>Vision & Values</Link>
+          <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-journey'); }}>Milestones</Link>
+          <Link to="/" onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}>Products</Link>
+          <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-standards'); }}>Quality & Certifications</Link>
+          <Link to="/" onClick={(e) => { e.preventDefault(); scrollToSection('careers'); }}>Careers</Link>
+          <Link to="/" className="btn btn-dark" style={{ marginTop: '10px' }} onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact Us</Link>
         </div>
       )}
     </nav>
