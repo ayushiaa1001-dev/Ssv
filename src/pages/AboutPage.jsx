@@ -11,7 +11,10 @@ const AboutPage = () => {
     <div className="about-page">
       {/* ── Hero Banner ── */}
       <section className="ap-hero">
-        <div className="ap-hero__overlay" />
+        <div className="ap-hero__bg">
+          <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1600&auto=format&fit=crop&q=80" alt="SSV laboratory" />
+          <div className="ap-hero__overlay" />
+        </div>
         <div className="ap-hero__content container">
           <Link to="/" className="ap-back-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -21,6 +24,9 @@ const AboutPage = () => {
           </Link>
           <span className="ap-hero__label">Who We Are</span>
           <h1 className="ap-hero__title">About Us</h1>
+          <p className="ap-hero__sub">
+            Advancing global healthcare through scientific research, state-of-the-art manufacturing, and an uncompromising commitment to quality.
+          </p>
         </div>
         {/* Scroll indicator */}
         <div className="ap-hero__scroll">
