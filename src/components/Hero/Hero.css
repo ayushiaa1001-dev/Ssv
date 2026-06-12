@@ -42,7 +42,7 @@
 }
 
 .hero__text {
-  max-width: 580px;
+  max-width: 720px;
   text-align: left;
   opacity: 0;
   transform: translateY(40px);
