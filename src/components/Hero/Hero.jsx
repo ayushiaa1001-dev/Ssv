@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Hero.css'
 import heroBg from '../../assets/images/hero-bg.png'
 
@@ -16,6 +17,11 @@ const Hero = () => {
     const timer = setTimeout(() => setVisible(true), 200)
     return () => clearTimeout(timer)
   }, [])
+
+  const handleScrollToContact = (e) => {
+    e.preventDefault()
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <section className="hero" id="hero">
@@ -35,10 +41,10 @@ const Hero = () => {
             SSV Pharmaceuticals delivers trusted, high-quality medicines across therapeutic categories — improving lives across India and beyond.
           </p>
           <div className="hero__buttons">
-            <a href="#about" className="btn btn-primary" id="hero-cta-story">
+            <Link to="/about" className="btn btn-primary" id="hero-cta-story">
               Discover Our Story
-            </a>
-            <a href="#contact" className="btn btn-outline" id="hero-cta-touch">
+            </Link>
+            <a href="#contact" onClick={handleScrollToContact} className="btn btn-outline" id="hero-cta-touch">
               Get in Touch
             </a>
           </div>
