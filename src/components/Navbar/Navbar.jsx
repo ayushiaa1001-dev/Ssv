@@ -5,20 +5,20 @@ import './Navbar.css'
 // All searchable content across the site
 const SEARCH_INDEX = [
   { title: 'Home', description: 'Welcome to SSV Pharmaceuticals', section: '#hero', keywords: ['home', 'hero', 'welcome', 'ssv'] },
-  { title: 'About Us', description: 'Who we are — 38+ years of pharmaceutical excellence', section: '#about', keywords: ['about', 'who we are', 'history', 'founded', 'experience', 'story'] },
-  { title: 'Vision & Values', description: 'Our vision, mission and core values', section: '#vision', keywords: ['vision', 'mission', 'values', 'goals'] },
-  { title: 'Milestones', description: 'Key milestones in our journey', section: '#milestones', keywords: ['milestones', 'achievements', 'journey', 'history', 'timeline'] },
-  { title: 'Quality & Certifications', description: 'Our quality standards and certifications', section: '#quality', keywords: ['quality', 'certifications', 'gmp', 'iso', 'standards'] },
-  { title: 'Products', description: 'Our pharmaceutical product portfolio', section: '#products', keywords: ['products', 'portfolio', 'medicines', 'drugs', 'formulations'] },
-  { title: 'Cough & Anti Cold Range', description: 'Cough syrups, cold relief medicines', section: '#products', keywords: ['cough', 'cold', 'anti cold', 'syrup', 'fever'] },
-  { title: 'Pain Management', description: 'Pain relief and analgesic products', section: '#products', keywords: ['pain', 'analgesic', 'relief', 'tablet'] },
-  { title: 'Gynae', description: 'Gynaecology product range', section: '#products', keywords: ['gynae', 'gynaecology', 'women', 'health'] },
-  { title: 'Gastro', description: 'Gastroenterology products', section: '#products', keywords: ['gastro', 'digestive', 'stomach', 'gastroenterology'] },
-  { title: 'General Products', description: 'General medicine formulations', section: '#products', keywords: ['general', 'medicine', 'tablets', 'capsules'] },
+  { title: 'About Us', description: 'Who we are — 38+ years of pharmaceutical excellence', section: '#about-story', keywords: ['about', 'who we are', 'history', 'founded', 'experience', 'story'] },
+  { title: 'Vision & Values', description: 'Our vision, mission and core values', section: '#about-philosophy', keywords: ['vision', 'mission', 'values', 'goals'] },
+  { title: 'Milestones', description: 'Key milestones in our journey', section: '#about-journey', keywords: ['milestones', 'achievements', 'journey', 'history', 'timeline'] },
+  { title: 'Quality & Certifications', description: 'Our quality standards and certifications', section: '#about-standards', keywords: ['quality', 'certifications', 'gmp', 'iso', 'standards'] },
+  { title: 'Products', description: 'Our pharmaceutical product portfolio', section: 'products', keywords: ['products', 'portfolio', 'medicines', 'drugs', 'formulations'] },
+  { title: 'Cough & Anti Cold Range', description: 'Cough syrups, cold relief medicines', section: 'products/cough-cold', keywords: ['cough', 'cold', 'anti cold', 'syrup', 'fever'] },
+  { title: 'Pain Management', description: 'Pain relief and analgesic products', section: 'products/pain-management', keywords: ['pain', 'analgesic', 'relief', 'tablet'] },
+  { title: 'Gynae', description: 'Gynaecology product range', section: 'products/gynae', keywords: ['gynae', 'gynaecology', 'women', 'health'] },
+  { title: 'Gastro', description: 'Gastroenterology products', section: 'products/gastro', keywords: ['gastro', 'digestive', 'stomach', 'gastroenterology'] },
+  { title: 'General Products', description: 'General medicine formulations', section: 'products/general', keywords: ['general', 'medicine', 'tablets', 'capsules'] },
   { title: 'Careers', description: 'Join our team at SSV Pharmaceuticals', section: '#careers', keywords: ['careers', 'jobs', 'hiring', 'work', 'employment', 'join'] },
   { title: 'Contact Us', description: 'Get in touch with SSV Pharmaceuticals', section: '#contact', keywords: ['contact', 'reach', 'email', 'phone', 'address', 'touch'] },
-  { title: 'Export Countries', description: 'We export to 12+ countries globally', section: '#about', keywords: ['export', 'countries', 'global', 'international'] },
-  { title: 'Professionals', description: '500+ skilled professionals in our team', section: '#about', keywords: ['professionals', 'team', 'staff', 'employees'] },
+  { title: 'Export Countries', description: 'We export to 12+ countries globally', section: '#about-story', keywords: ['export', 'countries', 'global', 'international'] },
+  { title: 'Professionals', description: '500+ skilled professionals in our team', section: '#about-story', keywords: ['professionals', 'team', 'staff', 'employees'] },
 ]
 
 const Navbar = () => {
@@ -71,9 +71,16 @@ const Navbar = () => {
   }
 
   const handleSelect = (section) => {
-    const el = document.querySelector(section)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (section.startsWith('products')) {
+      if (section === 'products') {
+        scrollToProductsSection(null)
+      } else {
+        scrollToProductsSection(section.split('/')[1])
+      }
+    } else if (section.startsWith('#about-')) {
+      scrollToAboutSection(section.substring(1))
+    } else if (section.startsWith('#')) {
+      scrollToSection(section.substring(1))
     }
     setSearchQuery('')
     setSearchResults([])
@@ -127,6 +134,22 @@ const Navbar = () => {
     } else {
       navigate('/about', { state: { scrollTo: sectionId } })
     }
+  }
+
+  // Navigate to Products page section safely with HashRouter and location state
+  const scrollToProductsSection = (categoryId) => {
+    const isProducts = window.location.hash.includes('/products')
+    if (isProducts) {
+      if (categoryId) {
+        navigate('/products', { state: { category: categoryId } })
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    } else {
+      navigate('/products', { state: { category: categoryId } })
+    }
+    setMobileOpen(false)
+    setActiveDropdown(null)
   }
 
   const handleContactClick = () => {
@@ -185,18 +208,18 @@ const Navbar = () => {
           <li className="navbar__item navbar__item--dropdown"
               onMouseEnter={() => setActiveDropdown('products')}
               onMouseLeave={() => setActiveDropdown(null)}>
-            <button className="navbar__link navbar__link--btn" onClick={() => scrollToSection('products')}>
+            <button className="navbar__link navbar__link--btn" onClick={() => scrollToProductsSection(null)}>
               Products
               <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
             </button>
             {activeDropdown === 'products' && (
               <ul className="navbar__dropdown">
-                <li><button onClick={() => scrollToSection('products')}>Cough & Anti Cold Range</button></li>
-                <li><button onClick={() => scrollToSection('products')}>Pain Management</button></li>
-                <li><button onClick={() => scrollToSection('products')}>Gynae</button></li>
-                <li><button onClick={() => scrollToSection('products')}>Gastro</button></li>
-                <li><button onClick={() => scrollToSection('products')}>General</button></li>
-                <li><button onClick={() => scrollToSection('products')}>All Products</button></li>
+                <li><button onClick={() => scrollToProductsSection('cough-cold')}>Cough & Anti Cold Range</button></li>
+                <li><button onClick={() => scrollToProductsSection('pain-management')}>Pain Management</button></li>
+                <li><button onClick={() => scrollToProductsSection('gynae')}>Gynae</button></li>
+                <li><button onClick={() => scrollToProductsSection('gastro')}>Gastro</button></li>
+                <li><button onClick={() => scrollToProductsSection('general')}>General</button></li>
+                <li><button onClick={() => scrollToProductsSection(null)}>All Products</button></li>
               </ul>
             )}
           </li>
@@ -292,7 +315,7 @@ const Navbar = () => {
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-story'); }}>About Us</Link>
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-philosophy'); }}>Vision & Values</Link>
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-journey'); }}>Milestones</Link>
-          <Link to="/" onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}>Products</Link>
+          <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection(null); }}>Products</Link>
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-standards'); }}>Quality & Certifications</Link>
           <Link to="/" onClick={(e) => { e.preventDefault(); scrollToSection('careers'); }}>Careers</Link>
           <Link to="#" className="btn btn-dark" style={{ marginTop: '10px' }} onClick={(e) => { e.preventDefault(); handleContactClick(); }}>Contact Us</Link>

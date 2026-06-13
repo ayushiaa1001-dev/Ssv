@@ -113,6 +113,10 @@
   margin: 0 auto 60px;
 }
 
+.ap-section-header .section-label::before {
+  display: none;
+}
+
 .ap-section-subtitle {
   font-size: 1.15rem;
   color: var(--muted-foreground);
@@ -221,7 +225,7 @@
 
 /* ── Our Philosophy / Vision & Values ── */
 .ap-philosophy {
-  background-color: var(--secondary, #ebf4f8);
+  background-color: var(--muted, #f5f7fa);
 }
 
 .ap-philosophy__content {
@@ -236,7 +240,7 @@
   background: #ffffff;
   border-radius: var(--radius-lg);
   padding: 48px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 10px 30px rgba(27, 79, 114, 0.05);
   border: 1px solid rgba(27, 79, 114, 0.04);
   transition: var(--transition-medium);
   display: flex;
@@ -253,11 +257,12 @@
   width: 56px;
   height: 56px;
   border-radius: var(--radius-md);
-  background-color: rgba(27, 79, 114, 0.08);
+  background-color: rgba(27, 79, 114, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
+  border: 1px solid rgba(27, 79, 114, 0.04);
 }
 
 .ap-philosophy__icon-shape {
@@ -294,20 +299,21 @@
 
 .ap-philosophy__card-list li {
   position: relative;
-  padding-left: 20px;
+  padding-left: 24px;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--muted-foreground);
 }
 
 .ap-philosophy__card-list li::before {
-  content: '•';
+  content: '';
   position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent, #2e86ab);
-  font-size: 1.2rem;
-  line-height: 1;
+  left: 2px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent, #2e86ab);
 }
 
 .ap-philosophy__card-list li strong {

@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer'
 import Hero from './components/Hero/Hero'
 import About from './components/About/About'
 import AboutPage from './pages/AboutPage'
+import ProductsPage from './pages/ProductsPage'
 
 function HomePage() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/products" element={<ProductsPage />} />
       </Routes>
       <Footer />
     </HashRouter>
