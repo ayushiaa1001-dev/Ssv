@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useLocation, Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import './ProductsPage.css'
 
 const categoriesData = [
@@ -73,6 +74,30 @@ const categoriesData = [
   }
 ]
 
+// Framer Motion staggered variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05 // 50ms stagger delay per card!
+    }
+  }
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 90,
+      damping: 14
+    }
+  }
+}
+
 const ProductsPage = () => {
   const [expandedCategory, setExpandedCategory] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
@@ -91,7 +116,7 @@ const ProductsPage = () => {
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
-      }, 200)
+      }, 250)
       
       // Clear navigation state
       window.history.replaceState({}, document.title)
@@ -110,7 +135,7 @@ const ProductsPage = () => {
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
-      }, 300)
+      }, 350)
     }
   }
 
@@ -137,8 +162,6 @@ const ProductsPage = () => {
   // Auto-expand accordions that have matches when searching
   useEffect(() => {
     if (searchQuery.trim() && filteredCategories.length > 0) {
-      // If we have filtered categories, auto-expand the first one with results if none are expanded,
-      // or expand all of them to show results instantly. Let's expand all with results for clarity.
       if (filteredCategories.length === 1) {
         setExpandedCategory(filteredCategories[0].id)
       }
@@ -161,10 +184,10 @@ const ProductsPage = () => {
             </svg>
             Back to Home
           </Link>
-          <span className="pp-hero__label">Our Formulations</span>
-          <h1 className="pp-hero__title">Product Portfolio</h1>
+          <span className="pp-hero__label">OUR PORTFOLIO</span>
+          <h1 className="pp-hero__title">Medicines Crafted with Science & Care</h1>
           <p className="pp-hero__sub">
-            Discover our comprehensive range of high-quality formulations, manufactured to meet international standards across five key therapeutic areas.
+            A trusted range across five therapeutic categories — formulated to the highest safety standards.
           </p>
 
           {/* Search Box */}
@@ -192,6 +215,11 @@ const ProductsPage = () => {
 
       {/* ── Accordion List ── */}
       <section className="pp-portfolio container">
+        <div className="pp-portfolio__header" style={{ marginBottom: '40px', textAlign: 'center' }}>
+          <span className="section-label" style={{ display: 'inline-flex' }}>EXPLORE</span>
+          <h2 className="section-title" style={{ marginTop: '10px' }}>Browse Products by Category</h2>
+        </div>
+
         {filteredCategories.length > 0 ? (
           filteredCategories.map((category) => {
             const isOpen = expandedCategory === category.id
@@ -219,44 +247,61 @@ const ProductsPage = () => {
                       <img src={category.image} alt={category.name} className="pp-category__img" />
                     </div>
                     <div className="pp-category__chevron">
+                      {/* ChevronDown by default, points down when closed, rotates 180deg to point up when open */}
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="9 18 15 12 9 6" />
+                        <polyline points="6 9 12 15 18 9" />
                       </svg>
                     </div>
                   </div>
                 </button>
 
-                {/* Expanded Grid Content */}
-                <div className="pp-category__collapse" style={{ maxHeight: isOpen ? '2000px' : '0' }}>
-                  <div className="pp-category__grid-wrapper">
-                    <div className="pp-category__grid">
-                      {category.products.map((product, index) => (
-                        <div 
-                          key={product.id} 
-                          className="pp-product-card animate-fade-up"
-                          style={{ 
-                            animationDelay: `${index * 80}ms`,
-                            '--accent-color': category.themeColor 
-                          }}
+                {/* Smooth accordion height sliding open/close using AnimatePresence + motion.div */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{ height: 'auto' }}
+                      exit={{ height: 0 }}
+                      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <div className="pp-category__grid-wrapper">
+                        {/* Staggered cards entry */}
+                        <motion.div 
+                          className="pp-category__grid"
+                          variants={containerVariants}
+                          initial="hidden"
+                          animate="show"
                         >
-                          <div className="pp-product-card__img-container">
-                            <img src={product.img} alt={product.name} className="pp-product-card__img" />
-                            <span className="pp-product-card__badge" style={{ backgroundColor: category.themeColor }}>
-                              {category.name.split(' ')[0]}
-                            </span>
-                          </div>
-                          <div className="pp-product-card__content">
-                            <div className="pp-product-card__header">
-                              <h3 className="pp-product-card__title">{product.name}</h3>
-                              <span className="pp-product-card__type">{product.type}</span>
-                            </div>
-                            <p className="pp-product-card__desc">{product.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                          {category.products.map((product) => (
+                            <motion.div 
+                              key={product.id} 
+                              className="pp-product-card"
+                              variants={cardVariants}
+                              style={{ 
+                                '--accent-color': category.themeColor 
+                              }}
+                            >
+                              <div className="pp-product-card__img-container">
+                                <img src={product.img} alt={product.name} className="pp-product-card__img" />
+                                <span className="pp-product-card__badge" style={{ backgroundColor: category.themeColor }}>
+                                  {category.name.split(' ')[0]}
+                                </span>
+                              </div>
+                              <div className="pp-product-card__content">
+                                <div className="pp-product-card__header">
+                                  <h3 className="pp-product-card__title">{product.name}</h3>
+                                  <span className="pp-product-card__type">{product.type}</span>
+                                </div>
+                                <p className="pp-product-card__desc">{product.desc}</p>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             )
           })

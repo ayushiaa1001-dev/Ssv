@@ -95,6 +95,14 @@
   position: relative;
 }
 
+.navbar__item--dropdown:hover .navbar__link svg {
+  transform: rotate(180deg);
+}
+
+.navbar__link svg {
+  transition: transform var(--transition-fast);
+}
+
 .navbar__dropdown {
   position: absolute;
   top: 100%;

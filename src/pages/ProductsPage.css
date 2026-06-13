@@ -291,14 +291,13 @@
 }
 
 .pp-category--open .pp-category__chevron {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
   color: var(--theme-color);
 }
 
 /* ── Expandable Grid Wrapper ── */
 .pp-category__collapse {
   overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pp-category__grid-wrapper {
@@ -324,7 +323,6 @@
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
               border-color 0.3s ease,
               box-shadow 0.3s ease;
-  opacity: 0; /* Handled by entry animation class */
 }
 
 /* Hover styles using custom variable injected dynamically */
