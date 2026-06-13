@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import './ProductsPage.css'
@@ -8,7 +8,6 @@ const categoriesData = [
     id: 'cough-cold',
     name: 'Cough & Anti Cold Range',
     tagline: 'Fast-acting relief for cough, cold & congestion',
-    colorClass: 'cough-cold',
     themeColor: '#0077A8',
     image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
     products: [
@@ -24,7 +23,6 @@ const categoriesData = [
     id: 'pain-management',
     name: 'Pain Management',
     tagline: 'Targeted relief for acute and chronic pain',
-    colorClass: 'pain-management',
     themeColor: '#C75000',
     image: 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&auto=format&fit=crop&q=80',
     products: [
@@ -39,7 +37,6 @@ const categoriesData = [
     id: 'gynae',
     name: 'Gynae Care',
     tagline: "Trusted care for women's health & wellness",
-    colorClass: 'gynae',
     themeColor: '#9C1A5E',
     image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80',
     products: [
@@ -54,7 +51,6 @@ const categoriesData = [
     id: 'gastro',
     name: 'Gastro Care',
     tagline: 'Complete digestive & gastrointestinal care',
-    colorClass: 'gastro',
     themeColor: '#1D6A3A',
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80',
     products: [
@@ -68,7 +64,6 @@ const categoriesData = [
     id: 'general',
     name: 'General Health',
     tagline: 'Vitamins, minerals & everyday immunity support',
-    colorClass: 'general',
     themeColor: '#5B3FA0',
     image: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=600&auto=format&fit=crop&q=80',
     products: [
@@ -81,119 +76,30 @@ const categoriesData = [
   }
 ]
 
-// Framer Motion staggered variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05
-    }
-  }
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 90,
-      damping: 14
-    }
-  }
-}
-
 const ProductsPage = () => {
-  const [expandedCategory, setExpandedCategory] = useState(null)
-  const [searchQuery, setSearchQuery] = useState('')
   const location = useLocation()
-  const categoryRefs = useRef({})
+  const [activeCategory, setActiveCategory] = useState(categoriesData[0].id)
 
-  // Handle accordion expansion and scrolling on nav
   useEffect(() => {
     if (location.state?.category) {
-      const categoryId = location.state.category
-      // Defer setState to avoid calling it synchronously inside an effect
-      const expandTimer = setTimeout(() => {
-        setExpandedCategory(categoryId)
-      }, 0)
-      
-      // Delay slightly for render cycles then scroll
-      const scrollTimer = setTimeout(() => {
-        const element = categoryRefs.current[categoryId]
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-      }, 250)
-      
-      // Clear navigation state
+      const selected = categoriesData.find((category) => category.id === location.state.category)
+      if (selected) {
+        setActiveCategory(selected.id)
+      }
       window.history.replaceState({}, document.title)
-      return () => {
-        clearTimeout(expandTimer)
-        clearTimeout(scrollTimer)
-      }
-    } else {
-      window.scrollTo(0, 0)
     }
-  }, [location])
+  }, [location.state])
 
-  const toggleCategory = (id) => {
-    if (expandedCategory === id) {
-      setExpandedCategory(null)
-    } else {
-      setExpandedCategory(id)
-      setTimeout(() => {
-        const element = categoryRefs.current[id]
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-      }, 350)
-    }
-  }
-
-  // Filter products based on search query
-  const getFilteredCategories = () => {
-    if (!searchQuery.trim()) return categoriesData
-
-    const query = searchQuery.toLowerCase()
-    return categoriesData.map(category => {
-      const matchingProducts = category.products.filter(product => 
-        product.name.toLowerCase().includes(query) ||
-        product.formSize.toLowerCase().includes(query) ||
-        product.desc.toLowerCase().includes(query)
-      )
-      return {
-        ...category,
-        products: matchingProducts
-      }
-    }).filter(category => category.products.length > 0)
-  }
-
-  const filteredCategories = getFilteredCategories()
-
-  // Auto-expand accordions that have matches when searching
-  useEffect(() => {
-    if (!searchQuery.trim()) return
-    const timer = setTimeout(() => {
-      if (filteredCategories.length === 1) {
-        setExpandedCategory(filteredCategories[0].id)
-      }
-    }, 0)
-    return () => clearTimeout(timer)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery, filteredCategories.length])
+  const currentCategory = categoriesData.find((category) => category.id === activeCategory) || categoriesData[0]
 
   return (
     <div className="products-page">
-      {/* ── Hero Banner ── */}
       <section className="pp-hero">
         <div className="pp-hero__bg">
-          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1600&auto=format&fit=crop&q=80" alt="SSV pharmaceutical products background" />
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1600&auto=format&fit=crop&q=80" alt="Medicines and capsules" />
           <div className="pp-hero__overlay" />
         </div>
-        
+
         <div className="pp-hero__content container">
           <Link to="/" className="pp-back-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -206,140 +112,100 @@ const ProductsPage = () => {
           <p className="pp-hero__sub">
             A trusted range across five therapeutic categories — formulated to the highest safety standards.
           </p>
-
-          {/* Search Box */}
-          <div className="pp-search">
-            <div className="pp-search__box">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="pp-search__icon">
-                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-              <input
-                type="text"
-                className="pp-search__input"
-                placeholder="Search products, dosage forms or descriptions..."
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-              />
-              {searchQuery && (
-                <button className="pp-search__clear" onClick={() => setSearchQuery('')} aria-label="Clear search">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
-              )}
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* ── Accordion List ── */}
-      <section className="pp-portfolio container">
-        <div className="pp-portfolio__header" style={{ marginBottom: '40px', textAlign: 'center' }}>
-          <span className="section-label" style={{ display: 'inline-flex' }}>EXPLORE</span>
-          <h2 className="section-title" style={{ marginTop: '10px' }}>Browse Products by Category</h2>
+      <section className="pp-selection container">
+        <div className="pp-selection__top">
+          <div className="pp-categories__intro">
+            <span className="section-label">Category selector</span>
+            <h2 className="section-title">Select the range you want to explore</h2>
+            <p className="section-copy">
+              The dropdown lets you switch between therapeutic categories and reveals the matching products below.
+            </p>
+          </div>
+
+          <div className="pp-category-select">
+            <label htmlFor="categorySelect">Choose a category</label>
+            <div className="pp-category-select__field">
+              <select
+                id="categorySelect"
+                value={activeCategory}
+                onChange={(event) => setActiveCategory(event.target.value)}
+              >
+                {categoriesData.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
 
-        {filteredCategories.length > 0 ? (
-          filteredCategories.map((category) => {
-            const isOpen = expandedCategory === category.id
-            return (
-              <div 
-                key={category.id} 
-                className={`pp-category pp-category--${category.colorClass} ${isOpen ? 'pp-category--open' : ''}`}
-                ref={el => categoryRefs.current[category.id] = el}
-                id={category.id}
-              >
-                {/* Banner Accordion Header */}
-                <button 
-                  className="pp-category__banner"
-                  onClick={() => toggleCategory(category.id)}
-                  aria-expanded={isOpen}
-                  style={{ '--theme-color': category.themeColor }}
-                >
-                  <div className="pp-category__info">
-                    <h3 className="pp-category__name">{category.name}</h3>
-                    <p className="pp-category__tagline">{category.tagline}</p>
-                  </div>
-                  
-                  <div className="pp-category__visual">
-                    <div className="pp-category__img-wrapper">
-                      <img src={category.image} alt={category.name} className="pp-category__img" />
-                    </div>
-                    
-                    <div className="pp-category__toggle-pill">
-                      <span>{isOpen ? 'Close' : 'View Products'}</span>
-                      <div className="pp-category__chevron">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </button>
-
-                {/* Smooth accordion height sliding open/close using AnimatePresence + motion.div */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0 }}
-                      animate={{ height: 'auto' }}
-                      exit={{ height: 0 }}
-                      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-                      style={{ overflow: 'hidden' }}
-                    >
-                      <div className="pp-category__grid-wrapper">
-                        {/* Product Count Header matching Figma */}
-                        <div className="pp-category__count-header" style={{ color: category.themeColor }}>
-                          {category.products.length} Products
-                        </div>
-                        
-                        {/* Staggered cards entry */}
-                        <motion.div 
-                          className="pp-category__grid"
-                          variants={containerVariants}
-                          initial="hidden"
-                          animate="show"
-                        >
-                          {category.products.map((product) => (
-                            <motion.div 
-                              key={product.id} 
-                              className="pp-product-card"
-                              variants={cardVariants}
-                              style={{ 
-                                '--accent-color': category.themeColor 
-                              }}
-                            >
-                              <div className="pp-product-card__img-container">
-                                <img src={product.img} alt={product.name} className="pp-product-card__img" />
-                                <span className="pp-product-card__badge" style={{ backgroundColor: category.themeColor }}>
-                                  {category.name.split(' ')[0]}
-                                </span>
-                              </div>
-                              <div className="pp-product-card__content">
-                                <div className="pp-product-card__header">
-                                  <h4 className="pp-product-card__title">{product.name}</h4>
-                                  <span className="pp-product-card__form-size" style={{ color: category.themeColor, border: `1px solid ${category.themeColor}33` }}>{product.formSize}</span>
-                                </div>
-                                <p className="pp-product-card__desc">{product.desc}</p>
-                              </div>
-                            </motion.div>
-                          ))}
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            )
-          })
-        ) : (
-          <div className="pp-empty-state">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-            <h3>No Products Found</h3>
-            <p>We couldn't find any products matching "<strong>{searchQuery}</strong>". Try searching for a different drug name or formulation.</p>
-            <button className="btn btn-dark" style={{ marginTop: '16px' }} onClick={() => setSearchQuery('')}>Clear Search</button>
+        <div className="pp-category-preview" style={{ '--accent-color': currentCategory.themeColor }}>
+          <div className="pp-category-preview__content">
+            <span className="pp-category-preview__eyebrow">Category overview</span>
+            <h2>{currentCategory.name}</h2>
+            <p>{currentCategory.tagline}</p>
           </div>
-        )}
+          <div className="pp-category-preview__media">
+            <img src={currentCategory.image} alt={currentCategory.name} />
+          </div>
+        </div>
+
+        <main className="pp-products-panel">
+          <div className="pp-products-panel__header" style={{ '--accent-color': currentCategory.themeColor }}>
+            <span className="pp-products-panel__eyebrow">Product range</span>
+            <h2 className="pp-products-panel__headline">{currentCategory.name} products</h2>
+            <p className="pp-products-panel__description">{currentCategory.tagline}</p>
+            <div className="pp-products-panel__status">
+              <span>{currentCategory.products.length} products</span>
+              <span className="pp-products-panel__divider" />
+              <span>Square product cards with image, name and form</span>
+            </div>
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentCategory.id}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -18 }}
+              transition={{ duration: 0.35 }}
+              className="pp-product-grid"
+            >
+              {currentCategory.products.map((product) => (
+                <motion.article
+                  key={product.id}
+                  className="pp-product-card"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="pp-product-card__media">
+                    <img src={product.img} alt={product.name} />
+                  </div>
+                  <div className="pp-product-card__content">
+                    <span className="pp-product-card__form">{product.formSize}</span>
+                    <h3>{product.name}</h3>
+                    <p>{product.desc}</p>
+                  </div>
+                </motion.article>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          <section className="pp-cta-strip">
+            <div className="pp-cta-strip__inner">
+              <div>
+                <p className="pp-cta-strip__label">Custom orders welcome</p>
+                <h3>Speak with our team for bulk supply and branded formulations.</h3>
+              </div>
+              <Link to="/about" className="btn btn-primary">Contact Us</Link>
+            </div>
+          </section>
+        </main>
       </section>
     </div>
   )
