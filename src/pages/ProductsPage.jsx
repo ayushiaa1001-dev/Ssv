@@ -14,7 +14,7 @@ const categoriesData = [
     products: [
       { id: 'ssvflu', name: 'SSVFlu', type: 'Syrup', desc: 'Effective relief from cold, cough, and nasal congestion.', img: 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&auto=format&fit=crop' },
       { id: 'coldzap', name: 'ColdZap', type: 'Tablets', desc: 'Fast-acting formula for fever, headache, and body aches.', img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop' },
-      { id: 'tussrelief', name: 'TussRelief', type: 'Drops', desc: 'Pediatric drops for gentle cough relief and easy breathing.', img: 'https://images.unsplash.com/photo-1512678015690-7d9a4e11dab1?w=400&auto=format&fit=crop' },
+      { id: 'tussrelief', name: 'TussRelief', type: 'Drops', desc: 'Pediatric drops for gentle cough relief and easy breathing.', img: 'https://images.unsplash.com/photo-1628771065518-0d82f1110531?w=400&auto=format&fit=crop' },
       { id: 'bronco-ssv', name: 'BroncoSSV', type: 'Syrup', desc: 'Bronchodilator syrup for clearing chest congestion.', img: 'https://images.unsplash.com/photo-1628771065518-0d82f1110531?w=400&auto=format&fit=crop' }
     ]
   },
@@ -40,7 +40,7 @@ const categoriesData = [
     themeColor: '#d44a70',
     image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80',
     products: [
-      { id: 'femicare', name: 'FemiCare', type: 'Tablets', desc: 'Comprehensive hormonal support and cycle regulation.', img: 'https://images.unsplash.com/photo-1512678015690-7d9a4e11dab1?w=400&auto=format&fit=crop' },
+      { id: 'femicare', name: 'FemiCare', type: 'Tablets', desc: 'Comprehensive hormonal support and cycle regulation.', img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop' },
       { id: 'ironfem', name: 'IronFem', type: 'Syrup', desc: 'High-absorption iron supplement for optimal hemoglobin levels.', img: 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&auto=format&fit=crop' },
       { id: 'cyclossv', name: 'CycloSSV', type: 'Capsules', desc: 'Natural herbal capsules for managing menstrual discomfort.', img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop' },
       { id: 'folicssv', name: 'FolicSSV', type: 'Tablets', desc: 'Folic acid supplements essential for prenatal development.', img: 'https://images.unsplash.com/photo-1628771065518-0d82f1110531?w=400&auto=format&fit=crop' }

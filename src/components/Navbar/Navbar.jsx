@@ -214,12 +214,36 @@ const Navbar = () => {
             </button>
             {activeDropdown === 'products' && (
               <ul className="navbar__dropdown">
-                <li><button onClick={() => scrollToProductsSection('cough-cold')}>Cough & Anti Cold Range</button></li>
-                <li><button onClick={() => scrollToProductsSection('pain-management')}>Pain Management</button></li>
-                <li><button onClick={() => scrollToProductsSection('gynae')}>Gynae</button></li>
-                <li><button onClick={() => scrollToProductsSection('gastro')}>Gastro</button></li>
-                <li><button onClick={() => scrollToProductsSection('general')}>General</button></li>
-                <li><button onClick={() => scrollToProductsSection(null)}>All Products</button></li>
+                <li>
+                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('cough-cold'); }}>
+                    Cough & Anti Cold Range
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('pain-management'); }}>
+                    Pain Management
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('gynae'); }}>
+                    Gynae
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('gastro'); }}>
+                    Gastro
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('general'); }}>
+                    General
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection(null); }}>
+                    All Products
+                  </Link>
+                </li>
               </ul>
             )}
           </li>
