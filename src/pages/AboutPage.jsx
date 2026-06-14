@@ -29,11 +29,7 @@ const AboutPage = () => {
         document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
       }, 100)
     } else {
-      const html = document.documentElement
-      const original = html.style.scrollBehavior
-      html.style.scrollBehavior = 'auto'
       window.scrollTo(0, 0)
-      html.style.scrollBehavior = original
     }
   }, [location])
 
