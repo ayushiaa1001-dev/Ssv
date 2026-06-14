@@ -29,6 +29,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  animation: cpKenBurns 22s ease-out infinite alternate;
+}
+
+@keyframes cpKenBurns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
 }
 
 .cp-hero__overlay {
