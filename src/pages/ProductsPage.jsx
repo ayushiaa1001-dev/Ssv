@@ -210,7 +210,11 @@ const ProductsPage = () => {
       stateTimer = setTimeout(() => {
         setExpandedCategory(null)
       }, 0)
+      const html = document.documentElement
+      const original = html.style.scrollBehavior
+      html.style.scrollBehavior = 'auto'
       window.scrollTo(0, 0)
+      html.style.scrollBehavior = original
     }
 
     return () => {

@@ -17,7 +17,11 @@ function ScrollToTop() {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual'
     }
+    const html = document.documentElement
+    const original = html.style.scrollBehavior
+    html.style.scrollBehavior = 'auto'
     window.scrollTo(0, 0)
+    html.style.scrollBehavior = original
   }, [pathname])
 
   return null
