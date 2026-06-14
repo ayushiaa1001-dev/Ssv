@@ -1,23 +1,9 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const CountUp = ({ end, duration = 1500, suffix = '' }) => {
   const [count, setCount] = useState(0)
-  const [visible, setVisible] = useState(false)
-  const ref = useRef()
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
+  const [ref, visible] = useIntersectionObserver({ threshold: 0.1 })
 
   useEffect(() => {
     if (!visible) return

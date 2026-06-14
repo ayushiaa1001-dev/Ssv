@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 import './Quality.css'
 import qualityImg from '../../assets/images/quality.png'
 
@@ -10,17 +10,7 @@ const certifications = [
 ]
 
 const Quality = () => {
-  const [visible, setVisible] = useState(false)
-  const ref = useRef()
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
-      { threshold: 0.2 }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
+  const [ref, visible] = useIntersectionObserver({ threshold: 0.2 })
 
   return (
     <section className="quality" id="quality" ref={ref}>
