@@ -122,37 +122,47 @@ const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory }) =
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ height: 0 }}
+            animate={{ height: 'auto' }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            style={{ overflow: 'hidden' }}
             className="pp-products-dropdown"
           >
-            <div className="pp-category__count-header">
-              {category.products.length} PRODUCTS
-            </div>
-            <div className="pp-product-grid">
-              {category.products.map((product, idx) => (
-                <motion.article
-                  key={product.id}
-                  className="pp-product-card"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25, delay: idx * 0.05 }}
-                >
-                  <div className="pp-product-card__media">
-                    <img src={product.img} alt={product.name} />
-                  </div>
-                  <div className="pp-product-card__content">
-                    <h4 className="pp-product-card__title">{product.name}</h4>
-                    <span className="pp-product-card__form-size">{product.formSize.replace(' · ', ' - ')}</span>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="pp-products-dropdown-inner"
+            >
+              <div className="pp-category__count-header">
+                {category.products.length} PRODUCTS
+              </div>
+              <div className="pp-product-grid">
+                {category.products.map((product, idx) => (
+                  <motion.article
+                    key={product.id}
+                    className="pp-product-card"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25, delay: idx * 0.05 }}
+                  >
+                    <div className="pp-product-card__media">
+                      <img src={product.img} alt={product.name} />
+                    </div>
+                    <div className="pp-product-card__content">
+                      <h4 className="pp-product-card__title">{product.name}</h4>
+                      <span className="pp-product-card__form-size">{product.formSize.replace(' · ', ' - ')}</span>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
   )
 }

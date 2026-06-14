@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function useIntersectionObserver(options = { threshold: 0.15 }) {
+export function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false)
   const ref = useRef(null)
+
+  const { threshold = 0.15, root = null, rootMargin = '0px' } = options
 
   useEffect(() => {
     const el = ref.current
@@ -14,13 +16,14 @@ export function useIntersectionObserver(options = { threshold: 0.15 }) {
         // Disconnect after it triggers once to avoid repeat transitions
         observer.unobserve(el)
       }
-    }, options)
+    }, { threshold, root, rootMargin })
 
     observer.observe(el)
     return () => {
       if (el) observer.unobserve(el)
     }
-  }, [options])
+  }, [threshold, root, rootMargin])
 
   return [ref, isIntersecting]
 }
+

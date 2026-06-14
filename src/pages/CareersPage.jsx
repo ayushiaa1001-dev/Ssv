@@ -1,64 +1,44 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
-import CountUp from '../components/CountUp'
 import './CareersPage.css'
 
 const OPENINGS = [
   {
-    id: 'rd-associate',
-    title: 'Research Associate — R&D',
-    department: 'Research & Development',
-    location: 'Mumbai, MH',
-    type: 'Full-time',
-    experience: '2–4 Years',
-    education: 'M.Pharm / M.Sc in Organic Chemistry',
-    desc: 'Develop new formulations, perform stability testing, and optimize active pharmaceutical ingredients (APIs).',
-    responsibilities: [
-      'Conduct formulation development trials for solid oral dosages.',
-      'Document and maintain lab notebooks with complete traceability.',
-      'Collaborate with Analytical Development (ADL) to review test results.',
-      'Ensure compliance with GMP guidelines and safety standards in the lab.'
-    ]
+    id: 'formulation-scientist',
+    title: 'Senior Formulation Scientist',
+    location: 'Mumbai (HQ)',
+    posted: 'Oct 15, 2023',
   },
   {
-    id: 'qc-executive',
-    title: 'Quality Control Executive',
-    department: 'Quality Assurance & Control',
-    location: 'Mumbai, MH',
-    type: 'Full-time',
-    experience: '3–5 Years',
-    education: 'B.Pharm / M.Sc in Chemistry',
-    desc: 'Conduct analysis of raw materials, packaging materials, in-process samples, and finished products.',
-    responsibilities: [
-      'Perform HPLC, UV-Vis, and dissolution testing of drug samples.',
-      'Review raw data and analytical reports for regulatory compliance.',
-      'Investigate Out of Specification (OOS) and Out of Trend (OOT) results.',
-      'Maintain and calibrate QC laboratory instruments.'
-    ]
+    id: 'regulatory-manager',
+    title: 'Regulatory Affairs Manager',
+    location: 'Hyderabad',
+    posted: 'Oct 18, 2023',
+  },
+  {
+    id: 'clinical-analyst',
+    title: 'Clinical Data Analyst',
+    location: 'Bangalore',
+    posted: 'Oct 20, 2023',
+  },
+  {
+    id: 'qa-officer',
+    title: 'Quality Assurance Officer',
+    location: 'Mumbai (HQ)',
+    posted: 'Oct 22, 2023',
   },
   {
     id: 'med-rep',
-    title: 'Medical Representative',
-    department: 'Sales & Marketing',
-    location: 'Pune / Mumbai, MH',
-    type: 'Full-time',
-    experience: '1–3 Years',
-    education: 'B.Sc / B.Pharm / D.Pharm',
-    desc: 'Build relationships with healthcare professionals, promote the SSV product portfolio, and achieve sales targets.',
-    responsibilities: [
-      'Conduct regular doctor visits and product presentations.',
-      'Organize medical conferences and roundtable meetings.',
-      'Collect feedback from clinicians and report market intelligence.',
-      'Achieve monthly and quarterly territory sales targets.'
-    ]
+    title: 'Medical Sales Representative',
+    location: 'Pan India',
+    posted: 'Oct 25, 2023',
   }
 ]
 
 const CareersPage = () => {
   const location = useLocation()
   const [heroVisible, setHeroVisible] = useState(false)
-  const [expandedJob, setExpandedJob] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedJobTitle, setSelectedJobTitle] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -68,8 +48,9 @@ const CareersPage = () => {
   const [formPhone, setFormPhone] = useState('')
   const [formResume, setFormResume] = useState('')
 
-  const [benefitsRef, benefitsVisible] = useIntersectionObserver()
+  const [cultureRef, cultureVisible] = useIntersectionObserver()
   const [openingsRef, openingsVisible] = useIntersectionObserver()
+  const [contactRef, contactVisible] = useIntersectionObserver()
 
   useEffect(() => {
     const timer = setTimeout(() => setHeroVisible(true), 200)
@@ -122,51 +103,24 @@ const CareersPage = () => {
               </svg>
               Back to Home
             </Link>
-            <span className="cp-hero__label">Join Our Team</span>
-            <h1 className="cp-hero__title">Careers</h1>
+            <span className="cp-hero__label">JOIN OUR TEAM</span>
+            <h1 className="cp-hero__title">Build a Career That Shapes Healthcare</h1>
             <p className="cp-hero__sub">
-              Build a meaningful career advancing science and improving lives. We are always looking for passionate, driven, and talented professionals.
+              At SSV Pharmaceuticals, every role contributes to something greater — better medicines, healthier lives, and a stronger healthcare ecosystem for India.
             </p>
             <div className="cp-hero__buttons">
               <a href="#openings-section" onClick={(e) => {
                 e.preventDefault()
                 document.getElementById('openings-section')?.scrollIntoView({ behavior: 'smooth' })
-              }} className="btn btn-primary">
+              }} className="btn btn-primary cp-btn-filled">
                 View Openings
               </a>
-              <a href="#benefits-section" onClick={(e) => {
+              <a href="#contact-section" onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('benefits-section')?.scrollIntoView({ behavior: 'smooth' })
-              }} className="btn btn-outline">
-                Why SSV?
+                document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })
+              }} className="btn btn-outline cp-btn-outline">
+                Send Your CV
               </a>
-            </div>
-          </div>
-        </div>
-
-        <div className={`cp-hero__stats ${heroVisible ? 'cp-hero__stats--visible' : ''}`}>
-          <div className="cp-hero__stats-inner container">
-            <div className="cp-hero__stat" style={{ animationDelay: '0.6s' }}>
-              <span className="cp-hero__stat-number">
-                <CountUp end="500" suffix="+" />
-              </span>
-              <span className="cp-hero__stat-label">Professionals</span>
-            </div>
-            <div className="cp-hero__stat" style={{ animationDelay: '0.75s' }}>
-              <span className="cp-hero__stat-number">
-                <CountUp end="38" suffix="+" />
-              </span>
-              <span className="cp-hero__stat-label">Years of Trust</span>
-            </div>
-            <div className="cp-hero__stat" style={{ animationDelay: '0.9s' }}>
-              <span className="cp-hero__stat-number">WHO-GMP</span>
-              <span className="cp-hero__stat-label">Compliant Labs</span>
-            </div>
-            <div className="cp-hero__stat" style={{ animationDelay: '1.05s' }}>
-              <span className="cp-hero__stat-number">
-                <CountUp end="12" suffix="+" />
-              </span>
-              <span className="cp-hero__stat-label">Export Markets</span>
             </div>
           </div>
         </div>
@@ -179,35 +133,63 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* ── Benefits Section ── */}
-      <section className={`cp-section cp-benefits scroll-reveal ${benefitsVisible ? 'scroll-reveal--visible' : ''}`} id="benefits-section" ref={benefitsRef}>
+      {/* ── Culture Section ── */}
+      <section className={`cp-section cp-culture scroll-reveal ${cultureVisible ? 'scroll-reveal--visible' : ''}`} id="culture-section" ref={cultureRef}>
         <div className="container">
-          <div className="cp-section-header">
-            <span className="section-label">Why SSV</span>
-            <h2 className="section-title">Work Environment</h2>
+          <div className="cp-culture__layout">
+            <div className="cp-culture__header">
+              <span className="section-label">WHY WORK AT SSV?</span>
+              <h2 className="section-title">A Culture of Excellence & Care</h2>
+            </div>
+
+            <div className="cp-culture__pillars">
+              <div className="cp-pillar">
+                <div className="cp-pillar__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
+                <div className="cp-pillar__content">
+                  <h4>Innovative R&D Projects</h4>
+                  <p>Work on cutting-edge pharmaceutical research that directly impacts patient lives across India and beyond.</p>
+                </div>
+              </div>
+              
+              <div className="cp-pillar">
+                <div className="cp-pillar__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></svg>
+                </div>
+                <div className="cp-pillar__content">
+                  <h4>Professional Development & Growth</h4>
+                  <p>Continuous learning paths, mentorship programmes, and clear career progression at every level.</p>
+                </div>
+              </div>
+
+              <div className="cp-pillar">
+                <div className="cp-pillar__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <div className="cp-pillar__content">
+                  <h4>Collaborative, Dynamic Environment</h4>
+                  <p>Join a team of 500+ passionate professionals who thrive on teamwork, curiosity, and purpose.</p>
+                </div>
+              </div>
+
+              <div className="cp-pillar">
+                <div className="cp-pillar__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <div className="cp-pillar__content">
+                  <h4>Comprehensive Benefits Package</h4>
+                  <p>Competitive salaries, health cover, annual bonuses, and flexible leave policies designed for your wellbeing.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="cp-benefits__grid">
-            <div className="cp-benefit-card">
-              <div className="cp-benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-              </div>
-              <h4>Competitive Compensation</h4>
-              <p>Industry-standard salaries, health benefits, and performance incentives.</p>
-            </div>
-            <div className="cp-benefit-card">
-              <div className="cp-benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14 9 11"/></svg>
-              </div>
-              <h4>Quality-Driven Culture</h4>
-              <p>Work under WHO-GMP compliance guidelines with advanced scientific methodologies.</p>
-            </div>
-            <div className="cp-benefit-card">
-              <div className="cp-benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-              </div>
-              <h4>Professional Growth</h4>
-              <p>Continuous learning programs, mentorships, and structured career paths.</p>
+          <div className="cp-culture__image-container">
+            <img className="cp-culture__image" src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=1200&auto=format&fit=crop&q=80" alt="SSV Laboratory Professionals" />
+            <div className="cp-culture__stats-card">
+              <span className="cp-culture__stats-number">500+</span>
+              <span className="cp-culture__stats-label">Team Members</span>
             </div>
           </div>
         </div>
@@ -216,62 +198,62 @@ const CareersPage = () => {
       {/* ── Openings Section ── */}
       <section className={`cp-section cp-openings scroll-reveal ${openingsVisible ? 'scroll-reveal--visible' : ''}`} id="openings-section" ref={openingsRef}>
         <div className="container">
-          <div className="cp-section-header">
-            <span className="section-label">Opportunities</span>
+          <div className="cp-section-header cp-openings-header">
+            <span className="section-label">OPPORTUNITIES</span>
             <h2 className="section-title">Current Openings</h2>
           </div>
 
-          <div className="cp-list">
-            {OPENINGS.map((job) => (
-              <div 
-                key={job.id} 
-                className={`cp-item ${expandedJob === job.id ? 'cp-item--open' : ''}`}
-              >
-                <button 
-                  className="cp-item-trigger"
-                  onClick={() => setExpandedJob(expandedJob === job.id ? null : job.id)}
-                >
-                  <div className="cp-item-header-text">
-                    <span className="cp-item-dept">{job.department}</span>
-                    <h4>{job.title}</h4>
-                  </div>
-                  <div className="cp-item-meta">
-                    <span>{job.location}</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="cp-item-chevron">
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </div>
-                </button>
+          <div className="cp-table-container">
+            <table className="cp-jobs-table">
+              <thead>
+                <tr>
+                  <th>JOB TITLE</th>
+                  <th>LOCATION</th>
+                  <th>POSTED</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                {OPENINGS.map((job) => (
+                  <tr key={job.id}>
+                    <td className="cp-job-title-col">
+                      <h4>{job.title}</h4>
+                    </td>
+                    <td className="cp-job-loc-col">
+                      <span>{job.location}</span>
+                    </td>
+                    <td className="cp-job-date-col">
+                      <span>{job.posted}</span>
+                    </td>
+                    <td className="cp-job-action-col">
+                      <button 
+                        className="btn btn-dark cp-apply-btn-sm"
+                        onClick={() => handleApplyClick(job.title)}
+                      >
+                        Apply Now
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
-                {expandedJob === job.id && (
-                  <div className="cp-item-details">
-                    <p className="cp-job-desc">{job.desc}</p>
-                    
-                    <div className="cp-job-specs">
-                      <div><strong>Education:</strong> {job.education}</div>
-                      <div><strong>Experience Required:</strong> {job.experience}</div>
-                      <div><strong>Employment Type:</strong> {job.type}</div>
-                    </div>
-
-                    <div className="cp-job-responsibilities">
-                      <h5>Key Responsibilities:</h5>
-                      <ul>
-                        {job.responsibilities.map((resp, i) => (
-                          <li key={i}>{resp}</li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <button 
-                      className="btn btn-dark cp-apply-btn"
-                      onClick={() => handleApplyClick(job.title)}
-                    >
-                      Apply Now
-                    </button>
-                  </div>
-                )}
+      {/* ── Ready to Join Us Section ── */}
+      <section className={`cp-section cp-contact scroll-reveal ${contactVisible ? 'scroll-reveal--visible' : ''}`} id="contact-section" ref={contactRef}>
+        <div className="container">
+          <div className="cp-contact-card">
+            <div className="cp-contact-icon-wrapper">
+              <div className="cp-contact-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
-            ))}
+            </div>
+            <h2 className="cp-contact-title">Ready to Join Us?</h2>
+            <p className="cp-contact-sub">To apply, please send your updated resume to:</p>
+            <a href="mailto:ssvpharma@gmail.com" className="cp-contact-email">ssvpharma@gmail.com</a>
+            <p className="cp-contact-footer">Please mention the job title in the subject line. · We respond within 5 business days.</p>
           </div>
         </div>
       </section>
@@ -365,3 +347,4 @@ const CareersPage = () => {
 }
 
 export default CareersPage
+
