@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Hero from './components/Hero/Hero'
 import About from './components/About/About'
+import Careers from './components/Careers/Careers'
 import AboutPage from './pages/AboutPage'
 import ProductsPage from './pages/ProductsPage'
 
@@ -11,6 +12,7 @@ function HomePage() {
     <main>
       <Hero />
       <About />
+      <Careers />
     </main>
   )
 }

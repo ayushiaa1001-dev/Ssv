@@ -8,14 +8,24 @@
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.about--visible {
+.about__content {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about__image {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about--visible .about__content,
+.about--visible .about__image {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(0);
 }
 
 .about__text {

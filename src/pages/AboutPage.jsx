@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import CountUp from '../components/CountUp'
 import './AboutPage.css'
 
 const AboutPage = () => {
@@ -74,19 +75,27 @@ const AboutPage = () => {
         <div className={`ap-hero__stats ${heroVisible ? 'ap-hero__stats--visible' : ''}`}>
           <div className="ap-hero__stats-inner container">
             <div className="ap-hero__stat" style={{ animationDelay: '0.6s' }}>
-              <span className="ap-hero__stat-number">38+</span>
+              <span className="ap-hero__stat-number">
+                <CountUp end="38" suffix="+" />
+              </span>
               <span className="ap-hero__stat-label">Years of Excellence</span>
             </div>
             <div className="ap-hero__stat" style={{ animationDelay: '0.75s' }}>
-              <span className="ap-hero__stat-number">200+</span>
+              <span className="ap-hero__stat-number">
+                <CountUp end="200" suffix="+" />
+              </span>
               <span className="ap-hero__stat-label">Product Portfolio</span>
             </div>
             <div className="ap-hero__stat" style={{ animationDelay: '0.9s' }}>
-              <span className="ap-hero__stat-number">500+</span>
+              <span className="ap-hero__stat-number">
+                <CountUp end="500" suffix="+" />
+              </span>
               <span className="ap-hero__stat-label">Professionals</span>
             </div>
             <div className="ap-hero__stat" style={{ animationDelay: '1.05s' }}>
-              <span className="ap-hero__stat-number">ISO 9001</span>
+              <span className="ap-hero__stat-number">
+                ISO <CountUp end="9001" />
+              </span>
               <span className="ap-hero__stat-label">Certified</span>
             </div>
           </div>
@@ -119,15 +128,21 @@ const AboutPage = () => {
             {/* Stats Counter */}
             <div className="ap-who__stats">
               <div className="ap-who__stat-item">
-                <span className="ap-who__stat-number">38+</span>
+                <span className="ap-who__stat-number">
+                  <CountUp end="38" suffix="+" />
+                </span>
                 <span className="ap-who__stat-label">Years of Excellence</span>
               </div>
               <div className="ap-who__stat-item">
-                <span className="ap-who__stat-number">200+</span>
+                <span className="ap-who__stat-number">
+                  <CountUp end="200" suffix="+" />
+                </span>
                 <span className="ap-who__stat-label">Products Portfolio</span>
               </div>
               <div className="ap-who__stat-item">
-                <span className="ap-who__stat-number">500+</span>
+                <span className="ap-who__stat-number">
+                  <CountUp end="500" suffix="+" />
+                </span>
                 <span className="ap-who__stat-label">Team Members</span>
               </div>
             </div>

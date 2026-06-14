@@ -1,17 +1,33 @@
+import { Link, useNavigate } from 'react-router-dom'
 import './Footer.css'
 
 const Footer = () => {
+  const navigate = useNavigate()
+
+  const handleScrollTo = (e, sectionId) => {
+    e.preventDefault()
+    const isHome = window.location.hash === '#/' || window.location.hash === '' || window.location.hash === '#'
+    if (!isHome) {
+      navigate('/')
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+      }, 300)
+    } else {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <footer className="footer" id="contact">
       <div className="footer__top">
         <div className="footer__inner container">
           {/* Brand Column */}
           <div className="footer__brand">
-            <a href="#" className="footer__logo">
+            <Link to="/" className="footer__logo" onClick={(e) => handleScrollTo(e, 'hero')}>
               <div className="footer__logo-icon">
                 <img src={`${import.meta.env.BASE_URL}logo-star.png`} alt="SSV Logo" style={{ height: '100px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
               </div>
-            </a>
+            </Link>
             <p className="footer__brand-desc">
               Committed to delivering high-quality pharmaceutical formulations and healthcare solutions globally.
             </p>
@@ -30,11 +46,11 @@ const Footer = () => {
           <div className="footer__col">
             <h4 className="footer__col-title">Quick Links</h4>
             <ul className="footer__links">
-              <li><a href="#hero">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#products">Products</a></li>
-              <li><a href="#careers">Careers</a></li>
-              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#hero" onClick={(e) => handleScrollTo(e, 'hero')}>Home</a></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/products">Products</Link></li>
+              <li><a href="#careers" onClick={(e) => handleScrollTo(e, 'careers')}>Careers</a></li>
+              <li><a href="#contact" onClick={(e) => handleScrollTo(e, 'contact')}>Contact Us</a></li>
             </ul>
           </div>
 

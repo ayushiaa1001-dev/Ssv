@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import CountUp from '../CountUp'
 import './Hero.css'
 import heroBg from '../../assets/images/hero-bg.png'
 
@@ -55,7 +56,9 @@ const Hero = () => {
         <div className="hero__stats-inner container">
           {stats.map((stat, i) => (
             <div className="hero__stat" key={i} style={{ animationDelay: `${0.6 + i * 0.15}s` }}>
-              <span className="hero__stat-number">{stat.number}</span>
+              <span className="hero__stat-number">
+                <CountUp end={stat.number} suffix={stat.number.replace(/[0-9]/g, '')} />
+              </span>
               <span className="hero__stat-label">{stat.label}</span>
             </div>
           ))}

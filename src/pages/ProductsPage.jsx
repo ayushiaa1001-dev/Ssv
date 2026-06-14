@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import CountUp from '../components/CountUp'
 import './ProductsPage.css'
 
 const categoriesData = [
@@ -249,11 +250,15 @@ const ProductsPage = () => {
         <div className={`pp-hero__stats ${heroVisible ? 'pp-hero__stats--visible' : ''}`}>
           <div className="pp-hero__stats-inner container">
             <div className="pp-hero__stat" style={{ animationDelay: '0.6s' }}>
-              <span className="pp-hero__stat-number">5</span>
+              <span className="pp-hero__stat-number">
+                <CountUp end="5" />
+              </span>
               <span className="pp-hero__stat-label">Therapeutic Range</span>
             </div>
             <div className="pp-hero__stat" style={{ animationDelay: '0.75s' }}>
-              <span className="pp-hero__stat-number">200+</span>
+              <span className="pp-hero__stat-number">
+                <CountUp end="200" suffix="+" />
+              </span>
               <span className="pp-hero__stat-label">Formulations</span>
             </div>
             <div className="pp-hero__stat" style={{ animationDelay: '0.9s' }}>
@@ -261,7 +266,9 @@ const ProductsPage = () => {
               <span className="pp-hero__stat-label">Certified</span>
             </div>
             <div className="pp-hero__stat" style={{ animationDelay: '1.05s' }}>
-              <span className="pp-hero__stat-number">100%</span>
+              <span className="pp-hero__stat-number">
+                <CountUp end="100" suffix="%" />
+              </span>
               <span className="pp-hero__stat-label">Tested Efficacy</span>
             </div>
           </div>
