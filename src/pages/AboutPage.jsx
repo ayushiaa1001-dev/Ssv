@@ -175,7 +175,10 @@ const AboutPage = () => {
             {/* Vision Card */}
             <div className="ap-philosophy__card">
               <div className="ap-philosophy__card-icon-container">
-                <div className="ap-philosophy__icon-shape ap-philosophy__icon-shape--circle"></div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ap-philosophy__icon" style={{ color: 'var(--primary)' }}>
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
               </div>
               <h3 className="ap-philosophy__card-title">Vision</h3>
               <ul className="ap-philosophy__card-list">
@@ -189,7 +192,9 @@ const AboutPage = () => {
             {/* Values Card */}
             <div className="ap-philosophy__card">
               <div className="ap-philosophy__card-icon-container">
-                <div className="ap-philosophy__icon-shape ap-philosophy__icon-shape--diamond"></div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ap-philosophy__icon" style={{ color: 'var(--primary)' }}>
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
               </div>
               <h3 className="ap-philosophy__card-title">Values</h3>
               <ul className="ap-philosophy__card-list">
