@@ -79,7 +79,9 @@ const categoriesData = [
 
 const ProductsPage = () => {
   const location = useLocation()
-  const [expandedCategory, setExpandedCategory] = useState(null)
+  const [expandedCategory, setExpandedCategory] = useState(() => {
+    return location.state?.category || null
+  })
   const [heroVisible, setHeroVisible] = useState(false)
   const [selectionRef, selectionVisible] = useIntersectionObserver()
 
@@ -89,15 +91,22 @@ const ProductsPage = () => {
   }, [])
 
   useEffect(() => {
+    let stateTimer
+    let scrollTimer
+
     if (location.state?.category) {
       const categoryId = location.state.category
-      setExpandedCategory(categoryId)
+      
+      // Schedule state update asynchronously to avoid synchronous cascading renders inside the effect
+      stateTimer = setTimeout(() => {
+        setExpandedCategory(categoryId)
+      }, 0)
       
       // Clear location state to prevent running again on page reloads/interactions
       window.history.replaceState({}, document.title)
 
       // Scroll to that category item card
-      setTimeout(() => {
+      scrollTimer = setTimeout(() => {
         const el = document.getElementById(categoryId)
         if (el) {
           const rect = el.getBoundingClientRect()
@@ -107,8 +116,15 @@ const ProductsPage = () => {
         }
       }, 400)
     } else {
-      setExpandedCategory(null)
+      stateTimer = setTimeout(() => {
+        setExpandedCategory(null)
+      }, 0)
       window.scrollTo(0, 0)
+    }
+
+    return () => {
+      if (stateTimer) clearTimeout(stateTimer)
+      if (scrollTimer) clearTimeout(scrollTimer)
     }
   }, [location])
 
