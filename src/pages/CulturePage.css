@@ -128,7 +128,7 @@
 
 /* ── Sections ── */
 .cul-section {
-  padding: 100px 0;
+  padding: 70px 0;
 }
 
 .cul-section:nth-child(even) {
@@ -319,7 +319,7 @@
 /* ── Join Us CTA Strip ── */
 .cul-cta {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  padding: 80px 0;
+  padding: 60px 0;
   color: #ffffff;
 }
 
