@@ -468,6 +468,8 @@
   background: var(--background);
   width: 100%;
   max-width: 520px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
   border-radius: var(--radius-lg);
   padding: 40px;
   box-shadow: var(--shadow-xl);
