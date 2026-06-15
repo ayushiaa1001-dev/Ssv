@@ -282,7 +282,7 @@ const Navbar = () => {
                   <Link to="/events/culture" onClick={() => setActiveDropdown(null)}>Culture at SSV</Link>
                 </li>
                 <li>
-                  <Link to="/events/culture#culture-photos" onClick={() => setActiveDropdown(null)}>Gallery</Link>
+                  <Link to="/events/gallery" onClick={() => setActiveDropdown(null)}>Gallery</Link>
                 </li>
               </ul>
             )}
@@ -389,7 +389,7 @@ const Navbar = () => {
           <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection(null); }}>Products</Link>
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-standards'); }}>Quality & Certifications</Link>
           <Link to="/events/culture" onClick={() => setMobileOpen(false)}>Culture at SSV</Link>
-          <Link to="/events/culture#culture-photos" onClick={() => setMobileOpen(false)}>Gallery</Link>
+          <Link to="/events/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
           <Link to="/careers" onClick={() => setMobileOpen(false)}>Careers</Link>
           <Link to="/contact" onClick={() => setMobileOpen(false)} className="btn btn-dark" style={{ marginTop: '10px' }}>Contact Us</Link>
         </div>

@@ -9,6 +9,7 @@ import ProductsPage from './pages/ProductsPage'
 import CareersPage from './pages/CareersPage'
 import ContactPage from './pages/ContactPage'
 import CulturePage from './pages/CulturePage'
+import GalleryPage from './pages/GalleryPage'
 
 // Synchronously resets scroll position on navigation before child mount animations/intersection observers trigger.
 function ScrollToTop() {
@@ -58,6 +59,7 @@ function App() {
         <Route path="/careers" element={<CareersPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/events/culture" element={<CulturePage />} />
+        <Route path="/events/gallery" element={<GalleryPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
