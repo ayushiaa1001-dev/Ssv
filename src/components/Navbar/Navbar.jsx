@@ -16,7 +16,7 @@ const SEARCH_INDEX = [
   { title: 'Gastro', description: 'Gastroenterology products', section: 'products/gastro', keywords: ['gastro', 'digestive', 'stomach', 'gastroenterology'] },
   { title: 'General Products', description: 'General medicine formulations', section: 'products/general', keywords: ['general', 'medicine', 'tablets', 'capsules'] },
   { title: 'Careers', description: 'Join our team at SSV Pharmaceuticals', section: 'careers', keywords: ['careers', 'jobs', 'hiring', 'work', 'employment', 'join'] },
-  { title: 'Contact Us', description: 'Get in touch with SSV Pharmaceuticals', section: '#contact', keywords: ['contact', 'reach', 'email', 'phone', 'address', 'touch'] },
+  { title: 'Contact Us', description: 'Get in touch with SSV Pharmaceuticals', section: 'contact-page', keywords: ['contact', 'reach', 'email', 'phone', 'address', 'touch'] },
   { title: 'Export Countries', description: 'We export to 12+ countries globally', section: '#about-story', keywords: ['export', 'countries', 'global', 'international'] },
   { title: 'Professionals', description: '500+ skilled professionals in our team', section: '#about-story', keywords: ['professionals', 'team', 'staff', 'employees'] },
 ]
@@ -95,8 +95,8 @@ const Navbar = () => {
       scrollToAboutSection(section.substring(1))
     } else if (section === 'careers') {
       navigate('/careers')
-    } else if (section === 'contact' || section === '#contact') {
-      scrollToContact()
+    } else if (section === 'contact-page') {
+      navigate('/contact')
     } else if (section.startsWith('#')) {
       scrollToSection(section.substring(1))
     }
@@ -177,7 +177,9 @@ const Navbar = () => {
   }
 
   const handleContactClick = () => {
-    scrollToContact()
+    navigate('/contact')
+    setMobileOpen(false)
+    setActiveDropdown(null)
   }
 
   return (
@@ -371,7 +373,7 @@ const Navbar = () => {
           <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection(null); }}>Products</Link>
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-standards'); }}>Quality & Certifications</Link>
           <Link to="/careers" onClick={() => setMobileOpen(false)}>Careers</Link>
-          <Link to="#" className="btn btn-dark" style={{ marginTop: '10px' }} onClick={(e) => { e.preventDefault(); handleContactClick(); }}>Contact Us</Link>
+          <Link to="/contact" onClick={() => setMobileOpen(false)} className="btn btn-dark" style={{ marginTop: '10px' }}>Contact Us</Link>
         </div>
       )}
     </nav>
