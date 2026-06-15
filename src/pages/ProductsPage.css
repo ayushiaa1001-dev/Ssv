@@ -629,9 +629,10 @@
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
   max-width: 420px;
   width: 100%;
-  max-height: calc(100vh - 48px);
-  overflow-y: auto;
-  overflow-x: hidden;
+  height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   animation: ppModalSlideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
@@ -686,7 +687,8 @@
 .pp-modal__img-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
+  flex: 1 1 0;
+  min-height: 0;
   overflow: hidden;
   margin-top: 16px;
   cursor: zoom-in;
@@ -694,7 +696,6 @@
   touch-action: none;
   -webkit-user-select: none;
   user-select: none;
-  flex-shrink: 0;
 }
 
 .pp-modal__img-container--zoomed {
