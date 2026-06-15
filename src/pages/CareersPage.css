@@ -823,3 +823,72 @@
   }
 }
 
+@media (max-width: 480px) {
+  .cp-hero__content {
+    padding-top: 110px;
+    padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .cp-hero__buttons {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .cp-hero__buttons .cp-btn-filled,
+  .cp-hero__buttons .cp-btn-outline {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .cp-section {
+    padding: 48px 0;
+  }
+
+  .cp-pillar__icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .cp-pillar__content h4 {
+    font-size: 1.1rem;
+  }
+
+  .cp-culture__image-container {
+    height: 260px;
+  }
+
+  .cp-culture__stats-card {
+    padding: 16px 24px;
+  }
+
+  .cp-culture__stats-number {
+    font-size: 2.2rem;
+  }
+
+  .cp-contact-card {
+    padding: 40px 16px;
+  }
+
+  .cp-contact-title {
+    font-size: 1.6rem;
+  }
+
+  .cp-contact-email {
+    font-size: 1.3rem;
+  }
+
+  .cp-modal__content {
+    padding: 24px 16px;
+  }
+
+  .cp-modal__form h3 {
+    font-size: 1.3rem;
+  }
+
+  .cp-modal__file-drop {
+    padding: 18px 12px;
+  }
+}

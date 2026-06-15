@@ -207,3 +207,35 @@
     align-items: flex-start;
   }
 }
+
+@media (max-width: 480px) {
+  .hero__content {
+    padding-top: 110px;
+    padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero__stats-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .hero__stat-number {
+    font-size: 2rem;
+  }
+
+  .hero__stat-label {
+    font-size: 0.75rem;
+  }
+
+  .hero__buttons {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero__buttons .btn {
+    text-align: center;
+    justify-content: center;
+  }
+}

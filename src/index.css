@@ -313,3 +313,44 @@ ul, ol {
     font-size: clamp(1.5rem, 6vw, 2rem);
   }
 }
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 48px 0;
+    --container-padding: 0 16px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --container-padding: 0 12px;
+  }
+}
+
+/* Accessibility: Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

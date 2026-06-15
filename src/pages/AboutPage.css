@@ -701,6 +701,78 @@
   }
 }
 
+@media (max-width: 480px) {
+  .ap-hero__content {
+    padding-top: 110px;
+    padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .ap-hero__stats-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .ap-hero__stat-number {
+    font-size: 2rem;
+  }
+
+  .ap-hero__stat-label {
+    font-size: 0.75rem;
+  }
+
+  .ap-hero__buttons {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .ap-hero__buttons .btn {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .ap-section {
+    padding: 48px 0;
+  }
+
+  .ap-who__img,
+  .ap-journey__img,
+  .ap-standards__img {
+    height: 260px;
+  }
+
+  .ap-who__stats {
+    gap: 16px;
+  }
+
+  .ap-who__stat-number {
+    font-size: 1.6rem;
+  }
+
+  .ap-philosophy__values {
+    gap: 16px;
+  }
+
+  .ap-philosophy__card {
+    padding: 28px 20px;
+  }
+
+  .ap-timeline-marker {
+    width: 50px;
+    height: 28px;
+    font-size: 0.72rem;
+  }
+
+  .ap-timeline-track {
+    left: 38px;
+  }
+
+  .ap-standards__badge {
+    padding: 16px 20px;
+  }
+}
+
 /* ==========================================================================
    Scroll Reveal & Animation Transitions
    ========================================================================== */

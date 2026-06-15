@@ -104,3 +104,17 @@
     padding: 18px 22px;
   }
 }
+
+@media (max-width: 480px) {
+  .about__inner {
+    gap: 28px;
+  }
+
+  .about__badge {
+    padding: 14px 18px;
+  }
+
+  .about__image-container {
+    height: 280px;
+  }
+}
