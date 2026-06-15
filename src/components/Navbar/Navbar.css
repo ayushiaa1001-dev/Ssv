@@ -81,6 +81,25 @@
   color: var(--color-accent);
 }
 
+/* Active page indicator */
+.navbar__link--active {
+  color: var(--color-primary) !important;
+  background: rgba(27, 79, 114, 0.08);
+  position: relative;
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
 /* Button-as-link reset — removes browser button appearance */
 .navbar__link--btn {
   background: none;

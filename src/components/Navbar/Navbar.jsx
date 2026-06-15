@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import './Navbar.css'
 
 // All searchable content across the site
@@ -27,7 +27,11 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
   const [activeDropdown, setActiveDropdown] = useState(null)
+
+  // Derive active page from current path
+  const activePath = location.pathname
 
   // Search state
   const [searchQuery, setSearchQuery] = useState('')
@@ -193,12 +197,12 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <ul className="navbar__menu" id="nav-menu">
           <li className="navbar__item">
-            <button className="navbar__link navbar__link--btn" onClick={() => scrollToSection('hero')}>Home</button>
+            <button className={`navbar__link navbar__link--btn ${activePath === '/' ? 'navbar__link--active' : ''}`} onClick={() => scrollToSection('hero')}>Home</button>
           </li>
           <li className="navbar__item navbar__item--dropdown"
               onMouseEnter={() => setActiveDropdown('about')}
               onMouseLeave={() => setActiveDropdown(null)}>
-            <Link to="/about" className="navbar__link">
+            <Link to="/about" className={`navbar__link ${activePath === '/about' ? 'navbar__link--active' : ''}`}>
               About Us
               <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
             </Link>
@@ -230,7 +234,7 @@ const Navbar = () => {
           <li className="navbar__item navbar__item--dropdown"
               onMouseEnter={() => setActiveDropdown('products')}
               onMouseLeave={() => setActiveDropdown(null)}>
-            <button className="navbar__link navbar__link--btn" onClick={() => scrollToProductsSection(null)}>
+            <button className={`navbar__link navbar__link--btn ${activePath === '/products' ? 'navbar__link--active' : ''}`} onClick={() => scrollToProductsSection(null)}>
               Products
               <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
             </button>
@@ -272,7 +276,7 @@ const Navbar = () => {
           <li className="navbar__item navbar__item--dropdown"
               onMouseEnter={() => setActiveDropdown('events')}
               onMouseLeave={() => setActiveDropdown(null)}>
-            <button className="navbar__link navbar__link--btn" onClick={() => { navigate('/events/culture'); setActiveDropdown(null); }}>
+            <button className={`navbar__link navbar__link--btn ${activePath.startsWith('/events') ? 'navbar__link--active' : ''}`} onClick={() => { navigate('/events/culture'); setActiveDropdown(null); }}>
               Events
               <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
             </button>
@@ -288,7 +292,7 @@ const Navbar = () => {
             )}
           </li>
           <li className="navbar__item">
-            <Link to="/careers" className="navbar__link">Careers</Link>
+            <Link to="/careers" className={`navbar__link ${activePath === '/careers' ? 'navbar__link--active' : ''}`}>Careers</Link>
           </li>
         </ul>
 
