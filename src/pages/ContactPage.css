@@ -53,7 +53,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  padding-top: 120px;
+  padding-top: 140px;
   padding-bottom: 80px;
   padding-left: 6%;
   padding-right: 24px;
@@ -70,11 +70,11 @@
 .ct-back-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   transition: var(--transition-fast);
 }
 
