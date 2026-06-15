@@ -19,10 +19,6 @@ const Hero = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  const handleScrollToContact = (e) => {
-    e.preventDefault()
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   return (
     <section className="hero" id="hero">
@@ -45,9 +41,9 @@ const Hero = () => {
             <Link to="/about" className="btn btn-primary" id="hero-cta-story">
               Discover Our Story
             </Link>
-            <a href="#contact" onClick={handleScrollToContact} className="btn btn-outline" id="hero-cta-touch">
+            <Link to="/contact" className="btn btn-outline" id="hero-cta-touch">
               Get in Touch
-            </a>
+            </Link>
           </div>
         </div>
       </div>
