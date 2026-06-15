@@ -126,19 +126,41 @@ const CulturePage = () => {
             src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80"
             alt="Culture at SSV Pharmaceuticals"
           />
+          <div className="cul-hero__overlay"></div>
         </div>
-        <div className="cul-hero__overlay"></div>
-        <div className={`cul-hero__content container ${heroVisible ? 'animate-fade-up' : ''}`} style={{ opacity: heroVisible ? 1 : 0 }}>
-          <div className="cul-hero__text">
+        <div className="cul-hero__content">
+          <div className={`cul-hero__text scroll-reveal ${heroVisible ? 'scroll-reveal--visible' : ''}`}>
+            <Link to="/" className="cul-back-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+              Back to Home
+            </Link>
             <span className="cul-hero__label">Life at SSV</span>
             <h1 className="cul-hero__title">Culture at SSV</h1>
             <p className="cul-hero__sub">
               At SSV, culture isn&apos;t a policy document — it&apos;s lived every day. From how we celebrate wins to how we support each other through challenges, our culture defines who we are.
             </p>
+            <div className="cul-hero__buttons">
+              <a href="#culture-pillars" onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('culture-pillars')?.scrollIntoView({ behavior: 'smooth' })
+              }} className="btn btn-primary">
+                Our Pillars
+              </a>
+              <a href="#culture-events" onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('culture-events')?.scrollIntoView({ behavior: 'smooth' })
+              }} className="btn btn-outline">
+                Annual Events
+              </a>
+            </div>
           </div>
         </div>
         <div className="cul-hero__scroll">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
       </section>
 

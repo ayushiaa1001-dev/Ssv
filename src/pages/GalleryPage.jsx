@@ -72,10 +72,30 @@ const GalleryPage = () => {
 
       {/* ── Hero ── */}
       <section className="gal-hero">
-        <div className={`gal-hero__content container ${heroVisible ? 'animate-fade-up' : ''}`} style={{ opacity: heroVisible ? 1 : 0 }}>
-          <span className="gal-hero__label">Gallery</span>
-          <h1 className="gal-hero__title">Moments at SSV</h1>
-          <p className="gal-hero__sub">A visual journey through our workplace, team celebrations, and everyday life at SSV.</p>
+        <div className="gal-hero__bg">
+          <img
+            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80"
+            alt="Gallery — SSV Pharmaceuticals"
+          />
+          <div className="gal-hero__overlay"></div>
+        </div>
+        <div className="gal-hero__content">
+          <div className={`gal-hero__text scroll-reveal ${heroVisible ? 'scroll-reveal--visible' : ''}`}>
+            <Link to="/" className="gal-back-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+              Back to Home
+            </Link>
+            <span className="gal-hero__label">Gallery</span>
+            <h1 className="gal-hero__title">Moments at SSV</h1>
+            <p className="gal-hero__sub">A visual journey through our workplace, team celebrations, and everyday life at SSV.</p>
+          </div>
+        </div>
+        <div className="gal-hero__scroll">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
       </section>
 
