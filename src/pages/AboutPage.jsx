@@ -56,18 +56,12 @@ const AboutPage = () => {
               Advancing global healthcare through scientific research, state-of-the-art manufacturing, and an uncompromising commitment to quality.
             </p>
             <div className="ap-hero__buttons">
-              <a href="#about-story" onClick={(e) => {
-                e.preventDefault()
-                document.getElementById('about-story')?.scrollIntoView({ behavior: 'smooth' })
-              }} className="btn btn-primary">
-                Our Story
-              </a>
-              <a href="#about-standards" onClick={(e) => {
-                e.preventDefault()
-                document.getElementById('about-standards')?.scrollIntoView({ behavior: 'smooth' })
-              }} className="btn btn-outline">
-                Quality Standards
-              </a>
+              <Link to="/products" className="btn btn-primary">
+                Explore Our Products
+              </Link>
+              <Link to="/events/culture" className="btn btn-outline">
+                Life at SSV
+              </Link>
             </div>
           </div>
         </div>
