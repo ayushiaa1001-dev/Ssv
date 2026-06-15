@@ -51,6 +51,7 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-xl);
+  background: var(--color-white);
 }
 
 .about__image-wrapper img {
