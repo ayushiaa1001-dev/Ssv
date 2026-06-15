@@ -630,9 +630,8 @@
   max-width: 420px;
   width: 100%;
   max-height: calc(100vh - 48px);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   animation: ppModalSlideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
@@ -687,15 +686,15 @@
 .pp-modal__img-container {
   position: relative;
   width: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
+  aspect-ratio: 1;
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: 16px;
   cursor: zoom-in;
   background: var(--color-gray-50);
   touch-action: none;
   -webkit-user-select: none;
   user-select: none;
+  flex-shrink: 0;
 }
 
 .pp-modal__img-container--zoomed {
