@@ -553,6 +553,113 @@
   border-radius: 50px;
 }
 
+/* File Upload Drop Zone */
+.cp-modal__file-input {
+  display: none;
+}
+
+.cp-modal__file-drop {
+  border: 2px dashed var(--color-gray-200);
+  border-radius: var(--radius-sm);
+  padding: 24px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  background: var(--muted);
+}
+
+.cp-modal__file-drop:hover {
+  border-color: var(--primary);
+  background: rgba(27, 79, 114, 0.03);
+}
+
+.cp-modal__file-drop--has-file {
+  border-style: solid;
+  border-color: var(--primary);
+  background: rgba(27, 79, 114, 0.04);
+  cursor: default;
+}
+
+.cp-modal__file-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted-foreground);
+}
+
+.cp-modal__file-placeholder svg {
+  opacity: 0.5;
+}
+
+.cp-modal__file-placeholder span {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.cp-modal__file-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary);
+}
+
+.cp-modal__file-info svg {
+  flex-shrink: 0;
+}
+
+.cp-modal__file-name {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cp-modal__file-remove {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted-foreground);
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.cp-modal__file-remove:hover {
+  background: rgba(212, 24, 61, 0.1);
+  color: var(--destructive);
+}
+
+/* Divider */
+.cp-modal__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.cp-modal__divider::before,
+.cp-modal__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-gray-200);
+}
+
+.cp-modal__divider span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 /* Success State */
 .cp-modal__success {
   display: flex;

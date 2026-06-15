@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import './CareersPage.css'
@@ -47,6 +47,8 @@ const CareersPage = () => {
   const [formEmail, setFormEmail] = useState('')
   const [formPhone, setFormPhone] = useState('')
   const [formResume, setFormResume] = useState('')
+  const [formFile, setFormFile] = useState(null)
+  const fileInputRef = useRef(null)
 
   const [cultureRef, cultureVisible] = useIntersectionObserver()
   const [openingsRef, openingsVisible] = useIntersectionObserver()
@@ -92,13 +94,34 @@ const CareersPage = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
+    if (!formFile && !formResume) {
+      return
+    }
     setTimeout(() => {
       setSubmitted(true)
       setFormName('')
       setFormEmail('')
       setFormPhone('')
       setFormResume('')
+      setFormFile(null)
+      if (fileInputRef.current) fileInputRef.current.value = ''
     }, 400)
+  }
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]
+    if (file && file.type === 'application/pdf') {
+      setFormFile(file)
+    } else if (file) {
+      alert('Please upload a PDF file only.')
+      e.target.value = ''
+      setFormFile(null)
+    }
+  }
+
+  const removeFile = () => {
+    setFormFile(null)
+    if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
   return (
@@ -324,11 +347,51 @@ const CareersPage = () => {
                 </div>
 
                 <div className="cp-modal__form-group">
-                  <label htmlFor="applicant-resume">Resume URL (e.g. Google Drive / Dropbox link) *</label>
-                  <input 
+                  <label>Upload Resume (PDF) *</label>
+                  <div
+                    className={`cp-modal__file-drop ${formFile ? 'cp-modal__file-drop--has-file' : ''}`}
+                    onClick={() => !formFile && fileInputRef.current?.click()}
+                  >
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept=".pdf,application/pdf"
+                      onChange={handleFileChange}
+                      className="cp-modal__file-input"
+                    />
+                    {formFile ? (
+                      <div className="cp-modal__file-info">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                          <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                        <span className="cp-modal__file-name">{formFile.name}</span>
+                        <button type="button" className="cp-modal__file-remove" onClick={(e) => { e.stopPropagation(); removeFile() }} aria-label="Remove file">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="cp-modal__file-placeholder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                          <polyline points="17 8 12 3 7 8" />
+                          <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <span>Click to upload PDF</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="cp-modal__divider">
+                  <span>or paste a link</span>
+                </div>
+
+                <div className="cp-modal__form-group">
+                  <label htmlFor="applicant-resume">Resume URL (Google Drive / Dropbox)</label>
+                  <input
                     id="applicant-resume"
-                    type="url" 
-                    required 
+                    type="url"
                     placeholder="https://drive.google.com/..."
                     value={formResume}
                     onChange={e => setFormResume(e.target.value)}
