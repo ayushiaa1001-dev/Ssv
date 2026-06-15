@@ -84,7 +84,6 @@
 /* Active page indicator */
 .navbar__link--active {
   color: var(--color-accent) !important;
-  background: rgba(46, 134, 171, 0.1);
   font-weight: 600;
   position: relative;
 }
