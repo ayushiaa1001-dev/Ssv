@@ -629,6 +629,9 @@
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
   max-width: 580px;
   width: 100%;
+  max-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   animation: ppModalSlideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
@@ -678,12 +681,14 @@
   color: var(--color-text-dark);
   padding: 28px 32px 0;
   margin: 0;
+  flex-shrink: 0;
 }
 
 .pp-modal__img-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow: hidden;
   margin-top: 20px;
   cursor: zoom-in;
@@ -721,6 +726,7 @@
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.3px;
+  flex-shrink: 0;
   background: var(--color-gray-50);
   border-top: 1px solid var(--color-gray-100);
 }
