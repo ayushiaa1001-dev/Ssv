@@ -1,12 +1,12 @@
 .about {
-  padding: var(--section-padding);
+  padding: 70px 0;
   background: var(--color-white);
 }
 
 .about__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 60px;
   align-items: center;
 }
 
