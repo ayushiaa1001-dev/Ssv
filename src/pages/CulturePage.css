@@ -1,0 +1,447 @@
+/* ==========================================================================
+   Culture at SSV — Page Styles
+   ========================================================================== */
+
+.culture-page {
+  padding-top: 0;
+  background: var(--background);
+}
+
+/* ── Hero Banner ── */
+.cul-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--primary);
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.cul-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cul-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: culKenBurns 22s ease-out infinite alternate;
+}
+
+@keyframes culKenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.cul-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(27, 79, 114, 0.92) 0%,
+    rgba(27, 79, 114, 0.7) 60%,
+    rgba(46, 134, 171, 0.45) 100%
+  );
+  z-index: 1;
+}
+
+.cul-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-top: 140px;
+  padding-bottom: 80px;
+}
+
+.cul-hero__text {
+  max-width: 720px;
+}
+
+.cul-hero__label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 20px;
+}
+
+.cul-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.cul-hero__sub {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 620px;
+}
+
+.cul-hero__scroll {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  animation: culFloat 2.2s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes culFloat {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
+}
+
+/* ── Sections ── */
+.cul-section {
+  padding: 100px 0;
+}
+
+.cul-section:nth-child(even) {
+  background: var(--muted);
+}
+
+.cul-section__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.cul-section__header .section-label {
+  justify-content: center;
+}
+
+.cul-section__header .section-label::before {
+  display: none;
+}
+
+/* ── Cultural Pillars Grid ── */
+.cul-pillars__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.cul-pillar-card {
+  background: var(--background);
+  border: 1px solid rgba(27, 79, 114, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.7s ease, transform 0.7s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.cul-pillar-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cul-pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.cul-pillar-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.cul-pillar-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 12px;
+}
+
+.cul-pillar-card__desc {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+
+/* ── Life in Photos — Asymmetric Masonry ── */
+.cul-photos__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 240px 240px;
+  gap: 16px;
+}
+
+.cul-photos__item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.cul-photos__item--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cul-photos__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cul-photos__item:hover img {
+  transform: scale(1.06);
+}
+
+/* Asymmetric layout — item 1 spans 2 rows, item 4 spans 2 cols */
+.cul-photos__item--1 {
+  grid-row: span 2;
+}
+
+.cul-photos__item--4 {
+  grid-column: span 2;
+}
+
+/* ── Annual Events ── */
+.cul-events__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.cul-event-card {
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(27, 79, 114, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.7s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.cul-event-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cul-event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.cul-event-card__img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.cul-event-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cul-event-card:hover .cul-event-card__img img {
+  transform: scale(1.06);
+}
+
+.cul-event-card__month {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+}
+
+.cul-event-card__body {
+  padding: 24px;
+}
+
+.cul-event-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 10px;
+}
+
+.cul-event-card__desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+/* ── Join Us CTA Strip ── */
+.cul-cta {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  padding: 80px 0;
+  color: #ffffff;
+}
+
+.cul-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.cul-cta__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.cul-cta__sub {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 550px;
+}
+
+.cul-cta__btn {
+  flex-shrink: 0;
+  background: #ffffff;
+  color: var(--primary);
+  border-color: #ffffff;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: var(--radius-full);
+}
+
+.cul-cta__btn:hover {
+  background: transparent;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .cul-events__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cul-hero__content {
+    padding-top: 140px;
+    padding-bottom: 50px;
+  }
+
+  .cul-section {
+    padding: 70px 0;
+  }
+
+  .cul-section__header {
+    margin-bottom: 40px;
+  }
+
+  .cul-pillars__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cul-pillar-card {
+    padding: 32px 28px;
+  }
+
+  .cul-photos__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 200px 200px;
+  }
+
+  .cul-photos__item--1 {
+    grid-row: span 1;
+  }
+
+  .cul-photos__item--4 {
+    grid-column: span 1;
+  }
+
+  .cul-cta__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .cul-cta__sub {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .cul-events__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cul-photos__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .cul-photos__item {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cul-hero__content {
+    padding-top: 110px;
+    padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .cul-section {
+    padding: 48px 0;
+  }
+
+  .cul-pillar-card {
+    padding: 24px 20px;
+  }
+
+  .cul-pillar-card__icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  .cul-event-card__img {
+    height: 150px;
+  }
+
+  .cul-event-card__body {
+    padding: 18px;
+  }
+
+  .cul-cta {
+    padding: 48px 0;
+  }
+}

@@ -16,6 +16,8 @@ const SEARCH_INDEX = [
   { title: 'Gastro', description: 'Gastroenterology products', section: 'products/gastro', keywords: ['gastro', 'digestive', 'stomach', 'gastroenterology'] },
   { title: 'General Products', description: 'General medicine formulations', section: 'products/general', keywords: ['general', 'medicine', 'tablets', 'capsules'] },
   { title: 'Careers', description: 'Join our team at SSV Pharmaceuticals', section: 'careers', keywords: ['careers', 'jobs', 'hiring', 'work', 'employment', 'join'] },
+  { title: 'Culture at SSV', description: 'Our cultural pillars, life in photos, and annual events', section: 'events/culture', keywords: ['culture', 'events', 'pillars', 'photos', 'life', 'annual', 'gala', 'founders'] },
+  { title: 'Gallery', description: 'Photo gallery of life at SSV', section: 'events/gallery', keywords: ['gallery', 'photos', 'images', 'snapshots'] },
   { title: 'Contact Us', description: 'Get in touch with SSV Pharmaceuticals', section: 'contact-page', keywords: ['contact', 'reach', 'email', 'phone', 'address', 'touch'] },
   { title: 'Export Countries', description: 'We export to 12+ countries globally', section: '#about-story', keywords: ['export', 'countries', 'global', 'international'] },
   { title: 'Professionals', description: '500+ skilled professionals in our team', section: '#about-story', keywords: ['professionals', 'team', 'staff', 'employees'] },
@@ -97,6 +99,8 @@ const Navbar = () => {
       navigate('/careers')
     } else if (section === 'contact-page') {
       navigate('/contact')
+    } else if (section.startsWith('events/')) {
+      navigate('/' + section)
     } else if (section.startsWith('#')) {
       scrollToSection(section.substring(1))
     }
@@ -166,12 +170,6 @@ const Navbar = () => {
     } else {
       navigate('/products', { state: { category: categoryId } })
     }
-    setMobileOpen(false)
-    setActiveDropdown(null)
-  }
-
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
     setMobileOpen(false)
     setActiveDropdown(null)
   }
@@ -267,6 +265,24 @@ const Navbar = () => {
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('general'); }}>
                     General
                   </Link>
+                </li>
+              </ul>
+            )}
+          </li>
+          <li className="navbar__item navbar__item--dropdown"
+              onMouseEnter={() => setActiveDropdown('events')}
+              onMouseLeave={() => setActiveDropdown(null)}>
+            <button className="navbar__link navbar__link--btn" onClick={() => { navigate('/events/culture'); setActiveDropdown(null); }}>
+              Events
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+            </button>
+            {activeDropdown === 'events' && (
+              <ul className="navbar__dropdown">
+                <li>
+                  <Link to="/events/culture" onClick={() => setActiveDropdown(null)}>Culture at SSV</Link>
+                </li>
+                <li>
+                  <Link to="/events/culture#culture-photos" onClick={() => setActiveDropdown(null)}>Gallery</Link>
                 </li>
               </ul>
             )}
@@ -372,6 +388,8 @@ const Navbar = () => {
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-journey'); }}>Milestones</Link>
           <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection(null); }}>Products</Link>
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-standards'); }}>Quality & Certifications</Link>
+          <Link to="/events/culture" onClick={() => setMobileOpen(false)}>Culture at SSV</Link>
+          <Link to="/events/culture#culture-photos" onClick={() => setMobileOpen(false)}>Gallery</Link>
           <Link to="/careers" onClick={() => setMobileOpen(false)}>Careers</Link>
           <Link to="/contact" onClick={() => setMobileOpen(false)} className="btn btn-dark" style={{ marginTop: '10px' }}>Contact Us</Link>
         </div>
