@@ -15,7 +15,6 @@
   flex-direction: column;
   justify-content: flex-start;
   background-color: var(--primary);
-  overflow: hidden;
   color: #ffffff;
 }
 
@@ -23,6 +22,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
 }
 
 .ct-hero__bg img {
