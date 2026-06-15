@@ -112,8 +112,6 @@
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.85rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
   margin-bottom: 24px;
   transition: var(--transition-fast);
 }
@@ -125,28 +123,28 @@
 
 .cp-hero__label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 12px;
 }
 
 .cp-hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.1;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
   color: #ffffff;
-  margin-bottom: 24px;
 }
 
 .cp-hero__sub {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 2vw, 1.15rem);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 680px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 16px;
+  max-width: 650px;
 }
 
 /* Scroll indicator */
