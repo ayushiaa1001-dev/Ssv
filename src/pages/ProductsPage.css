@@ -689,6 +689,7 @@
   cursor: zoom-in;
   background: var(--color-gray-50);
   touch-action: none;
+  -webkit-user-select: none;
   user-select: none;
 }
 
