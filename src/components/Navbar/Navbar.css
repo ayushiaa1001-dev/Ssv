@@ -94,9 +94,9 @@
   bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+  width: 24px;
+  height: 3px;
+  border-radius: 10px;
   background: var(--color-primary);
 }
 
