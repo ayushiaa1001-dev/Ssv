@@ -204,6 +204,8 @@
 /* ── Section Common ── */
 .ap-section {
   padding: 70px 0;
+  position: relative;
+  z-index: 3;
 }
 
 .ap-section-header {

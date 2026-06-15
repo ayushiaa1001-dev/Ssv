@@ -1,6 +1,8 @@
 .about {
   padding: 70px 0;
   background: var(--color-white);
+  position: relative;
+  z-index: 3;
 }
 
 .about__inner {

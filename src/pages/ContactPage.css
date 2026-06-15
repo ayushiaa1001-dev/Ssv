@@ -122,6 +122,8 @@
 /* ── Contact Section ── */
 .ct-section {
   padding: 60px 0 70px;
+  position: relative;
+  z-index: 3;
 }
 
 .ct-layout {

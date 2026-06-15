@@ -161,6 +161,8 @@
 /* ── Sections ── */
 .cp-section {
   padding: 70px 0;
+  position: relative;
+  z-index: 3;
 }
 
 .cp-section-header {

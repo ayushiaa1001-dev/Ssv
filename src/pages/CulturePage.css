@@ -129,6 +129,8 @@
 /* ── Sections ── */
 .cul-section {
   padding: 70px 0;
+  position: relative;
+  z-index: 3;
 }
 
 .cul-section:nth-child(even) {
