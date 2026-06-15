@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
@@ -78,7 +78,7 @@ const categoriesData = [
   }
 ]
 
-const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory }) => {
+const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory, onProductClick }) => {
   const [ref, visible] = useIntersectionObserver({ threshold: 0.15 })
   const isExpanded = expandedCategory === category.id
 
@@ -157,6 +157,8 @@ const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory }) =
                     animate={{ opacity: 1, y: 0 }}
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.25, delay: idx * 0.05 }}
+                    onClick={() => onProductClick(product)}
+                    style={{ cursor: 'pointer' }}
                   >
                     <div className="pp-product-card__media">
                       <img src={product.img} alt={product.name} />
@@ -185,6 +187,84 @@ const ProductsPage = () => {
   const [heroVisible, setHeroVisible] = useState(false)
   const [headerRef, headerVisible] = useIntersectionObserver({ threshold: 0.15 })
 
+  // Product modal state
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [zoom, setZoom] = useState(1)
+  const [pan, setPan] = useState({ x: 0, y: 0 })
+  const [isDragging, setIsDragging] = useState(false)
+  const dragStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 })
+  const imgContainerRef = useRef(null)
+
+  const MIN_ZOOM = 1
+  const MAX_ZOOM = 4
+
+  const openProductModal = (product) => {
+    setSelectedProduct(product)
+    setZoom(1)
+    setPan({ x: 0, y: 0 })
+  }
+
+  const closeProductModal = () => {
+    setSelectedProduct(null)
+    setZoom(1)
+    setPan({ x: 0, y: 0 })
+    setIsDragging(false)
+  }
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (!selectedProduct) return
+    document.body.style.overflow = 'hidden'
+    const handleEsc = (e) => { if (e.key === 'Escape') closeProductModal() }
+    document.addEventListener('keydown', handleEsc)
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', handleEsc)
+    }
+  }, [selectedProduct])
+
+  // Double-click to toggle zoom
+  const handleImgDoubleClick = (e) => {
+    e.preventDefault()
+    if (zoom > 1) {
+      setZoom(1)
+      setPan({ x: 0, y: 0 })
+    } else {
+      setZoom(2.5)
+    }
+  }
+
+  // Mouse wheel zoom
+  const handleWheel = useCallback((e) => {
+    e.preventDefault()
+    setZoom(prev => {
+      const next = prev - e.deltaY * 0.002
+      const clamped = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, next))
+      if (clamped <= 1) setPan({ x: 0, y: 0 })
+      return clamped
+    })
+  }, [])
+
+  // Drag-to-pan handlers
+  const handlePointerDown = (e) => {
+    if (zoom <= 1) return
+    e.preventDefault()
+    setIsDragging(true)
+    dragStart.current = { x: e.clientX, y: e.clientY, panX: pan.x, panY: pan.y }
+    e.currentTarget.setPointerCapture(e.pointerId)
+  }
+
+  const handlePointerMove = (e) => {
+    if (!isDragging || zoom <= 1) return
+    const dx = e.clientX - dragStart.current.x
+    const dy = e.clientY - dragStart.current.y
+    setPan({ x: dragStart.current.panX + dx, y: dragStart.current.panY + dy })
+  }
+
+  const handlePointerUp = () => {
+    setIsDragging(false)
+  }
+
   useEffect(() => {
     const timer = setTimeout(() => setHeroVisible(true), 200)
     return () => clearTimeout(timer)
@@ -197,21 +277,18 @@ const ProductsPage = () => {
     if (location.state?.category) {
       const categoryId = location.state.category
       
-      // Schedule state update asynchronously to avoid synchronous cascading renders inside the effect
       stateTimer = setTimeout(() => {
         setExpandedCategory(categoryId)
       }, 0)
       
-      // Clear location state to prevent running again on page reloads/interactions
       window.history.replaceState({}, document.title)
 
-      // Scroll to that category item card
       scrollTimer = setTimeout(() => {
         const el = document.getElementById(categoryId)
         if (el) {
           const rect = el.getBoundingClientRect()
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-          const targetY = rect.top + scrollTop - 120 // Offset to keep banner below fixed navbar
+          const targetY = rect.top + scrollTop - 120
           window.scrollTo({ top: targetY, behavior: 'smooth' })
         }
       }, 400)
@@ -318,10 +395,54 @@ const ProductsPage = () => {
               category={category}
               expandedCategory={expandedCategory}
               toggleCategory={toggleCategory}
+              onProductClick={openProductModal}
             />
           ))}
         </div>
       </section>
+
+      {/* ── Product Detail Modal ── */}
+      {selectedProduct && (
+        <div className="pp-modal" role="dialog" aria-modal="true" aria-label={selectedProduct.name}>
+          <div className="pp-modal__backdrop" onClick={closeProductModal} aria-hidden="true" />
+          <div className="pp-modal__content">
+            <button className="pp-modal__close" onClick={closeProductModal} aria-label="Close">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+            <h3 className="pp-modal__title">{selectedProduct.name}</h3>
+            <div
+              className={`pp-modal__img-container ${zoom > 1 ? 'pp-modal__img-container--zoomed' : ''}`}
+              ref={imgContainerRef}
+              onDoubleClick={handleImgDoubleClick}
+              onWheel={handleWheel}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+            >
+              <img
+                src={selectedProduct.img}
+                alt={selectedProduct.name}
+                className="pp-modal__img"
+                style={{
+                  transform: `scale(${zoom}) translate(${pan.x / zoom}px, ${pan.y / zoom}px)`,
+                  transition: isDragging ? 'none' : 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                }}
+                draggable={false}
+              />
+            </div>
+            <div className="pp-modal__zoom-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+              <span>{zoom > 1 ? 'Double-click to reset · Drag to pan' : 'Double-click or scroll to zoom'}</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

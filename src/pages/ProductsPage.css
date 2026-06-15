@@ -594,3 +594,161 @@
 .pp-category--open .pp-category__banner:hover .pp-category__chevron {
   transform: rotate(180deg) scale(1.15);
 }
+
+/* ==========================================================================
+   Product Detail Modal
+   ========================================================================== */
+.pp-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: ppModalFadeIn 0.25s ease forwards;
+}
+
+@keyframes ppModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pp-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 20, 30, 0.75);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.pp-modal__content {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+  max-width: 580px;
+  width: 100%;
+  overflow: hidden;
+  animation: ppModalSlideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes ppModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pp-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--color-text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pp-modal__close:hover {
+  background: var(--color-text-dark);
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+.pp-modal__title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  padding: 28px 32px 0;
+  margin: 0;
+}
+
+.pp-modal__img-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  margin-top: 20px;
+  cursor: zoom-in;
+  background: var(--color-gray-50);
+  touch-action: none;
+  user-select: none;
+}
+
+.pp-modal__img-container--zoomed {
+  cursor: grab;
+}
+
+.pp-modal__img-container--zoomed:active {
+  cursor: grabbing;
+}
+
+.pp-modal__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.pp-modal__zoom-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  background: var(--color-gray-50);
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.pp-modal__zoom-hint svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* ── Modal Responsive ── */
+@media (max-width: 640px) {
+  .pp-modal {
+    padding: 16px;
+    align-items: flex-end;
+  }
+
+  .pp-modal__content {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .pp-modal__title {
+    font-size: 1.2rem;
+    padding: 24px 24px 0;
+  }
+
+  .pp-modal__img-container {
+    margin-top: 16px;
+    aspect-ratio: 4/3;
+  }
+}
