@@ -99,9 +99,9 @@ const Footer = () => {
         <div className="footer__bottom-inner container">
           <p>&copy; 2026 SSV Pharmaceuticals. All rights reserved. Committed to Health. Driven by Science.</p>
           <div className="footer__bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
+            <a href="/ssv/#/privacy" aria-label="Privacy Policy (coming soon)" style={{ cursor: 'default', pointerEvents: 'none' }}>Privacy Policy</a>
+            <a href="/ssv/#/terms" aria-label="Terms of Service (coming soon)" style={{ cursor: 'default', pointerEvents: 'none' }}>Terms of Service</a>
+            <a href="/ssv/#/cookies" aria-label="Cookie Policy (coming soon)" style={{ cursor: 'default', pointerEvents: 'none' }}>Cookie Policy</a>
           </div>
         </div>
       </div>

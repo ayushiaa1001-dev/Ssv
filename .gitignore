@@ -12,6 +12,7 @@ dist
 dist-ssr
 .gh-pages
 *.local
+*.mp4
 
 # Editor directories and files
 .vscode/*

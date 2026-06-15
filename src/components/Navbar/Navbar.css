@@ -383,6 +383,24 @@
   color: var(--color-accent-light);
 }
 
+.navbar__mobile-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition-fast);
+}
+
+.navbar__mobile-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
 /* Responsive */
 @media (max-width: 968px) {
   .navbar__menu {

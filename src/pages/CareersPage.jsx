@@ -8,31 +8,31 @@ const OPENINGS = [
     id: 'formulation-scientist',
     title: 'Senior Formulation Scientist',
     location: 'Mumbai (HQ)',
-    posted: 'Oct 15, 2023',
+    posted: 'Jun 2, 2026',
   },
   {
     id: 'regulatory-manager',
     title: 'Regulatory Affairs Manager',
     location: 'Hyderabad',
-    posted: 'Oct 18, 2023',
+    posted: 'Jun 5, 2026',
   },
   {
     id: 'clinical-analyst',
     title: 'Clinical Data Analyst',
     location: 'Bangalore',
-    posted: 'Oct 20, 2023',
+    posted: 'Jun 8, 2026',
   },
   {
     id: 'qa-officer',
     title: 'Quality Assurance Officer',
     location: 'Mumbai (HQ)',
-    posted: 'Oct 22, 2023',
+    posted: 'Jun 10, 2026',
   },
   {
     id: 'med-rep',
     title: 'Medical Sales Representative',
     location: 'Pan India',
-    posted: 'Oct 25, 2023',
+    posted: 'Jun 12, 2026',
   }
 ]
 

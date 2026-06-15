@@ -41,6 +41,20 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Mobile menu: lock body scroll and handle Escape key
+  useEffect(() => {
+    if (!mobileOpen) return
+    document.body.style.overflow = 'hidden'
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [mobileOpen])
+
   // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -342,7 +356,14 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="navbar__mobile" id="mobile-menu">
+        <div className="navbar__mobile" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+          <button
+            className="navbar__mobile-close"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
           <Link to="/" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>Home</Link>
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-story'); }}>About Us</Link>
           <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-philosophy'); }}>Vision & Values</Link>
