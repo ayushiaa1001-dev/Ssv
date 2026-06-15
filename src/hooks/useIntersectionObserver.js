@@ -11,16 +11,18 @@ export function useIntersectionObserver(options = {}) {
     if (!el) return
 
     let observer = null
+    let cancelled = false
 
     // Delay observer creation slightly to ensure scroll resetting (ScrollToTop hook)
     // executes before setting up the observer. This prevents false positive
     // intersections on initial mount when routing from a page that was scrolled to bottom.
     const timer = setTimeout(() => {
+      if (cancelled) return
+
       observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           setIsIntersecting(true)
-          // Disconnect after it triggers once to avoid repeat transitions
-          observer.unobserve(el)
+          observer.disconnect()
         }
       }, { threshold, root, rootMargin })
 
@@ -28,11 +30,11 @@ export function useIntersectionObserver(options = {}) {
     }, 100)
 
     return () => {
+      cancelled = true
       clearTimeout(timer)
-      if (observer && el) observer.unobserve(el)
+      observer?.disconnect()
     }
   }, [threshold, root, rootMargin])
 
   return [ref, isIntersecting]
 }
-

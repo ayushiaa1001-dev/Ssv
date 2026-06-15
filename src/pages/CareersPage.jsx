@@ -69,6 +69,21 @@ const CareersPage = () => {
     }
   }, [location])
 
+  useEffect(() => {
+    if (!modalOpen) return
+
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') setModalOpen(false)
+    }
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [modalOpen])
+
   const handleApplyClick = (jobTitle) => {
     setSelectedJobTitle(jobTitle)
     setModalOpen(true)
@@ -260,16 +275,16 @@ const CareersPage = () => {
 
       {/* Modal Application Form */}
       {modalOpen && (
-        <div className="cp-modal">
-          <div className="cp-modal__backdrop" onClick={() => setModalOpen(false)}></div>
+        <div className="cp-modal" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+          <div className="cp-modal__backdrop" onClick={() => setModalOpen(false)} aria-hidden="true"></div>
           <div className="cp-modal__content">
-            <button className="cp-modal__close" onClick={() => setModalOpen(false)}>
+            <button className="cp-modal__close" onClick={() => setModalOpen(false)} aria-label="Close application form">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
 
             {!submitted ? (
               <form className="cp-modal__form" onSubmit={handleFormSubmit}>
-                <h3>Apply for Position</h3>
+                <h3 id="apply-modal-title">Apply for Position</h3>
                 <span className="cp-modal__job-badge">{selectedJobTitle}</span>
                 
                 <div className="cp-modal__form-group">

@@ -7,18 +7,24 @@ const CountUp = ({ end, duration = 1500, suffix = '' }) => {
 
   useEffect(() => {
     if (!visible) return
+
     let startTimestamp = null
-    const endNum = parseInt(end.replace(/\D/g, ''), 10) || 0
-    
+    let rafId = null
+    const endNum = parseInt(String(end).replace(/\D/g, ''), 10) || 0
+
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp
       const progress = Math.min((timestamp - startTimestamp) / duration, 1)
       setCount(Math.floor(progress * endNum))
       if (progress < 1) {
-        window.requestAnimationFrame(step)
+        rafId = window.requestAnimationFrame(step)
       }
     }
-    window.requestAnimationFrame(step)
+
+    rafId = window.requestAnimationFrame(step)
+    return () => {
+      if (rafId !== null) window.cancelAnimationFrame(rafId)
+    }
   }, [visible, end, duration])
 
   return (

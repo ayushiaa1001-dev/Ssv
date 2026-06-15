@@ -81,6 +81,8 @@ const Navbar = () => {
       scrollToAboutSection(section.substring(1))
     } else if (section === 'careers') {
       navigate('/careers')
+    } else if (section === 'contact' || section === '#contact') {
+      scrollToContact()
     } else if (section.startsWith('#')) {
       scrollToSection(section.substring(1))
     }
@@ -154,10 +156,14 @@ const Navbar = () => {
     setActiveDropdown(null)
   }
 
-  const handleContactClick = () => {
+  const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
     setMobileOpen(false)
     setActiveDropdown(null)
+  }
+
+  const handleContactClick = () => {
+    scrollToContact()
   }
 
   return (

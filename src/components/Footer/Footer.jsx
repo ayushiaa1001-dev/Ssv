@@ -6,6 +6,10 @@ const Footer = () => {
 
   const handleScrollTo = (e, sectionId) => {
     e.preventDefault()
+    if (sectionId === 'contact') {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+      return
+    }
     const isHome = window.location.hash === '#/' || window.location.hash === '' || window.location.hash === '#'
     if (!isHome) {
       navigate('/')
@@ -93,7 +97,7 @@ const Footer = () => {
 
       <div className="footer__bottom">
         <div className="footer__bottom-inner container">
-          <p>&copy; 2024 SSV Pharmaceuticals. All rights reserved. Committed to Health. Driven by Science.</p>
+          <p>&copy; 2026 SSV Pharmaceuticals. All rights reserved. Committed to Health. Driven by Science.</p>
           <div className="footer__bottom-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>

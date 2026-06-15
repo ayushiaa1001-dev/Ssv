@@ -91,7 +91,16 @@ const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory }) =
     >
       <div
         className="pp-category__banner"
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
         onClick={() => toggleCategory(category.id)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            toggleCategory(category.id)
+          }
+        }}
       >
         <div className="pp-category__info">
           <h3 className="pp-category__name">{category.name}</h3>
@@ -245,9 +254,9 @@ const ProductsPage = () => {
               A trusted range across five therapeutic categories — formulated to the highest safety standards.
             </p>
             <div className="pp-hero__buttons">
-              <a href=".pp-selection" onClick={(e) => {
+              <a href="#products-categories" onClick={(e) => {
                 e.preventDefault()
-                document.querySelector('.pp-selection')?.scrollIntoView({ behavior: 'smooth' })
+                document.getElementById('products-categories')?.scrollIntoView({ behavior: 'smooth' })
               }} className="btn btn-primary">
                 Browse Categories
               </a>
@@ -293,7 +302,7 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      <section className="pp-selection container">
+      <section className="pp-selection container" id="products-categories">
         <div 
           ref={headerRef}
           className={`pp-explore-header scroll-reveal ${headerVisible ? 'scroll-reveal--visible' : ''}`}
