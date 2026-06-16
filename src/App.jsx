@@ -1,5 +1,5 @@
 import { useLayoutEffect, lazy, Suspense } from 'react'
-import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Hero from './components/Hero/Hero'
@@ -60,7 +60,7 @@ function PageLoader() {
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <Navbar />
       <Suspense fallback={<PageLoader />}>
@@ -76,7 +76,7 @@ function App() {
         </Routes>
       </Suspense>
       <Footer />
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
