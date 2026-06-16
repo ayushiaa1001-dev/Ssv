@@ -326,11 +326,13 @@ const ProductsPage = () => {
       // Clear the state so we don't re-trigger on reload
       window.history.replaceState({}, document.title)
 
-      // Step 1: Collapse any currently expanded category immediately
-      setExpandedCategory(null)
+      // Step 1: Collapse any currently expanded category
+      collapseTimer = setTimeout(() => {
+        setExpandedCategory(null)
+      }, 10)
 
-      // Step 2: Wait for collapse animation to finish and DOM to re-layout,
-      // then scroll to the target category (now at its correct position)
+      // Step 2: Wait for the collapse exit animation (400ms) to fully
+      // complete and the DOM to re-layout, then scroll to the target
       scrollTimer = setTimeout(() => {
         const el = document.getElementById(categoryId)
         if (el) {
@@ -339,14 +341,16 @@ const ProductsPage = () => {
           const targetY = rect.top + scrollTop - 120
           window.scrollTo({ top: targetY, behavior: 'smooth' })
         }
-      }, 500)
+      }, 650)
 
-      // Step 3: After scroll finishes, expand the target category
+      // Step 3: After smooth scroll finishes (~600ms), expand the target
       expandTimer = setTimeout(() => {
         setExpandedCategory(categoryId)
-      }, 1200)
+      }, 1400)
     } else {
-      setExpandedCategory(null)
+      collapseTimer = setTimeout(() => {
+        setExpandedCategory(null)
+      }, 10)
       window.scrollTo(0, 0)
     }
 
