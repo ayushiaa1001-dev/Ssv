@@ -176,19 +176,24 @@ const Navbar = () => {
     setActiveDropdown(null)
   }
 
-  // Navigate to Products page category — always use navigate() so the
-  // useEffect in ProductsPage re-triggers with a fresh location.key
+  // Navigate to Products page category
   const scrollToProductsSection = (categoryId) => {
+    const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+    const currentPath = window.location.pathname.replace(/\/$/, '')
+    const isProducts = currentPath === `${basePath}/products` || currentPath.endsWith('/products')
+
     if (!categoryId) {
-      const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
-      const currentPath = window.location.pathname.replace(/\/$/, '')
-      const isProducts = currentPath === `${basePath}/products` || currentPath.endsWith('/products')
+      // No specific category — just go to Products top
       if (isProducts) {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         navigate('/products')
       }
+    } else if (isProducts) {
+      // Already on products page — fire custom event for instant handling
+      window.dispatchEvent(new CustomEvent('ssv-switch-category', { detail: categoryId }))
     } else {
+      // Coming from another page — use navigate with state
       navigate('/products', { state: { category: categoryId } })
     }
     setMobileOpen(false)

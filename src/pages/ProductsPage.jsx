@@ -211,9 +211,7 @@ const CategoryCard = ({ category, expandedCategory, toggleCategory, onProductCli
 
 const ProductsPage = () => {
   const location = useLocation()
-  const [expandedCategory, setExpandedCategory] = useState(() => {
-    return location.state?.category || null
-  })
+  const [expandedCategory, setExpandedCategory] = useState(null)
   const [heroVisible, setHeroVisible] = useState(false)
   const [headerRef, headerVisible] = useIntersectionObserver({ threshold: 0.15 })
   useDocumentTitle('Products')
@@ -313,53 +311,75 @@ const ProductsPage = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  const categoryFromState = location.state?.category
+  // Timers ref so we can cancel any pending sequence
+  const timersRef = useRef([])
 
+  const clearPendingTimers = useCallback(() => {
+    timersRef.current.forEach(t => clearTimeout(t))
+    timersRef.current = []
+  }, [])
+
+  // Core function: collapse current → scroll to target → expand target
+  const switchToCategory = useCallback((categoryId) => {
+    // Cancel any in-flight sequence
+    clearPendingTimers()
+
+    // Step 1: Collapse whatever is currently open
+    setExpandedCategory(null)
+
+    // Step 2: After collapse animation finishes (400ms) + DOM settle,
+    // scroll to the target category card
+    const t1 = setTimeout(() => {
+      const el = document.getElementById(categoryId)
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 120
+        window.scrollTo({ top, behavior: 'smooth' })
+      }
+
+      // Step 3: After smooth scroll settles (~700ms), expand target
+      const t2 = setTimeout(() => {
+        setExpandedCategory(categoryId)
+      }, 700)
+      timersRef.current.push(t2)
+    }, 550)
+    timersRef.current.push(t1)
+  }, [clearPendingTimers])
+
+  // Listen for same-page category switches from Navbar (custom event)
   useEffect(() => {
-    let collapseTimer
-    let scrollTimer
-    let expandTimer
+    const handler = (e) => {
+      switchToCategory(e.detail)
+    }
+    window.addEventListener('ssv-switch-category', handler)
+    return () => {
+      window.removeEventListener('ssv-switch-category', handler)
+      clearPendingTimers()
+    }
+  }, [switchToCategory, clearPendingTimers])
 
-    if (categoryFromState) {
-      const categoryId = categoryFromState
-
-      // Clear the state so we don't re-trigger on reload
+  // Handle navigation from another page (location.state)
+  useEffect(() => {
+    const categoryId = location.state?.category
+    if (categoryId) {
       window.history.replaceState({}, document.title)
-
-      // Step 1: Collapse any currently expanded category
-      collapseTimer = setTimeout(() => {
-        setExpandedCategory(null)
-      }, 10)
-
-      // Step 2: Wait for the collapse exit animation (400ms) to fully
-      // complete and the DOM to re-layout, then scroll to the target
-      scrollTimer = setTimeout(() => {
+      // Coming from another page — no category is open, just scroll + expand
+      const t1 = setTimeout(() => {
         const el = document.getElementById(categoryId)
         if (el) {
-          const rect = el.getBoundingClientRect()
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-          const targetY = rect.top + scrollTop - 120
-          window.scrollTo({ top: targetY, behavior: 'smooth' })
+          const top = el.getBoundingClientRect().top + window.scrollY - 120
+          window.scrollTo({ top, behavior: 'smooth' })
         }
-      }, 650)
-
-      // Step 3: After smooth scroll finishes (~600ms), expand the target
-      expandTimer = setTimeout(() => {
-        setExpandedCategory(categoryId)
-      }, 1400)
+        const t2 = setTimeout(() => {
+          setExpandedCategory(categoryId)
+        }, 700)
+        timersRef.current.push(t2)
+      }, 300)
+      timersRef.current.push(t1)
     } else {
-      collapseTimer = setTimeout(() => {
-        setExpandedCategory(null)
-      }, 10)
       window.scrollTo(0, 0)
     }
-
-    return () => {
-      if (collapseTimer) clearTimeout(collapseTimer)
-      if (scrollTimer) clearTimeout(scrollTimer)
-      if (expandTimer) clearTimeout(expandTimer)
-    }
-  }, [location.key, categoryFromState])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const toggleCategory = useCallback((categoryId) => {
     setExpandedCategory((prev) => (prev === categoryId ? null : categoryId))
