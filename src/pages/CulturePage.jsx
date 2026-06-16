@@ -77,14 +77,6 @@ const EVENTS = [
   }
 ]
 
-const GALLERY_PHOTOS = [
-  { src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80', alt: 'Team collaboration' },
-  { src: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80', alt: 'Workshop session' },
-  { src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80', alt: 'Team celebration' },
-  { src: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&q=80', alt: 'Office culture' },
-  { src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80', alt: 'Team meeting' },
-  { src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80', alt: 'Team discussion' }
-]
 
 /* ── Icon Components ── */
 const PillarIcon = ({ type, color }) => {
@@ -105,7 +97,6 @@ const CulturePage = () => {
   useDocumentTitle('Culture at SSV')
 
   const [pillarsRef, pillarsVisible] = useIntersectionObserver()
-  const [photosRef, photosVisible] = useIntersectionObserver()
   const [eventsRef, eventsVisible] = useIntersectionObserver()
   const [ctaRef, ctaVisible] = useIntersectionObserver()
 
@@ -198,30 +189,6 @@ const CulturePage = () => {
         </div>
       </section>
 
-      {/* ── Life in Photos ── */}
-      <section
-        className={`cul-section cul-photos scroll-reveal ${photosVisible ? 'scroll-reveal--visible' : ''}`}
-        ref={photosRef}
-        id="culture-photos"
-      >
-        <div className="container">
-          <div className="cul-section__header">
-            <span className="section-label">Snapshots</span>
-            <h2 className="section-title">Life in Photos</h2>
-          </div>
-          <div className="cul-photos__grid">
-            {GALLERY_PHOTOS.map((photo, i) => (
-              <div
-                className={`cul-photos__item cul-photos__item--${i + 1} ${photosVisible ? 'cul-photos__item--visible' : ''}`}
-                key={i}
-                style={{ transitionDelay: photosVisible ? `${0.1 + i * 0.08}s` : '0s' }}
-              >
-                <img src={photo.src} alt={photo.alt} loading="lazy" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Annual Events ── */}
       <section
