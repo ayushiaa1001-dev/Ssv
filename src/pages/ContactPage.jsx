@@ -228,7 +228,7 @@ const ContactPage = () => {
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <h4>Business Hours</h4>
-                <p>Mon – Sat: 9:00 AM – 6:00 PM<br/>Sunday: Closed</p>
+                <p>Mon – Sat: 10:00 AM – 6:00 PM<br/>Sunday: Closed</p>
               </div>
             </div>
           </div>
