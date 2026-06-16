@@ -249,7 +249,6 @@
 .ct-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   gap: 12px;
 }
 
@@ -323,6 +322,10 @@ a.ct-info__card:hover {
   line-height: 1.45;
   color: var(--muted-foreground);
   margin: 0;
+}
+
+.ct-info__card--wide {
+  grid-column: 1 / -1;
 }
 
 /* ── Scroll Reveal ── */
