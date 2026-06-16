@@ -15,7 +15,9 @@ const Footer = () => {
       scrollToEl('contact')
       return
     }
-    const isHome = window.location.hash === '#/' || window.location.hash === '' || window.location.hash === '#'
+    const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+    const currentPath = window.location.pathname.replace(/\/$/, '')
+    const isHome = currentPath === basePath || currentPath === '' || currentPath === '/'
     if (!isHome) {
       navigate('/')
       setTimeout(() => {
