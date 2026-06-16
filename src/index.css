@@ -341,6 +341,12 @@ ul, ol {
   }
 }
 
+
+/* Loading spinner for lazy routes */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* Accessibility: Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
