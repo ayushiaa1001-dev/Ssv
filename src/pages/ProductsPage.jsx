@@ -8,14 +8,6 @@ import './ProductsPage.css'
 
 const categoriesData = [
   {
-    id: 'all-products',
-    name: 'All Products',
-    tagline: 'Browse our complete pharmaceutical portfolio',
-    themeColor: '#1b4f72',
-    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&auto=format&fit=crop&q=80',
-    products: []
-  },
-  {
     id: 'cough-cold',
     name: 'Cough & Anti Cold Range',
     tagline: 'Fast-acting relief for cough, cold & congestion',
@@ -84,11 +76,20 @@ const categoriesData = [
       { id: 'omegassv', name: 'OmegaSSV', formSize: 'Capsules · 3×10', desc: 'Omega-3 fatty acid capsules for heart and cognitive health.', img: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=400&auto=format&fit=crop&q=80' },
       { id: 'zincssv', name: 'ZincSSV', formSize: 'Tablets · 3×10', desc: 'Zinc supplements to support immunity and skin health.', img: 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&auto=format&fit=crop&q=80' }
     ]
+  },
+  {
+    id: 'all-products',
+    name: 'All Products',
+    tagline: 'Browse our complete pharmaceutical portfolio',
+    themeColor: '#1b4f72',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&auto=format&fit=crop&q=80',
+    products: []
   }
 ]
 
 // Populate "All Products" with every product from all other categories
-categoriesData[0].products = categoriesData.slice(1).flatMap(cat =>
+const allIdx = categoriesData.length - 1
+categoriesData[allIdx].products = categoriesData.slice(0, allIdx).flatMap(cat =>
   cat.products.map(p => ({ ...p, category: cat.name }))
 )
 
