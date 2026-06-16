@@ -468,7 +468,7 @@ const ProductsPage = () => {
               onPointerCancel={handlePointerUp}
             >
               <img
-                src={selectedProduct.img}
+                src={selectedProduct.img.replace(/w=\d+/, 'w=1200')}
                 alt={selectedProduct.name}
                 className="pp-modal__img"
                 style={{
