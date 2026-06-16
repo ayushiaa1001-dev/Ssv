@@ -185,7 +185,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4>Our Address</h4>
-                  <p>SSV Pharmaceuticals, Plot No. 2,<br/>1st Floor, Malabar Colony,<br/>Hazari Pahad Road, Seminary Hills,<br/>Nagpur - 440006</p>
+                  <p>SSV Pharmaceuticals,<br/>Plot No. 2, 1st Floor,<br/>Malabar Colony,<br/>Hazari Pahad Road,<br/>Seminary Hills,<br/>Nagpur, 440006</p>
                 </div>
               </div>
 

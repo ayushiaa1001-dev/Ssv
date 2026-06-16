@@ -72,7 +72,7 @@ const Footer = () => {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
-                <span>SSV Pharmaceuticals, Plot No. 2,<br/>1st Floor, Malabar Colony, Hazari Pahad Road,<br/>Seminary Hills, Nagpur - 440006</span>
+                <span>SSV Pharmaceuticals,<br/>Plot No. 2, 1st Floor,<br/>Malabar Colony,<br/>Hazari Pahad Road,<br/>Seminary Hills,<br/>Nagpur, 440006</span>
               </span>
               <a href="tel:+919818977444" className="footer__contact-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
