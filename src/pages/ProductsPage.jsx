@@ -410,7 +410,7 @@ const ProductsPage = () => {
               <Link to="/careers" className="btn btn-primary">
                 Join Our Team
               </Link>
-              <Link to="/culture" className="btn btn-outline">
+              <Link to="/events/culture" className="btn btn-outline">
                 Life at SSV
               </Link>
             </div>
