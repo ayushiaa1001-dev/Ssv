@@ -358,7 +358,7 @@ const CareersPage = () => {
                   onClick={() => {
                     setCurrentPage(page)
                     const el = document.getElementById('openings-header')
-                  if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
+                    if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
                   }}
                 >
                   {page}
@@ -532,4 +532,3 @@ const CareersPage = () => {
 }
 
 export default CareersPage
-
