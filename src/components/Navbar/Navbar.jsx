@@ -16,7 +16,7 @@ const SEARCH_INDEX = [
   { title: 'Gastro', description: 'Gastroenterology products', section: 'products/gastro', keywords: ['gastro', 'digestive', 'stomach', 'gastroenterology'] },
   { title: 'General Products', description: 'General medicine formulations', section: 'products/general', keywords: ['general', 'medicine', 'tablets', 'capsules'] },
   { title: 'Careers', description: 'Join our team at SSV Pharmaceuticals', section: 'careers', keywords: ['careers', 'jobs', 'hiring', 'work', 'employment', 'join'] },
-  { title: 'Culture at SSV', description: 'Our cultural pillars, life in photos, and annual events', section: 'events/culture', keywords: ['culture', 'events', 'pillars', 'photos', 'life', 'annual', 'gala', 'founders'] },
+  { title: 'Culture at SSV', description: 'Our cultural pillars and annual events', section: 'events/culture', keywords: ['culture', 'events', 'pillars', 'annual', 'gala', 'founders'] },
   { title: 'Gallery', description: 'Photo gallery of life at SSV', section: 'events/gallery', keywords: ['gallery', 'photos', 'images', 'snapshots'] },
   { title: 'Contact Us', description: 'Get in touch with SSV Pharmaceuticals', section: 'contact-page', keywords: ['contact', 'reach', 'email', 'phone', 'address', 'touch'] },
   { title: 'Export Countries', description: 'We export to 12+ countries globally', section: '#about-story', keywords: ['export', 'countries', 'global', 'international'] },
