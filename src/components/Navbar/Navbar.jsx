@@ -176,14 +176,17 @@ const Navbar = () => {
     setActiveDropdown(null)
   }
 
-  // Navigate to Products page section safely with HashRouter and location state
+  // Navigate to Products page category — always use navigate() so the
+  // useEffect in ProductsPage re-triggers with a fresh location.key
   const scrollToProductsSection = (categoryId) => {
-    const isProducts = window.location.hash.includes('/products')
-    if (isProducts) {
-      if (categoryId) {
-        navigate('/products', { state: { category: categoryId } })
-      } else {
+    if (!categoryId) {
+      const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+      const currentPath = window.location.pathname.replace(/\/$/, '')
+      const isProducts = currentPath === `${basePath}/products` || currentPath.endsWith('/products')
+      if (isProducts) {
         window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        navigate('/products')
       }
     } else {
       navigate('/products', { state: { category: categoryId } })
