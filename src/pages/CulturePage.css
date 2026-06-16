@@ -229,8 +229,6 @@
   color: var(--muted-foreground);
 }
 
-
-
 /* ── Annual Events ── */
 .cul-events__grid {
   display: grid;
@@ -386,8 +384,6 @@
     padding: 24px 20px;
   }
 
-
-
   .cul-cta__inner {
     flex-direction: column;
     text-align: center;
@@ -403,8 +399,6 @@
   .cul-events__grid {
     grid-template-columns: 1fr;
   }
-
-
 }
 
 @media (max-width: 480px) {
