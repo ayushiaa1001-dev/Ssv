@@ -37,26 +37,6 @@
   height: 40px;
 }
 
-.navbar__logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.navbar__logo-name {
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.navbar__logo-tagline {
-  font-size: 0.55rem;
-  font-weight: 500;
-  letter-spacing: 3px;
-  opacity: 0.8;
-}
-
 /* Menu */
 .navbar__menu {
   display: flex;

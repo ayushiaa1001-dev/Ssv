@@ -220,13 +220,6 @@
   display: none;
 }
 
-.ap-section-subtitle {
-  font-size: 1.15rem;
-  color: var(--muted-foreground);
-  margin-top: 12px;
-  font-weight: 500;
-}
-
 .ap-text {
   font-size: 1.05rem;
   line-height: 1.75;
@@ -366,22 +359,6 @@
   justify-content: center;
   margin-bottom: 24px;
   border: 1px solid rgba(27, 79, 114, 0.04);
-}
-
-.ap-philosophy__icon-shape {
-  background-color: var(--primary, #1b4f72);
-}
-
-.ap-philosophy__icon-shape--circle {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-
-.ap-philosophy__icon-shape--diamond {
-  width: 18px;
-  height: 18px;
-  transform: rotate(45deg);
 }
 
 .ap-philosophy__card-title {
@@ -601,43 +578,6 @@
   background: rgba(22, 163, 74, 0.9); /* green tint for GMP certified */
 }
 
-/* ── Call To Action ── */
-.ap-cta {
-  background: linear-gradient(135deg, var(--primary) 0%, #153c57 100%);
-  padding: 60px 0;
-  text-align: center;
-  color: #ffffff;
-}
-
-.ap-cta__inner h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 800;
-  margin-bottom: 16px;
-}
-
-.ap-cta__inner p {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 600px;
-  margin: 0 auto 36px;
-  line-height: 1.7;
-}
-
-.ap-cta__btn {
-  background-color: #ffffff;
-  color: var(--primary);
-  border-color: #ffffff;
-  padding: 14px 44px;
-}
-
-.ap-cta__btn:hover {
-  background-color: transparent;
-  color: #ffffff;
-  border-color: #ffffff;
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
-}
-
 /* ==========================================================================
    Responsive Settings
    ========================================================================== */
@@ -684,10 +624,6 @@
   .ap-who__stats {
     flex-wrap: wrap;
     gap: 24px;
-  }
-
-  .ap-philosophy__values {
-    grid-template-columns: 1fr;
   }
 
   .ap-timeline-track {
@@ -752,10 +688,6 @@
 
   .ap-who__stat-number {
     font-size: 1.6rem;
-  }
-
-  .ap-philosophy__values {
-    gap: 16px;
   }
 
   .ap-philosophy__card {
