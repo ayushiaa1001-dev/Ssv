@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import CountUp from '../components/CountUp'
 import './ProductsPage.css'
 
@@ -186,6 +187,7 @@ const ProductsPage = () => {
   })
   const [heroVisible, setHeroVisible] = useState(false)
   const [headerRef, headerVisible] = useIntersectionObserver({ threshold: 0.15 })
+  useDocumentTitle('Products')
 
   // Product modal state
   const [selectedProduct, setSelectedProduct] = useState(null)
@@ -198,18 +200,18 @@ const ProductsPage = () => {
   const MIN_ZOOM = 1
   const MAX_ZOOM = 4
 
-  const openProductModal = (product) => {
+  const openProductModal = useCallback((product) => {
     setSelectedProduct(product)
     setZoom(1)
     setPan({ x: 0, y: 0 })
-  }
+  }, [])
 
-  const closeProductModal = () => {
+  const closeProductModal = useCallback(() => {
     setSelectedProduct(null)
     setZoom(1)
     setPan({ x: 0, y: 0 })
     setIsDragging(false)
-  }
+  }, [])
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -221,7 +223,7 @@ const ProductsPage = () => {
       document.body.style.overflow = ''
       document.removeEventListener('keydown', handleEsc)
     }
-  }, [selectedProduct])
+  }, [selectedProduct, closeProductModal])
 
   // Double-click to toggle zoom
   const handleImgDoubleClick = (e) => {
@@ -237,13 +239,25 @@ const ProductsPage = () => {
   // Mouse wheel zoom
   const handleWheel = useCallback((e) => {
     e.preventDefault()
+    const delta = e.deltaY
     setZoom(prev => {
-      const next = prev - e.deltaY * 0.002
+      const next = prev - delta * 0.002
       const clamped = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, next))
-      if (clamped <= 1) setPan({ x: 0, y: 0 })
+      if (clamped <= 1) {
+        // Schedule pan reset after zoom state update
+        queueMicrotask(() => setPan({ x: 0, y: 0 }))
+      }
       return clamped
     })
   }, [])
+
+  // Attach wheel handler with { passive: false } so preventDefault works
+  useEffect(() => {
+    const el = imgContainerRef.current
+    if (!el || !selectedProduct) return
+    el.addEventListener('wheel', handleWheel, { passive: false })
+    return () => el.removeEventListener('wheel', handleWheel)
+  }, [selectedProduct, handleWheel])
 
   // Drag-to-pan handlers
   const handlePointerDown = (e) => {
@@ -270,12 +284,14 @@ const ProductsPage = () => {
     return () => clearTimeout(timer)
   }, [])
 
+  const categoryFromState = location.state?.category
+
   useEffect(() => {
     let stateTimer
     let scrollTimer
 
-    if (location.state?.category) {
-      const categoryId = location.state.category
+    if (categoryFromState) {
+      const categoryId = categoryFromState
       
       stateTimer = setTimeout(() => {
         setExpandedCategory(categoryId)
@@ -303,11 +319,11 @@ const ProductsPage = () => {
       if (stateTimer) clearTimeout(stateTimer)
       if (scrollTimer) clearTimeout(scrollTimer)
     }
-  }, [location])
+  }, [location.key, categoryFromState])
 
-  const toggleCategory = (categoryId) => {
+  const toggleCategory = useCallback((categoryId) => {
     setExpandedCategory((prev) => (prev === categoryId ? null : categoryId))
-  }
+  }, [])
 
   return (
     <div className="products-page">
@@ -417,7 +433,6 @@ const ProductsPage = () => {
               className={`pp-modal__img-container ${zoom > 1 ? 'pp-modal__img-container--zoomed' : ''}`}
               ref={imgContainerRef}
               onDoubleClick={handleImgDoubleClick}
-              onWheel={handleWheel}
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}

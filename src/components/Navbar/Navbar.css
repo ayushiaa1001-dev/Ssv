@@ -398,7 +398,20 @@
   transition: var(--transition-fast);
 }
 
-.navbar__mobile a:hover {
+.navbar__mobile button {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--color-white);
+  transition: var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+.navbar__mobile a:hover,
+.navbar__mobile button:hover {
   color: var(--color-accent-light);
 }
 

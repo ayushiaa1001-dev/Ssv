@@ -302,7 +302,7 @@ const Navbar = () => {
           {/* Search Bar — always expanded */}
           <div className="navbar__search" ref={searchRef}>
             <div className="navbar__search-box">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="navbar__search-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="navbar__search-icon" aria-hidden="true">
                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
               </svg>
               <input
@@ -386,12 +386,12 @@ const Navbar = () => {
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
-          <Link to="/" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>Home</Link>
-          <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-story'); }}>About Us</Link>
-          <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-philosophy'); }}>Vision & Values</Link>
-          <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-journey'); }}>Milestones</Link>
-          <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection(null); }}>Products</Link>
-          <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-standards'); }}>Quality & Certifications</Link>
+          <button onClick={() => { scrollToSection('hero'); setMobileOpen(false); }}>Home</button>
+          <button onClick={() => { scrollToAboutSection('about-story'); setMobileOpen(false); }}>About Us</button>
+          <button onClick={() => { scrollToAboutSection('about-philosophy'); setMobileOpen(false); }}>Vision & Values</button>
+          <button onClick={() => { scrollToAboutSection('about-journey'); setMobileOpen(false); }}>Milestones</button>
+          <button onClick={() => { scrollToProductsSection(null); setMobileOpen(false); }}>Products</button>
+          <button onClick={() => { scrollToAboutSection('about-standards'); setMobileOpen(false); }}>Quality & Certifications</button>
           <Link to="/events/culture" onClick={() => setMobileOpen(false)}>Culture at SSV</Link>
           <Link to="/events/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
           <Link to="/careers" onClick={() => setMobileOpen(false)}>Careers</Link>

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import CountUp from '../components/CountUp'
 import './AboutPage.css'
 
 const AboutPage = () => {
   const location = useLocation()
   const [heroVisible, setHeroVisible] = useState(false)
+  useDocumentTitle('About Us')
 
   const [storyRef, storyVisible] = useIntersectionObserver()
   const [philosophyRef, philosophyVisible] = useIntersectionObserver()

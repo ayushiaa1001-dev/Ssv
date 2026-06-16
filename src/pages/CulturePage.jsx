@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import './CulturePage.css'
 
 /* ── Data ── */
@@ -101,6 +102,7 @@ const PillarIcon = ({ type, color }) => {
 const CulturePage = () => {
   const location = useLocation()
   const [heroVisible, setHeroVisible] = useState(false)
+  useDocumentTitle('Culture at SSV')
 
   const [pillarsRef, pillarsVisible] = useIntersectionObserver()
   const [photosRef, photosVisible] = useIntersectionObserver()

@@ -199,8 +199,8 @@
 .pp-selection {
   display: flex;
   flex-direction: column;
-  gap: 48px;
-  padding: 60px 24px 80px;
+  gap: 32px;
+  padding: 40px 24px 50px;
   max-width: var(--container-width);
   margin: 0 auto;
 }
@@ -426,8 +426,8 @@
 
 /* ── CTA Strip ── */
 .pp-cta-strip {
-  margin-top: 48px;
-  padding: 40px 32px;
+  margin-top: 32px;
+  padding: 32px 32px;
   border-radius: 20px;
   background: linear-gradient(135deg, rgba(0, 119, 168, 0.08), rgba(199, 80, 0, 0.08));
   border: 1px solid rgba(17, 46, 72, 0.08);
@@ -437,7 +437,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 28px;
 }
 
 .pp-cta-strip__label {

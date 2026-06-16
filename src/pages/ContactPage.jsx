@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import './ContactPage.css'
 
 const ContactPage = () => {
   const location = useLocation()
   const [heroVisible, setHeroVisible] = useState(false)
+  useDocumentTitle('Contact Us')
   const [submitted, setSubmitted] = useState(false)
 
   const [formName, setFormName] = useState('')

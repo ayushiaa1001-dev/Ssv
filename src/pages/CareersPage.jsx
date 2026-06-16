@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import './CareersPage.css'
 
 const OPENINGS = [
@@ -39,6 +40,7 @@ const OPENINGS = [
 const CareersPage = () => {
   const location = useLocation()
   const [heroVisible, setHeroVisible] = useState(false)
+  useDocumentTitle('Careers')
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedJobTitle, setSelectedJobTitle] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -59,9 +61,11 @@ const CareersPage = () => {
     return () => clearTimeout(timer)
   }, [])
 
+  const scrollToTarget = location.state?.scrollTo
+
   useEffect(() => {
-    if (location.state?.scrollTo) {
-      const targetId = location.state.scrollTo
+    if (scrollToTarget) {
+      const targetId = scrollToTarget
       window.history.replaceState({}, document.title)
       setTimeout(() => {
         document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
@@ -69,7 +73,7 @@ const CareersPage = () => {
     } else {
       window.scrollTo(0, 0)
     }
-  }, [location])
+  }, [location.key, scrollToTarget])
 
   useEffect(() => {
     if (!modalOpen) return

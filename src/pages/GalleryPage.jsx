@@ -1,6 +1,7 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import './GalleryPage.css'
 
 /* ── Gallery Data ── */
@@ -26,12 +27,14 @@ const INITIAL_COUNT = 9
 const GalleryPage = () => {
   const location = useLocation()
   const [heroVisible, setHeroVisible] = useState(false)
+  useDocumentTitle('Gallery')
   const [activeFilter, setActiveFilter] = useState('All')
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
   const [lightbox, setLightbox] = useState(null)
 
   const [gridRef, gridVisible] = useIntersectionObserver()
   const [ctaRef, ctaVisible] = useIntersectionObserver()
+  const lightboxCloseRef = useRef(null)
 
   useEffect(() => {
     const timer = setTimeout(() => setHeroVisible(true), 200)
@@ -59,6 +62,13 @@ const GalleryPage = () => {
       document.body.style.overflow = ''
     }
   }, [lightbox, handleKeyDown])
+
+  // Focus the close button when lightbox opens
+  useEffect(() => {
+    if (lightbox && lightboxCloseRef.current) {
+      lightboxCloseRef.current.focus()
+    }
+  }, [lightbox])
 
   const filtered = activeFilter === 'All'
     ? GALLERY_ITEMS
@@ -129,6 +139,7 @@ const GalleryPage = () => {
                 role="button"
                 tabIndex={0}
                 onKeyDown={e => e.key === 'Enter' && setLightbox(item)}
+                aria-label={`View ${item.title}`}
               >
                 <img src={item.src} alt={item.alt} loading="lazy" />
                 <div className="gal-card__overlay">
@@ -165,7 +176,7 @@ const GalleryPage = () => {
       {/* ── Lightbox Modal ── */}
       {lightbox && (
         <div className="gal-lightbox" onClick={() => setLightbox(null)}>
-          <button className="gal-lightbox__close" onClick={() => setLightbox(null)} aria-label="Close lightbox">
+          <button ref={lightboxCloseRef} className="gal-lightbox__close" onClick={() => setLightbox(null)} aria-label="Close lightbox">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
           <div className="gal-lightbox__body" onClick={e => e.stopPropagation()}>
