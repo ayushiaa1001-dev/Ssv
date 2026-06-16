@@ -206,15 +206,22 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <a href="mailto:info@ssvpharma.com" className="ct-info__card">
+              <div className="ct-info__card">
                 <div className="ct-info__icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </div>
-                <div>
-                  <h4>Email</h4>
-                  <p>info@ssvpharma.com<br/>exports@ssvpharma.com</p>
+                <h4>Email</h4>
+                <div className="ct-phone-pills">
+                  <a href="mailto:info@ssvpharma.com" className="ct-phone-pill">
+                    info@ssvpharma.com
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                  </a>
+                  <a href="mailto:hrssvpharma@gmail.com" className="ct-phone-pill">
+                    hrssvpharma@gmail.com
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                  </a>
                 </div>
-              </a>
+              </div>
 
               <div className="ct-info__card">
                 <div className="ct-info__icon">

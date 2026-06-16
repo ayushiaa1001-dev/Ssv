@@ -93,6 +93,13 @@ const Footer = () => {
                 </svg>
                 <span>info@ssvpharma.com</span>
               </a>
+              <a href="mailto:hrssvpharma@gmail.com" className="footer__contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <span>hrssvpharma@gmail.com</span>
+              </a>
             </div>
           </div>
 
