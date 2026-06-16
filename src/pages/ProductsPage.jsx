@@ -407,14 +407,11 @@ const ProductsPage = () => {
               A trusted range across five therapeutic categories — formulated to the highest safety standards.
             </p>
             <div className="pp-hero__buttons">
-              <a href="#products-categories" onClick={(e) => {
-                e.preventDefault()
-                document.getElementById('products-categories')?.scrollIntoView({ behavior: 'smooth' })
-              }} className="btn btn-primary">
-                Browse Categories
-              </a>
-              <Link to="/about" className="btn btn-outline">
-                Quality Standards
+              <Link to="/careers" className="btn btn-primary">
+                Join Our Team
+              </Link>
+              <Link to="/culture" className="btn btn-outline">
+                Life at SSV
               </Link>
             </div>
           </div>
