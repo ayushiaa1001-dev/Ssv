@@ -339,14 +339,17 @@ a.ct-info__card:hover {
   justify-content: center;
   gap: 6px;
   padding: 8px 14px;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
   background: rgba(46, 134, 171, 0.1);
   color: var(--primary);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   cursor: pointer;
+  word-break: break-all;
+  text-align: center;
+  min-height: 36px;
 }
 
 .ct-phone-pill:hover {
