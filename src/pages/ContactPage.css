@@ -128,10 +128,9 @@
 }
 
 .ct-layout {
-  display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: 48px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 /* ── Form Card ── */
@@ -257,18 +256,19 @@
 
 /* ── Contact Info Cards ── */
 .ct-info {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .ct-info__card {
   background: var(--muted);
   border-radius: var(--radius-md);
-  padding: 28px;
+  padding: 20px 24px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -278,8 +278,9 @@
 }
 
 .ct-info__icon {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   border-radius: var(--radius-md);
   background: rgba(46, 134, 171, 0.1);
   display: flex;
@@ -290,15 +291,15 @@
 
 .ct-info__card h4 {
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--foreground);
-  margin: 0;
+  margin: 0 0 2px 0;
 }
 
 .ct-info__card p {
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-size: 0.82rem;
+  line-height: 1.5;
   color: var(--muted-foreground);
   margin: 0;
 }
@@ -314,13 +315,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
-  .ct-layout {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
   .ct-info {
-    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
   }
@@ -348,6 +343,12 @@
 @media (max-width: 640px) {
   .ct-info {
     grid-template-columns: 1fr;
+  }
+
+  .ct-info__card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
   }
 }
 
