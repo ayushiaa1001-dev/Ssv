@@ -179,15 +179,15 @@ const ContactPage = () => {
               ref={infoRef}
               className={`ct-info scroll-reveal ${infoVisible ? 'scroll-reveal--visible' : ''}`}
             >
-              <a href="https://maps.google.com/?q=SSV+Pharmaceuticals+Industrial+Area+Phase-II+Baddi+Himachal+Pradesh+India" target="_blank" rel="noopener noreferrer" className="ct-info__card">
+              <div className="ct-info__card">
                 <div className="ct-info__icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
                 <div>
                   <h4>Our Address</h4>
-                  <p>SSV Pharmaceuticals<br/>Industrial Area, Phase-II<br/>Baddi, Himachal Pradesh, India</p>
+                  <p>SSV Pharmaceuticals, Plot No. 2,<br/>1st Floor, Malabar Colony,<br/>Hazari Pahad Road, Seminary Hills,<br/>Nagpur - 440006</p>
                 </div>
-              </a>
+              </div>
 
               <div className="ct-info__card">
                 <div className="ct-info__icon">
