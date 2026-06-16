@@ -316,18 +316,16 @@ const ProductsPage = () => {
   const categoryFromState = location.state?.category
 
   useEffect(() => {
-    let stateTimer
     let scrollTimer
+    let expandTimer
 
     if (categoryFromState) {
       const categoryId = categoryFromState
-      
-      stateTimer = setTimeout(() => {
-        setExpandedCategory(categoryId)
-      }, 0)
-      
+
+      // Clear the state so we don't re-trigger on reload
       window.history.replaceState({}, document.title)
 
+      // Step 1: Scroll to the category first (keep it collapsed)
       scrollTimer = setTimeout(() => {
         const el = document.getElementById(categoryId)
         if (el) {
@@ -336,17 +334,20 @@ const ProductsPage = () => {
           const targetY = rect.top + scrollTop - 120
           window.scrollTo({ top: targetY, behavior: 'smooth' })
         }
-      }, 400)
+      }, 150)
+
+      // Step 2: After scroll finishes, expand the category
+      expandTimer = setTimeout(() => {
+        setExpandedCategory(categoryId)
+      }, 800)
     } else {
-      stateTimer = setTimeout(() => {
-        setExpandedCategory(null)
-      }, 0)
+      setExpandedCategory(null)
       window.scrollTo(0, 0)
     }
 
     return () => {
-      if (stateTimer) clearTimeout(stateTimer)
       if (scrollTimer) clearTimeout(scrollTimer)
+      if (expandTimer) clearTimeout(expandTimer)
     }
   }, [location.key, categoryFromState])
 
