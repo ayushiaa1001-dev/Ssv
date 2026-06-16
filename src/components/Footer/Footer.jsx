@@ -50,7 +50,7 @@ const Footer = () => {
           <div className="footer__col">
             <h4 className="footer__col-title">Quick Links</h4>
             <ul className="footer__links">
-              <li><a href="#hero" onClick={(e) => handleScrollTo(e, 'hero')}>Home</a></li>
+              <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/products">Products</Link></li>
               <li><Link to="/events/culture">Events</Link></li>
