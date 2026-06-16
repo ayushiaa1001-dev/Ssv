@@ -273,10 +273,34 @@
   text-align: center;
   gap: 10px;
   justify-content: flex-start;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  border: 1.5px solid transparent;
+  position: relative;
+}
+
+a.ct-info__card::after {
+  content: '↗';
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 0.75rem;
+  color: var(--primary);
+  opacity: 0.4;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+a.ct-info__card:hover::after {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+a.ct-info__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  border-color: rgba(46, 134, 171, 0.25);
 }
 
 .ct-info__card:hover {
