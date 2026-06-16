@@ -379,7 +379,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <button className="btn navbar__cta" id="contact-btn" onClick={handleContactClick}>Contact Us</button>
+          <button className={`btn navbar__cta ${activePath === '/contact' ? 'navbar__cta--active' : ''}`} id="contact-btn" onClick={handleContactClick}>Contact Us</button>
           <div className="navbar__badge" title="SSV Pharmaceuticals Quality Seal">
             <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="SSV Quality Seal" style={{ width: '95px', height: '95px', objectFit: 'contain' }} />
           </div>

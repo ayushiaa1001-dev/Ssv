@@ -176,6 +176,13 @@
   border-color: var(--primary);
 }
 
+.navbar__cta--active {
+  background: var(--secondary);
+  color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(27, 79, 114, 0.15);
+}
+
 .navbar__badge {
   display: flex;
   align-items: center;
