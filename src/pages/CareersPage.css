@@ -361,6 +361,82 @@
   font-size: 0.9rem;
 }
 
+/* Row fade-in on page change */
+.cp-job-row-animate {
+  animation: cpRowFadeIn 0.4s ease both;
+}
+
+@keyframes cpRowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Pagination ── */
+.cp-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.cp-pagination__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 6px;
+  border: 1.5px solid rgba(27, 79, 114, 0.15);
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  color: var(--foreground);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cp-pagination__btn:hover:not(:disabled):not(.cp-pagination__btn--active) {
+  background: var(--muted);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.cp-pagination__btn--active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(27, 79, 114, 0.25);
+  cursor: default;
+}
+
+.cp-pagination__arrow {
+  color: var(--primary);
+}
+
+.cp-pagination__arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: rgba(27, 79, 114, 0.08);
+}
+
+.cp-pagination__info {
+  font-size: 0.82rem;
+  color: var(--muted-foreground);
+  font-weight: 500;
+  margin-left: 12px;
+}
+
 /* ── Contact Section ── */
 .cp-contact {
   background-color: var(--background);

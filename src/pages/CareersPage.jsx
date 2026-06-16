@@ -34,8 +34,58 @@ const OPENINGS = [
     title: 'Medical Sales Representative',
     location: 'Pan India',
     posted: 'Jun 12, 2026',
-  }
+  },
+  {
+    id: 'prod-manager',
+    title: 'Production Manager',
+    location: 'Ahmedabad',
+    posted: 'Jun 13, 2026',
+  },
+  {
+    id: 'rd-associate',
+    title: 'R&D Associate — Analytical Chemistry',
+    location: 'Hyderabad',
+    posted: 'Jun 14, 2026',
+  },
+  {
+    id: 'supply-chain',
+    title: 'Supply Chain Coordinator',
+    location: 'Mumbai (HQ)',
+    posted: 'Jun 14, 2026',
+  },
+  {
+    id: 'pharma-exec',
+    title: 'Pharmacovigilance Executive',
+    location: 'Bangalore',
+    posted: 'Jun 15, 2026',
+  },
+  {
+    id: 'pack-dev',
+    title: 'Packaging Development Specialist',
+    location: 'Ahmedabad',
+    posted: 'Jun 15, 2026',
+  },
+  {
+    id: 'it-admin',
+    title: 'IT Systems Administrator',
+    location: 'Mumbai (HQ)',
+    posted: 'Jun 16, 2026',
+  },
+  {
+    id: 'hr-exec',
+    title: 'HR Business Partner',
+    location: 'Mumbai (HQ)',
+    posted: 'Jun 16, 2026',
+  },
+  {
+    id: 'area-manager',
+    title: 'Area Sales Manager — West Region',
+    location: 'Pune',
+    posted: 'Jun 16, 2026',
+  },
 ]
+
+const JOBS_PER_PAGE = 5
 
 const CareersPage = () => {
   const location = useLocation()
@@ -44,6 +94,7 @@ const CareersPage = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedJobTitle, setSelectedJobTitle] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
 
   const [formName, setFormName] = useState('')
   const [formEmail, setFormEmail] = useState('')
@@ -256,8 +307,8 @@ const CareersPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {OPENINGS.map((job) => (
-                  <tr key={job.id}>
+                {OPENINGS.slice((currentPage - 1) * JOBS_PER_PAGE, currentPage * JOBS_PER_PAGE).map((job, idx) => (
+                  <tr key={job.id} style={{ animationDelay: `${idx * 0.06}s` }} className="cp-job-row-animate">
                     <td className="cp-job-title-col">
                       <h4>{job.title}</h4>
                     </td>
@@ -280,6 +331,52 @@ const CareersPage = () => {
               </tbody>
             </table>
           </div>
+
+          {/* Pagination */}
+          {Math.ceil(OPENINGS.length / JOBS_PER_PAGE) > 1 && (
+            <div className="cp-pagination">
+              <button
+                className="cp-pagination__btn cp-pagination__arrow"
+                disabled={currentPage === 1}
+                onClick={() => {
+                  setCurrentPage(p => p - 1)
+                  document.getElementById('openings-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
+                aria-label="Previous page"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="15 18 9 12 15 6" /></svg>
+              </button>
+
+              {Array.from({ length: Math.ceil(OPENINGS.length / JOBS_PER_PAGE) }, (_, i) => i + 1).map(page => (
+                <button
+                  key={page}
+                  className={`cp-pagination__btn ${currentPage === page ? 'cp-pagination__btn--active' : ''}`}
+                  onClick={() => {
+                    setCurrentPage(page)
+                    document.getElementById('openings-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }}
+                >
+                  {page}
+                </button>
+              ))}
+
+              <button
+                className="cp-pagination__btn cp-pagination__arrow"
+                disabled={currentPage === Math.ceil(OPENINGS.length / JOBS_PER_PAGE)}
+                onClick={() => {
+                  setCurrentPage(p => p + 1)
+                  document.getElementById('openings-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
+                aria-label="Next page"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 6 15 12 9 18" /></svg>
+              </button>
+
+              <span className="cp-pagination__info">
+                Showing {(currentPage - 1) * JOBS_PER_PAGE + 1}–{Math.min(currentPage * JOBS_PER_PAGE, OPENINGS.length)} of {OPENINGS.length} positions
+              </span>
+            </div>
+          )}
         </div>
       </section>
 
