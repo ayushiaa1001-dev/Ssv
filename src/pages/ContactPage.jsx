@@ -52,6 +52,7 @@ const ContactPage = () => {
           <img
             src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80"
             alt="Contact SSV Pharmaceuticals"
+            loading="lazy"
           />
           <div className="ct-hero__overlay"></div>
         </div>

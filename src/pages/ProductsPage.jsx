@@ -124,7 +124,7 @@ const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory, onP
         </div>
         <div className="pp-category__visual">
           <div className="pp-category__img-wrapper">
-            <img src={category.image} className="pp-category__img" alt={category.name} />
+            <img src={category.image} className="pp-category__img" alt={category.name} loading="lazy" />
           </div>
         </div>
       </div>
@@ -162,7 +162,7 @@ const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory, onP
                     style={{ cursor: 'pointer' }}
                   >
                     <div className="pp-product-card__media">
-                      <img src={product.img} alt={product.name} />
+                      <img src={product.img} alt={product.name} loading="lazy" />
                     </div>
                     <div className="pp-product-card__content">
                       <h4 className="pp-product-card__title">{product.name}</h4>
@@ -329,7 +329,7 @@ const ProductsPage = () => {
     <div className="products-page">
       <section className="pp-hero">
         <div className="pp-hero__bg">
-          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1600&auto=format&fit=crop&q=80" alt="Medicines and capsules" />
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1600&auto=format&fit=crop&q=80" alt="Medicines and capsules" loading="lazy" />
           <div className="pp-hero__overlay" />
         </div>
 

@@ -127,6 +127,7 @@ const CulturePage = () => {
           <img
             src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80"
             alt="Culture at SSV Pharmaceuticals"
+            loading="lazy"
           />
           <div className="cul-hero__overlay"></div>
         </div>

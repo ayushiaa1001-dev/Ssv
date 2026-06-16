@@ -86,6 +86,7 @@ const GalleryPage = () => {
           <img
             src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80"
             alt="Gallery — SSV Pharmaceuticals"
+            loading="lazy"
           />
           <div className="gal-hero__overlay"></div>
         </div>

@@ -40,7 +40,7 @@ const AboutPage = () => {
       {/* ── Hero Banner ── */}
       <section className="ap-hero">
         <div className="ap-hero__bg">
-          <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1600&auto=format&fit=crop&q=80" alt="SSV laboratory" />
+          <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1600&auto=format&fit=crop&q=80" alt="SSV laboratory" loading="lazy" />
           <div className="ap-hero__overlay" />
         </div>
         

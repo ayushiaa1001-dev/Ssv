@@ -133,7 +133,7 @@ const CareersPage = () => {
       {/* ── Hero Banner ── */}
       <section className="cp-hero">
         <div className="cp-hero__bg">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&auto=format&fit=crop&q=80" alt="SSV Careers Team" />
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&auto=format&fit=crop&q=80" alt="SSV Careers Team" loading="lazy" />
           <div className="cp-hero__overlay" />
         </div>
         
