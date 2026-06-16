@@ -274,6 +274,9 @@
   gap: 10px;
   justify-content: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .ct-info__card:hover {
