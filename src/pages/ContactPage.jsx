@@ -195,8 +195,14 @@ const ContactPage = () => {
                 </div>
                 <h4>Phone</h4>
                 <div className="ct-phone-pills">
-                  <a href="tel:+919818977444" className="ct-phone-pill">+91 98189 77444</a>
-                  <a href="tel:+918920606892" className="ct-phone-pill">+91 89206 06892</a>
+                  <a href="tel:+919818977444" className="ct-phone-pill">
+                    +91 98189 77444
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                  </a>
+                  <a href="tel:+918920606892" className="ct-phone-pill">
+                    +91 89206 06892
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                  </a>
                 </div>
               </div>
 
