@@ -340,7 +340,8 @@ const CareersPage = () => {
                 disabled={currentPage === 1}
                 onClick={() => {
                   setCurrentPage(p => p - 1)
-                  document.getElementById('openings-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  const el = document.getElementById('openings-section')
+                  if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
                 }}
                 aria-label="Previous page"
               >
@@ -353,7 +354,8 @@ const CareersPage = () => {
                   className={`cp-pagination__btn ${currentPage === page ? 'cp-pagination__btn--active' : ''}`}
                   onClick={() => {
                     setCurrentPage(page)
-                    document.getElementById('openings-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    const el = document.getElementById('openings-section')
+                  if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
                   }}
                 >
                   {page}
@@ -365,7 +367,8 @@ const CareersPage = () => {
                 disabled={currentPage === Math.ceil(OPENINGS.length / JOBS_PER_PAGE)}
                 onClick={() => {
                   setCurrentPage(p => p + 1)
-                  document.getElementById('openings-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  const el = document.getElementById('openings-section')
+                  if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
                 }}
                 aria-label="Next page"
               >

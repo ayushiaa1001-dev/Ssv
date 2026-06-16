@@ -164,6 +164,7 @@
   padding: 40px 0;
   position: relative;
   z-index: 3;
+  scroll-margin-top: 120px;
 }
 
 .cp-section-header {
