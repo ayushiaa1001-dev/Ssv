@@ -10,7 +10,7 @@
 /* ── Hero Banner ── */
 .ct-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -122,7 +122,7 @@
 
 /* ── Contact Section ── */
 .ct-section {
-  padding: 60px 0 70px;
+  padding: 40px 0 50px;
   position: relative;
   z-index: 3;
 }
