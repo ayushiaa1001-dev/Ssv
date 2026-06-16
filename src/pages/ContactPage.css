@@ -138,7 +138,7 @@
 .ct-form-card {
   background: var(--background);
   border-radius: var(--radius-lg);
-  padding: 36px;
+  padding: 32px;
   box-shadow: 0 10px 50px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(27, 79, 114, 0.08);
 }
@@ -154,7 +154,7 @@
 .ct-form__sub {
   font-size: 0.95rem;
   color: var(--muted-foreground);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   line-height: 1.6;
 }
 
@@ -167,8 +167,8 @@
 .ct-form__group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 5px;
+  margin-bottom: 14px;
 }
 
 .ct-form__group label {
@@ -208,7 +208,7 @@
 }
 
 .ct-form__group textarea {
-  min-height: 90px;
+  min-height: 70px;
 }
 
 .ct-form__submit {
