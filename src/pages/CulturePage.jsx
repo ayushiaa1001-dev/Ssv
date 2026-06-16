@@ -147,14 +147,16 @@ const CulturePage = () => {
             <div className="cul-hero__buttons">
               <a href="#culture-pillars" onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('culture-pillars')?.scrollIntoView({ behavior: 'smooth' })
-              }} className="btn btn-primary">
+                const el = document.getElementById('culture-pillars')
+                if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
+              }} className="btn btn-primary cul-btn-filled">
                 Our Pillars
               </a>
               <a href="#culture-events" onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('culture-events')?.scrollIntoView({ behavior: 'smooth' })
-              }} className="btn btn-outline">
+                const el = document.getElementById('culture-events')
+                if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
+              }} className="btn btn-outline cul-btn-outline">
                 Annual Events
               </a>
             </div>
