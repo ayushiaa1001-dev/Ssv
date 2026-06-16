@@ -286,9 +286,9 @@ a.ct-info__card::after {
   position: absolute;
   top: 12px;
   right: 14px;
-  font-size: 0.75rem;
+  font-size: 1.1rem;
   color: var(--primary);
-  opacity: 0.4;
+  opacity: 0.5;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
