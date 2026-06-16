@@ -92,23 +92,24 @@ categoriesData[0].products = categoriesData.slice(1).flatMap(cat =>
   cat.products.map(p => ({ ...p, category: cat.name }))
 )
 
-const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory, onProductClick }) => {
+const CategoryCard = ({ category, expandedCategory, toggleCategory, onProductClick }) => {
   const [ref, visible] = useIntersectionObserver({ threshold: 0.15 })
   const isExpanded = expandedCategory === category.id
 
   return (
-    <div 
+    <div
       ref={ref}
       id={category.id}
-      className={`pp-category pp-category--${category.id} ${isExpanded ? 'pp-category--open' : ''} scroll-reveal ${visible ? 'scroll-reveal--visible' : ''}`}
-      style={{ '--theme-color': category.themeColor }}
+      className={`pp-cat-card scroll-reveal ${visible ? 'scroll-reveal--visible' : ''}`}
     >
-      <div
-        className="pp-category__banner"
+      {/* ─── Card Banner ─── */}
+      <motion.div
+        className="pp-cat-card__banner"
+        whileTap={{ scale: 0.985 }}
+        onClick={() => toggleCategory(category.id)}
         role="button"
         tabIndex={0}
         aria-expanded={isExpanded}
-        onClick={() => toggleCategory(category.id)}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault()
@@ -116,70 +117,85 @@ const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory, onP
           }
         }}
       >
-        <div className="pp-category__info">
-          <h3 className="pp-category__name">{category.name}</h3>
-          <p className="pp-category__tagline">{category.tagline}</p>
-          <div className="pp-category__toggle-pill">
-            <span>{isExpanded ? 'Close' : 'View Products'}</span>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              className={`pp-category__chevron ${isExpanded ? 'open' : ''}`}
-            >
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </div>
-        </div>
-        <div className="pp-category__visual">
-          <div className="pp-category__img-wrapper">
-            <img src={category.image} className="pp-category__img" alt={category.name} loading="lazy" />
-          </div>
-        </div>
-      </div>
+        <img src={category.image} className="pp-cat-card__bg" alt="" loading="lazy" />
+        <div className="pp-cat-card__overlay" />
 
+        {/* Product count badge */}
+        <span className="pp-cat-card__badge">{category.products.length} products</span>
+
+        {/* Text content */}
+        <div className="pp-cat-card__text">
+          <h3 className="pp-cat-card__name">{category.name}</h3>
+          <p className="pp-cat-card__tagline">{category.tagline}</p>
+        </div>
+
+        {/* Toggle button */}
+        <div className="pp-cat-card__toggle">
+          <span className="pp-cat-card__toggle-label">
+            {isExpanded ? 'CLOSE' : 'VIEW PRODUCTS'}
+          </span>
+          <motion.span
+            className="pp-cat-card__toggle-icon"
+            animate={{ rotate: isExpanded ? 45 : 0, scale: isExpanded ? 1.15 : 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          >
+            {isExpanded ? '×' : '+'}
+          </motion.span>
+        </div>
+
+        {/* Teal accent bar */}
+        <motion.div
+          className="pp-cat-card__accent"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isExpanded ? 1 : 0 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          style={{ transformOrigin: 'left' }}
+        />
+      </motion.div>
+
+      {/* ─── Expanded Products Panel ─── */}
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            initial={{ height: 0 }}
-            animate={{ height: 'auto' }}
-            exit={{ height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            style={{ overflow: 'hidden' }}
-            className="pp-products-dropdown"
+            className="pp-cat-card__panel"
+            initial={{ height: 0, opacity: 0, scaleY: 0.96 }}
+            animate={{ height: 'auto', opacity: 1, scaleY: 1 }}
+            exit={{ height: 0, opacity: 0, scaleY: 0.96 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            style={{ overflow: 'hidden', transformOrigin: 'top' }}
           >
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="pp-products-dropdown-inner"
+              className="pp-cat-card__panel-inner"
+              initial={{ y: -8 }}
+              animate={{ y: 0 }}
+              exit={{ y: -8 }}
+              transition={{ duration: 0.35 }}
             >
-              <div className="pp-category__count-header">
-                {category.products.length} PRODUCTS
-              </div>
               <div className="pp-product-grid">
                 {category.products.map((product, idx) => (
                   <motion.article
                     key={product.id}
                     className="pp-product-card"
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -6 }}
-                    transition={{ duration: 0.25, delay: idx * 0.05 }}
-                    onClick={() => onProductClick(product)}
+                    initial={{ opacity: 0, scale: 0.92, y: 18 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    whileHover={{ y: -6, boxShadow: '0 12px 32px rgba(0,0,0,0.12)' }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ duration: 0.3, delay: idx * 0.07 }}
+                    onClick={(e) => { e.stopPropagation(); onProductClick(product) }}
                     style={{ cursor: 'pointer' }}
                   >
                     <div className="pp-product-card__media">
-                      <img src={product.img} alt={product.name} loading="lazy" />
+                      <motion.img
+                        src={product.img}
+                        alt={product.name}
+                        loading="lazy"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.4 }}
+                      />
                     </div>
                     <div className="pp-product-card__content">
                       <h4 className="pp-product-card__title">{product.name}</h4>
-                      <span className="pp-product-card__form-size">{product.formSize.replace(' · ', ' - ')}</span>
+                      <span className="pp-product-card__form-size">{product.formSize.replace(' · ', ' · ')}</span>
                     </div>
                   </motion.article>
                 ))}
@@ -188,10 +204,10 @@ const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory, onP
           </motion.div>
         )}
       </AnimatePresence>
-
     </div>
   )
 }
+
 
 const ProductsPage = () => {
   const location = useLocation()
@@ -417,9 +433,9 @@ const ProductsPage = () => {
           <h2 className="section-title">Browse Products by Category</h2>
         </div>
 
-        <div className="pp-categories-accordion">
+        <div className="pp-categories-grid">
           {categoriesData.map((category) => (
-            <CategoryAccordionItem
+            <CategoryCard
               key={category.id}
               category={category}
               expandedCategory={expandedCategory}
