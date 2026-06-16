@@ -133,6 +133,14 @@ const Navbar = () => {
     }
   }
 
+  // Scroll to an element with offset for the fixed navbar
+  const scrollToElementWithOffset = (elementId, offset = 120) => {
+    const el = document.getElementById(elementId)
+    if (!el) return
+    const top = el.getBoundingClientRect().top + window.scrollY - offset
+    window.scrollTo({ top, behavior: 'smooth' })
+  }
+
   // Navigate to home page section safely with BrowserRouter
   const scrollToSection = (sectionId) => {
     const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
@@ -141,27 +149,31 @@ const Navbar = () => {
     if (!isHome) {
       navigate('/')
       setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+        scrollToElementWithOffset(sectionId)
       }, 300)
     } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+      scrollToElementWithOffset(sectionId)
     }
     setMobileOpen(false)
     setActiveDropdown(null)
   }
 
-  // Navigate to About page section safely with HashRouter and location state
+  // Navigate to About page section safely with BrowserRouter and location state
   const scrollToAboutSection = (sectionId) => {
-    const isAbout = window.location.hash.includes('/about')
+    const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+    const currentPath = window.location.pathname.replace(/\/$/, '')
+    const isAbout = currentPath === `${basePath}/about` || currentPath.endsWith('/about')
     if (isAbout) {
       if (sectionId) {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+        scrollToElementWithOffset(sectionId)
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     } else {
       navigate('/about', { state: { scrollTo: sectionId } })
     }
+    setMobileOpen(false)
+    setActiveDropdown(null)
   }
 
   // Navigate to Products page section safely with HashRouter and location state

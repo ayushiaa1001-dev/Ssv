@@ -207,6 +207,7 @@
   padding: 50px 0;
   position: relative;
   z-index: 3;
+  scroll-margin-top: 120px;
 }
 
 .ap-section-header {

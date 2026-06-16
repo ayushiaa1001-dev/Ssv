@@ -28,7 +28,11 @@ const AboutPage = () => {
       
       // Delay slightly to ensure elements are rendered
       setTimeout(() => {
-        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
+        const el = document.getElementById(targetId)
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 120
+          window.scrollTo({ top, behavior: 'smooth' })
+        }
       }, 100)
     } else {
       window.scrollTo(0, 0)
