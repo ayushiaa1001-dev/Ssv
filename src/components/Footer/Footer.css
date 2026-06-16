@@ -149,6 +149,14 @@
   color: var(--color-accent);
 }
 
+.footer__contact-item--static {
+  cursor: default;
+}
+
+.footer__contact-item--static:hover span {
+  text-decoration: none;
+}
+
 /* Bottom */
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
