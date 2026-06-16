@@ -291,7 +291,7 @@ const CareersPage = () => {
       {/* ── Openings Section ── */}
       <section className={`cp-section cp-openings scroll-reveal ${openingsVisible ? 'scroll-reveal--visible' : ''}`} id="openings-section" ref={openingsRef}>
         <div className="container">
-          <div className="cp-section-header cp-openings-header">
+          <div className="cp-section-header cp-openings-header" id="openings-header">
             <span className="section-label">OPPORTUNITIES</span>
             <h2 className="section-title">Current Openings</h2>
           </div>
@@ -340,7 +340,7 @@ const CareersPage = () => {
                 disabled={currentPage === 1}
                 onClick={() => {
                   setCurrentPage(p => p - 1)
-                  const el = document.getElementById('openings-section')
+                  const el = document.getElementById('openings-header')
                   if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
                 }}
                 aria-label="Previous page"
@@ -354,7 +354,7 @@ const CareersPage = () => {
                   className={`cp-pagination__btn ${currentPage === page ? 'cp-pagination__btn--active' : ''}`}
                   onClick={() => {
                     setCurrentPage(page)
-                    const el = document.getElementById('openings-section')
+                    const el = document.getElementById('openings-header')
                   if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
                   }}
                 >
@@ -367,7 +367,7 @@ const CareersPage = () => {
                 disabled={currentPage === Math.ceil(OPENINGS.length / JOBS_PER_PAGE)}
                 onClick={() => {
                   setCurrentPage(p => p + 1)
-                  const el = document.getElementById('openings-section')
+                  const el = document.getElementById('openings-header')
                   if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
                 }}
                 aria-label="Next page"
