@@ -8,6 +8,14 @@ import './ProductsPage.css'
 
 const categoriesData = [
   {
+    id: 'all-products',
+    name: 'All Products',
+    tagline: 'Browse our complete pharmaceutical portfolio',
+    themeColor: '#1b4f72',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&auto=format&fit=crop&q=80',
+    products: []
+  },
+  {
     id: 'cough-cold',
     name: 'Cough & Anti Cold Range',
     tagline: 'Fast-acting relief for cough, cold & congestion',
@@ -78,6 +86,11 @@ const categoriesData = [
     ]
   }
 ]
+
+// Populate "All Products" with every product from all other categories
+categoriesData[0].products = categoriesData.slice(1).flatMap(cat =>
+  cat.products.map(p => ({ ...p, category: cat.name }))
+)
 
 const CategoryAccordionItem = ({ category, expandedCategory, toggleCategory, onProductClick }) => {
   const [ref, visible] = useIntersectionObserver({ threshold: 0.15 })

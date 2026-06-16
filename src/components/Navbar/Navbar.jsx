@@ -241,7 +241,7 @@ const Navbar = () => {
             {activeDropdown === 'products' && (
               <ul className="navbar__dropdown">
                 <li>
-                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection(null); }}>
+                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('all-products'); }}>
                     All Products
                   </Link>
                 </li>
