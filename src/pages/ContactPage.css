@@ -128,9 +128,10 @@
 }
 
 .ct-layout {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
   gap: 32px;
+  align-items: start;
 }
 
 /* ── Form Card ── */
@@ -256,9 +257,9 @@
 
 /* ── Contact Info Cards ── */
 .ct-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .ct-info__card {
@@ -315,9 +316,15 @@
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
+  .ct-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
   .ct-info {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 12px;
   }
 }
 
