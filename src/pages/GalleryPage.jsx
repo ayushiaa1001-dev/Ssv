@@ -103,11 +103,6 @@ const GalleryPage = () => {
             <p className="gal-hero__sub">A visual journey through our workplace, team celebrations, and everyday life at SSV.</p>
           </div>
         </div>
-        <div className="gal-hero__scroll">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </div>
       </section>
 
       {/* ── Filter Tabs ── */}
