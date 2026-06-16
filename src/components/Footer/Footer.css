@@ -171,13 +171,10 @@
   gap: 24px;
 }
 
-.footer__bottom-links a {
+.footer__bottom-links .footer__bottom-link {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.35);
-}
-
-.footer__bottom-links a:hover {
-  color: var(--color-white);
+  cursor: default;
 }
 
 @media (max-width: 1024px) {

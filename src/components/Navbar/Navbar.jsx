@@ -133,9 +133,11 @@ const Navbar = () => {
     }
   }
 
-  // Navigate to home page section safely with HashRouter
+  // Navigate to home page section safely with BrowserRouter
   const scrollToSection = (sectionId) => {
-    const isHome = window.location.hash === '#/' || window.location.hash === '' || window.location.hash === '#'
+    const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+    const currentPath = window.location.pathname.replace(/\/$/, '')
+    const isHome = currentPath === basePath || currentPath === '' || currentPath === '/'
     if (!isHome) {
       navigate('/')
       setTimeout(() => {
@@ -197,7 +199,7 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <ul className="navbar__menu" id="nav-menu">
           <li className="navbar__item">
-            <button className={`navbar__link navbar__link--btn ${activePath === '/' ? 'navbar__link--active' : ''}`} onClick={() => scrollToSection('hero')}>Home</button>
+            <Link to="/" className={`navbar__link ${activePath === '/' ? 'navbar__link--active' : ''}`}>Home</Link>
           </li>
           <li className="navbar__item navbar__item--dropdown"
               onMouseEnter={() => setActiveDropdown('about')}
