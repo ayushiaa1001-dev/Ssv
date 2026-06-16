@@ -161,13 +161,13 @@
 
 /* ── Sections ── */
 .cp-section {
-  padding: 70px 0;
+  padding: 40px 0;
   position: relative;
   z-index: 3;
 }
 
 .cp-section-header {
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 /* ── Culture Section ── */
@@ -178,8 +178,8 @@
 .cp-culture__layout {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 60px;
-  margin-bottom: 60px;
+  gap: 36px;
+  margin-bottom: 36px;
 }
 
 .cp-culture__header .section-label {
@@ -369,7 +369,7 @@
 .cp-contact-card {
   background-color: var(--primary);
   border-radius: var(--radius-lg);
-  padding: 80px 40px;
+  padding: 50px 40px;
   text-align: center;
   color: #ffffff;
   max-width: 900px;
