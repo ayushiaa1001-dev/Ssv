@@ -110,15 +110,7 @@
   max-width: 650px;
 }
 
-.gal-hero__scroll {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.6);
-  animation: float 2s ease infinite;
-  z-index: 2;
-}
+
 
 /* ── Filter Pills ── */
 .gal-filters {

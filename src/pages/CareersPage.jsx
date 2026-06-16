@@ -119,7 +119,8 @@ const CareersPage = () => {
       const targetId = scrollToTarget
       window.history.replaceState({}, document.title)
       setTimeout(() => {
-        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
+        const el = document.getElementById(targetId)
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' })
       }, 100)
     } else {
       window.scrollTo(0, 0)
@@ -204,13 +205,15 @@ const CareersPage = () => {
             <div className="cp-hero__buttons">
               <a href="#openings-section" onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('openings-section')?.scrollIntoView({ behavior: 'smooth' })
+                const el = document.getElementById('openings-section')
+                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' })
               }} className="btn btn-primary cp-btn-filled">
                 View Openings
               </a>
               <a href="#contact-section" onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })
+                const el = document.getElementById('contact-section')
+                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' })
               }} className="btn btn-outline cp-btn-outline">
                 Send Your CV
               </a>

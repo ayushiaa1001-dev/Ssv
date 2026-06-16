@@ -4,20 +4,25 @@ import './Footer.css'
 const Footer = () => {
   const navigate = useNavigate()
 
+  const scrollToEl = (id) => {
+    const el = document.getElementById(id)
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' })
+  }
+
   const handleScrollTo = (e, sectionId) => {
     e.preventDefault()
     if (sectionId === 'contact') {
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+      scrollToEl('contact')
       return
     }
     const isHome = window.location.hash === '#/' || window.location.hash === '' || window.location.hash === '#'
     if (!isHome) {
       navigate('/')
       setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+        scrollToEl(sectionId)
       }, 300)
     } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+      scrollToEl(sectionId)
     }
   }
 

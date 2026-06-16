@@ -229,46 +229,7 @@
   color: var(--muted-foreground);
 }
 
-/* ── Life in Photos — Asymmetric Masonry ── */
-.cul-photos__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 200px 200px;
-  gap: 12px;
-}
 
-.cul-photos__item {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.cul-photos__item--visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.cul-photos__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.cul-photos__item:hover img {
-  transform: scale(1.06);
-}
-
-/* Asymmetric layout — item 1 spans 2 rows, item 4 spans 2 cols */
-.cul-photos__item--1 {
-  grid-row: span 2;
-}
-
-.cul-photos__item--4 {
-  grid-column: span 2;
-}
 
 /* ── Annual Events ── */
 .cul-events__grid {
@@ -425,18 +386,7 @@
     padding: 24px 20px;
   }
 
-  .cul-photos__grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 180px 180px 180px;
-  }
 
-  .cul-photos__item--1 {
-    grid-row: span 1;
-  }
-
-  .cul-photos__item--4 {
-    grid-column: span 1;
-  }
 
   .cul-cta__inner {
     flex-direction: column;
@@ -454,14 +404,7 @@
     grid-template-columns: 1fr;
   }
 
-  .cul-photos__grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
 
-  .cul-photos__item {
-    height: 220px;
-  }
 }
 
 @media (max-width: 480px) {
