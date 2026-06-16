@@ -77,7 +77,6 @@ const EVENTS = [
   }
 ]
 
-
 /* ── Icon Components ── */
 const PillarIcon = ({ type, color }) => {
   const icons = {
@@ -188,7 +187,6 @@ const CulturePage = () => {
           </div>
         </div>
       </section>
-
 
       {/* ── Annual Events ── */}
       <section

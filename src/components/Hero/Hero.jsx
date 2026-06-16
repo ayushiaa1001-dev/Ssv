@@ -19,7 +19,6 @@ const Hero = () => {
     return () => clearTimeout(timer)
   }, [])
 
-
   return (
     <section className="hero" id="hero">
       <div className="hero__bg">

@@ -196,7 +196,7 @@ const CategoryCard = ({ category, expandedCategory, toggleCategory, onProductCli
                     </div>
                     <div className="pp-product-card__content">
                       <h4 className="pp-product-card__title">{product.name}</h4>
-                      <span className="pp-product-card__form-size">{product.formSize.replace(' · ', ' · ')}</span>
+                      <span className="pp-product-card__form-size">{product.formSize}</span>
                     </div>
                   </motion.article>
                 ))}
@@ -208,7 +208,6 @@ const CategoryCard = ({ category, expandedCategory, toggleCategory, onProductCli
     </div>
   )
 }
-
 
 const ProductsPage = () => {
   const location = useLocation()
