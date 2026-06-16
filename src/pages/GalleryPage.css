@@ -122,7 +122,7 @@
 
 /* ── Filter Pills ── */
 .gal-filters {
-  padding: 28px 0 8px;
+  padding: 20px 0 6px;
   background: var(--background);
   position: relative;
   z-index: 3;
@@ -133,7 +133,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .gal-filter-pill {
@@ -143,7 +143,7 @@
   font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 600;
-  padding: 10px 24px;
+  padding: 8px 20px;
   border-radius: var(--radius-full);
   background: var(--muted);
   color: var(--foreground);
@@ -167,13 +167,13 @@
 
 /* ── Photo Grid ── */
 .gal-grid-section {
-  padding: 20px 0 40px;
+  padding: 14px 0 28px;
 }
 
 .gal-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 14px;
 }
 
 .gal-card {
@@ -209,7 +209,7 @@
   background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.55) 100%);
   display: flex;
   align-items: flex-end;
-  padding: 16px;
+  padding: 12px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -233,7 +233,7 @@
 /* ── Load More ── */
 .gal-load-more {
   text-align: center;
-  margin-top: 48px;
+  margin-top: 32px;
 }
 
 .gal-load-more__btn {
@@ -244,7 +244,7 @@
   font-family: var(--font-body);
   font-size: 0.92rem;
   font-weight: 600;
-  padding: 14px 42px;
+  padding: 12px 36px;
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
@@ -258,13 +258,13 @@
 
 /* ── CTA ── */
 .gal-cta {
-  padding: 20px 0 40px;
+  padding: 10px 0 28px;
 }
 
 .gal-cta__card {
   background: var(--muted);
   border-radius: var(--radius-lg);
-  padding: 48px 40px;
+  padding: 36px 32px;
   text-align: center;
 }
 
@@ -273,17 +273,17 @@
   font-size: clamp(1.4rem, 3vw, 1.8rem);
   font-weight: 700;
   color: var(--foreground);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .gal-cta__sub {
   font-size: 1rem;
   color: var(--muted-foreground);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .gal-cta__btn {
-  padding: 14px 36px;
+  padding: 12px 32px;
 }
 
 /* ── Lightbox Modal ── */
@@ -359,7 +359,7 @@
 @media (max-width: 1024px) {
   .gal-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 12px;
   }
 }
 
@@ -370,11 +370,11 @@
   }
 
   .gal-grid-section {
-    padding: 16px 0 36px;
+    padding: 12px 0 24px;
   }
 
   .gal-cta__card {
-    padding: 40px 24px;
+    padding: 32px 20px;
   }
 }
 
@@ -388,7 +388,7 @@
 
   .gal-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 10px;
   }
 
   .gal-filter-pill {
@@ -401,10 +401,10 @@
   }
 
   .gal-cta {
-    padding: 16px 0 36px;
+    padding: 8px 0 24px;
   }
 
   .gal-cta__card {
-    padding: 36px 20px;
+    padding: 28px 16px;
   }
 }
