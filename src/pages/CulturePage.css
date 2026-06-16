@@ -346,10 +346,9 @@
   color: var(--muted-foreground);
 }
 
-/* ── Join Us CTA Strip ── */
 .cul-cta {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  padding: 60px 0;
+  padding: 40px 0;
   color: #ffffff;
 }
 
@@ -496,6 +495,6 @@
   }
 
   .cul-cta {
-    padding: 48px 0;
+    padding: 36px 0;
   }
 }
