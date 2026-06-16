@@ -154,6 +154,7 @@ const AboutPage = () => {
                 src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=800&h=600&fit=crop&auto=format" 
                 alt="SSV medical professionals" 
                 className="ap-who__img"
+                loading="lazy"
               />
               <div className="ap-who__badge">
                 <span className="ap-who__badge-text">ISO 9001 Certified</span>
@@ -224,6 +225,7 @@ const AboutPage = () => {
                   src="https://images.unsplash.com/photo-1581093577421-f561a654a353?w=800&h=600&fit=crop&auto=format" 
                   alt="Laboratory work" 
                   className="ap-journey__img"
+                  loading="lazy"
                 />
                 <div className="ap-journey__badge">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ap-badge-icon">
@@ -315,6 +317,7 @@ const AboutPage = () => {
                 src="https://images.unsplash.com/photo-1579165466991-467135ad3110?w=800&h=600&fit=crop&auto=format" 
                 alt="Quality control laboratory" 
                 className="ap-standards__img"
+                loading="lazy"
               />
               <div className="ap-standards__badge">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="ap-badge-icon">

@@ -281,11 +281,16 @@
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: rgba(0, 0, 0, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
   animation: galLbFadeIn 0.3s ease;
+}
+
+.gal-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
 }
 
 @keyframes galLbFadeIn {
@@ -319,6 +324,7 @@
   max-width: 85vw;
   max-height: 85vh;
   position: relative;
+  z-index: 1;
 }
 
 .gal-lightbox__body img {

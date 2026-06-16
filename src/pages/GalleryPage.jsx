@@ -171,7 +171,8 @@ const GalleryPage = () => {
 
       {/* ── Lightbox Modal ── */}
       {lightbox && (
-        <div className="gal-lightbox" onClick={() => setLightbox(null)}>
+        <div className="gal-lightbox" role="dialog" aria-modal="true" aria-label={lightbox.title}>
+          <div className="gal-lightbox__backdrop" onClick={() => setLightbox(null)} aria-hidden="true" />
           <button ref={lightboxCloseRef} className="gal-lightbox__close" onClick={() => setLightbox(null)} aria-label="Close lightbox">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
