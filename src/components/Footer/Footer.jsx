@@ -53,8 +53,8 @@ const Footer = () => {
               <li><a href="#hero" onClick={(e) => handleScrollTo(e, 'hero')}>Home</a></li>
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/products">Products</Link></li>
-              <li><Link to="/careers">Careers</Link></li>
               <li><Link to="/events/culture">Events</Link></li>
+              <li><Link to="/careers">Careers</Link></li>
             </ul>
           </div>
 
