@@ -10,7 +10,7 @@
 /* ── Hero Banner ── */
 .cul-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -155,7 +155,7 @@
 }
 
 .cul-section {
-  padding: 40px 0;
+  padding: 32px 0;
   position: relative;
   z-index: 3;
   scroll-margin-top: 120px;
@@ -167,7 +167,7 @@
 
 .cul-section__header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .cul-section__header .section-label {
@@ -182,14 +182,14 @@
 .cul-pillars__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 20px;
 }
 
 .cul-pillar-card {
   background: var(--background);
   border: 1px solid rgba(27, 79, 114, 0.08);
   border-radius: var(--radius-lg);
-  padding: 40px 36px;
+  padding: 28px 24px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.7s ease, transform 0.7s ease;
   opacity: 0;
   transform: translateY(30px);
@@ -206,26 +206,26 @@
 }
 
 .cul-pillar-card__icon {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .cul-pillar-card__title {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--foreground);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .cul-pillar-card__desc {
-  font-size: 0.92rem;
-  line-height: 1.75;
+  font-size: 0.88rem;
+  line-height: 1.6;
   color: var(--muted-foreground);
 }
 
@@ -233,8 +233,8 @@
 .cul-photos__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 240px 240px;
-  gap: 16px;
+  grid-template-rows: 200px 200px;
+  gap: 12px;
 }
 
 .cul-photos__item {
@@ -274,7 +274,7 @@
 .cul-events__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 18px;
 }
 
 .cul-event-card {
@@ -299,7 +299,7 @@
 
 .cul-event-card__img {
   position: relative;
-  height: 180px;
+  height: 150px;
   overflow: hidden;
 }
 
@@ -329,7 +329,7 @@
 }
 
 .cul-event-card__body {
-  padding: 24px;
+  padding: 18px;
 }
 
 .cul-event-card__title {
@@ -348,7 +348,7 @@
 
 .cul-cta {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  padding: 40px 0;
+  padding: 32px 0;
   color: #ffffff;
 }
 
@@ -356,7 +356,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 28px;
 }
 
 .cul-cta__title {
@@ -380,7 +380,7 @@
   color: var(--primary);
   border-color: #ffffff;
   font-weight: 700;
-  padding: 16px 40px;
+  padding: 14px 32px;
   border-radius: var(--radius-full);
 }
 
@@ -409,11 +409,11 @@
   }
 
   .cul-section {
-    padding: 40px 0;
+    padding: 28px 0;
   }
 
   .cul-section__header {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
   }
 
   .cul-pillars__grid {
@@ -422,12 +422,12 @@
   }
 
   .cul-pillar-card {
-    padding: 32px 28px;
+    padding: 24px 20px;
   }
 
   .cul-photos__grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 200px 200px 200px;
+    grid-template-rows: 180px 180px 180px;
   }
 
   .cul-photos__item--1 {
@@ -441,7 +441,7 @@
   .cul-cta__inner {
     flex-direction: column;
     text-align: center;
-    gap: 24px;
+    gap: 18px;
   }
 
   .cul-cta__sub {
@@ -473,11 +473,11 @@
   }
 
   .cul-section {
-    padding: 36px 0;
+    padding: 24px 0;
   }
 
   .cul-pillar-card {
-    padding: 24px 20px;
+    padding: 20px 16px;
   }
 
   .cul-pillar-card__icon {
@@ -495,6 +495,6 @@
   }
 
   .cul-cta {
-    padding: 36px 0;
+    padding: 28px 0;
   }
 }
