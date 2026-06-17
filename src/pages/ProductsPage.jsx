@@ -340,6 +340,7 @@ const ProductsPage = () => {
   const location = useLocation();
   const imgContainerRef = useRef(null);
   const dragStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
+  const [headerRef, headerVisible] = useIntersectionObserver({ threshold: 0.15 });
 
   useDocumentTitle("Products - SSV Pharmaceuticals");
 
@@ -679,6 +680,7 @@ const ProductsPage = () => {
               key={category.id}
               category={category}
               isExpanded={expandedCategory === category.id}
+              isClosing={closingCategory === category.id}
               onToggle={toggleCategory}
               onProductClick={openProductModal}
             />
