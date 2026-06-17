@@ -5,31 +5,31 @@ import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 /* ── Upcoming / Coming Soon Products ── */
 const upcomingProducts = [
   {
-    id: "neurozen",
-    name: "NeuroZen SR",
-    category: "Neuro Care",
-    formSize: "Tablets · 10×10",
-    desc: "Sustained-release formula for neuropathic pain management and nerve health support.",
-    img: "https://images.unsplash.com/photo-1559757175-7cb057fba93c?w=400&auto=format&fit=crop&q=80",
-    expectedDate: "Q3 2025",
-  },
-  {
-    id: "dermassv",
-    name: "DermaSSV Cream",
+    id: "dermacare",
+    name: "DermaCare Range",
     category: "Derma Care",
-    formSize: "Topical · 30g",
-    desc: "Advanced topical cream for eczema, psoriasis, and inflammatory skin conditions.",
+    formSize: "Topical",
+    desc: "Advanced topical formulations for eczema, psoriasis, and inflammatory skin conditions.",
     img: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&auto=format&fit=crop&q=80",
-    expectedDate: "Q3 2025",
+    expectedDate: "Launching Q2 2025",
   },
   {
-    id: "cardioguard",
-    name: "CardioGuard",
+    id: "neuroplex",
+    name: "NeuroPlex Series",
+    category: "Neuro Care",
+    formSize: "Capsules & Syrup",
+    desc: "Sustained-release capsules and syrup for neuropathic pain management and nerve health.",
+    img: "https://images.unsplash.com/photo-1559757175-7cb057fba93c?w=400&auto=format&fit=crop&q=80",
+    expectedDate: "Launching Q3 2025",
+  },
+  {
+    id: "cardioshield",
+    name: "CardioShield Pro",
     category: "Cardio Care",
-    formSize: "Capsules · 3×10",
-    desc: "Heart-health capsules with CoQ10 and Omega-3 for cardiovascular protection.",
+    formSize: "Tablets",
+    desc: "Heart-health tablets with CoQ10 and Omega-3 for comprehensive cardiovascular protection.",
     img: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=400&auto=format&fit=crop&q=80",
-    expectedDate: "Q4 2025",
+    expectedDate: "Launching Q4 2025",
   },
 ];
 
@@ -156,7 +156,7 @@ const ComingSoonCard = () => {
                       </span>
                       <p className="pp-product-card__desc">{product.desc}</p>
                       <span className="pp-product-card__expected">
-                        Expected {product.expectedDate}
+                        {product.expectedDate}
                       </span>
                     </div>
                   </motion.article>

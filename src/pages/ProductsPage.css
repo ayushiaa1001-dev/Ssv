@@ -750,15 +750,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 18px;
+  background: rgba(160, 230, 220, 0.18);
+  border: 1px solid rgba(160, 230, 220, 0.35);
   border-radius: 999px;
-  color: #a8f0c6;
-  font-size: 0.8rem;
+  color: #a0f0e0;
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   white-space: nowrap;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
@@ -771,14 +770,14 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #4ade80;
+  background: #5ce0d0;
   animation: ppCsDotPulse 2s ease-in-out infinite;
   flex-shrink: 0;
 }
 
 @keyframes ppCsDotPulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
-  50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(92, 224, 208, 0.5); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(92, 224, 208, 0); }
 }
 
 /* ── Title & Subtitle ── */
@@ -818,12 +817,12 @@
 .pp-coming-soon__count {
   display: inline-flex;
   align-items: center;
-  padding: 6px 16px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   color: #fff;
   font-size: 0.85rem;
   font-weight: 600;
