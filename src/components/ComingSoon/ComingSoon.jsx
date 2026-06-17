@@ -9,8 +9,8 @@ const upcomingProducts = [
     name: "DermaCare Range",
     category: "Derma Care",
     formSize: "Topical",
-    desc: "Advanced topical formulations for eczema, psoriasis, and inflammatory skin conditions.",
-    img: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&auto=format&fit=crop&q=80",
+    desc: "A comprehensive dermatology line targeting eczema, psoriasis, and chronic skin conditions — formulated with next-generation corticosteroid-free actives.",
+    img: "/ssv/images/dermacare_premium.png",
     expectedDate: "Launching Q2 2025",
   },
   {
@@ -18,8 +18,8 @@ const upcomingProducts = [
     name: "NeuroPlex Series",
     category: "Neuro Care",
     formSize: "Capsules & Syrup",
-    desc: "Sustained-release capsules and syrup for neuropathic pain management and nerve health.",
-    img: "https://images.unsplash.com/photo-1559757175-7cb057fba93c?w=400&auto=format&fit=crop&q=80",
+    desc: "Neuroprotective and cognitive health supplements backed by clinical research, targeting memory, focus, and nerve regeneration.",
+    img: "/ssv/images/neuroplex_premium.png",
     expectedDate: "Launching Q3 2025",
   },
   {
@@ -27,8 +27,8 @@ const upcomingProducts = [
     name: "CardioShield Pro",
     category: "Cardio Care",
     formSize: "Tablets",
-    desc: "Heart-health tablets with CoQ10 and Omega-3 for comprehensive cardiovascular protection.",
-    img: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=400&auto=format&fit=crop&q=80",
+    desc: "A cardioprotective range combining statins, antihypertensives, and omega-3 combinations for comprehensive cardiovascular disease management.",
+    img: "/ssv/images/cardioshield_premium.png",
     expectedDate: "Launching Q4 2025",
   },
 ];
@@ -40,7 +40,7 @@ const ComingSoonCard = () => {
   return (
     <div
       ref={ref}
-      className={`pp-coming-soon scroll-reveal ${visible ? "scroll-reveal--visible" : ""}`}
+      className={`pp-coming-soon scroll-reveal ${visible ? "scroll-reveal--visible" : ""} ${csOpen ? "is-expanded" : ""}`}
     >
       <motion.div
         className="pp-coming-soon__banner"
@@ -123,7 +123,12 @@ const ComingSoonCard = () => {
               exit={{ y: -8 }}
               transition={{ duration: 0.35 }}
             >
-              <div className="pp-product-grid">
+              
+              <div className="pp-coming-soon__header">
+                SNEAK PREVIEW — CONCEPT IMAGES
+              </div>
+
+              <div className="pp-product-grid pp-coming-soon__grid">
                 {upcomingProducts.map((product, idx) => (
                   <motion.article
                     key={product.id}
@@ -131,10 +136,9 @@ const ComingSoonCard = () => {
                     initial={{ opacity: 0, scale: 0.92, y: 18 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     whileHover={{
-                      y: -6,
-                      boxShadow: "0 12px 32px rgba(0,0,0,0.12)",
+                      y: -8,
+                      boxShadow: "0 24px 48px rgba(0,0,0,0.4)",
                     }}
-                    whileTap={{ scale: 0.97 }}
                     transition={{ duration: 0.3, delay: idx * 0.1 }}
                   >
                     <div className="pp-product-card__media">
@@ -142,25 +146,24 @@ const ComingSoonCard = () => {
                         src={product.img}
                         alt={product.name}
                         loading="lazy"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.4 }}
+                        whileHover={{ scale: 1.08 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
                       />
                     </div>
-                    <div className="pp-product-card__content">
-                      <span className="pp-product-card__upcoming-tag">
-                        {product.category}
-                      </span>
+                    <div className="pp-product-card__content pp-product-card__content--glass">
                       <h4 className="pp-product-card__title">{product.name}</h4>
-                      <span className="pp-product-card__form-size">
-                        {product.formSize}
+                      <span className="pp-product-card__expected-combined">
+                        {product.formSize} - {product.expectedDate}
                       </span>
                       <p className="pp-product-card__desc">{product.desc}</p>
-                      <span className="pp-product-card__expected">
-                        {product.expectedDate}
-                      </span>
                     </div>
                   </motion.article>
                 ))}
+              </div>
+
+              <div className="pp-coming-soon__notify">
+                <span>Want to be notified when these launch?</span>
+                <button className="btn">Notify Me</button>
               </div>
             </motion.div>
           </motion.div>

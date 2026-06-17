@@ -7,51 +7,6 @@ import CountUp from "../components/CountUp";
 import ComingSoonCard from "../components/ComingSoon/ComingSoon";
 import "./ProductsPage.css";
 
-const UPCOMING_EVENTS = [
-  {
-    id: 1,
-    date: 'JUL 18',
-    title: 'SSV Leadership Summit 2026',
-    venue: 'Taj Vivanta, New Delhi',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 2,
-    date: 'AUG 05',
-    title: 'Annual Health & Wellness Expo',
-    venue: 'SSV Campus, Ahmedabad',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 3,
-    date: 'SEP 12',
-    title: 'Innovation & R&D Showcase',
-    venue: 'World Trade Centre, Mumbai',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 4,
-    date: 'OCT 22',
-    title: 'Annual Gala Night 2026',
-    venue: 'ITC Grand Bharat, Gurugram',
-    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=700&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 5,
-    date: 'NOV 08',
-    title: 'Pan-India Sales Conference',
-    venue: 'Leela Palace, Bengaluru',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=700&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 6,
-    date: 'DEC 15',
-    title: 'Year-End Celebration & Awards',
-    venue: 'SSV Headquarters, Ahmedabad',
-    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&auto=format&fit=crop&q=80'
-  }
-];
-
 const categoriesData = [
   {
     id: "cough-cold",
@@ -441,18 +396,11 @@ const ProductsPage = () => {
   const [headerRef, headerVisible] = useIntersectionObserver({
     threshold: 0.15,
   });
-  const [upcomingRef, upcomingVisible] = useIntersectionObserver();
   useDocumentTitle("Products");
 
   // Product modal state
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Booking modal state
-  const [bookingEvent, setBookingEvent] = useState(null);
-  const [bookingForm, setBookingForm] = useState({ name: '', email: '', quantity: '1' });
-  const [bookingToast, setBookingToast] = useState(null);
-  const bookingToastTimer = useRef(null);
-  const bookingModalCloseRef = useRef(null);
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -489,39 +437,6 @@ const ProductsPage = () => {
     };
   }, [selectedProduct, closeProductModal]);
 
-  // Lock scroll & focus when booking modal is open
-  useEffect(() => {
-    if (bookingEvent) {
-      document.body.style.overflow = "hidden";
-      setTimeout(() => bookingModalCloseRef.current?.focus(), 50);
-    } else if (!selectedProduct) {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      if (!selectedProduct) document.body.style.overflow = "";
-    };
-  }, [bookingEvent, selectedProduct]);
-
-  // Close booking modal on Escape
-  useEffect(() => {
-    if (!bookingEvent) return;
-    const onKey = (e) => { if (e.key === "Escape") setBookingEvent(null); };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [bookingEvent]);
-
-  const openBooking = (event) => {
-    setBookingForm({ name: '', email: '', quantity: '1' });
-    setBookingEvent(event);
-  };
-
-  const handleBookingSubmit = (e) => {
-    e.preventDefault();
-    setBookingEvent(null);
-    if (bookingToastTimer.current) clearTimeout(bookingToastTimer.current);
-    setBookingToast({ message: 'Booking confirmed! Check your email for details.' });
-    bookingToastTimer.current = setTimeout(() => setBookingToast(null), 4000);
-  };
 
   // Double-click to toggle zoom
   const handleImgDoubleClick = (e) => {
@@ -782,136 +697,6 @@ const ProductsPage = () => {
         <ComingSoonCard />
       </section>
 
-      {/* ── Upcoming Events ── */}
-      <section
-        className={`pp-upcoming scroll-reveal ${upcomingVisible ? 'scroll-reveal--visible' : ''}`}
-        ref={upcomingRef}
-        id="upcoming-events"
-      >
-        <div className="container">
-          <div className="pp-upcoming__header">
-            <span className="pp-upcoming__eyebrow">Mark Your Calendar</span>
-            <h2 className="pp-upcoming__title">UPCOMING EVENTS</h2>
-            <p className="pp-upcoming__sub">Don&apos;t miss our company events. Reserve your spot today.</p>
-          </div>
-          <div className="pp-upcoming__grid">
-            {UPCOMING_EVENTS.map((event, i) => (
-              <div
-                className={`pp-uev-card ${upcomingVisible ? 'pp-uev-card--visible' : ''}`}
-                key={event.id}
-                style={{ transitionDelay: upcomingVisible ? `${0.1 + i * 0.08}s` : '0s' }}
-              >
-                <div className="pp-uev-card__img">
-                  <img src={event.image} alt={event.title} loading="lazy" />
-                  <span className="pp-uev-card__date">{event.date}</span>
-                </div>
-                <div className="pp-uev-card__body">
-                  <h3 className="pp-uev-card__title">{event.title}</h3>
-                  <p className="pp-uev-card__venue">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    {event.venue}
-                  </p>
-                  <button
-                    className="pp-uev-card__btn"
-                    onClick={() => openBooking(event)}
-                    id={`buy-tickets-${event.id}`}
-                    aria-label={`Buy tickets for ${event.title}`}
-                  >
-                    Buy Tickets
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Booking Modal ── */}
-      {bookingEvent && (
-        <div className="pp-book-modal" role="dialog" aria-modal="true" aria-labelledby="pp-book-modal-title">
-          <div className="pp-book-modal__backdrop" onClick={() => setBookingEvent(null)} aria-hidden="true" />
-          <div className="pp-book-modal__box" onClick={e => e.stopPropagation()}>
-            <button
-              ref={bookingModalCloseRef}
-              className="pp-book-modal__close"
-              onClick={() => setBookingEvent(null)}
-              aria-label="Close booking modal"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
-            <div className="pp-book-modal__header">
-              <span className="pp-book-modal__eyebrow">Reserve Your Spot</span>
-              <h3 className="pp-book-modal__title" id="pp-book-modal-title">Book Tickets for<br />{bookingEvent.title}</h3>
-              <p className="pp-book-modal__meta">
-                <span className="pp-book-modal__badge">{bookingEvent.date}</span>
-                <span>{bookingEvent.venue}</span>
-              </p>
-            </div>
-            <form className="pp-book-modal__form" onSubmit={handleBookingSubmit}>
-              <div className="pp-book-modal__field">
-                <label htmlFor="pp-booking-name">Full Name</label>
-                <input
-                  id="pp-booking-name"
-                  type="text"
-                  placeholder="Enter your full name"
-                  value={bookingForm.name}
-                  onChange={e => setBookingForm(p => ({ ...p, name: e.target.value }))}
-                  required
-                  autoComplete="name"
-                />
-              </div>
-              <div className="pp-book-modal__field">
-                <label htmlFor="pp-booking-email">Email Address</label>
-                <input
-                  id="pp-booking-email"
-                  type="email"
-                  placeholder="Enter your email"
-                  value={bookingForm.email}
-                  onChange={e => setBookingForm(p => ({ ...p, email: e.target.value }))}
-                  required
-                  autoComplete="email"
-                />
-              </div>
-              <div className="pp-book-modal__field">
-                <label htmlFor="pp-booking-qty">Number of Tickets</label>
-                <select
-                  id="pp-booking-qty"
-                  value={bookingForm.quantity}
-                  onChange={e => setBookingForm(p => ({ ...p, quantity: e.target.value }))}
-                >
-                  {[1,2,3,4,5].map(n => (
-                    <option key={n} value={n}>{n} {n === 1 ? 'Ticket' : 'Tickets'}</option>
-                  ))}
-                </select>
-              </div>
-              <button type="submit" className="pp-book-modal__submit">Confirm Booking</button>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* ── Booking Toast ── */}
-      {bookingToast && (
-        <div className="pp-book-toast pp-book-toast--visible" role="alert" aria-live="polite">
-          <span className="pp-book-toast__icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-          </span>
-          <span className="pp-book-toast__msg">{bookingToast.message}</span>
-          <button className="pp-book-toast__close" onClick={() => setBookingToast(null)} aria-label="Dismiss">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-          </button>
-        </div>
-      )}
 
       {/* ── Product Detail Modal ── */}
       {selectedProduct && (
