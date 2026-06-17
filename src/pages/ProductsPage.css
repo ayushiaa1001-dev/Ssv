@@ -224,6 +224,10 @@
   scroll-margin-top: 120px;
 }
 
+.pp-cat-card.is-expanded {
+  grid-column: 1 / -1;
+}
+
 .pp-cat-card__banner {
   position: relative;
   border-radius: 16px;
@@ -337,15 +341,115 @@
   line-height: 1;
 }
 
-/* Teal accent bar */
-.pp-cat-card__accent {
+/* ── Category Overlay (Modal Drawer) ── */
+.pp-cat-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pp-cat-overlay__backdrop {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  inset: 0;
+  background: rgba(10, 15, 25, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  z-index: 0;
+}
+
+.pp-cat-overlay__content {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  height: 3px;
-  background: var(--accent);
-  z-index: 4;
+  max-width: 900px;
+  height: 100%;
+  background: var(--color-white);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.pp-cat-overlay__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.pp-cat-overlay__close:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+}
+
+.pp-cat-overlay__header {
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 40px;
+}
+
+.pp-cat-overlay__header-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.pp-cat-overlay__header-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+  z-index: 1;
+}
+
+.pp-cat-overlay__header-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.pp-cat-overlay__title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.pp-cat-overlay__tagline {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.pp-cat-overlay__body {
+  padding: 40px 24px;
+  background: #f8f9fa;
+  flex: 1;
+}
+
+.pp-product-card--elevated {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 /* ── Expanded Products Panel ── */
@@ -422,6 +526,16 @@
   font-weight: 700;
   line-height: 1.35;
   margin: 0;
+}
+
+.pp-product-card__type {
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .pp-product-card__form-size {
@@ -639,6 +753,17 @@
   font-weight: 700;
   color: var(--color-text-dark);
   padding: 28px 32px 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.pp-modal__type {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 32px 0;
   margin: 0;
   flex-shrink: 0;
 }

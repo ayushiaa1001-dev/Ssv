@@ -7,6 +7,8 @@ import CountUp from "../components/CountUp";
 import ComingSoonCard from "../components/ComingSoon/ComingSoon";
 import "./ProductsPage.css";
 
+const BASE = import.meta.env.BASE_URL;
+
 const categoriesData = [
   {
     id: "cough-cold",
@@ -19,35 +21,40 @@ const categoriesData = [
       {
         id: "Alnil",
         name: "Alnil",
-        formSize: "Tablets · 10x10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Effective relief from cold, cough, and nasal congestion.",
-        img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/ALNIL%201.JPG`,
       },
       {
         id: "Alnil-M",
         name: "Alnil-M",
-        formSize: "Tablets · 10×10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Fast-acting formula for fever, headache, and body aches.",
-        img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/ALNIL%201.JPG`,
       },
       {
         id: "Felocold",
         name: "Felocold",
-        formSize: "Tablets · 10x10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Effective relief from cold, cough, and nasal congestion.",
-        img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/FELOCOLD%20NF%201.JPG`,
       },
       {
         id: "Felocold Susp.",
         name: "Felocold Susp.",
-        formSize: "Syrup · 60ml",
+        type: "Syrup",
+        quantity: "60ml",
         desc: "Bronchodilator syrup for clearing chest congestion.",
-        img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/FELOCOLD%20SUSP%203.JPG`,
       },
       {
         id: "Felokof-Dx",
         name: "Felokof-Dx",
-        formSize: "Syrup · 100ml",
+        type: "Syrup",
+        quantity: "100ml",
         desc: "Effective relief from wet cough and chest congestion.",
         img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&auto=format&fit=crop&q=80",
       },
@@ -64,28 +71,32 @@ const categoriesData = [
       {
         id: "Felo",
         name: "Felo",
-        formSize: "Tablets · 10×10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Sustained-release tablets for long-lasting joint pain relief.",
-        img: "https://images.unsplash.com/photo-1631549916768-4119b255f926?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/FELO%201.JPG`,
       },
       {
         id: "Felo-MR",
         name: "Felo-MR",
-        formSize: "Tablets · 10x10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Effective relief from muscle pain and inflammation.",
-        img: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/FELO%201.JPG`,
       },
       {
         id: "Felodol",
         name: "Felodol",
-        formSize: "Tablets · 10x10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Enriched formula for rebuilding joint cartilage and flexibility.",
         img: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=400&auto=format&fit=crop&q=80",
       },
       {
         id: "Felodol-SP",
         name: "Felodol-SP",
-        formSize: "Tablets · 10×10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Effective pain relief with added anti-inflammatory benefits.",
         img: "https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&auto=format&fit=crop&q=80",
       },
@@ -102,16 +113,18 @@ const categoriesData = [
       {
         id: "Ss Cal",
         name: "Ss Cal",
-        formSize: "Tablets · 10×15",
+        type: "Tablets",
+        quantity: "10x15",
         desc: "Essential calcium supplement for bone health and strength.",
-        img: "https://images.unsplash.com/photo-1631549916768-4119b255f926?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/SS%20CAL%201.JPG`,
       },
       {
         id: "Hemopeak",
         name: "Hemopeak",
-        formSize: "Tablets · 10×10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Blood-building iron supplement for energy and vitality.",
-        img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/HEMOPEAK%201.JPG`,
       },
     ],
   },
@@ -126,16 +139,18 @@ const categoriesData = [
       {
         id: "Rabpad-DSR",
         name: "Rabpad-DSR",
-        formSize: "Tablets · 10×10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Antacid tablets for fast relief from bloating and acidity.",
-        img: "https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/RABPAD%20DSR.JPG`,
       },
       {
         id: "Rabpad-20",
         name: "Rabpad-20",
-        formSize: "Tablets · 10×10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Relieves acid reflux, heartburn, and GERD symptoms.",
-        img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/RABPAD%2020%20A.JPG`,
       },
     ],
   },
@@ -150,30 +165,34 @@ const categoriesData = [
       {
         id: "OMGOD",
         name: "OMGOD",
-        formSize: "Tablets · 10×10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Complete multivitamin with Omega-3, D3, and essential minerals.",
         img: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&auto=format&fit=crop&q=80",
       },
       {
         id: "Ver-D",
         name: "Ver-D",
-        formSize: "Tablets · 10x10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Vitamin D3 supplement for bone health and immunity support.",
-        img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/VER%20D%201.JPG`,
       },
       {
         id: "Flupact",
         name: "Flupact",
-        formSize: "Tablets · 10×10",
+        type: "Tablets",
+        quantity: "10x10",
         desc: "Multi-ingredient antipyretic with analgesic and anti-inflammatory benefits.",
-        img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/FLUPACT.JPG`,
       },
       {
         id: "Versadine",
         name: "Versadine",
-        formSize: "Ointment · 20g",
+        type: "Ointment",
+        quantity: "20g",
         desc: "Effective antiseptic ointment for wounds, burns, and skin infections.",
-        img: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=400&auto=format&fit=crop&q=80",
+        img: `${BASE}products/Versadine(20g).png`,
       },
     ],
   },
@@ -194,69 +213,54 @@ categoriesData[allIdx].products = categoriesData
   .slice(0, allIdx)
   .flatMap((cat) => cat.products.map((p) => ({ ...p, category: cat.name })));
 
-const CategoryCard = ({
-  category,
-  expandedCategory,
-  toggleCategory,
-  onProductClick,
-}) => {
+const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClick }) => {
   const [ref, visible] = useIntersectionObserver({ threshold: 0.15 });
-  const isExpanded = expandedCategory === category.id;
 
   return (
     <div
       ref={ref}
       id={category.id}
-      className={`pp-cat-card scroll-reveal ${visible ? "scroll-reveal--visible" : ""}`}
+      className={`pp-cat-card scroll-reveal ${visible ? "scroll-reveal--visible" : ""} ${isExpanded || isClosing ? "is-expanded" : ""}`}
     >
-      {/* ─── Card Banner ─── */}
-      <motion.div
+      <div
         className="pp-cat-card__banner"
-        whileTap={{ scale: 0.985 }}
-        onClick={() => toggleCategory(category.id)}
+        onClick={() => onToggle(category.id)}
         role="button"
         tabIndex={0}
-        aria-expanded={isExpanded}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            toggleCategory(category.id);
+            onToggle(category.id);
           }
         }}
       >
         <img
           src={category.image}
+          alt={category.name}
           className="pp-cat-card__bg"
-          alt=""
           loading="lazy"
         />
         <div className="pp-cat-card__overlay" />
 
-        {/* Product count badge */}
         <span className="pp-cat-card__badge">
           {category.products.length} products
         </span>
 
-        {/* Text content */}
         <div className="pp-cat-card__text">
           <h3 className="pp-cat-card__name">{category.name}</h3>
           <p className="pp-cat-card__tagline">{category.tagline}</p>
         </div>
 
-        {/* Toggle button */}
         <div className="pp-cat-card__toggle">
           <span className="pp-cat-card__toggle-label">
-            {isExpanded ? "CLOSE" : "VIEW PRODUCTS"}
+            {isExpanded ? "CLOSE" : "EXPLORE"}
           </span>
           <motion.span
             className="pp-cat-card__toggle-icon"
-            animate={{
-              rotate: isExpanded ? 45 : 0,
-              scale: isExpanded ? 1.15 : 1,
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            animate={{ rotate: isExpanded ? 45 : 0 }}
+            transition={{ duration: 0.3 }}
           >
-            {isExpanded ? "×" : "+"}
+            +
           </motion.span>
         </div>
 
@@ -268,59 +272,48 @@ const CategoryCard = ({
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{ transformOrigin: "left" }}
         />
-      </motion.div>
+      </div>
 
-      {/* ─── Expanded Products Panel ─── */}
       <AnimatePresence>
         {isExpanded && (
           <motion.div
             className="pp-cat-card__panel"
-            initial={{ height: 0, opacity: 0, scaleY: 0.96 }}
-            animate={{ height: "auto", opacity: 1, scaleY: 1 }}
-            exit={{ height: 0, opacity: 0, scaleY: 0.96 }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            style={{ overflow: "hidden", transformOrigin: "top" }}
+            style={{ overflow: "hidden" }}
           >
-            <motion.div
-              className="pp-cat-card__panel-inner"
-              initial={{ y: -8 }}
-              animate={{ y: 0 }}
-              exit={{ y: -8 }}
-              transition={{ duration: 0.35 }}
-            >
+            <div className="pp-cat-card__panel-inner container">
               <div className="pp-product-grid">
                 {category.products.map((product, idx) => (
                   <motion.article
                     key={product.id}
-                    className="pp-product-card"
-                    initial={{ opacity: 0, scale: 0.92, y: 18 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    whileHover={{
-                      y: -6,
-                      boxShadow: "0 12px 32px rgba(0,0,0,0.12)",
-                    }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ duration: 0.3, delay: idx * 0.07 }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onProductClick(product);
-                    }}
-                    style={{ cursor: "pointer" }}
+                    className="pp-product-card pp-product-card--elevated"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(0,0,0,0.12)" }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    onClick={() => onProductClick(product)}
+                    role="button"
+                    tabIndex={0}
                   >
                     <div className="pp-product-card__media">
-                      <motion.img
-                        src={product.img}
-                        alt={product.name}
-                        loading="lazy"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.4 }}
-                      />
+                      <img src={product.img} alt={product.name} loading="lazy" />
                     </div>
                     <div className="pp-product-card__content">
                       <h4 className="pp-product-card__title">{product.name}</h4>
-                      <span className="pp-product-card__form-size">
-                        {product.formSize}
-                      </span>
+                      {product.type && (
+                        <span className="pp-product-card__type">
+                          {product.type}
+                        </span>
+                      )}
+                      {product.quantity && (
+                        <span className="pp-product-card__form-size">
+                          {product.quantity}
+                        </span>
+                      )}
                       {product.desc && (
                         <p className="pp-product-card__desc">{product.desc}</p>
                       )}
@@ -328,7 +321,7 @@ const CategoryCard = ({
                   </motion.article>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -337,22 +330,18 @@ const CategoryCard = ({
 };
 
 const ProductsPage = () => {
-  const location = useLocation();
-  const [expandedCategory, setExpandedCategory] = useState(null);
   const [heroVisible, setHeroVisible] = useState(false);
-  const [headerRef, headerVisible] = useIntersectionObserver({
-    threshold: 0.15,
-  });
-  useDocumentTitle("Products");
-
-  // Product modal state
+  const [expandedCategory, setExpandedCategory] = useState(null);
+  const [closingCategory, setClosingCategory] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
-  const [zoom, setZoom] = useState(1);
-  const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const dragStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const location = useLocation();
   const imgContainerRef = useRef(null);
+  const dragStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
+
+  useDocumentTitle("Products - SSV Pharmaceuticals");
 
   const MIN_ZOOM = 1;
   const MAX_ZOOM = 4;
@@ -457,33 +446,54 @@ const ProductsPage = () => {
     timersRef.current = [];
   }, []);
 
-  // Core function: collapse current → scroll to target → expand target
+  const scrollToCategoryWithTracking = useCallback((id) => {
+    const scroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 120;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    };
+    
+    // Fire immediately, then track the element as the layout shifts during the 0.4s animation
+    scroll();
+    setTimeout(scroll, 150);
+    setTimeout(scroll, 300);
+    setTimeout(scroll, 450);
+  }, []);
+
+  // Core function: collapse current → expand target (scroll is handled automatically by the reactive useEffect below)
   const switchToCategory = useCallback(
     (categoryId) => {
-      // Cancel any in-flight sequence
       clearPendingTimers();
 
-      // Step 1: Collapse whatever is currently open
-      setExpandedCategory(null);
-
-      // Step 2: After collapse animation finishes (400ms) + DOM settle,
-      // scroll to the target category card
-      const t1 = setTimeout(() => {
-        const el = document.getElementById(categoryId);
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 120;
-          window.scrollTo({ top, behavior: "smooth" });
+      setExpandedCategory((prev) => {
+        if (prev === categoryId) {
+          return prev;
         }
-
-        // Step 3: After smooth scroll settles (~700ms), expand target
-        const t2 = setTimeout(() => {
-          setExpandedCategory(categoryId);
-        }, 700);
-        timersRef.current.push(t2);
-      }, 550);
-      timersRef.current.push(t1);
+        if (prev) {
+          setClosingCategory(prev);
+          
+          // Track the NEW category instantly so the viewport doesn't bounce when the old one collapses!
+          setTimeout(() => scrollToCategoryWithTracking(categoryId), 0);
+          
+          const t1 = setTimeout(() => {
+            setClosingCategory((c) => c === prev ? null : c);
+          }, 400);
+          
+          const t2 = setTimeout(() => {
+            setExpandedCategory(categoryId);
+          }, 400);
+          
+          timersRef.current.push(t1, t2);
+          return null;
+        }
+        
+        setClosingCategory(null);
+        return categoryId;
+      });
     },
-    [clearPendingTimers],
+    [clearPendingTimers, scrollToCategoryWithTracking]
   );
 
   // Listen for same-page category switches from Navbar (custom event)
@@ -503,25 +513,62 @@ const ProductsPage = () => {
     const categoryId = location.state?.category;
     if (categoryId) {
       window.history.replaceState({}, document.title);
-      // Coming from another page — no category is open, just scroll + expand
-      const t1 = setTimeout(() => {
-        const el = document.getElementById(categoryId);
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 120;
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-        const t2 = setTimeout(() => {
-          setExpandedCategory(categoryId);
-        }, 700);
-        timersRef.current.push(t2);
+      // Wait for page to render then open
+      const t = setTimeout(() => {
+        switchToCategory(categoryId);
       }, 300);
-      timersRef.current.push(t1);
+      timersRef.current.push(t);
     }
-  }, [location]);
+  }, [location, switchToCategory]);
+
+  // Check URL hash on load
+  useEffect(() => {
+    const hash = location.hash.replace("#", "");
+    if (hash && categoriesData.some((c) => c.id === hash)) {
+      switchToCategory(hash);
+    }
+  }, [location, switchToCategory]);
+
+  // Reactive scrolling: Whenever a category expands, track its layout shifts
+  useEffect(() => {
+    if (expandedCategory) {
+      scrollToCategoryWithTracking(expandedCategory);
+    }
+  }, [expandedCategory, scrollToCategoryWithTracking]);
 
   const toggleCategory = useCallback((categoryId) => {
-    setExpandedCategory((prev) => (prev === categoryId ? null : categoryId));
-  }, []);
+    clearPendingTimers();
+    setExpandedCategory((prev) => {
+      if (prev === categoryId) {
+        setClosingCategory(categoryId);
+        const t = setTimeout(() => {
+          setClosingCategory((c) => c === categoryId ? null : c);
+        }, 400);
+        timersRef.current.push(t);
+        return null; // toggle off
+      }
+      if (prev) {
+        setClosingCategory(prev);
+        
+        // Track the NEW category instantly so the viewport doesn't bounce when the old one collapses!
+        setTimeout(() => scrollToCategoryWithTracking(categoryId), 0);
+        
+        const t1 = setTimeout(() => {
+          setClosingCategory((c) => c === prev ? null : c);
+        }, 400);
+        
+        const t2 = setTimeout(() => {
+          setExpandedCategory(categoryId);
+        }, 400);
+        
+        timersRef.current.push(t1, t2);
+        return null;
+      }
+      
+      setClosingCategory(null);
+      return categoryId; // open immediately
+    });
+  }, [clearPendingTimers, scrollToCategoryWithTracking]);
 
   return (
     <div className="products-page">
@@ -631,8 +678,8 @@ const ProductsPage = () => {
             <CategoryCard
               key={category.id}
               category={category}
-              expandedCategory={expandedCategory}
-              toggleCategory={toggleCategory}
+              isExpanded={expandedCategory === category.id}
+              onToggle={toggleCategory}
               onProductClick={openProductModal}
             />
           ))}
@@ -678,6 +725,11 @@ const ProductsPage = () => {
               </svg>
             </button>
             <h3 className="pp-modal__title">{selectedProduct.name}</h3>
+            {selectedProduct.type && (
+              <span className="pp-modal__type">
+                {selectedProduct.type} {selectedProduct.quantity ? `· ${selectedProduct.quantity}` : ""}
+              </span>
+            )}
             {selectedProduct.desc && (
               <p className="pp-modal__desc">{selectedProduct.desc}</p>
             )}
