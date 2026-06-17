@@ -266,9 +266,13 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
+  cursor: default;
   border: 1.5px solid transparent;
   position: relative;
+}
+
+a.ct-info__card {
+  cursor: pointer;
 }
 
 a.ct-info__card::after {

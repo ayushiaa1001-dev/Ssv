@@ -22,11 +22,11 @@ const Hero = () => {
   return (
     <section className="hero" id="hero">
       <div className="hero__bg">
-        <img src={heroBg} alt="Pharmaceutical laboratory" />
+        <img src={heroBg} alt="Pharmaceutical laboratory" fetchPriority="high" />
         <div className="hero__overlay"></div>
       </div>
 
-      <div className="hero__content" style={{ paddingLeft: '6%' }}>
+      <div className="hero__content">
         <div className={`hero__text ${visible ? 'hero__text--visible' : ''}`}>
           <span className="hero__eyebrow">ADVANCING HEALTHCARE SINCE 1985</span>
           <h1 className="hero__title">

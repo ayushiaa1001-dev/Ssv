@@ -190,7 +190,7 @@
   border: 1px solid rgba(27, 79, 114, 0.08);
   border-radius: var(--radius-lg);
   padding: 28px 24px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.7s ease, transform 0.7s ease;
+  transition: transform 0.7s ease, box-shadow 0.3s ease, opacity 0.7s ease;
   opacity: 0;
   transform: translateY(30px);
 }
@@ -198,6 +198,8 @@
 .cul-pillar-card--visible {
   opacity: 1;
   transform: translateY(0);
+  /* After entrance animation completes, use snappy timing for hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.7s ease;
 }
 
 .cul-pillar-card:hover {
