@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import './GalleryPage.css'
@@ -25,7 +25,6 @@ const GALLERY_ITEMS = [
 const INITIAL_COUNT = 9
 
 const GalleryPage = () => {
-  const location = useLocation()
   const [heroVisible, setHeroVisible] = useState(false)
   useDocumentTitle('Gallery')
   const [activeFilter, setActiveFilter] = useState('All')
@@ -40,10 +39,6 @@ const GalleryPage = () => {
     const timer = setTimeout(() => setHeroVisible(true), 200)
     return () => clearTimeout(timer)
   }, [])
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location])
 
   /* Close lightbox on Escape */
   const handleKeyDown = useCallback((e) => {

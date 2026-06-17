@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import './ContactPage.css'
 
 const ContactPage = () => {
-  const location = useLocation()
   const [heroVisible, setHeroVisible] = useState(false)
   useDocumentTitle('Contact Us')
   const [submitted, setSubmitted] = useState(false)
@@ -24,12 +23,17 @@ const ContactPage = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location])
-
   const handleFormSubmit = (e) => {
     e.preventDefault()
+    // NOTE: No backend is connected. Form data is shown in the console for debugging.
+    // Replace this with an actual API call when a backend is available.
+    console.warn('[SSV Contact] Message submitted (no backend connected):', {
+      name: formName,
+      email: formEmail,
+      phone: formPhone || undefined,
+      subject: formSubject,
+      message: formMessage,
+    })
     setTimeout(() => {
       setSubmitted(true)
       setFormName('')

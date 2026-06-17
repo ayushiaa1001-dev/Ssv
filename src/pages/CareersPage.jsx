@@ -112,20 +112,16 @@ const CareersPage = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  const scrollToTarget = location.state?.scrollTo
-
   useEffect(() => {
-    if (scrollToTarget) {
-      const targetId = scrollToTarget
+    const scrollTarget = location.state?.scrollTo
+    if (scrollTarget) {
       window.history.replaceState({}, document.title)
       setTimeout(() => {
-        const el = document.getElementById(targetId)
+        const el = document.getElementById(scrollTarget)
         if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' })
       }, 100)
-    } else {
-      window.scrollTo(0, 0)
     }
-  }, [location.key, scrollToTarget])
+  }, [location])
 
   useEffect(() => {
     if (!modalOpen) return
@@ -153,6 +149,16 @@ const CareersPage = () => {
     if (!formFile && !formResume) {
       return
     }
+    // NOTE: No backend is connected. Form data is shown in the console for debugging.
+    // Replace this with an actual API call when a backend is available.
+    console.warn('[SSV Careers] Application submitted (no backend connected):', {
+      name: formName,
+      email: formEmail,
+      phone: formPhone,
+      resumeUrl: formResume || undefined,
+      fileName: formFile?.name || undefined,
+      position: selectedJobTitle,
+    })
     setTimeout(() => {
       setSubmitted(true)
       setFormName('')

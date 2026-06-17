@@ -351,7 +351,7 @@ const Navbar = () => {
                   {searchResults.length > 0 ? (
                     searchResults.map((item, i) => (
                       <button
-                        key={i}
+                        key={item.section}
                         className={`navbar__search-result ${i === highlightIndex ? 'navbar__search-result--active' : ''}`}
                         onClick={() => handleSelect(item.section)}
                         onMouseEnter={() => setHighlightIndex(i)}
@@ -408,12 +408,12 @@ const Navbar = () => {
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
-          <button onClick={() => { scrollToSection('hero'); setMobileOpen(false); }}>Home</button>
-          <button onClick={() => { scrollToAboutSection('about-story'); setMobileOpen(false); }}>About Us</button>
-          <button onClick={() => { scrollToAboutSection('about-philosophy'); setMobileOpen(false); }}>Vision & Values</button>
-          <button onClick={() => { scrollToAboutSection('about-journey'); setMobileOpen(false); }}>Milestones</button>
-          <button onClick={() => { scrollToProductsSection(null); setMobileOpen(false); }}>Products</button>
-          <button onClick={() => { scrollToAboutSection('about-standards'); setMobileOpen(false); }}>Quality & Certifications</button>
+          <button onClick={() => { navigate('/'); setMobileOpen(false); }}>Home</button>
+          <button onClick={() => scrollToAboutSection('about-story')}>About Us</button>
+          <button onClick={() => scrollToAboutSection('about-philosophy')}>Vision & Values</button>
+          <button onClick={() => scrollToAboutSection('about-journey')}>Milestones</button>
+          <button onClick={() => scrollToProductsSection(null)}>Products</button>
+          <button onClick={() => scrollToAboutSection('about-standards')}>Quality & Certifications</button>
           <Link to="/events/culture" onClick={() => setMobileOpen(false)}>Culture at SSV</Link>
           <Link to="/events/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
           <Link to="/careers" onClick={() => setMobileOpen(false)}>Careers</Link>

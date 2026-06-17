@@ -788,11 +788,12 @@
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(1) { transition-delay: 0.4s; }
-.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(2) { transition-delay: 0.55s; }
-.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(3) { transition-delay: 0.7s; }
-.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(4) { transition-delay: 0.85s; }
-.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(5) { transition-delay: 1s; }
+/* nth-child(1) is .ap-timeline-track — items start at 2 */
+.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(2) { transition-delay: 0.4s; }
+.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(3) { transition-delay: 0.55s; }
+.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(4) { transition-delay: 0.7s; }
+.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(5) { transition-delay: 0.85s; }
+.ap-journey.scroll-reveal--visible .ap-timeline-item:nth-child(6) { transition-delay: 1s; }
 
 .ap-journey.scroll-reveal--visible .ap-timeline-item {
   opacity: 1;
