@@ -100,8 +100,8 @@ const categoriesData = [
       "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80",
     products: [
       {
-        id: "SSCAL",
-        name: "SSCAL",
+        id: "Ss Cal",
+        name: "Ss Cal",
         formSize: "Tablets · 10×15",
         desc: "Essential calcium supplement for bone health and strength.",
         img: "https://images.unsplash.com/photo-1631549916768-4119b255f926?w=400&auto=format&fit=crop&q=80",
