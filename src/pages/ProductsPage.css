@@ -364,7 +364,7 @@
 /* ── Products Grid ── */
 .pp-product-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 16px;
 }
 
@@ -431,12 +431,6 @@
 }
 
 /* ── Responsive Styling ── */
-
-@media (min-width: 768px) {
-  .pp-product-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 @media (max-width: 1024px) {
   .products-page {
