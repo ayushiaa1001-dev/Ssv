@@ -77,6 +77,7 @@ const EVENTS = [
   }
 ]
 
+
 /* ── Icon Components ── */
 const PillarIcon = ({ type, color }) => {
   const icons = {
@@ -102,6 +103,7 @@ const CulturePage = () => {
     const timer = setTimeout(() => setHeroVisible(true), 200)
     return () => clearTimeout(timer)
   }, [])
+
 
   return (
     <div className="culture-page">

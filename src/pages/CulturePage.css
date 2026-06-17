@@ -1,5 +1,5 @@
-/* ==========================================================================
-   Culture at SSV — Page Styles
+﻿/* ==========================================================================
+   Culture at SSV â€” Page Styles
    ========================================================================== */
 
 .culture-page {
@@ -7,7 +7,7 @@
   background: var(--background);
 }
 
-/* ── Hero Banner ── */
+/* â”€â”€ Hero Banner â”€â”€ */
 .cul-hero {
   position: relative;
   min-height: 85vh;
@@ -178,7 +178,7 @@
   display: none;
 }
 
-/* ── Cultural Pillars Grid ── */
+/* â”€â”€ Cultural Pillars Grid â”€â”€ */
 .cul-pillars__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -231,7 +231,7 @@
   color: var(--muted-foreground);
 }
 
-/* ── Annual Events ── */
+/* â”€â”€ Annual Events â”€â”€ */
 .cul-events__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -437,3 +437,4 @@
     padding: 28px 0;
   }
 }
+
