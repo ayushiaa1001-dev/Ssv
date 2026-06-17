@@ -403,7 +403,7 @@ const CareersPage = () => {
             </div>
             <h2 className="cp-contact-title">Ready to Join Us?</h2>
             <p className="cp-contact-sub">To apply, please send your updated resume to:</p>
-            <a href="mailto:ssvpharma@gmail.com" className="cp-contact-email">ssvpharma@gmail.com</a>
+            <a href="mailto:hrssvpharma@gmail.com" className="cp-contact-email">hrssvpharma@gmail.com</a>
             <p className="cp-contact-footer">Please mention the job title in the subject line. · We respond within 5 business days.</p>
           </div>
         </div>
