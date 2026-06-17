@@ -377,6 +377,9 @@ const CategoryCard = ({
                       <span className="pp-product-card__form-size">
                         {product.formSize}
                       </span>
+                      {product.desc && (
+                        <p className="pp-product-card__desc">{product.desc}</p>
+                      )}
                     </div>
                   </motion.article>
                 ))}
@@ -731,6 +734,9 @@ const ProductsPage = () => {
               </svg>
             </button>
             <h3 className="pp-modal__title">{selectedProduct.name}</h3>
+            {selectedProduct.desc && (
+              <p className="pp-modal__desc">{selectedProduct.desc}</p>
+            )}
             <div
               className={`pp-modal__img-container ${zoom > 1 ? "pp-modal__img-container--zoomed" : ""}`}
               ref={imgContainerRef}
