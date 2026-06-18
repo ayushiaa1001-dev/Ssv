@@ -502,13 +502,25 @@ const ProductsPage = () => {
       setClosingCategory(categoryId);
       setTimeout(() => setClosingCategory(c => c === categoryId ? null : c), 500);
       setExpandedCategory(null);
-    } else {
-      if (expandedCategory) {
-        setClosingCategory(expandedCategory);
-        setTimeout(() => setClosingCategory(c => c === expandedCategory ? null : c), 500);
-      }
+      return;
+    }
+
+    const scrollAndExpand = () => {
       smoothScrollTo(categoryId);
-      setExpandedCategory(categoryId);
+      setTimeout(() => {
+        setExpandedCategory(categoryId);
+      }, 750);
+    };
+
+    if (expandedCategory) {
+      setClosingCategory(expandedCategory);
+      setExpandedCategory(null);
+      setTimeout(() => {
+        setClosingCategory(null);
+        scrollAndExpand();
+      }, 400);
+    } else {
+      scrollAndExpand();
     }
   }, [expandedCategory, smoothScrollTo]);
 
