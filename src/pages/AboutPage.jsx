@@ -6,6 +6,7 @@ import CountUp from '../components/CountUp'
 import heroBg from '../assets/images/about-hero-bg.jpg'
 import aboutWhoImage from '../assets/images/about-who.jpg'
 import aboutMilestoneImage from '../assets/images/about-milestone.jpg'
+import aboutQualityImage from '../assets/images/about-quality.jpg'
 import './AboutPage.css'
 
 const AboutPage = () => {
@@ -315,7 +316,7 @@ const AboutPage = () => {
           <div className="ap-standards__image">
             <div className="ap-standards__image-container">
               <img 
-                src="https://images.unsplash.com/photo-1579165466991-467135ad3110?w=800&h=600&fit=crop&auto=format" 
+                src={aboutQualityImage} 
                 alt="Quality control laboratory" 
                 className="ap-standards__img"
                 loading="lazy"
