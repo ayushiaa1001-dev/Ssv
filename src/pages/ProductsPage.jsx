@@ -275,7 +275,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{ transformOrigin: "left" }}
         />
-      </div>
+      </motion.div>
 
       <AnimatePresence>
         {isExpanded && (
@@ -507,7 +507,7 @@ const ProductsPage = () => {
   useEffect(() => {
     const hash = location.hash.replace("#", "");
     if (hash && categoriesData.some((c) => c.id === hash)) {
-      switchToCategory(hash);
+      setTimeout(() => switchToCategory(hash), 0);
     }
   }, [location, switchToCategory]);
 
