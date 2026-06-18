@@ -191,7 +191,7 @@ const CareersPage = () => {
       {/* ── Hero Banner ── */}
       <section className="cp-hero">
         <div className="cp-hero__bg">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&auto=format&fit=crop&q=80" alt="SSV Careers Team" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SSV Careers Team" loading="lazy" />
           <div className="cp-hero__overlay" />
         </div>
         
