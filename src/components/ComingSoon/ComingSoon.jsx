@@ -155,10 +155,6 @@ const ComingSoonCard = () => {
                 ))}
               </div>
 
-              <div className="pp-coming-soon__notify">
-                <span>Want to be notified when these launch?</span>
-                <button className="btn">Notify Me</button>
-              </div>
             </motion.div>
           </motion.div>
         )}
