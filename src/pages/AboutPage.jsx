@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import CountUp from '../components/CountUp'
+import heroBg from '../assets/images/about-hero-bg.jpg'
 import './AboutPage.css'
 
 const AboutPage = () => {
@@ -42,7 +43,7 @@ const AboutPage = () => {
       {/* ── Hero Banner ── */}
       <section className="ap-hero">
         <div className="ap-hero__bg">
-          <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1600&auto=format&fit=crop&q=80" alt="SSV laboratory" loading="lazy" />
+          <img src={heroBg} alt="SSV laboratory" loading="lazy" />
           <div className="ap-hero__overlay" />
         </div>
         
