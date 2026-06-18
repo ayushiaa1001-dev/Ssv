@@ -578,7 +578,7 @@ const ProductsPage = () => {
       </section>
 
       {/* ── New Ranges — Coming Soon ── */}
-      <section className="pp-coming-soon-section container" style={{ marginTop: "40px", marginBottom: "20px" }}>
+      <section className="pp-coming-soon-section container" id="upcoming-products" style={{ marginTop: "40px", marginBottom: "20px" }}>
         <ComingSoonCard />
       </section>
 

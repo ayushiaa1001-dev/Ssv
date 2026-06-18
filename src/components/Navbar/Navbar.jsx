@@ -10,6 +10,7 @@ const SEARCH_INDEX = [
   { title: 'Milestones', description: 'Key milestones in our journey', section: '#about-journey', keywords: ['milestones', 'achievements', 'journey', 'history', 'timeline'] },
   { title: 'Quality & Certifications', description: 'Our quality standards and certifications', section: '#about-standards', keywords: ['quality', 'certifications', 'gmp', 'iso', 'standards'] },
   { title: 'Products', description: 'Our pharmaceutical product portfolio', section: 'products', keywords: ['products', 'portfolio', 'medicines', 'drugs', 'formulations'] },
+  { title: 'Upcoming Products', description: 'New ranges coming soon', section: 'products/upcoming-products', keywords: ['upcoming', 'new', 'coming soon', 'future'] },
   { title: 'Cough & Anti Cold Range', description: 'Cough syrups, cold relief medicines', section: 'products/cough-cold', keywords: ['cough', 'cold', 'anti cold', 'syrup', 'fever'] },
   { title: 'Pain Management', description: 'Pain relief and analgesic products', section: 'products/pain-management', keywords: ['pain', 'analgesic', 'relief', 'tablet'] },
   { title: 'Gynae', description: 'Gynaecology product range', section: 'products/gynae', keywords: ['gynae', 'gynaecology', 'women', 'health'] },
@@ -262,6 +263,11 @@ const Navbar = () => {
             </button>
             {activeDropdown === 'products' && (
               <ul className="navbar__dropdown">
+                <li>
+                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('upcoming-products'); }}>
+                    Upcoming Products
+                  </Link>
+                </li>
                 <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('cough-cold'); }}>
                     Cough & Anti Cold Range
