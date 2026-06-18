@@ -5,6 +5,7 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import CountUp from "../components/CountUp";
 import ComingSoonCard from "../components/ComingSoon/ComingSoon";
+import productsHeroBg from "../assets/images/products-hero-bg.jpg";
 import "./ProductsPage.css";
 
 const BASE = import.meta.env.BASE_URL;
@@ -488,8 +489,8 @@ const ProductsPage = () => {
       <section className="pp-hero">
         <div className="pp-hero__bg">
           <img
-            src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1600&auto=format&fit=crop&q=80"
-            alt="Medicines and capsules"
+            src={productsHeroBg}
+            alt="Pharmaceutical Products"
             loading="lazy"
           />
           <div className="pp-hero__overlay" />
