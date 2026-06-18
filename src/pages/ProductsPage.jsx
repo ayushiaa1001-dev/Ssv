@@ -214,16 +214,16 @@ categoriesData[allIdx].products = categoriesData
   .flatMap((cat) => cat.products.map((p) => ({ ...p, category: cat.name })));
 
 const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClick }) => {
-  const [ref, visible] = useIntersectionObserver({ threshold: 0.15 });
-
   return (
     <motion.div
       layout
-      ref={ref}
       id={category.id}
-      className={`pp-cat-card scroll-reveal ${visible ? "scroll-reveal--visible" : ""} ${isExpanded || isClosing ? "is-expanded" : ""}`}
+      className={`pp-cat-card ${isExpanded || isClosing ? "is-expanded" : ""}`}
       style={{ borderRadius: 16 }}
       transition={{ layout: { type: "spring", bounce: 0, duration: 0.6 } }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
     >
       <motion.div
         layout
@@ -517,25 +517,20 @@ const ProductsPage = () => {
     }
   }, [location, switchToCategory]);
 
-  // We rely on smoothScrollTo during the action instead of a reactive observer to avoid scroll fighting
-  
   const toggleCategory = useCallback((categoryId) => {
-    setExpandedCategory((prev) => {
-      if (prev === categoryId) {
-        setClosingCategory(categoryId);
-        setTimeout(() => setClosingCategory(c => c === categoryId ? null : c), 500);
-        return null;
+    if (expandedCategory === categoryId) {
+      setClosingCategory(categoryId);
+      setTimeout(() => setClosingCategory(c => c === categoryId ? null : c), 500);
+      setExpandedCategory(null);
+    } else {
+      if (expandedCategory) {
+        setClosingCategory(expandedCategory);
+        setTimeout(() => setClosingCategory(c => c === expandedCategory ? null : c), 500);
       }
-      
-      if (prev) {
-        setClosingCategory(prev);
-        setTimeout(() => setClosingCategory(c => c === prev ? null : c), 500);
-      }
-      
       smoothScrollTo(categoryId);
-      return categoryId;
-    });
-  }, [smoothScrollTo]);
+      setExpandedCategory(categoryId);
+    }
+  }, [expandedCategory, smoothScrollTo]);
 
   return (
     <div className="products-page">
