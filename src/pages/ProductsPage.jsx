@@ -135,7 +135,7 @@ const categoriesData = [
     tagline: "Complete digestive & gastrointestinal care",
     themeColor: "#1D6A3A",
     image:
-      "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1000&h=800&fit=crop&auto=format",
+      "https://plus.unsplash.com/premium_photo-1668487826871-2f2cac23ad56?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "Rabpad-DSR",
@@ -161,7 +161,7 @@ const categoriesData = [
     tagline: "Vitamins, minerals & everyday immunity support",
     themeColor: "#5B3FA0",
     image:
-      "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1584174594005-60a49c828bbc?q=80&w=1436&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "OMGOD",
@@ -203,7 +203,7 @@ const categoriesData = [
     tagline: "Browse our complete pharmaceutical portfolio",
     themeColor: "#1b4f72",
     image:
-      "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1655913198024-1a30f1c911e5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [],
   },
 ];
