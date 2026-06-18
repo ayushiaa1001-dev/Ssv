@@ -5,6 +5,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import CountUp from '../components/CountUp'
 import heroBg from '../assets/images/about-hero-bg.jpg'
 import aboutWhoImage from '../assets/images/about-who.jpg'
+import aboutMilestoneImage from '../assets/images/about-milestone.jpg'
 import './AboutPage.css'
 
 const AboutPage = () => {
@@ -222,7 +223,7 @@ const AboutPage = () => {
             <div className="ap-journey__image">
               <div className="ap-journey__image-container">
                 <img 
-                  src="https://images.unsplash.com/photo-1581093577421-f561a654a353?w=800&h=600&fit=crop&auto=format" 
+                  src={aboutMilestoneImage} 
                   alt="Laboratory work" 
                   className="ap-journey__img"
                   loading="lazy"
