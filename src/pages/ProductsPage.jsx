@@ -217,12 +217,16 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
   const [ref, visible] = useIntersectionObserver({ threshold: 0.15 });
 
   return (
-    <div
+    <motion.div
+      layout
       ref={ref}
       id={category.id}
       className={`pp-cat-card scroll-reveal ${visible ? "scroll-reveal--visible" : ""} ${isExpanded || isClosing ? "is-expanded" : ""}`}
+      style={{ borderRadius: 16 }}
+      transition={{ layout: { type: "spring", bounce: 0, duration: 0.6 } }}
     >
-      <div
+      <motion.div
+        layout
         className="pp-cat-card__banner"
         onClick={() => onToggle(category.id)}
         role="button"
@@ -234,24 +238,25 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           }
         }}
       >
-        <img
+        <motion.img
+          layout="position"
           src={category.image}
           alt={category.name}
           className="pp-cat-card__bg"
           loading="lazy"
         />
-        <div className="pp-cat-card__overlay" />
+        <motion.div layout="position" className="pp-cat-card__overlay" />
 
-        <span className="pp-cat-card__badge">
+        <motion.span layout="position" className="pp-cat-card__badge">
           {category.products.length} products
-        </span>
+        </motion.span>
 
-        <div className="pp-cat-card__text">
+        <motion.div layout="position" className="pp-cat-card__text">
           <h3 className="pp-cat-card__name">{category.name}</h3>
           <p className="pp-cat-card__tagline">{category.tagline}</p>
-        </div>
+        </motion.div>
 
-        <div className="pp-cat-card__toggle">
+        <motion.div layout="position" className="pp-cat-card__toggle">
           <span className="pp-cat-card__toggle-label">
             {isExpanded ? "CLOSE" : "EXPLORE"}
           </span>
@@ -262,7 +267,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           >
             +
           </motion.span>
-        </div>
+        </motion.div>
 
         {/* Teal accent bar */}
         <motion.div
@@ -272,7 +277,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{ transformOrigin: "left" }}
         />
-      </div>
+      </motion.div>
 
       <AnimatePresence>
         {isExpanded && (
@@ -325,7 +330,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
 
@@ -446,17 +451,21 @@ const ProductsPage = () => {
     const el = document.getElementById(id);
     if (!el) return;
     
-    // Slight delay ensures layout shift from React render has started
+    // Use a slightly longer delay to let Framer Motion layout shift begin
     setTimeout(() => {
       autoScrollActive.current = true;
       const y = el.getBoundingClientRect().top + window.scrollY - 120;
       window.scrollTo({ top: y, behavior: "smooth" });
       
-      // Allow user manual scroll to take over after the animation duration
+      // Secondary check to ensure we land perfectly after layout animation finishes
       setTimeout(() => {
-        autoScrollActive.current = false;
-      }, 600);
-    }, 50);
+        if (autoScrollActive.current) {
+          const finalY = el.getBoundingClientRect().top + window.scrollY - 120;
+          window.scrollTo({ top: finalY, behavior: "smooth" });
+          autoScrollActive.current = false;
+        }
+      }, 650);
+    }, 100);
   }, []);
 
   // Core function: collapse current → expand target smoothly
@@ -631,7 +640,7 @@ const ProductsPage = () => {
           <h2 className="section-title">Browse Products by Category</h2>
         </div>
 
-        <div className="pp-categories-grid">
+        <motion.div layout className="pp-categories-grid" transition={{ layout: { type: "spring", bounce: 0, duration: 0.6 } }}>
           {categoriesData.map((category) => (
             <CategoryCard
               key={category.id}
@@ -642,7 +651,7 @@ const ProductsPage = () => {
               onProductClick={openProductModal}
             />
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* ── New Ranges — Coming Soon ── */}
