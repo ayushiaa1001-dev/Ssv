@@ -577,6 +577,11 @@ const ProductsPage = () => {
         </div>
       </section>
 
+      {/* ── New Ranges — Coming Soon ── */}
+      <section className="pp-coming-soon-section container" style={{ marginTop: "40px", marginBottom: "20px" }}>
+        <ComingSoonCard />
+      </section>
+
       <section className="pp-selection container" id="products-categories">
         <div
           ref={headerRef}
@@ -669,11 +674,6 @@ const ProductsPage = () => {
             );
           })}
         </div>
-      </section>
-
-      {/* ── New Ranges — Coming Soon ── */}
-      <section className="pp-coming-soon-section container">
-        <ComingSoonCard />
       </section>
 
 
