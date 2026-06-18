@@ -112,7 +112,7 @@ const CulturePage = () => {
       <section className="cul-hero">
         <div className="cul-hero__bg">
           <img
-            src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80"
+            src="https://images.unsplash.com/photo-1676276376140-a4030cc596a1?q=80&w=1421&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Culture at SSV Pharmaceuticals"
             loading="lazy"
           />
