@@ -4,6 +4,7 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import CountUp from '../components/CountUp'
 import heroBg from '../assets/images/about-hero-bg.jpg'
+import aboutWhoImage from '../assets/images/about-who.jpg'
 import './AboutPage.css'
 
 const AboutPage = () => {
@@ -150,7 +151,7 @@ const AboutPage = () => {
           <div className="ap-who__image-wrapper">
             <div className="ap-who__image-container">
               <img 
-                src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=800&h=600&fit=crop&auto=format" 
+                src={aboutWhoImage} 
                 alt="SSV medical professionals" 
                 className="ap-who__img"
                 loading="lazy"
