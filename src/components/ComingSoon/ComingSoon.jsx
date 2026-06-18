@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
+import upcomingBg from "../../assets/images/upcoming-bg.jpg";
 
 /* ── Upcoming / Coming Soon Products ── */
 const upcomingProducts = [
@@ -62,6 +63,14 @@ const ComingSoonCard = ({ isExpanded, onToggle }) => {
           }
         }}
       >
+        <img 
+          src={upcomingBg} 
+          alt="Upcoming Research Background" 
+          className="pp-coming-soon__bg-image" 
+          loading="lazy" 
+        />
+        <div className="pp-coming-soon__bg-overlay" />
+
         {/* Pulsing "Coming Soon" badge */}
         <span className="pp-coming-soon__badge">
           <span className="pp-coming-soon__badge-dot" />
