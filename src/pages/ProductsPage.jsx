@@ -217,7 +217,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle }) => {
   return (
     <motion.div
       id={category.id}
-      className={`pp-cat-card ${isExpanded || isClosing ? "is-expanded" : ""}`}
+      className={`pp-cat-card ${isExpanded ? "is-expanded" : ""}`}
       style={{ borderRadius: 16 }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
