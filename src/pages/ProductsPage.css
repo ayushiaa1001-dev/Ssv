@@ -254,6 +254,11 @@
   filter: blur(1.5px);
 }
 
+.pp-cat-card.is-expanded .pp-cat-card__banner {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
 .pp-cat-card__overlay {
   position: absolute;
   inset: 0;
