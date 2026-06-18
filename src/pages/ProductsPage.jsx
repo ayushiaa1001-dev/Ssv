@@ -214,10 +214,13 @@ categoriesData[allIdx].products = categoriesData
   .flatMap((cat) => cat.products.map((p) => ({ ...p, category: cat.name })));
 
 const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClick }) => {
+  const [ref, visible] = useIntersectionObserver({ threshold: 0.15 });
+
   return (
     <div
+      ref={ref}
       id={category.id}
-      className={`pp-cat-card ${isExpanded || isClosing ? "is-expanded" : ""}`}
+      className={`pp-cat-card scroll-reveal ${visible ? "scroll-reveal--visible" : ""} ${isExpanded || isClosing ? "is-expanded" : ""}`}
     >
       <div
         className="pp-cat-card__banner"
