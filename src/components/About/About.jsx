@@ -1,4 +1,5 @@
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
+import aboutImage from '../../assets/images/about-us-home.png'
 import './About.css'
 
 const About = () => {
@@ -28,7 +29,7 @@ const About = () => {
 
         <div className="about__image">
           <div className="about__image-wrapper">
-            <img src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=800&h=600&fit=crop&auto=format" alt="SSV Pharmaceuticals team" loading="lazy" />
+            <img src={aboutImage} alt="SSV Pharmaceuticals team" loading="lazy" />
             <div className="about__pill">
               <span className="about__pill-number">38+</span>
               <span className="about__pill-label">Years of Excellence</span>
