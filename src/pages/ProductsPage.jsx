@@ -135,7 +135,7 @@ const categoriesData = [
     tagline: "Complete digestive & gastrointestinal care",
     themeColor: "#1D6A3A",
     image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1000&h=800&fit=crop&auto=format",
     products: [
       {
         id: "Rabpad-DSR",
