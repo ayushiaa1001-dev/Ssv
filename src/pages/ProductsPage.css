@@ -221,7 +221,26 @@
 
 /* ── Category Card ── */
 .pp-cat-card {
+  position: relative;
   scroll-margin-top: 120px;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.pp-cat-card.is-inactive {
+  opacity: 0.5;
+  filter: grayscale(60%);
+}
+
+.pp-cat-card.is-expanded::after {
+  content: "";
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 14px 16px 0 16px;
+  border-style: solid;
+  border-color: var(--color-primary) transparent transparent transparent;
+  z-index: 10;
 }
 
 .pp-cat-card__banner {
@@ -655,6 +674,18 @@
    Scroll Reveal & Animation Transitions
    ========================================================================== */
 
+
+/* ==========================================================================
+   Product Expanded Panel
+   ========================================================================== */
+
+.pp-expanded-panel-inner {
+  background: var(--color-white, #fff);
+  border-top: 3px solid var(--color-primary);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  padding: 32px 24px 24px;
+}
 
 /* ==========================================================================
    Product Detail Modal

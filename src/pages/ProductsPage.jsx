@@ -213,11 +213,11 @@ categoriesData[allIdx].products = categoriesData
   .slice(0, allIdx)
   .flatMap((cat) => cat.products.map((p) => ({ ...p, category: cat.name })));
 
-const CategoryCard = ({ category, isExpanded, isClosing, onToggle }) => {
+const CategoryCard = ({ category, isExpanded, isInactive, isClosing, onToggle }) => {
   return (
     <motion.div
       id={category.id}
-      className={`pp-cat-card ${isExpanded ? "is-expanded" : ""}`}
+      className={`pp-cat-card ${isExpanded ? "is-expanded" : ""} ${isInactive ? "is-inactive" : ""}`}
       style={{ borderRadius: 16 }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -642,6 +642,7 @@ const ProductsPage = () => {
                       key={category.id}
                       category={category}
                       isExpanded={expandedCategory === category.id}
+                      isInactive={expandedCategory !== null && expandedCategory !== category.id}
                       isClosing={closingCategory === category.id}
                       onToggle={toggleCategory}
                     />
@@ -658,7 +659,8 @@ const ProductsPage = () => {
                       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                       style={{ overflow: "hidden" }}
                     >
-                      <div className="pp-product-grid" style={{ paddingBottom: "16px" }}>
+                      <div className="pp-expanded-panel-inner">
+                        <div className="pp-product-grid" style={{ paddingBottom: "16px" }}>
                         {panelCat.products.map((product, idx) => (
                           <motion.article
                             key={product.id}
@@ -694,7 +696,8 @@ const ProductsPage = () => {
                           </motion.article>
                         ))}
                       </div>
-                    </motion.div>
+                    </div>
+                  </motion.div>
                   )}
                 </AnimatePresence>
               </div>
