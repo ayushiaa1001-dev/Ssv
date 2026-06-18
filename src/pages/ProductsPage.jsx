@@ -439,12 +439,8 @@ const ProductsPage = () => {
       }
 
       const scrollAndExpand = () => {
-        // First scroll to the category
+        setExpandedCategory(categoryId);
         smoothScrollTo(categoryId);
-        // Then wait for the smooth scroll to finish before opening it
-        setTimeout(() => {
-          setExpandedCategory(categoryId);
-        }, 750);
       };
 
       if (expandedCategory) {
@@ -506,10 +502,8 @@ const ProductsPage = () => {
     }
 
     const scrollAndExpand = () => {
+      setExpandedCategory(categoryId);
       smoothScrollTo(categoryId);
-      setTimeout(() => {
-        setExpandedCategory(categoryId);
-      }, 750);
     };
 
     if (expandedCategory) {
