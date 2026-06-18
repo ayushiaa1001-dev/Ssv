@@ -215,7 +215,7 @@
 /* ── Category Cards Grid ── */
 .pp-categories-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
 
@@ -556,9 +556,9 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .pp-categories-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -580,6 +580,10 @@
   .pp-hero__buttons {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .pp-categories-grid {
+    grid-template-columns: 1fr;
   }
 
   .pp-product-grid {
@@ -646,23 +650,6 @@
    Scroll Reveal & Animation Transitions
    ========================================================================== */
 
-.pp-cat-card {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.pp-cat-card.scroll-reveal--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.pp-cat-card.scroll-reveal--visible:nth-child(1) { transition-delay: 0.05s; }
-.pp-cat-card.scroll-reveal--visible:nth-child(2) { transition-delay: 0.1s; }
-.pp-cat-card.scroll-reveal--visible:nth-child(3) { transition-delay: 0.15s; }
-.pp-cat-card.scroll-reveal--visible:nth-child(4) { transition-delay: 0.2s; }
-.pp-cat-card.scroll-reveal--visible:nth-child(5) { transition-delay: 0.25s; }
-.pp-cat-card.scroll-reveal--visible:nth-child(6) { transition-delay: 0.3s; }
 
 /* ==========================================================================
    Product Detail Modal
