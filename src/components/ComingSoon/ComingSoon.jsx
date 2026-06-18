@@ -141,21 +141,28 @@ const ComingSoonCard = () => {
                     }}
                     transition={{ duration: 0.3, delay: idx * 0.1 }}
                   >
-                    <div className="pp-product-card__media">
+                    <div className="pp-product-card__image-container">
                       <motion.img
                         src={product.img}
                         alt={product.name}
+                        className="pp-product-card__image"
                         loading="lazy"
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.5, ease: "easeOut" }}
                       />
+                      <div className="pp-product-card__overlay">
+                        <span>Previewing</span>
+                      </div>
                     </div>
                     <div className="pp-product-card__content pp-product-card__content--glass">
-                      <h4 className="pp-product-card__title">{product.name}</h4>
-                      <span className="pp-product-card__expected-combined">
-                        {product.formSize} - {product.expectedDate}
-                      </span>
-                      <p className="pp-product-card__desc">{product.desc}</p>
+                      <h4 className="pp-product-card__name">{product.name}</h4>
+                      <div className="pp-product-card__meta">
+                        <span className="pp-product-card__type">{product.formSize}</span>
+                        <span className="pp-product-card__quantity">{product.expectedDate}</span>
+                      </div>
+                      <p className="pp-product-card__desc" style={{ marginTop: "12px", fontSize: "0.85rem", opacity: 0.85 }}>
+                        {product.desc}
+                      </p>
                     </div>
                   </motion.article>
                 ))}
