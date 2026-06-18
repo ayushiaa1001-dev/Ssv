@@ -17,7 +17,7 @@ const categoriesData = [
     tagline: "Fast-acting relief for cough, cold & congestion",
     themeColor: "#0077A8",
     image:
-      "https://images.unsplash.com/photo-1550572017-edd951b55104?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1635166304271-04931640a450?w=1000&h=800&fit=crop&auto=format",
     products: [
       {
         id: "Alnil",
@@ -67,7 +67,7 @@ const categoriesData = [
     tagline: "Targeted relief for acute and chronic pain",
     themeColor: "#C75000",
     image:
-      "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1719319384377-5f5a45b2f0d1?w=1000&h=800&fit=crop&auto=format",
     products: [
       {
         id: "Felo",
@@ -109,7 +109,7 @@ const categoriesData = [
     tagline: "Trusted care for women's health & wellness",
     themeColor: "#9C1A5E",
     image:
-      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1559087316-6b27308e53f6?w=1000&h=800&fit=crop&auto=format",
     products: [
       {
         id: "Ss Cal",
