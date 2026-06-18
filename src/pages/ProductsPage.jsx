@@ -430,22 +430,40 @@ const ProductsPage = () => {
     }, 100);
   }, []);
 
-  // Core function: collapse current → expand target smoothly
+  // Core function: sequenced navigation from dropdown
   const switchToCategory = useCallback(
     (categoryId) => {
-      setExpandedCategory((prev) => {
-        if (prev === categoryId) return prev;
-        
-        if (prev) {
-          setClosingCategory(prev);
-          setTimeout(() => setClosingCategory(c => c === prev ? null : c), 500);
-        }
-        
+      if (expandedCategory === categoryId) {
         smoothScrollTo(categoryId);
-        return categoryId;
-      });
+        return;
+      }
+
+      const scrollAndExpand = () => {
+        // First scroll to the category
+        smoothScrollTo(categoryId);
+        // Then wait for the smooth scroll to finish before opening it
+        setTimeout(() => {
+          setExpandedCategory(categoryId);
+        }, 750);
+      };
+
+      if (expandedCategory) {
+        // 1. Close current active category first
+        setClosingCategory(expandedCategory);
+        setExpandedCategory(null);
+        
+        // 2. Wait for it to finish closing (0.4s)
+        setTimeout(() => {
+          setClosingCategory(null);
+          // 3. Scroll to clicked category and open it
+          scrollAndExpand();
+        }, 400);
+      } else {
+        // If nothing is open, just scroll and expand
+        scrollAndExpand();
+      }
     },
-    [smoothScrollTo]
+    [expandedCategory, smoothScrollTo]
   );
 
   // Listen for same-page category switches from Navbar (custom event)
