@@ -288,7 +288,7 @@ const CareersPage = () => {
           </div>
 
           <div className="cp-culture__image-container">
-            <img className="cp-culture__image" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&auto=format&fit=crop&q=80" alt="SSV Laboratory Professionals" loading="lazy" />
+            <img className="cp-culture__image" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SSV Laboratory Professionals" loading="lazy" />
             <div className="cp-culture__stats-card">
               <span className="cp-culture__stats-number">500+</span>
               <span className="cp-culture__stats-label">Team Members</span>
