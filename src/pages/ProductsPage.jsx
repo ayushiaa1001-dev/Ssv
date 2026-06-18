@@ -213,7 +213,7 @@ categoriesData[allIdx].products = categoriesData
   .slice(0, allIdx)
   .flatMap((cat) => cat.products.map((p) => ({ ...p, category: cat.name })));
 
-const CategoryCard = ({ category, isExpanded, isInactive, isClosing, onToggle }) => {
+const CategoryCard = ({ category, isExpanded, isInactive, onToggle }) => {
   return (
     <motion.div
       id={category.id}
@@ -282,7 +282,6 @@ const CategoryCard = ({ category, isExpanded, isInactive, isClosing, onToggle })
 const ProductsPage = () => {
   const [heroVisible, setHeroVisible] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState(null);
-  const [closingCategory, setClosingCategory] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -438,26 +437,8 @@ const ProductsPage = () => {
         return;
       }
 
-      const scrollAndExpand = () => {
-        setExpandedCategory(categoryId);
-        smoothScrollTo(categoryId);
-      };
-
-      if (expandedCategory) {
-        // 1. Close current active category first
-        setClosingCategory(expandedCategory);
-        setExpandedCategory(null);
-        
-        // 2. Wait for it to finish closing (0.4s)
-        setTimeout(() => {
-          setClosingCategory(null);
-          // 3. Scroll to clicked category and open it
-          scrollAndExpand();
-        }, 400);
-      } else {
-        // If nothing is open, just scroll and expand
-        scrollAndExpand();
-      }
+      setExpandedCategory(categoryId);
+      smoothScrollTo(categoryId);
     },
     [expandedCategory, smoothScrollTo]
   );
@@ -495,26 +476,10 @@ const ProductsPage = () => {
 
   const toggleCategory = useCallback((categoryId) => {
     if (expandedCategory === categoryId) {
-      setClosingCategory(categoryId);
-      setTimeout(() => setClosingCategory(c => c === categoryId ? null : c), 500);
       setExpandedCategory(null);
-      return;
-    }
-
-    const scrollAndExpand = () => {
+    } else {
       setExpandedCategory(categoryId);
       smoothScrollTo(categoryId);
-    };
-
-    if (expandedCategory) {
-      setClosingCategory(expandedCategory);
-      setExpandedCategory(null);
-      setTimeout(() => {
-        setClosingCategory(null);
-        scrollAndExpand();
-      }, 400);
-    } else {
-      scrollAndExpand();
     }
   }, [expandedCategory, smoothScrollTo]);
 
@@ -624,74 +589,80 @@ const ProductsPage = () => {
         <div className="pp-categories-layout" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {rows.map((row, rowIndex) => {
             const activeCat = row.find((c) => c.id === expandedCategory);
-            const closingCat = row.find((c) => c.id === closingCategory);
-            const panelCat = activeCat || closingCat;
-            const isClosingRow = !activeCat && closingCat;
 
             return (
               <div key={rowIndex} className="pp-categories-row-group">
-                <div className="pp-categories-grid" style={{ marginBottom: panelCat && !isClosingRow ? "24px" : "0" }}>
+                <div className="pp-categories-grid" style={{ marginBottom: activeCat ? "24px" : "0" }}>
                   {row.map((category) => (
                     <CategoryCard
                       key={category.id}
                       category={category}
                       isExpanded={expandedCategory === category.id}
                       isInactive={expandedCategory !== null && expandedCategory !== category.id}
-                      isClosing={closingCategory === category.id}
                       onToggle={toggleCategory}
                     />
                   ))}
                 </div>
 
                 <AnimatePresence>
-                  {panelCat && !isClosingRow && (
+                  {activeCat && (
                     <motion.div
                       className="pp-expanded-panel-wrapper"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                       style={{ overflow: "hidden" }}
                     >
                       <div className="pp-expanded-panel-inner">
-                        <div className="pp-product-grid" style={{ paddingBottom: "16px" }}>
-                        {panelCat.products.map((product, idx) => (
-                          <motion.article
-                            key={product.id}
-                            className="pp-product-card pp-product-card--elevated"
-                            initial={{ opacity: 0, y: 15 }}
+                        <AnimatePresence mode="wait">
+                          <motion.div 
+                            key={activeCat.id}
+                            className="pp-product-grid" 
+                            style={{ paddingBottom: "16px" }}
+                            initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(0,0,0,0.12)" }}
-                            whileTap={{ scale: 0.98 }}
-                            transition={{ duration: 0.3, delay: idx * 0.05 }}
-                            onClick={() => openProductModal(product)}
-                            role="button"
-                            tabIndex={0}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
                           >
-                            <div className="pp-product-card__media">
-                              <img src={product.img} alt={product.name} loading="lazy" />
-                            </div>
-                            <div className="pp-product-card__content">
-                              <h4 className="pp-product-card__title">{product.name}</h4>
-                              {product.type && (
-                                <span className="pp-product-card__type">
-                                  {product.type}
-                                </span>
-                              )}
-                              {product.quantity && (
-                                <span className="pp-product-card__form-size">
-                                  {product.quantity}
-                                </span>
-                              )}
-                              {product.desc && (
-                                <p className="pp-product-card__desc">{product.desc}</p>
-                              )}
-                            </div>
-                          </motion.article>
-                        ))}
+                          {activeCat.products.map((product, idx) => (
+                            <motion.article
+                              key={product.id}
+                              className="pp-product-card pp-product-card--elevated"
+                              initial={{ opacity: 0, y: 15 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(0,0,0,0.12)" }}
+                              whileTap={{ scale: 0.98 }}
+                              transition={{ duration: 0.3, delay: idx * 0.05 }}
+                              onClick={() => openProductModal(product)}
+                              role="button"
+                              tabIndex={0}
+                            >
+                              <div className="pp-product-card__media">
+                                <img src={product.img} alt={product.name} loading="lazy" />
+                              </div>
+                              <div className="pp-product-card__content">
+                                <h4 className="pp-product-card__title">{product.name}</h4>
+                                {product.type && (
+                                  <span className="pp-product-card__type">
+                                    {product.type}
+                                  </span>
+                                )}
+                                {product.quantity && (
+                                  <span className="pp-product-card__form-size">
+                                    {product.quantity}
+                                  </span>
+                                )}
+                                {product.desc && (
+                                  <p className="pp-product-card__desc">{product.desc}</p>
+                                )}
+                              </div>
+                            </motion.article>
+                          ))}
+                          </motion.div>
+                        </AnimatePresence>
                       </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
                   )}
                 </AnimatePresence>
               </div>
