@@ -1,5 +1,5 @@
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
-import aboutImage from '../../assets/images/about-us-home.png'
+import aboutImage from '../../assets/images/about-us-home.jpg'
 import './About.css'
 
 const About = () => {
