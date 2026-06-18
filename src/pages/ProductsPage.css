@@ -1070,74 +1070,39 @@
   margin-bottom: 24px;
 }
 
-/* ── Upcoming Product Card Extras ── */
-.pp-product-card--upcoming {
-  position: relative;
-  border: 1px solid rgba(46, 134, 171, 0.15);
-  background: var(--color-white);
+/* ── Upcoming Product Card Extras (Solid Blue Design) ── */
+.pp-product-card--upcoming-solid {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #11354d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   overflow: hidden;
-}
-
-.pp-product-card--upcoming .pp-product-card__media {
-  aspect-ratio: 4 / 5;
-  border-bottom: none;
-}
-
-.pp-product-card--upcoming .pp-product-card__media img {
-  width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.pp-product-card--upcoming:hover .pp-product-card__media img {
-  transform: scale(1.08);
-}
-
-.pp-product-card__content--glass {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(240, 248, 252, 0.85);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(46, 134, 171, 0.2);
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-  padding: 24px;
-  transform: translateY(0);
-  transition: transform 0.4s ease, background 0.4s ease;
-  z-index: 2;
+.pp-product-card__content--upcoming-solid {
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
-.pp-product-card--upcoming:hover .pp-product-card__content--glass {
-  background: rgba(255, 255, 255, 0.95);
-  border-top: 1px solid rgba(46, 134, 171, 0.3);
-}
-
-.pp-product-card--upcoming .pp-product-card__title {
-  color: var(--color-text-dark);
-  font-size: 1.1rem;
+.pp-product-card--upcoming-solid .pp-product-card__name {
+  color: var(--color-white);
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 2px;
+  margin-bottom: 12px;
 }
 
-.pp-product-card--upcoming .pp-product-card__expected-combined {
-  display: block;
-  font-size: 0.85rem;
-  color: var(--accent);
-  font-weight: 600;
-  margin: 4px 0 10px;
+.pp-product-card--upcoming-solid .pp-product-card__meta {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 16px;
 }
 
-.pp-product-card--upcoming .pp-product-card__desc {
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-  margin: 0;
-  line-height: 1.5;
+.pp-product-card--upcoming-solid .pp-product-card__desc {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: auto;
 }
 
 /* ── Notify Banner ── */
