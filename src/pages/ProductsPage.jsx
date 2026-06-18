@@ -217,12 +217,15 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
   const [ref, visible] = useIntersectionObserver({ threshold: 0.15 });
 
   return (
-    <div
+    <motion.div
+      layout
       ref={ref}
       id={category.id}
       className={`pp-cat-card scroll-reveal ${visible ? "scroll-reveal--visible" : ""} ${isExpanded || isClosing ? "is-expanded" : ""}`}
+      transition={{ layout: { duration: 0.5, ease: [0.25, 1, 0.35, 1] } }}
     >
-      <div
+      <motion.div
+        layout="position"
         className="pp-cat-card__banner"
         onClick={() => onToggle(category.id)}
         role="button"
@@ -325,7 +328,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
 
@@ -439,62 +442,42 @@ const ProductsPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Timers ref so we can cancel any pending sequence
-  const timersRef = useRef([]);
+  // Use a ref to track if user has manually scrolled during auto-scroll
+  const autoScrollActive = useRef(false);
 
-  const clearPendingTimers = useCallback(() => {
-    timersRef.current.forEach((t) => clearTimeout(t));
-    timersRef.current = [];
-  }, []);
-
-  const scrollToCategoryWithTracking = useCallback((id) => {
-    const scroll = () => {
-      const el = document.getElementById(id);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 120;
-        window.scrollTo({ top, behavior: "smooth" });
-      }
-    };
+  const smoothScrollTo = useCallback((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
     
-    // Fire immediately, then track the element as the layout shifts during the 0.4s animation
-    scroll();
-    setTimeout(scroll, 150);
-    setTimeout(scroll, 300);
-    setTimeout(scroll, 450);
+    // Slight delay ensures layout shift from React render has started
+    setTimeout(() => {
+      autoScrollActive.current = true;
+      const y = el.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      
+      // Allow user manual scroll to take over after the animation duration
+      setTimeout(() => {
+        autoScrollActive.current = false;
+      }, 600);
+    }, 50);
   }, []);
 
-  // Core function: collapse current → expand target (scroll is handled automatically by the reactive useEffect below)
+  // Core function: collapse current → expand target smoothly
   const switchToCategory = useCallback(
     (categoryId) => {
-      clearPendingTimers();
-
       setExpandedCategory((prev) => {
-        if (prev === categoryId) {
-          return prev;
-        }
+        if (prev === categoryId) return prev;
+        
         if (prev) {
           setClosingCategory(prev);
-          
-          // Track the NEW category instantly so the viewport doesn't bounce when the old one collapses!
-          setTimeout(() => scrollToCategoryWithTracking(categoryId), 0);
-          
-          const t1 = setTimeout(() => {
-            setClosingCategory((c) => c === prev ? null : c);
-          }, 400);
-          
-          const t2 = setTimeout(() => {
-            setExpandedCategory(categoryId);
-          }, 400);
-          
-          timersRef.current.push(t1, t2);
-          return null;
+          setTimeout(() => setClosingCategory(c => c === prev ? null : c), 500);
         }
         
-        setClosingCategory(null);
+        smoothScrollTo(categoryId);
         return categoryId;
       });
     },
-    [clearPendingTimers, scrollToCategoryWithTracking]
+    [smoothScrollTo]
   );
 
   // Listen for same-page category switches from Navbar (custom event)
@@ -505,9 +488,8 @@ const ProductsPage = () => {
     window.addEventListener("ssv-switch-category", handler);
     return () => {
       window.removeEventListener("ssv-switch-category", handler);
-      clearPendingTimers();
     };
-  }, [switchToCategory, clearPendingTimers]);
+  }, [switchToCategory]);
 
   // Handle navigation from another page (location.state)
   useEffect(() => {
@@ -515,10 +497,9 @@ const ProductsPage = () => {
     if (categoryId) {
       window.history.replaceState({}, document.title);
       // Wait for page to render then open
-      const t = setTimeout(() => {
+      setTimeout(() => {
         switchToCategory(categoryId);
       }, 300);
-      timersRef.current.push(t);
     }
   }, [location, switchToCategory]);
 
@@ -530,46 +511,25 @@ const ProductsPage = () => {
     }
   }, [location, switchToCategory]);
 
-  // Reactive scrolling: Whenever a category expands, track its layout shifts
-  useEffect(() => {
-    if (expandedCategory) {
-      scrollToCategoryWithTracking(expandedCategory);
-    }
-  }, [expandedCategory, scrollToCategoryWithTracking]);
-
+  // We rely on smoothScrollTo during the action instead of a reactive observer to avoid scroll fighting
+  
   const toggleCategory = useCallback((categoryId) => {
-    clearPendingTimers();
     setExpandedCategory((prev) => {
       if (prev === categoryId) {
         setClosingCategory(categoryId);
-        const t = setTimeout(() => {
-          setClosingCategory((c) => c === categoryId ? null : c);
-        }, 400);
-        timersRef.current.push(t);
-        return null; // toggle off
-      }
-      if (prev) {
-        setClosingCategory(prev);
-        
-        // Track the NEW category instantly so the viewport doesn't bounce when the old one collapses!
-        setTimeout(() => scrollToCategoryWithTracking(categoryId), 0);
-        
-        const t1 = setTimeout(() => {
-          setClosingCategory((c) => c === prev ? null : c);
-        }, 400);
-        
-        const t2 = setTimeout(() => {
-          setExpandedCategory(categoryId);
-        }, 400);
-        
-        timersRef.current.push(t1, t2);
+        setTimeout(() => setClosingCategory(c => c === categoryId ? null : c), 500);
         return null;
       }
       
-      setClosingCategory(null);
-      return categoryId; // open immediately
+      if (prev) {
+        setClosingCategory(prev);
+        setTimeout(() => setClosingCategory(c => c === prev ? null : c), 500);
+      }
+      
+      smoothScrollTo(categoryId);
+      return categoryId;
     });
-  }, [clearPendingTimers, scrollToCategoryWithTracking]);
+  }, [smoothScrollTo]);
 
   return (
     <div className="products-page">
@@ -674,7 +634,7 @@ const ProductsPage = () => {
           <h2 className="section-title">Browse Products by Category</h2>
         </div>
 
-        <div className="pp-categories-grid">
+        <motion.div layout className="pp-categories-grid">
           {categoriesData.map((category) => (
             <CategoryCard
               key={category.id}
@@ -685,7 +645,7 @@ const ProductsPage = () => {
               onProductClick={openProductModal}
             />
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* ── New Ranges — Coming Soon ── */}
