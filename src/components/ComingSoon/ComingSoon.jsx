@@ -33,26 +33,32 @@ const upcomingProducts = [
   },
 ];
 
-const ComingSoonCard = () => {
+const ComingSoonCard = ({ isExpanded, onToggle }) => {
   const [ref, visible] = useIntersectionObserver({ threshold: 0.15 });
-  const [csOpen, setCsOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+
+  const isOpen = isExpanded !== undefined ? isExpanded : internalOpen;
+  const handleToggle = () => {
+    if (onToggle) onToggle();
+    else setInternalOpen((prev) => !prev);
+  };
 
   return (
     <div
       ref={ref}
-      className={`pp-coming-soon scroll-reveal ${visible ? "scroll-reveal--visible" : ""} ${csOpen ? "is-expanded" : ""}`}
+      className={`pp-coming-soon scroll-reveal ${visible ? "scroll-reveal--visible" : ""} ${isOpen ? "is-expanded" : ""}`}
     >
       <motion.div
         className="pp-coming-soon__banner"
         whileTap={{ scale: 0.985 }}
-        onClick={() => setCsOpen((prev) => !prev)}
+        onClick={handleToggle}
         role="button"
         tabIndex={0}
-        aria-expanded={csOpen}
+        aria-expanded={isOpen}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            setCsOpen((prev) => !prev);
+            handleToggle();
           }
         }}
       >
@@ -79,17 +85,17 @@ const ComingSoonCard = () => {
           </span>
           <div className="pp-coming-soon__toggle">
             <span className="pp-coming-soon__toggle-label">
-              {csOpen ? "CLOSE" : "PREVIEW"}
+              {isOpen ? "CLOSE" : "PREVIEW"}
             </span>
             <motion.span
               className="pp-coming-soon__toggle-icon"
               animate={{
-                rotate: csOpen ? 45 : 0,
-                scale: csOpen ? 1.15 : 1,
+                rotate: isOpen ? 45 : 0,
+                scale: isOpen ? 1.15 : 1,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {csOpen ? "×" : "+"}
+              {isOpen ? "×" : "+"}
             </motion.span>
           </div>
         </div>
@@ -98,7 +104,7 @@ const ComingSoonCard = () => {
         <motion.div
           className="pp-coming-soon__accent"
           initial={{ scaleX: 0 }}
-          animate={{ scaleX: csOpen ? 1 : 0 }}
+          animate={{ scaleX: isOpen ? 1 : 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{ transformOrigin: "left" }}
         />
@@ -106,7 +112,7 @@ const ComingSoonCard = () => {
 
       {/* ─── Expanded Teaser Panel ─── */}
       <AnimatePresence>
-        {csOpen && (
+        {isOpen && (
           <motion.div
             className="pp-coming-soon__panel"
             key="cs-panel"
