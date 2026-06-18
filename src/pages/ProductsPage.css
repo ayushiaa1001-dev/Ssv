@@ -234,12 +234,12 @@
 .pp-cat-card.is-expanded::after {
   content: "";
   position: absolute;
-  bottom: -28px;
+  bottom: -24px;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 14px 16px 0 16px;
+  border-width: 0 16px 16px 16px;
   border-style: solid;
-  border-color: var(--color-primary) transparent transparent transparent;
+  border-color: transparent transparent var(--color-primary) transparent;
   z-index: 10;
 }
 
