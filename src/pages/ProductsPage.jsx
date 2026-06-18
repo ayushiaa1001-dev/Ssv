@@ -217,15 +217,12 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
   const [ref, visible] = useIntersectionObserver({ threshold: 0.15 });
 
   return (
-    <motion.div
-      layout
+    <div
       ref={ref}
       id={category.id}
       className={`pp-cat-card scroll-reveal ${visible ? "scroll-reveal--visible" : ""} ${isExpanded || isClosing ? "is-expanded" : ""}`}
-      transition={{ layout: { duration: 0.5, ease: [0.25, 1, 0.35, 1] } }}
     >
-      <motion.div
-        layout="position"
+      <div
         className="pp-cat-card__banner"
         onClick={() => onToggle(category.id)}
         role="button"
@@ -275,7 +272,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{ transformOrigin: "left" }}
         />
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {isExpanded && (
@@ -328,7 +325,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 };
 
@@ -634,7 +631,7 @@ const ProductsPage = () => {
           <h2 className="section-title">Browse Products by Category</h2>
         </div>
 
-        <motion.div layout className="pp-categories-grid">
+        <div className="pp-categories-grid">
           {categoriesData.map((category) => (
             <CategoryCard
               key={category.id}
@@ -645,7 +642,7 @@ const ProductsPage = () => {
               onProductClick={openProductModal}
             />
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* ── New Ranges — Coming Soon ── */}
