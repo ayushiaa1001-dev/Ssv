@@ -224,10 +224,6 @@
   scroll-margin-top: 120px;
 }
 
-.pp-cat-card.is-expanded {
-  grid-column: 1 / -1;
-}
-
 .pp-cat-card__banner {
   position: relative;
   border-radius: 16px;

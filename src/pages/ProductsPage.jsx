@@ -216,17 +216,15 @@ categoriesData[allIdx].products = categoriesData
 const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClick }) => {
   return (
     <motion.div
-      layout
       id={category.id}
       className={`pp-cat-card ${isExpanded || isClosing ? "is-expanded" : ""}`}
       style={{ borderRadius: 16 }}
-      transition={{ layout: { type: "spring", bounce: 0, duration: 0.5 } }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <motion.div
-        layout
+      <div
         className="pp-cat-card__banner"
         onClick={() => onToggle(category.id)}
         role="button"
@@ -238,25 +236,24 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           }
         }}
       >
-        <motion.img
-          layout="position"
+        <img
           src={category.image}
           alt={category.name}
           className="pp-cat-card__bg"
           loading="lazy"
         />
-        <motion.div layout="position" className="pp-cat-card__overlay" />
+        <div className="pp-cat-card__overlay" />
 
-        <motion.span layout="position" className="pp-cat-card__badge">
+        <span className="pp-cat-card__badge">
           {category.products.length} products
-        </motion.span>
+        </span>
 
-        <motion.div layout="position" className="pp-cat-card__text">
+        <div className="pp-cat-card__text">
           <h3 className="pp-cat-card__name">{category.name}</h3>
           <p className="pp-cat-card__tagline">{category.tagline}</p>
-        </motion.div>
+        </div>
 
-        <motion.div layout="position" className="pp-cat-card__toggle">
+        <div className="pp-cat-card__toggle">
           <span className="pp-cat-card__toggle-label">
             {isExpanded ? "CLOSE" : "EXPLORE"}
           </span>
@@ -267,7 +264,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           >
             +
           </motion.span>
-        </motion.div>
+        </div>
 
         {/* Teal accent bar */}
         <motion.div
@@ -277,7 +274,7 @@ const CategoryCard = ({ category, isExpanded, isClosing, onToggle, onProductClic
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{ transformOrigin: "left" }}
         />
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {isExpanded && (
@@ -635,7 +632,7 @@ const ProductsPage = () => {
           <h2 className="section-title">Browse Products by Category</h2>
         </div>
 
-        <motion.div layout className="pp-categories-grid" transition={{ layout: { type: "spring", bounce: 0, duration: 0.5 } }}>
+        <div className="pp-categories-grid">
           {categoriesData.map((category) => (
             <CategoryCard
               key={category.id}
@@ -646,7 +643,7 @@ const ProductsPage = () => {
               onProductClick={openProductModal}
             />
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* ── New Ranges — Coming Soon ── */}
