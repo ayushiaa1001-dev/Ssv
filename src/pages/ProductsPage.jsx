@@ -17,7 +17,7 @@ const categoriesData = [
     tagline: "Fast-acting relief for cough, cold & congestion",
     themeColor: "#0077A8",
     image:
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&auto=format&fit=crop&q=80",
     products: [
       {
         id: "Alnil",
