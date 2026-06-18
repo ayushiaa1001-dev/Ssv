@@ -578,7 +578,7 @@ const ProductsPage = () => {
       </section>
 
       {/* ── New Ranges — Coming Soon ── */}
-      <section className="pp-coming-soon-section container" id="upcoming-products">
+      <section className="pp-coming-soon-section container" id="upcoming-products" style={{ marginTop: "40px", marginBottom: "10px" }}>
         <ComingSoonCard 
           isExpanded={expandedCategory === 'upcoming-products'} 
           onToggle={() => toggleCategory('upcoming-products')} 
