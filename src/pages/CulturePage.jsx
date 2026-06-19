@@ -72,7 +72,7 @@ const EVENTS = [
   {
     month: 'October',
     title: 'Annual Gala Night',
-    desc: "A glamorous evening of awards, entertainment, and celebrating the year's achievements together as one SSV family.",
+    desc: "A glamorous evening of awards, entertainment, and celebrating the year's achievements together as one Ssv family.",
     image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80'
   }
 ]
@@ -93,7 +93,7 @@ const PillarIcon = ({ type, color }) => {
 
 const CulturePage = () => {
   const [heroVisible, setHeroVisible] = useState(false)
-  useDocumentTitle('Culture at SSV')
+  useDocumentTitle('Culture at Ssv')
 
   const [pillarsRef, pillarsVisible] = useIntersectionObserver()
   const [eventsRef, eventsVisible] = useIntersectionObserver()
@@ -113,7 +113,7 @@ const CulturePage = () => {
         <div className="cul-hero__bg">
           <img
             src="https://images.unsplash.com/photo-1676276376140-a4030cc596a1?q=80&w=1421&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Culture at SSV Pharmaceuticals"
+            alt="Culture at Ssv Pharmaceuticals"
             loading="lazy"
           />
           <div className="cul-hero__overlay"></div>
@@ -126,10 +126,10 @@ const CulturePage = () => {
               </svg>
               Back to Home
             </Link>
-            <span className="cul-hero__label">Life at SSV</span>
-            <h1 className="cul-hero__title">Culture at SSV</h1>
+            <span className="cul-hero__label">Life at Ssv</span>
+            <h1 className="cul-hero__title">Culture at Ssv</h1>
             <p className="cul-hero__sub">
-              At SSV, culture isn&apos;t a policy document — it&apos;s lived every day. From how we celebrate wins to how we support each other through challenges, our culture defines who we are.
+              At Ssv, culture isn&apos;t a policy document — it&apos;s lived every day. From how we celebrate wins to how we support each other through challenges, our culture defines who we are.
             </p>
             <div className="cul-hero__buttons">
               <a href="#culture-pillars" onClick={(e) => {

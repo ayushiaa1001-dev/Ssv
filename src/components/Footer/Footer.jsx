@@ -36,7 +36,7 @@ const Footer = () => {
           <div className="footer__brand">
             <Link to="/" className="footer__logo" onClick={(e) => handleScrollTo(e, 'hero')}>
               <div className="footer__logo-icon">
-                <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="SSV Logo" style={{ height: '100px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+                <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="Ssv Logo" style={{ height: '100px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
               </div>
             </Link>
             <p className="footer__brand-desc">
@@ -74,7 +74,7 @@ const Footer = () => {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
-                <span>SSV Pharmaceuticals,<br/>Plot No. 2, 1st Floor,<br/>Malabar Colony,<br/>Hazari Pahad Road,<br/>Seminary Hills,<br/>Nagpur, 440006</span>
+                <span>Ssv Pharmaceuticals,<br/>Plot No. 2, 1st Floor,<br/>Malabar Colony,<br/>Hazari Pahad Road,<br/>Seminary Hills,<br/>Nagpur, 440006</span>
               </span>
               <a href="tel:+919818977444" className="footer__contact-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -109,7 +109,7 @@ const Footer = () => {
           <div className="footer__col footer__col--seal">
             <h4 className="footer__col-title">Quality Seal</h4>
             <div className="footer__seal" style={{ opacity: '0.85' }}>
-              <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="SSV Quality Seal" style={{ width: '140px', height: '140px', objectFit: 'contain' }} />
+              <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ width: '140px', height: '140px', objectFit: 'contain' }} />
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@ const Footer = () => {
 
       <div className="footer__bottom">
         <div className="footer__bottom-inner container">
-          <p>&copy; 2026 SSV Pharmaceuticals. All rights reserved. Committed to Health. Driven by Science.</p>
+          <p>&copy; 2026 Ssv Pharmaceuticals. All rights reserved. Committed to Health. Driven by Science.</p>
           <div className="footer__bottom-links">
             <span className="footer__bottom-link" aria-label="Privacy Policy (coming soon)">Privacy Policy</span>
             <span className="footer__bottom-link" aria-label="Terms of Service (coming soon)">Terms of Service</span>

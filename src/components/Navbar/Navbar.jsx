@@ -4,7 +4,7 @@ import './Navbar.css'
 
 // All searchable content across the site
 const SEARCH_INDEX = [
-  { title: 'Home', description: 'Welcome to SSV Pharmaceuticals', section: '#hero', keywords: ['home', 'hero', 'welcome', 'ssv'] },
+  { title: 'Home', description: 'Welcome to Ssv Pharmaceuticals', section: '#hero', keywords: ['home', 'hero', 'welcome', 'ssv'] },
   { title: 'About Us', description: 'Who we are — 38+ years of pharmaceutical excellence', section: '#about-story', keywords: ['about', 'who we are', 'history', 'founded', 'experience', 'story'] },
   { title: 'Vision & Values', description: 'Our vision, mission and core values', section: '#about-philosophy', keywords: ['vision', 'mission', 'values', 'goals'] },
   { title: 'Milestones', description: 'Key milestones in our journey', section: '#about-journey', keywords: ['milestones', 'achievements', 'journey', 'history', 'timeline'] },
@@ -16,10 +16,10 @@ const SEARCH_INDEX = [
   { title: 'Gynae', description: 'Gynaecology product range', section: 'products/gynae', keywords: ['gynae', 'gynaecology', 'women', 'health'] },
   { title: 'Gastro', description: 'Gastroenterology products', section: 'products/gastro', keywords: ['gastro', 'digestive', 'stomach', 'gastroenterology'] },
   { title: 'General Products', description: 'General medicine formulations', section: 'products/general', keywords: ['general', 'medicine', 'tablets', 'capsules'] },
-  { title: 'Careers', description: 'Join our team at SSV Pharmaceuticals', section: 'careers', keywords: ['careers', 'jobs', 'hiring', 'work', 'employment', 'join'] },
-  { title: 'Culture at SSV', description: 'Our cultural pillars and annual events', section: 'events/culture', keywords: ['culture', 'events', 'pillars', 'annual', 'gala', 'founders'] },
-  { title: 'Gallery', description: 'Photo gallery of life at SSV', section: 'events/gallery', keywords: ['gallery', 'photos', 'images', 'snapshots'] },
-  { title: 'Contact Us', description: 'Get in touch with SSV Pharmaceuticals', section: 'contact-page', keywords: ['contact', 'reach', 'email', 'phone', 'address', 'touch'] },
+  { title: 'Careers', description: 'Join our team at Ssv Pharmaceuticals', section: 'careers', keywords: ['careers', 'jobs', 'hiring', 'work', 'employment', 'join'] },
+  { title: 'Culture at Ssv', description: 'Our cultural pillars and annual events', section: 'events/culture', keywords: ['culture', 'events', 'pillars', 'annual', 'gala', 'founders'] },
+  { title: 'Gallery', description: 'Photo gallery of life at Ssv', section: 'events/gallery', keywords: ['gallery', 'photos', 'images', 'snapshots'] },
+  { title: 'Contact Us', description: 'Get in touch with Ssv Pharmaceuticals', section: 'contact-page', keywords: ['contact', 'reach', 'email', 'phone', 'address', 'touch'] },
   { title: 'Export Countries', description: 'We export to 12+ countries globally', section: '#about-story', keywords: ['export', 'countries', 'global', 'international'] },
   { title: 'Professionals', description: '500+ skilled professionals in our team', section: '#about-story', keywords: ['professionals', 'team', 'staff', 'employees'] },
 ]
@@ -213,7 +213,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="navbar__logo" id="logo">
           <div className="navbar__logo-icon">
-            <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="SSV Logo" style={{ width: '180px', height: '80px', objectFit: 'contain' }} />
+            <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="Ssv Logo" style={{ width: '180px', height: '80px', objectFit: 'contain' }} />
           </div>
         </Link>
 
@@ -311,7 +311,7 @@ const Navbar = () => {
             {activeDropdown === 'events' && (
               <ul className="navbar__dropdown">
                 <li>
-                  <Link to="/events/culture" onClick={() => setActiveDropdown(null)}>Culture at SSV</Link>
+                  <Link to="/events/culture" onClick={() => setActiveDropdown(null)}>Culture at Ssv</Link>
                 </li>
                 <li>
                   <Link to="/events/gallery" onClick={() => setActiveDropdown(null)}>Gallery</Link>
@@ -386,8 +386,8 @@ const Navbar = () => {
           </div>
 
           <button className={`btn navbar__cta ${activePath === '/contact' ? 'navbar__cta--active' : ''}`} id="contact-btn" onClick={handleContactClick}>Contact Us</button>
-          <div className="navbar__badge" title="SSV Pharmaceuticals Quality Seal">
-            <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="SSV Quality Seal" style={{ width: '95px', height: '95px', objectFit: 'contain' }} />
+          <div className="navbar__badge" title="Ssv Pharmaceuticals Quality Seal">
+            <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ width: '95px', height: '95px', objectFit: 'contain' }} />
           </div>
         </div>
 
@@ -420,7 +420,7 @@ const Navbar = () => {
           <button onClick={() => scrollToAboutSection('about-journey')}>Milestones</button>
           <button onClick={() => scrollToProductsSection(null)}>Products</button>
           <button onClick={() => scrollToAboutSection('about-standards')}>Quality & Certifications</button>
-          <Link to="/events/culture" onClick={() => setMobileOpen(false)}>Culture at SSV</Link>
+          <Link to="/events/culture" onClick={() => setMobileOpen(false)}>Culture at Ssv</Link>
           <Link to="/events/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
           <Link to="/careers" onClick={() => setMobileOpen(false)}>Careers</Link>
           <Link to="/contact" onClick={() => setMobileOpen(false)} className="btn btn-dark" style={{ marginTop: '10px' }}>Contact Us</Link>

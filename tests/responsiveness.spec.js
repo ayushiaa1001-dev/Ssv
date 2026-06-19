@@ -16,7 +16,7 @@ test.describe('Responsiveness and Regression', () => {
       await page.goto(pageUrl);
       
       // Basic check: Page title should be present
-      await expect(page).toHaveTitle(/SSV Pharmaceuticals/);
+      await expect(page).toHaveTitle(/Ssv Pharmaceuticals/);
 
       // Verify Navbar is visible
       const navbar = page.locator('#navbar');

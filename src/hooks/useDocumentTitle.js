@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const BASE_TITLE = 'SSV Pharmaceuticals'
+const BASE_TITLE = 'Ssv Pharmaceuticals'
 
 /**
  * Sets `document.title` on mount and restores the base title on unmount.

@@ -309,7 +309,7 @@ const ProductsPage = () => {
     rows.push(categoriesData.slice(i, i + cols));
   }
 
-  useDocumentTitle("Products - SSV Pharmaceuticals");
+  useDocumentTitle("Products - Ssv Pharmaceuticals");
 
   const MIN_ZOOM = 1;
   const MAX_ZOOM = 4;
@@ -527,7 +527,7 @@ const ProductsPage = () => {
                 Join Our Team
               </Link>
               <Link to="/events/culture" className="btn btn-outline">
-                Life at SSV
+                Life at Ssv
               </Link>
             </div>
           </div>

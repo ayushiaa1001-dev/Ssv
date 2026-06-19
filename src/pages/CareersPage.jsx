@@ -151,7 +151,7 @@ const CareersPage = () => {
     }
     // NOTE: No backend is connected. Form data is shown in the console for debugging.
     // Replace this with an actual API call when a backend is available.
-    console.warn('[SSV Careers] Application submitted (no backend connected):', {
+    console.warn('[Ssv Careers] Application submitted (no backend connected):', {
       name: formName,
       email: formEmail,
       phone: formPhone,
@@ -191,7 +191,7 @@ const CareersPage = () => {
       {/* ── Hero Banner ── */}
       <section className="cp-hero">
         <div className="cp-hero__bg">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SSV Careers Team" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ssv Careers Team" loading="lazy" />
           <div className="cp-hero__overlay" />
         </div>
         
@@ -206,7 +206,7 @@ const CareersPage = () => {
             <span className="cp-hero__label">JOIN OUR TEAM</span>
             <h1 className="cp-hero__title">Build a Career That Shapes Healthcare</h1>
             <p className="cp-hero__sub">
-              At SSV Pharmaceuticals, every role contributes to something greater — better medicines, healthier lives, and a stronger healthcare ecosystem for India.
+              At Ssv Pharmaceuticals, every role contributes to something greater — better medicines, healthier lives, and a stronger healthcare ecosystem for India.
             </p>
             <div className="cp-hero__buttons">
               <a href="#openings-section" onClick={(e) => {
@@ -240,7 +240,7 @@ const CareersPage = () => {
         <div className="container">
           <div className="cp-culture__layout">
             <div className="cp-culture__header">
-              <span className="section-label">WHY WORK AT SSV?</span>
+              <span className="section-label">WHY WORK AT Ssv?</span>
               <h2 className="section-title">A Culture of Excellence & Care</h2>
             </div>
 
@@ -288,7 +288,7 @@ const CareersPage = () => {
           </div>
 
           <div className="cp-culture__image-container">
-            <img className="cp-culture__image" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SSV Laboratory Professionals" loading="lazy" />
+            <img className="cp-culture__image" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ssv Laboratory Professionals" loading="lazy" />
             <div className="cp-culture__stats-card">
               <span className="cp-culture__stats-number">500+</span>
               <span className="cp-culture__stats-label">Team Members</span>

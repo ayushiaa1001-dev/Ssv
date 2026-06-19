@@ -27,7 +27,7 @@ const ContactPage = () => {
     e.preventDefault()
     // NOTE: No backend is connected. Form data is shown in the console for debugging.
     // Replace this with an actual API call when a backend is available.
-    console.warn('[SSV Contact] Message submitted (no backend connected):', {
+    console.warn('[Ssv Contact] Message submitted (no backend connected):', {
       name: formName,
       email: formEmail,
       phone: formPhone || undefined,
@@ -55,7 +55,7 @@ const ContactPage = () => {
         <div className="ct-hero__bg">
           <img
             src="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Contact SSV Pharmaceuticals"
+            alt="Contact Ssv Pharmaceuticals"
             loading="lazy"
           />
           <div className="ct-hero__overlay"></div>
@@ -189,7 +189,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4>Our Address</h4>
-                  <p>SSV Pharmaceuticals,<br/>Plot No. 2, 1st Floor,<br/>Malabar Colony,<br/>Hazari Pahad Road,<br/>Seminary Hills,<br/>Nagpur, 440006</p>
+                  <p>Ssv Pharmaceuticals,<br/>Plot No. 2, 1st Floor,<br/>Malabar Colony,<br/>Hazari Pahad Road,<br/>Seminary Hills,<br/>Nagpur, 440006</p>
                 </div>
               </div>
 

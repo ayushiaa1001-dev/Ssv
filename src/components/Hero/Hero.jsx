@@ -34,7 +34,7 @@ const Hero = () => {
             Driven by Science.
           </h1>
           <p className="hero__description">
-            SSV Pharmaceuticals delivers trusted, high-quality medicines across therapeutic categories — improving lives across India and beyond.
+            Ssv Pharmaceuticals delivers trusted, high-quality medicines across therapeutic categories — improving lives across India and beyond.
           </p>
           <div className="hero__buttons">
             <Link to="/about" className="btn btn-primary" id="hero-cta-story">

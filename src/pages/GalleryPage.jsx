@@ -12,9 +12,9 @@ const GALLERY_ITEMS = [
   { src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80', alt: 'Modern office desk', category: 'Office', title: 'Modern Workspace' },
   { src: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=700&q=80', alt: 'Workshop session', category: 'Office', title: 'Brainstorming Session' },
   { src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80', alt: 'Team celebration', category: 'Celebrations', title: 'Annual Day Celebrations' },
-  { src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=700&q=80', alt: 'Open office space', category: 'Office', title: 'SSV Campus — Block A' },
+  { src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=700&q=80', alt: 'Open office space', category: 'Office', title: 'Ssv Campus — Block A' },
   { src: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=700&q=80', alt: 'Team lunch', category: 'Team', title: 'Friday Team Lunch' },
-  { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80', alt: 'SSV Summit', category: 'Events', title: 'SSV Summit — New Delhi' },
+  { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80', alt: 'Ssv Summit', category: 'Events', title: 'Ssv Summit — New Delhi' },
   { src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&q=80', alt: 'Presentation', category: 'Events', title: 'Innovation Week Keynote' },
   { src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=700&q=80', alt: 'Outdoor activity', category: 'Team', title: 'Annual Outdoor Retreat' },
   { src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=700&q=80', alt: 'Gala night', category: 'Celebrations', title: 'Annual Gala Night 2025' },
@@ -80,7 +80,7 @@ const GalleryPage = () => {
         <div className="gal-hero__bg">
           <img
             src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Gallery — SSV Pharmaceuticals"
+            alt="Gallery — Ssv Pharmaceuticals"
             loading="lazy"
           />
           <div className="gal-hero__overlay"></div>
@@ -94,8 +94,8 @@ const GalleryPage = () => {
               Back to Home
             </Link>
             <span className="gal-hero__label">Gallery</span>
-            <h1 className="gal-hero__title">Moments at SSV</h1>
-            <p className="gal-hero__sub">A visual journey through our workplace, team celebrations, and everyday life at SSV.</p>
+            <h1 className="gal-hero__title">Moments at Ssv</h1>
+            <p className="gal-hero__sub">A visual journey through our workplace, team celebrations, and everyday life at Ssv.</p>
           </div>
         </div>
       </section>

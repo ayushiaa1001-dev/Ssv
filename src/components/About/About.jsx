@@ -15,7 +15,7 @@ const About = () => {
           </h2>
           <p className="about__text">
             Founded with a vision to make quality healthcare accessible to all,
-            SSV Pharmaceuticals has grown from a modest beginning into a
+            Ssv Pharmaceuticals has grown from a modest beginning into a
             trusted name in the pharmaceutical industry. With over three decades
             of experience, we manufacture and distribute a wide range of
             pharmaceutical formulations that meet international standards.
@@ -29,7 +29,7 @@ const About = () => {
 
         <div className="about__image">
           <div className="about__image-wrapper">
-            <img src={aboutImage} alt="SSV Pharmaceuticals team" loading="lazy" />
+            <img src={aboutImage} alt="Ssv Pharmaceuticals team" loading="lazy" />
             <div className="about__pill">
               <span className="about__pill-number">38+</span>
               <span className="about__pill-label">Years of Excellence</span>

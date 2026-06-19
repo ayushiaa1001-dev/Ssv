@@ -46,7 +46,7 @@ const AboutPage = () => {
       {/* ── Hero Banner ── */}
       <section className="ap-hero">
         <div className="ap-hero__bg">
-          <img src={heroBg} alt="SSV laboratory" loading="lazy" />
+          <img src={heroBg} alt="Ssv laboratory" loading="lazy" />
           <div className="ap-hero__overlay" />
         </div>
         
@@ -68,7 +68,7 @@ const AboutPage = () => {
                 Explore Our Products
               </Link>
               <Link to="/events/culture" className="btn btn-outline">
-                Life at SSV
+                Life at Ssv
               </Link>
             </div>
           </div>
@@ -118,7 +118,7 @@ const AboutPage = () => {
             <span className="section-label">Our Story</span>
             <h2 className="section-title">About Us</h2>
             <p className="ap-text">
-              SSV Pharmaceuticals is a leading healthcare company dedicated to developing and manufacturing high-quality pharmaceutical products that improve patient outcomes across India and beyond.
+              Ssv Pharmaceuticals is a leading healthcare company dedicated to developing and manufacturing high-quality pharmaceutical products that improve patient outcomes across India and beyond.
             </p>
             <p className="ap-text">
               Founded with a vision to make effective healthcare accessible to all, we combine scientific rigour with compassionate values — ensuring every medicine we produce meets the highest safety and efficacy standards.
@@ -154,7 +154,7 @@ const AboutPage = () => {
             <div className="ap-who__image-container">
               <img 
                 src={aboutWhoImage} 
-                alt="SSV medical professionals" 
+                alt="Ssv medical professionals" 
                 className="ap-who__img"
                 loading="lazy"
               />
@@ -294,7 +294,7 @@ const AboutPage = () => {
             <span className="section-label">Our Standards</span>
             <h2 className="section-title">Quality</h2>
             <p className="ap-text">
-              Quality is not an afterthought at SSV — it is embedded in every stage of our manufacturing process. From raw material sourcing to final packaging, each product undergoes rigorous testing and validation.
+              Quality is not an afterthought at Ssv — it is embedded in every stage of our manufacturing process. From raw material sourcing to final packaging, each product undergoes rigorous testing and validation.
             </p>
             <p className="ap-text">
               Our facilities are regularly audited by international regulatory bodies, ensuring that every medicine that leaves our plant meets global standards of safety, purity, and efficacy.
