@@ -52,8 +52,8 @@ const categoriesData = [
         img: `${BASE}products/Felocold%20Susp.jpeg`,
       },
       {
-        id: "Felokof-Dx",
-        name: "Felokof-Dx",
+        id: "Felokof DX",
+        name: "Felokof DX",
         type: "Syrup",
         quantity: "100 ml",
         desc: "Provides soothing relief from dry, irritating cough and nasal congestion.",
@@ -112,8 +112,8 @@ const categoriesData = [
       "https://images.unsplash.com/photo-1559087316-6b27308e53f6?w=1000&h=800&fit=crop&auto=format",
     products: [
       {
-        id: "Ss Cal",
-        name: "Ss Cal",
+        id: "SS Cal",
+        name: "SS Cal",
         type: "Tablets",
         quantity: "10 x 15 Tablets",
         desc: "Essential daily supplement for stronger bones, joints, and overall immunity.",
@@ -146,8 +146,8 @@ const categoriesData = [
         img: `${BASE}products/Rabpad-DSR.png`,
       },
       {
-        id: "Rabpad-20",
-        name: "Rabpad-20",
+        id: "Rabpad 20",
+        name: "Rabpad 20",
         type: "Tablets",
         quantity: "10 x 10 Tablets",
         desc: "Effectively reduces stomach acid to treat ulcers and chronic heartburn.",
