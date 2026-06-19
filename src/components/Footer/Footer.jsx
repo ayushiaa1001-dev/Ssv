@@ -36,7 +36,7 @@ const Footer = () => {
           <div className="footer__brand">
             <Link to="/" className="footer__logo" onClick={(e) => handleScrollTo(e, 'hero')}>
               <div className="footer__logo-icon">
-                <img src={`${import.meta.env.BASE_URL}logo-star.png`} alt="SSV Logo" style={{ height: '100px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+                <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="SSV Logo" style={{ height: '100px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
               </div>
             </Link>
             <p className="footer__brand-desc">

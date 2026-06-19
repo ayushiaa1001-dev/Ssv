@@ -213,7 +213,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="navbar__logo" id="logo">
           <div className="navbar__logo-icon">
-            <img src={`${import.meta.env.BASE_URL}logo-star.png`} alt="SSV Logo" style={{ width: '180px', height: '80px', objectFit: 'contain' }} />
+            <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="SSV Logo" style={{ width: '180px', height: '80px', objectFit: 'contain' }} />
           </div>
         </Link>
 
