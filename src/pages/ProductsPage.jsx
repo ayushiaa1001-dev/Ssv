@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
@@ -215,6 +216,7 @@ categoriesData[allIdx].products = categoriesData
   .flatMap((cat) => cat.products.map((p) => ({ ...p, category: cat.name })));
 
 const CategoryCard = ({ category, isExpanded, isInactive, onToggle }) => {
+  const { t } = useTranslation();
   return (
     <motion.div
       id={category.id}
@@ -245,10 +247,6 @@ const CategoryCard = ({ category, isExpanded, isInactive, onToggle }) => {
         />
         <div className="pp-cat-card__overlay" />
 
-        <span className="pp-cat-card__badge">
-          {category.products.length} products
-        </span>
-
         <div className="pp-cat-card__text">
           <h3 className="pp-cat-card__name">{category.name}</h3>
           <p className="pp-cat-card__tagline">{category.tagline}</p>
@@ -256,7 +254,7 @@ const CategoryCard = ({ category, isExpanded, isInactive, onToggle }) => {
 
         <div className="pp-cat-card__toggle">
           <span className="pp-cat-card__toggle-label">
-            {isExpanded ? "CLOSE" : "VIEW PRODUCTS"}
+            {isExpanded ? t("productsPage.close") : t("productsPage.viewProducts")}
           </span>
           <motion.span
             className="pp-cat-card__toggle-icon"
@@ -281,6 +279,7 @@ const CategoryCard = ({ category, isExpanded, isInactive, onToggle }) => {
 };
 
 const ProductsPage = () => {
+  const { t } = useTranslation();
   const [heroVisible, setHeroVisible] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -512,22 +511,21 @@ const ProductsPage = () => {
               >
                 <polyline points="15 18 9 12 15 6" />
               </svg>
-              Back to Home
+              {t("productsPage.backToHome")}
             </Link>
-            <span className="pp-hero__label">OUR PORTFOLIO</span>
+            <span className="pp-hero__label">{t("productsPage.heroLabel")}</span>
             <h1 className="pp-hero__title">
-              Medicines Crafted with Science & Care
+              {t("productsPage.heroTitle")}
             </h1>
             <p className="pp-hero__sub">
-              A trusted range across five therapeutic categories — formulated to
-              the highest safety standards.
+              {t("productsPage.heroSub")}
             </p>
             <div className="pp-hero__buttons">
               <Link to="/careers" className="btn btn-primary">
-                Join Our Team
+                {t("productsPage.joinTeam")}
               </Link>
               <Link to="/events/culture" className="btn btn-outline">
-                Life at Ssv
+                {t("productsPage.lifeAtSsv")}
               </Link>
             </div>
           </div>
@@ -541,23 +539,23 @@ const ProductsPage = () => {
               <span className="pp-hero__stat-number">
                 <CountUp end="5" />
               </span>
-              <span className="pp-hero__stat-label">Therapeutic Range</span>
+              <span className="pp-hero__stat-label">{t("productsPage.statTherapeutic")}</span>
             </div>
             <div className="pp-hero__stat" style={{ animationDelay: "0.75s" }}>
               <span className="pp-hero__stat-number">
                 <CountUp end="200" suffix="+" />
               </span>
-              <span className="pp-hero__stat-label">Formulations</span>
+              <span className="pp-hero__stat-label">{t("productsPage.statFormulations")}</span>
             </div>
             <div className="pp-hero__stat" style={{ animationDelay: "0.9s" }}>
-              <span className="pp-hero__stat-number">WHO-GMP</span>
-              <span className="pp-hero__stat-label">Certified</span>
+              <span className="pp-hero__stat-number">{t("productsPage.whogmp")}</span>
+              <span className="pp-hero__stat-label">{t("productsPage.statCertified")}</span>
             </div>
             <div className="pp-hero__stat" style={{ animationDelay: "1.05s" }}>
               <span className="pp-hero__stat-number">
                 <CountUp end="100" suffix="%" />
               </span>
-              <span className="pp-hero__stat-label">Tested Efficacy</span>
+              <span className="pp-hero__stat-label">{t("productsPage.statEfficacy")}</span>
             </div>
           </div>
         </div>
@@ -591,8 +589,8 @@ const ProductsPage = () => {
           ref={headerRef}
           className={`pp-explore-header scroll-reveal ${headerVisible ? "scroll-reveal--visible" : ""}`}
         >
-          <span className="section-label">Explore</span>
-          <h2 className="section-title">Browse Products by Category</h2>
+          <span className="section-label">{t("productsPage.explore")}</span>
+          <h2 className="section-title">{t("productsPage.browseCategory")}</h2>
         </div>
 
         <div className="pp-categories-layout" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
@@ -762,8 +760,8 @@ const ProductsPage = () => {
               </svg>
               <span>
                 {zoom > 1
-                  ? "Double-click to reset · Drag to pan"
-                  : "Double-click or scroll to zoom"}
+                  ? t("productsPage.zoomOutHint")
+                  : t("productsPage.zoomInHint")}
               </span>
             </div>
           </div>

@@ -100,6 +100,25 @@ const resources = {
         ctaTitle: 'Want to be part of this culture?',
         ctaSub: 'We\'re always looking for passionate people who want to make a difference in healthcare.',
         viewRoles: 'View Open Roles'
+      },
+      productsPage: {
+        backToHome: 'Back to Home',
+        heroLabel: 'OUR PORTFOLIO',
+        heroTitle: 'Medicines Crafted with Science & Care',
+        heroSub: 'A trusted range across five therapeutic categories — formulated to the highest safety standards.',
+        joinTeam: 'Join Our Team',
+        lifeAtSsv: 'Life at Ssv',
+        statTherapeutic: 'Therapeutic Range',
+        statFormulations: 'Formulations',
+        statCertified: 'Certified',
+        statEfficacy: 'Tested Efficacy',
+        explore: 'Explore',
+        browseCategory: 'Browse Products by Category',
+        viewProducts: 'VIEW PRODUCTS',
+        close: 'CLOSE',
+        whogmp: 'WHO-GMP',
+        zoomInHint: 'Double-click or scroll to zoom',
+        zoomOutHint: 'Double-click to reset · Drag to pan'
       }
     }
   }
