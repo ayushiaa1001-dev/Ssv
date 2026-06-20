@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import './CulturePage.css'
@@ -80,18 +81,26 @@ const EVENTS = [
 
 /* ── Icon Components ── */
 const PillarIcon = ({ type, color }) => {
-  const icons = {
-    heart: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>,
-    lightbulb: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>,
-    shield: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-    star: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
-    clipboard: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>,
-    globe: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+  switch (type) {
+    case 'heart':
+      return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+    case 'lightbulb':
+      return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+    case 'shield':
+      return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    case 'star':
+      return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    case 'clipboard':
+      return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>
+    case 'globe':
+      return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+    default:
+      return null
   }
-  return icons[type] || null
 }
 
 const CulturePage = () => {
+  const { t } = useTranslation()
   const [heroVisible, setHeroVisible] = useState(false)
   useDocumentTitle('Culture at Ssv')
 
@@ -124,12 +133,12 @@ const CulturePage = () => {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                 <polyline points="15 18 9 12 15 6" />
               </svg>
-              Back to Home
+              {t('culture.backToHome')}
             </Link>
-            <span className="cul-hero__label">Life at Ssv</span>
-            <h1 className="cul-hero__title">Culture at Ssv</h1>
+            <span className="cul-hero__label">{t('culture.heroLabel')}</span>
+            <h1 className="cul-hero__title">{t('culture.heroTitle')}</h1>
             <p className="cul-hero__sub">
-              At Ssv, culture isn&apos;t a policy document — it&apos;s lived every day. From how we celebrate wins to how we support each other through challenges, our culture defines who we are.
+              {t('culture.heroSub')}
             </p>
             <div className="cul-hero__buttons">
               <a href="#culture-pillars" onClick={(e) => {
@@ -137,14 +146,14 @@ const CulturePage = () => {
                 const el = document.getElementById('culture-pillars')
                 if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
               }} className="btn btn-primary cul-btn-filled">
-                Our Pillars
+                {t('culture.btnPillars')}
               </a>
               <a href="#culture-events" onClick={(e) => {
                 e.preventDefault()
                 const el = document.getElementById('culture-events')
                 if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
               }} className="btn btn-outline cul-btn-outline">
-                Annual Events
+                {t('culture.btnEvents')}
               </a>
             </div>
           </div>
@@ -164,8 +173,8 @@ const CulturePage = () => {
       >
         <div className="container">
           <div className="cul-section__header">
-            <span className="section-label">What We Stand For</span>
-            <h2 className="section-title">Our Cultural Pillars</h2>
+            <span className="section-label">{t('culture.standFor')}</span>
+            <h2 className="section-title">{t('culture.pillarsTitle')}</h2>
           </div>
           <div className="cul-pillars__grid">
             {PILLARS.map((pillar, i) => (
@@ -193,8 +202,8 @@ const CulturePage = () => {
       >
         <div className="container">
           <div className="cul-section__header">
-            <span className="section-label">Annual Traditions</span>
-            <h2 className="section-title">Events That Define Us</h2>
+            <span className="section-label">{t('culture.traditions')}</span>
+            <h2 className="section-title">{t('culture.eventsTitle')}</h2>
           </div>
           <div className="cul-events__grid">
             {EVENTS.map((event, i) => (
@@ -224,10 +233,10 @@ const CulturePage = () => {
       >
         <div className="cul-cta__inner container">
           <div className="cul-cta__text">
-            <h2 className="cul-cta__title">Want to be part of this culture?</h2>
-            <p className="cul-cta__sub">We&apos;re always looking for passionate people who want to make a difference in healthcare.</p>
+            <h2 className="cul-cta__title">{t('culture.ctaTitle')}</h2>
+            <p className="cul-cta__sub">{t('culture.ctaSub')}</p>
           </div>
-          <Link to="/careers" className="btn cul-cta__btn">View Open Roles</Link>
+          <Link to="/careers" className="btn cul-cta__btn">{t('culture.viewRoles')}</Link>
         </div>
       </section>
     </div>

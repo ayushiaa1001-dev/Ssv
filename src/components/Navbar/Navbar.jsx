@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import './Navbar.css'
 
 // All searchable content across the site
@@ -25,6 +26,7 @@ const SEARCH_INDEX = [
 ]
 
 const Navbar = () => {
+  const { t } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const navigate = useNavigate()
@@ -122,8 +124,8 @@ const Navbar = () => {
       e.preventDefault()
       setHighlightIndex(i => Math.max(i - 1, 0))
     } else if (e.key === 'Enter') {
-      if (highlightIndex >= 0 && searchResults[highlightIndex]) {
-        handleSelect(searchResults[highlightIndex].section)
+      if (highlightIndex >= 0 && searchResults.at(highlightIndex)) {
+        handleSelect(searchResults.at(highlightIndex).section)
       } else if (searchResults.length > 0) {
         handleSelect(searchResults[0].section)
       }
@@ -220,35 +222,35 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <ul className="navbar__menu" id="nav-menu">
           <li className="navbar__item">
-            <Link to="/" className={`navbar__link ${activePath === '/' ? 'navbar__link--active' : ''}`}>Home</Link>
+            <Link to="/" className={`navbar__link ${activePath === '/' ? 'navbar__link--active' : ''}`}>{t('navbar.home')}</Link>
           </li>
           <li className="navbar__item navbar__item--dropdown"
               onMouseEnter={() => setActiveDropdown('about')}
               onMouseLeave={() => setActiveDropdown(null)}>
             <Link to="/about" className={`navbar__link ${activePath === '/about' ? 'navbar__link--active' : ''}`}>
-              About Us
+              {t('navbar.aboutUs')}
               <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
             </Link>
             {activeDropdown === 'about' && (
               <ul className="navbar__dropdown">
                 <li>
                   <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-story'); }}>
-                    Who We Are
+                    {t('navbar.whoWeAre')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-philosophy'); }}>
-                    Vision & Values
+                    {t('navbar.visionValues')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-journey'); }}>
-                    Milestones
+                    {t('navbar.milestones')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/about" onClick={(e) => { e.preventDefault(); scrollToAboutSection('about-standards'); }}>
-                    Quality
+                    {t('navbar.quality')}
                   </Link>
                 </li>
               </ul>
@@ -258,44 +260,44 @@ const Navbar = () => {
               onMouseEnter={() => setActiveDropdown('products')}
               onMouseLeave={() => setActiveDropdown(null)}>
             <button className={`navbar__link navbar__link--btn ${activePath === '/products' ? 'navbar__link--active' : ''}`} onClick={() => scrollToProductsSection(null)}>
-              Products
+              {t('navbar.products')}
               <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
             </button>
             {activeDropdown === 'products' && (
               <ul className="navbar__dropdown">
                 <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('upcoming-products'); }}>
-                    Upcoming Products
+                    {t('navbar.upcomingProducts')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('cough-cold'); }}>
-                    Cough & Anti Cold Range
+                    {t('navbar.coughColdRange')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('pain-management'); }}>
-                    Pain Management
+                    {t('navbar.painManagement')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('gynae'); }}>
-                    Gynae
+                    {t('navbar.gynae')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('gastro'); }}>
-                    Gastro
+                    {t('navbar.gastro')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('general'); }}>
-                    General
+                    {t('navbar.general')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('all-products'); }}>
-                    All Products
+                    {t('navbar.allProducts')}
                   </Link>
                 </li>
               </ul>
@@ -305,22 +307,22 @@ const Navbar = () => {
               onMouseEnter={() => setActiveDropdown('events')}
               onMouseLeave={() => setActiveDropdown(null)}>
             <button className={`navbar__link navbar__link--btn ${activePath.startsWith('/events') ? 'navbar__link--active' : ''}`} onClick={() => { navigate('/events/culture'); setActiveDropdown(null); }}>
-              Events
+              {t('navbar.events')}
               <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
             </button>
             {activeDropdown === 'events' && (
               <ul className="navbar__dropdown">
                 <li>
-                  <Link to="/events/culture" onClick={() => setActiveDropdown(null)}>Culture at Ssv</Link>
+                  <Link to="/events/culture" onClick={() => setActiveDropdown(null)}>{t('navbar.cultureAtSsv')}</Link>
                 </li>
                 <li>
-                  <Link to="/events/gallery" onClick={() => setActiveDropdown(null)}>Gallery</Link>
+                  <Link to="/events/gallery" onClick={() => setActiveDropdown(null)}>{t('navbar.gallery')}</Link>
                 </li>
               </ul>
             )}
           </li>
           <li className="navbar__item">
-            <Link to="/careers" className={`navbar__link ${activePath === '/careers' ? 'navbar__link--active' : ''}`}>Careers</Link>
+            <Link to="/careers" className={`navbar__link ${activePath === '/careers' ? 'navbar__link--active' : ''}`}>{t('navbar.careers')}</Link>
           </li>
         </ul>
 
@@ -338,7 +340,7 @@ const Navbar = () => {
                 id="search-input"
                 type="text"
                 className="navbar__search-input"
-                placeholder="Search sections, products..."
+                placeholder={t('navbar.searchPlaceholder')}
                 value={searchQuery}
                 onChange={e => handleSearch(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -377,7 +379,7 @@ const Navbar = () => {
                   ) : (
                     <div className="navbar__search-empty">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                      <span>No results for "<strong>{searchQuery}</strong>"</span>
+                      <span>{t('navbar.noResults')} "<strong>{searchQuery}</strong>"</span>
                     </div>
                   )}
                 </div>
@@ -385,7 +387,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <button className={`btn navbar__cta ${activePath === '/contact' ? 'navbar__cta--active' : ''}`} id="contact-btn" onClick={handleContactClick}>Contact Us</button>
+          <button className={`btn navbar__cta ${activePath === '/contact' ? 'navbar__cta--active' : ''}`} id="contact-btn" onClick={handleContactClick}>{t('navbar.contactUs')}</button>
           <div className="navbar__badge" title="Ssv Pharmaceuticals Quality Seal">
             <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ width: '95px', height: '95px', objectFit: 'contain' }} />
           </div>
@@ -414,16 +416,16 @@ const Navbar = () => {
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
-          <button onClick={() => { navigate('/'); setMobileOpen(false); }}>Home</button>
-          <button onClick={() => scrollToAboutSection('about-story')}>About Us</button>
-          <button onClick={() => scrollToAboutSection('about-philosophy')}>Vision & Values</button>
-          <button onClick={() => scrollToAboutSection('about-journey')}>Milestones</button>
-          <button onClick={() => scrollToProductsSection(null)}>Products</button>
-          <button onClick={() => scrollToAboutSection('about-standards')}>Quality & Certifications</button>
-          <Link to="/events/culture" onClick={() => setMobileOpen(false)}>Culture at Ssv</Link>
-          <Link to="/events/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
-          <Link to="/careers" onClick={() => setMobileOpen(false)}>Careers</Link>
-          <Link to="/contact" onClick={() => setMobileOpen(false)} className="btn btn-dark" style={{ marginTop: '10px' }}>Contact Us</Link>
+          <button onClick={() => { navigate('/'); setMobileOpen(false); }}>{t('navbar.home')}</button>
+          <button onClick={() => scrollToAboutSection('about-story')}>{t('navbar.aboutUs')}</button>
+          <button onClick={() => scrollToAboutSection('about-philosophy')}>{t('navbar.visionValues')}</button>
+          <button onClick={() => scrollToAboutSection('about-journey')}>{t('navbar.milestones')}</button>
+          <button onClick={() => scrollToProductsSection(null)}>{t('navbar.products')}</button>
+          <button onClick={() => scrollToAboutSection('about-standards')}>{t('navbar.qualityCertifications')}</button>
+          <Link to="/events/culture" onClick={() => setMobileOpen(false)}>{t('navbar.cultureAtSsv')}</Link>
+          <Link to="/events/gallery" onClick={() => setMobileOpen(false)}>{t('navbar.gallery')}</Link>
+          <Link to="/careers" onClick={() => setMobileOpen(false)}>{t('navbar.careers')}</Link>
+          <Link to="/contact" onClick={() => setMobileOpen(false)} className="btn btn-dark" style={{ marginTop: '10px' }}>{t('navbar.contactUs')}</Link>
         </div>
       )}
     </nav>

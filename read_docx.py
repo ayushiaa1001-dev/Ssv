@@ -1,11 +1,11 @@
 import zipfile
-import xml.etree.ElementTree as ET
+import defusedxml.ElementTree
 
 def extract_text_from_docx(docx_path):
     try:
         with zipfile.ZipFile(docx_path) as z:
             xml_content = z.read('word/document.xml')
-            root = ET.fromstring(xml_content)
+            root = defusedxml.ElementTree.fromstring(xml_content)
             ns = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
             
             # The text is stored in <w:t> elements
