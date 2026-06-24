@@ -1,5 +1,7 @@
+/* cspell:ignore Hazari Pahad whogmp Nutraceuticals */
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
+
 
 const resources = {
   en: {
@@ -13,11 +15,11 @@ const resources = {
         quality: 'Quality',
         products: 'Products',
         upcomingProducts: 'Upcoming Products',
-        coughColdRange: 'Cough & Anti Cold Range',
-        painManagement: 'Pain Management',
-        gynae: 'Gynae',
+        coughColdRange: 'Anti Cold / Anti Asthmatics',
+        painManagement: 'Ortho and Pain Management',
+        gynae: "Women's Health",
         gastro: 'Gastro',
-        general: 'General',
+        general: 'Nutraceuticals',
         allProducts: 'All Products',
         events: 'Events',
         cultureAtSsv: 'Culture at Ssv',
@@ -29,7 +31,7 @@ const resources = {
         qualityCertifications: 'Quality & Certifications'
       },
       footer: {
-        brandDesc: 'Committed to delivering high-quality pharmaceutical formulations and healthcare solutions globally.',
+        brandDesc: 'Committed to <strong>Synergy, System and Values</strong>, along with stringent quality controls and a patient-centric approach.',
         missionTitle: 'Our Mission',
         missionDesc: 'To deliver safe, effective, and affordable pharmaceutical solutions through continuous research, ethical practices, and unwavering commitment to quality.',
         quickLinksTitle: 'Quick Links',
@@ -113,7 +115,7 @@ const resources = {
         statCertified: 'Certified',
         statEfficacy: 'Tested Efficacy',
         explore: 'Explore',
-        browseCategory: 'Browse Products by Category',
+        browseCategory: 'Product Portfolio',
         viewProducts: 'VIEW PRODUCTS',
         close: 'CLOSE',
         whogmp: 'WHO-GMP',

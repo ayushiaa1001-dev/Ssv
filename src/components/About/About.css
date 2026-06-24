@@ -37,6 +37,11 @@
   margin-bottom: 20px;
 }
 
+.about__text strong {
+  font-weight: 800;
+  color: var(--color-navy);
+}
+
 .about__text:last-of-type {
   margin-bottom: 36px;
 }

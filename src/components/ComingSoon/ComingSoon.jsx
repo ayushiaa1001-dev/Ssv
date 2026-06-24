@@ -1,3 +1,4 @@
+/* cspell:ignore Lax Flumood Eufix Prot */
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
@@ -5,31 +6,39 @@ import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 /* ── Upcoming / Coming Soon Products ── */
 const upcomingProducts = [
   {
-    id: "dermacare",
-    name: "DermaCare Range",
-    category: "Derma Care",
-    formSize: "Topical",
-    desc: "A comprehensive dermatology line targeting eczema, psoriasis, and chronic skin conditions — formulated with next-generation corticosteroid-free actives.",
-    img: "/ssv/images/dermacare_premium.png",
-    expectedDate: "Launching Q2 2025",
+    id: "lax-mps",
+    name: "Lax MPS",
+    category: "Gastro Care",
+    formSize: "Suspension",
+    desc: "A next-generation digestive health solution for constipation — designed to support natural bowel movement and overall gut comfort.",
   },
   {
-    id: "neuroplex",
-    name: "NeuroPlex Series",
-    category: "Neuro Care",
-    formSize: "Capsules & Syrup",
-    desc: "Neuroprotective and cognitive health supplements backed by clinical research, targeting memory, focus, and nerve regeneration.",
-    img: "/ssv/images/neuroplex_premium.png",
-    expectedDate: "Launching Q3 2025",
-  },
-  {
-    id: "cardioshield",
-    name: "CardioShield Pro",
-    category: "Cardio Care",
+    id: "flumood",
+    name: "Flumood",
+    category: "Mental Wellness",
     formSize: "Tablets",
-    desc: "A cardioprotective range combining statins, antihypertensives, and omega-3 combinations for comprehensive cardiovascular disease management.",
-    img: "/ssv/images/cardioshield_premium.png",
-    expectedDate: "Launching Q4 2025",
+    desc: "A comprehensive mental wellness range targeting depression, anxiety, and stress-related conditions — developed with advanced therapeutic approaches to support emotional balance and cognitive well-being.",
+  },
+  {
+    id: "eufix",
+    name: "Eufix",
+    category: "Gastro Care",
+    formSize: "Tablets",
+    desc: "An advanced gastrointestinal solution addressing acute and chronic diarrhea management — developed with evidence-based formulations for effective symptom control and digestive recovery.",
+  },
+  {
+    id: "ss-cal-plus",
+    name: "SS Cal-Plus",
+    category: "Bone & Vitality",
+    formSize: "Tablets",
+    desc: "An integrated bone and vitality solution addressing BMD improvement, neurological support, and immunity enhancement — formulated to promote long-term health and resilience.",
+  },
+  {
+    id: "ss-prot",
+    name: "SS Prot",
+    category: "Protein Supplement",
+    formSize: "Powder",
+    desc: "A nutrition-focused protein solution delivering quality supplementation for strength, recovery, and active lifestyles — crafted to support optimal physical performance.",
   },
 ];
 
@@ -72,7 +81,7 @@ const ComingSoonCard = ({ isExpanded, onToggle }) => {
         {/* Title & subtitle */}
         <div className="pp-coming-soon__text">
           <h3 className="pp-coming-soon__title">
-            New Ranges — Launching 2025
+            Future Offerings — 2026-27
           </h3>
           <p className="pp-coming-soon__sub">
             Exciting new therapeutic categories are on the way. Preview below.
@@ -130,10 +139,6 @@ const ComingSoonCard = ({ isExpanded, onToggle }) => {
               exit={{ y: -8 }}
               transition={{ duration: 0.35 }}
             >
-              
-              <div className="pp-coming-soon__header">
-                SNEAK PREVIEW — CONCEPT IMAGES
-              </div>
 
               <div className="pp-product-grid pp-coming-soon__grid">
                 {upcomingProducts.map((product, idx) => (
@@ -152,7 +157,9 @@ const ComingSoonCard = ({ isExpanded, onToggle }) => {
                       <h4 className="pp-product-card__name">{product.name}</h4>
                       <div className="pp-product-card__meta">
                         <span className="pp-product-card__type">{product.formSize}</span>
-                        <span className="pp-product-card__quantity">{product.expectedDate}</span>
+                        {product.expectedDate && (
+                          <span className="pp-product-card__quantity">{product.expectedDate}</span>
+                        )}
                       </div>
                       <p className="pp-product-card__desc">
                         {product.desc}

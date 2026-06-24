@@ -36,6 +36,11 @@
   margin-bottom: 24px;
 }
 
+.footer__brand-desc strong {
+  font-weight: 800;
+  color: var(--color-white);
+}
+
 /* Columns */
 .footer__col-title {
   font-family: var(--font-heading);

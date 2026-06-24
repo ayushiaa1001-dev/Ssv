@@ -17,7 +17,7 @@ const About = () => {
             Ssv Pharmaceuticals was founded with a vision to make quality healthcare accessible to all .We have grown from a small beginning into a trusted name in the pharmaceutical industry. With over two decades of experience, we serve a wide range of pharmaceutical formulations that meet international standards.
           </p>
           <p className="about__text">
-            Our commitment to Synergy, System and Values, along with stringent quality controls and a patient-centric approach, has earned us the trust of healthcare professionals and patients across India.
+            Our commitment to <strong>Synergy, System and Values</strong>, along with stringent quality controls and a patient-centric approach, has earned us the trust of healthcare professionals and patients across India.
           </p>
         </div>
 

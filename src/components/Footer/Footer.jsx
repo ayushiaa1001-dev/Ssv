@@ -41,9 +41,7 @@ const Footer = () => {
                 <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="Ssv Logo" style={{ height: '100px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
               </div>
             </Link>
-            <p className="footer__brand-desc">
-              {t('footer.brandDesc')}
-            </p>
+            <p className="footer__brand-desc" dangerouslySetInnerHTML={{ __html: t('footer.brandDesc') }} />
 
           </div>
 

@@ -12,11 +12,11 @@ const SEARCH_INDEX = [
   { title: 'Quality & Certifications', description: 'Our quality standards and certifications', section: '#about-standards', keywords: ['quality', 'certifications', 'gmp', 'iso', 'standards'] },
   { title: 'Products', description: 'Our pharmaceutical product portfolio', section: 'products', keywords: ['products', 'portfolio', 'medicines', 'drugs', 'formulations'] },
   { title: 'Upcoming Products', description: 'New ranges coming soon', section: 'products/upcoming-products', keywords: ['upcoming', 'new', 'coming soon', 'future'] },
-  { title: 'Cough & Anti Cold Range', description: 'Cough syrups, cold relief medicines', section: 'products/cough-cold', keywords: ['cough', 'cold', 'anti cold', 'syrup', 'fever'] },
-  { title: 'Pain Management', description: 'Pain relief and analgesic products', section: 'products/pain-management', keywords: ['pain', 'analgesic', 'relief', 'tablet'] },
-  { title: 'Gynae', description: 'Gynaecology product range', section: 'products/gynae', keywords: ['gynae', 'gynaecology', 'women', 'health'] },
+  { title: 'Anti Cold / Anti Asthmatics', description: 'Cough syrups, cold relief medicines', section: 'products/cough-cold', keywords: ['cough', 'cold', 'anti cold', 'syrup', 'fever', 'asthmatics', 'asthma'] },
+  { title: 'Ortho and Pain Management', description: 'Pain relief and analgesic products', section: 'products/pain-management', keywords: ['pain', 'analgesic', 'relief', 'tablet', 'ortho', 'orthopedic', 'bone', 'joint'] },
+  { title: "Women's Health", description: 'Gynaecology product range', section: 'products/gynae', keywords: ['gynae', 'gynaecology', 'women', 'health', 'womens'] },
   { title: 'Gastro', description: 'Gastroenterology products', section: 'products/gastro', keywords: ['gastro', 'digestive', 'stomach', 'gastroenterology'] },
-  { title: 'General Products', description: 'General medicine formulations', section: 'products/general', keywords: ['general', 'medicine', 'tablets', 'capsules'] },
+  { title: 'Nutraceuticals', description: 'Vitamins, minerals and everyday immunity support', section: 'products/general', keywords: ['nutraceuticals', 'vitamins', 'minerals', 'immunity', 'tablets', 'capsules'] },
   { title: 'Careers', description: 'Join our team at Ssv Pharmaceuticals', section: 'careers', keywords: ['careers', 'jobs', 'hiring', 'work', 'employment', 'join'] },
   { title: 'Culture at Ssv', description: 'Our cultural pillars and annual events', section: 'events/culture', keywords: ['culture', 'events', 'pillars', 'annual', 'gala', 'founders'] },
   { title: 'Gallery', description: 'Photo gallery of life at Ssv', section: 'events/gallery', keywords: ['gallery', 'photos', 'images', 'snapshots'] },
@@ -266,11 +266,6 @@ const Navbar = () => {
             {activeDropdown === 'products' && (
               <ul className="navbar__dropdown">
                 <li>
-                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('upcoming-products'); }}>
-                    {t('navbar.upcomingProducts')}
-                  </Link>
-                </li>
-                <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('cough-cold'); }}>
                     {t('navbar.coughColdRange')}
                   </Link>
@@ -298,6 +293,11 @@ const Navbar = () => {
                 <li>
                   <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('all-products'); }}>
                     {t('navbar.allProducts')}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products" onClick={(e) => { e.preventDefault(); scrollToProductsSection('upcoming-products'); }}>
+                    {t('navbar.upcomingProducts')}
                   </Link>
                 </li>
               </ul>

@@ -7,6 +7,7 @@ import heroBg from '../assets/images/about-hero-bg.jpg'
 import aboutWhoImage from '../assets/images/about-who.jpg'
 import aboutMilestoneImage from '../assets/images/about-milestone.jpg'
 // import aboutQualityImage from '../assets/images/about-quality.jpg'
+import aboutStoryNewImage from '../assets/images/about-story-new.jpg'
 import './AboutPage.css'
 
 const AboutPage = () => {
@@ -61,7 +62,7 @@ const AboutPage = () => {
 
             <h1 className="ap-hero__title">About Us</h1>
             <p className="ap-hero__sub">
-              Advancing global healthcare through scientific research, state-of-the-art manufacturing, and an uncompromising commitment to quality.
+              Serving healthcare through scientific approach, ISO certified processes , and an uncompromising commitment to quality.
             </p>
             <div className="ap-hero__buttons">
               <Link to="/products" className="btn btn-primary">
@@ -121,10 +122,10 @@ const AboutPage = () => {
               Ssv Pharmaceuticals is a trusted healthcare company dedicated to excellence and transparency, offering high-quality pharmaceutical products that improve patient outcomes across India.
             </p>
             <p className="ap-text">
-              Founded with a vision to make effective healthcare accessible to all, we combine scientific rigour with compassionate values — ensuring every medicine we produce meets the highest safety and efficacy standards.
+              Founded with a vision to make effective healthcare accessible to all, we combine scientific rigour with compassionate values — ensuring every medicine we deliver meets the highest safety and efficacy standards. 
             </p>
             <p className="ap-text">
-              Our state-of-the-art facilities, ISO-certified processes, and a dedicated team of over 40 professionals reflect our unwavering commitment to health and wellbeing.
+              Our ISO-certified processes, and a dedicated team of over 40 professionals reflect our unwavering commitment to health and wellbeing. 
             </p>
             
             {/* Stats Counter */}
@@ -150,7 +151,16 @@ const AboutPage = () => {
             </div>
           </div>
 
-          {/* Image temporarily removed until new image is provided */}
+          <div className="ap-who__image-wrapper">
+            <div className="ap-who__image-container">
+              <img 
+                src={aboutStoryNewImage} 
+                alt="Ssv medical professionals" 
+                className="ap-who__img"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -173,7 +183,7 @@ const AboutPage = () => {
               </div>
               <h3 className="ap-philosophy__card-title">Vision</h3>
               <ul className="ap-philosophy__card-list">
-                <li>To be a globally trusted pharmaceutical company that leads through innovation.</li>
+                <li>To be a globally trusted pharmaceutical company that leads through knowledge and values.</li>
                 <li>To reach every patient in need and set the benchmark for quality and affordability.</li>
                 <li>To make life-saving medicines accessible to all, regardless of geography or circumstance.</li>
                 <li>To be synonymous with trust, healing, and scientific excellence worldwide.</li>
@@ -190,8 +200,8 @@ const AboutPage = () => {
               <h3 className="ap-philosophy__card-title">Values</h3>
               <ul className="ap-philosophy__card-list">
                 <li><strong>Integrity</strong> — Unwavering honesty and transparency in everything we do.</li>
-                <li><strong>Innovation</strong> — Continuously advancing science and pharmaceutical solutions.</li>
-                <li><strong>Patient-First</strong> — Every decision begins and ends with patient wellbeing.</li>
+                <li><strong>Respect and Care</strong> — Valuing people and prioritizing their well-being in everything we do. </li>
+                <li><strong>Patient-First</strong> — Putting patient wellbeing first to bring hope, care, and smiles to every life we touch. </li>
                 <li><strong>Excellence</strong> — Committed to the highest standards of quality and safety.</li>
               </ul>
             </div>
@@ -217,12 +227,6 @@ const AboutPage = () => {
                   className="ap-journey__img"
                   loading="lazy"
                 />
-                <div className="ap-journey__badge">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ap-badge-icon">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <span>25+ Industry Awards</span>
-                </div>
               </div>
             </div>
 
@@ -231,42 +235,50 @@ const AboutPage = () => {
               <div className="ap-timeline-track"></div>
               
               <div className="ap-timeline-item">
-                <div className="ap-timeline-marker">1985</div>
+                <div className="ap-timeline-marker">2010</div>
                 <div className="ap-timeline-content">
                   <h4 className="ap-timeline-title">Foundation</h4>
-                  <p>Founded in Mumbai with a vision to make quality medicines accessible to all.</p>
+                  <p>Founded in Nagpur with a vision to make quality medicines accessible to all.</p>
                 </div>
               </div>
 
               <div className="ap-timeline-item">
-                <div className="ap-timeline-marker">1998</div>
+                <div className="ap-timeline-marker">2020</div>
                 <div className="ap-timeline-content">
-                  <h4 className="ap-timeline-title">WHO-GMP Certification</h4>
-                  <p>Achieved WHO-GMP certification across all manufacturing units.</p>
+                  <h4 className="ap-timeline-title">People First Initiative</h4>
+                  <p>Introduced EPF and ESI benefits for team members, strengthening our commitment to employee security, care, and well-being.</p>
                 </div>
               </div>
 
               <div className="ap-timeline-item">
-                <div className="ap-timeline-marker">2008</div>
+                <div className="ap-timeline-marker">2022</div>
                 <div className="ap-timeline-content">
-                  <h4 className="ap-timeline-title">Global Reach</h4>
-                  <p>Launched export operations to 12 countries across Asia and Africa.</p>
+                  <h4 className="ap-timeline-title">Quality Excellence</h4>
+                  <p>Received ISO 9001 certification, reinforcing our dedication to maintaining the highest standards of quality and operational excellence.</p>
                 </div>
               </div>
 
               <div className="ap-timeline-item">
-                <div className="ap-timeline-marker">2019</div>
+                <div className="ap-timeline-marker">2023</div>
                 <div className="ap-timeline-content">
-                  <h4 className="ap-timeline-title">National Recognition</h4>
-                  <p>Received the National Pharma Excellence Award for Innovation.</p>
+                  <h4 className="ap-timeline-title">MSME Recognition</h4>
+                  <p>Recognized among the Top 5000 MSMEs, reflecting our growth, excellence, and contribution to the pharmaceutical industry.</p>
                 </div>
               </div>
 
               <div className="ap-timeline-item">
-                <div className="ap-timeline-marker">2024</div>
+                <div className="ap-timeline-marker">2025</div>
                 <div className="ap-timeline-content">
-                  <h4 className="ap-timeline-title">Expansion & Beyond</h4>
-                  <p>Expanded product portfolio with entry into biosimilars.</p>
+                  <h4 className="ap-timeline-title">Business Excellence</h4>
+                  <p>Maintained our recognition among the Top 5000 MSMEs for three consecutive years, reflecting consistent growth, excellence, and industry contribution.</p>
+                </div>
+              </div>
+
+              <div className="ap-timeline-item">
+                <div className="ap-timeline-marker">2026</div>
+                <div className="ap-timeline-content">
+                  <h4 className="ap-timeline-title">Strategic Expansion</h4>
+                  <p> Launched 5 new brands in a row, strengthening our portfolio and expanding our presence in the pharmaceutical market.</p>
                 </div>
               </div>
             </div>
@@ -279,24 +291,25 @@ const AboutPage = () => {
         <div className="container ap-standards__inner">
           {/* Left Column: Copy & Certifications */}
           <div className="ap-standards__content">
-            <span className="section-label">Our Standards</span>
+            <span className="section-label">Our Values</span>
             <h2 className="section-title">Quality</h2>
             <p className="ap-text">
-              Quality is not an afterthought at Ssv — it is embedded in every stage of our manufacturing process. From raw material sourcing to final packaging, each product undergoes rigorous testing and validation.
+              Quality is not an afterthought at Ssv — it is embedded in every stage of our process.
             </p>
             <p className="ap-text">
-              Our facilities are regularly audited by international regulatory bodies, ensuring that every medicine that leaves our plant meets global standards of safety, purity, and efficacy.
+              Our facilities are regularly audited by regulatory bodies, ensuring that every medicine meets global standards of safety, purity, and efficacy. 
             </p>
             <p className="ap-text">
-              Holding WHO-GMP and ISO 9001:2015 certifications, we maintain strict quality control across more than 200 tests per batch — with complete traceability from ingredient to shelf.
+              Holding ISO 9001:2015 certification, we maintain strict quality control with complete traceability from ingredients to shelf. 
+
             </p>
 
             {/* Compliance Badges Grid */}
             <div className="ap-standards__badges">
-              <div className="ap-standard-tag">WHO-GMP</div>
-              <div className="ap-standard-tag">ISO 9001:2015</div>
-              <div className="ap-standard-tag">GLP Compliant</div>
-              <div className="ap-standard-tag">100% Traceable</div>
+              <div className="ap-standard-tag">Excellence</div>
+              <div className="ap-standard-tag">Reliability</div>
+              <div className="ap-standard-tag">Purity</div>
+              <div className="ap-standard-tag">Trust</div>
             </div>
           </div>
 
@@ -314,7 +327,7 @@ const AboutPage = () => {
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                   <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
-                <span>GMP Certified</span>
+                <span>ISO 9001 Certified</span>
               </div>
             </div>
           </div>

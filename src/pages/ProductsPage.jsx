@@ -1,3 +1,4 @@
+/* cspell:ignore Alnil Felocold Susp Felokof Felo Felodol Hemopeak Rabpad OMGOD Flupact Versadine */
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -14,7 +15,7 @@ const BASE = import.meta.env.BASE_URL;
 const categoriesData = [
   {
     id: "cough-cold",
-    name: "Cough & Anti Cold Range",
+    name: "Anti Cold / Anti Asthmatics",
     tagline: "Fast-acting relief for cough, cold & congestion",
     themeColor: "#0077A8",
     image:
@@ -64,7 +65,7 @@ const categoriesData = [
   },
   {
     id: "pain-management",
-    name: "Pain Management",
+    name: "Ortho and Pain Management",
     tagline: "Targeted relief for acute and chronic pain",
     themeColor: "#C75000",
     image:
@@ -106,7 +107,7 @@ const categoriesData = [
   },
   {
     id: "gynae",
-    name: "Gynae Care",
+    name: "Women's Health",
     tagline: "Trusted care for women's health & wellness",
     themeColor: "#9C1A5E",
     image:
@@ -158,7 +159,7 @@ const categoriesData = [
   },
   {
     id: "general",
-    name: "General Health",
+    name: "Nutraceuticals",
     tagline: "Vitamins, minerals & everyday immunity support",
     themeColor: "#5B3FA0",
     image:
@@ -171,30 +172,6 @@ const categoriesData = [
         quantity: "1 x 10 Soft Gelatin Capsules",
         desc: "Premium blend of multivitamins and antioxidants to support heart, brain, and daily vitality.",
         img: `${BASE}products/OMGOD.png`,
-      },
-      {
-        id: "Ver-D",
-        name: "Ver-D",
-        type: "Tablets",
-        quantity: "10 x 10 Tablets",
-        desc: "Provides rapid relief from vertigo, motion sickness, and associated nausea.",
-        img: `${BASE}products/Ver-D.png`,
-      },
-      {
-        id: "Flupact",
-        name: "Flupact",
-        type: "Tablets",
-        quantity: "10 x 10 Tablets",
-        desc: "Effective preventative treatment for recurrent migraines and severe headaches.",
-        img: `${BASE}products/Flupact.png`,
-      },
-      {
-        id: "Versadine",
-        name: "Versadine",
-        type: "Ointment",
-        quantity: "20 g",
-        desc: "Broad-spectrum antiseptic ointment for preventing infections in cuts, burns, and wounds.",
-        img: `${BASE}products/Versadine.png`,
       },
     ],
   },
@@ -211,9 +188,38 @@ const categoriesData = [
 
 // Populate "All Products" with every product from all other categories
 const allIdx = categoriesData.length - 1;
-categoriesData[allIdx].products = categoriesData
-  .slice(0, allIdx)
-  .flatMap((cat) => cat.products.map((p) => ({ ...p, category: cat.name })));
+categoriesData[allIdx].products = [
+  ...categoriesData
+    .slice(0, allIdx)
+    .flatMap((cat) => cat.products.map((p) => ({ ...p, category: cat.name }))),
+  {
+    id: "Ver-D",
+    name: "Ver-D",
+    type: "Tablets",
+    quantity: "10 x 10 Tablets",
+    desc: "Provides rapid relief from vertigo, motion sickness, and associated nausea.",
+    img: `${BASE}products/Ver-D.png`,
+    category: "General Care",
+  },
+  {
+    id: "Flupact",
+    name: "Flupact",
+    type: "Tablets",
+    quantity: "10 x 10 Tablets",
+    desc: "Effective preventative treatment for recurrent migraines and severe headaches.",
+    img: `${BASE}products/Flupact.png`,
+    category: "General Care",
+  },
+  {
+    id: "Versadine",
+    name: "Versadine",
+    type: "Ointment",
+    quantity: "20 g",
+    desc: "Broad-spectrum antiseptic ointment for preventing infections in cuts, burns, and wounds.",
+    img: `${BASE}products/Versadine.png`,
+    category: "General Care",
+  },
+];
 
 const CategoryCard = ({ category, isExpanded, isInactive, onToggle }) => {
   const { t } = useTranslation();
@@ -543,7 +549,7 @@ const ProductsPage = () => {
             </div>
             <div className="pp-hero__stat" style={{ animationDelay: "0.75s" }}>
               <span className="pp-hero__stat-number">
-                <CountUp end="200" suffix="+" />
+                <CountUp end="25" suffix="+" />
               </span>
               <span className="pp-hero__stat-label">{t("productsPage.statFormulations")}</span>
             </div>
