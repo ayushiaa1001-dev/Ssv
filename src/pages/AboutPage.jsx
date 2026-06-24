@@ -6,7 +6,7 @@ import CountUp from '../components/CountUp'
 import heroBg from '../assets/images/about-hero-bg.jpg'
 import aboutWhoImage from '../assets/images/about-who.jpg'
 import aboutMilestoneImage from '../assets/images/about-milestone.jpg'
-import aboutQualityImage from '../assets/images/about-quality.jpg'
+// import aboutQualityImage from '../assets/images/about-quality.jpg'
 import './AboutPage.css'
 
 const AboutPage = () => {
@@ -58,7 +58,7 @@ const AboutPage = () => {
               </svg>
               Back to Home
             </Link>
-            <span className="ap-hero__label">Who We Are</span>
+
             <h1 className="ap-hero__title">About Us</h1>
             <p className="ap-hero__sub">
               Advancing global healthcare through scientific research, state-of-the-art manufacturing, and an uncompromising commitment to quality.
@@ -78,25 +78,25 @@ const AboutPage = () => {
           <div className="ap-hero__stats-inner container">
             <div className="ap-hero__stat" style={{ animationDelay: '0.6s' }}>
               <span className="ap-hero__stat-number">
-                <CountUp end="38" suffix="+" />
+                <CountUp end="15" suffix="+" duration={2500} />
               </span>
               <span className="ap-hero__stat-label">Years of Excellence</span>
             </div>
             <div className="ap-hero__stat" style={{ animationDelay: '0.75s' }}>
               <span className="ap-hero__stat-number">
-                <CountUp end="200" suffix="+" />
+                <CountUp end="25" suffix="+" duration={2500} />
               </span>
               <span className="ap-hero__stat-label">Product Portfolio</span>
             </div>
             <div className="ap-hero__stat" style={{ animationDelay: '0.9s' }}>
               <span className="ap-hero__stat-number">
-                <CountUp end="500" suffix="+" />
+                <CountUp end="40" suffix="+" duration={2500} />
               </span>
-              <span className="ap-hero__stat-label">Professionals</span>
+              <span className="ap-hero__stat-label">Dedicated Professionals</span>
             </div>
             <div className="ap-hero__stat" style={{ animationDelay: '1.05s' }}>
               <span className="ap-hero__stat-number">
-                ISO <CountUp end="9001" />
+                ISO <CountUp end="9001" duration={2500} />
               </span>
               <span className="ap-hero__stat-label">Certified</span>
             </div>
@@ -118,51 +118,39 @@ const AboutPage = () => {
             <span className="section-label">Our Story</span>
             <h2 className="section-title">About Us</h2>
             <p className="ap-text">
-              Ssv Pharmaceuticals is a leading healthcare company dedicated to developing and manufacturing high-quality pharmaceutical products that improve patient outcomes across India and beyond.
+              Ssv Pharmaceuticals is a trusted healthcare company dedicated to excellence and transparency, offering high-quality pharmaceutical products that improve patient outcomes across India.
             </p>
             <p className="ap-text">
               Founded with a vision to make effective healthcare accessible to all, we combine scientific rigour with compassionate values — ensuring every medicine we produce meets the highest safety and efficacy standards.
             </p>
             <p className="ap-text">
-              Our state-of-the-art facilities, ISO-certified processes, and a dedicated team of over 500 professionals reflect our unwavering commitment to health and wellbeing.
+              Our state-of-the-art facilities, ISO-certified processes, and a dedicated team of over 40 professionals reflect our unwavering commitment to health and wellbeing.
             </p>
             
             {/* Stats Counter */}
             <div className="ap-who__stats">
               <div className="ap-who__stat-item">
                 <span className="ap-who__stat-number">
-                  <CountUp end="38" suffix="+" />
+                  <CountUp end="15" suffix="+" duration={2500} />
                 </span>
                 <span className="ap-who__stat-label">Years of Excellence</span>
               </div>
               <div className="ap-who__stat-item">
                 <span className="ap-who__stat-number">
-                  <CountUp end="200" suffix="+" />
+                  <CountUp end="25" suffix="+" duration={2500} />
                 </span>
                 <span className="ap-who__stat-label">Products Portfolio</span>
               </div>
               <div className="ap-who__stat-item">
                 <span className="ap-who__stat-number">
-                  <CountUp end="500" suffix="+" />
+                  <CountUp end="40" suffix="+" duration={2500} />
                 </span>
                 <span className="ap-who__stat-label">Team Members</span>
               </div>
             </div>
           </div>
 
-          <div className="ap-who__image-wrapper">
-            <div className="ap-who__image-container">
-              <img 
-                src={aboutWhoImage} 
-                alt="Ssv medical professionals" 
-                className="ap-who__img"
-                loading="lazy"
-              />
-              <div className="ap-who__badge">
-                <span className="ap-who__badge-text">ISO 9001 Certified</span>
-              </div>
-            </div>
-          </div>
+          {/* Image temporarily removed until new image is provided */}
         </div>
       </section>
 
@@ -278,7 +266,7 @@ const AboutPage = () => {
                 <div className="ap-timeline-marker">2024</div>
                 <div className="ap-timeline-content">
                   <h4 className="ap-timeline-title">Expansion & Beyond</h4>
-                  <p>Crossed 200-product portfolio with entry into biosimilars.</p>
+                  <p>Expanded product portfolio with entry into biosimilars.</p>
                 </div>
               </div>
             </div>
@@ -316,7 +304,7 @@ const AboutPage = () => {
           <div className="ap-standards__image">
             <div className="ap-standards__image-container">
               <img 
-                src={aboutQualityImage} 
+                src={aboutWhoImage} 
                 alt="Quality control laboratory" 
                 className="ap-standards__img"
                 loading="lazy"

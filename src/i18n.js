@@ -7,7 +7,7 @@ const resources = {
       navbar: {
         home: 'Home',
         aboutUs: 'About Us',
-        whoWeAre: 'Who We Are',
+        whoWeAre: 'Our Story',
         visionValues: 'Vision & Values',
         milestones: 'Milestones',
         quality: 'Quality',

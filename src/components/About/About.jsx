@@ -9,21 +9,15 @@ const About = () => {
     <section className="about" id="about" ref={ref}>
       <div className={`about__inner container ${visible ? 'about--visible' : ''}`}>
         <div className="about__content">
-          <span className="section-label">WHO WE ARE</span>
+          <span className="section-label">OUR STORY</span>
           <h2 className="section-title">
             About <span>Us</span>
           </h2>
           <p className="about__text">
-            Founded with a vision to make quality healthcare accessible to all,
-            Ssv Pharmaceuticals has grown from a modest beginning into a
-            trusted name in the pharmaceutical industry. With over three decades
-            of experience, we manufacture and distribute a wide range of
-            pharmaceutical formulations that meet international standards.
+            Ssv Pharmaceuticals was founded with a vision to make quality healthcare accessible to all .We have grown from a small beginning into a trusted name in the pharmaceutical industry. With over two decades of experience, we serve a wide range of pharmaceutical formulations that meet international standards.
           </p>
           <p className="about__text">
-            Our commitment to research-driven innovation, stringent quality
-            controls, and patient-centric approach has earned us the trust of
-            healthcare professionals and patients across 12+ countries.
+            Our commitment to Synergy, System and Values, along with stringent quality controls and a patient-centric approach, has earned us the trust of healthcare professionals and patients across India.
           </p>
         </div>
 
@@ -31,7 +25,7 @@ const About = () => {
           <div className="about__image-wrapper">
             <img src={aboutImage} alt="Ssv Pharmaceuticals team" loading="lazy" />
             <div className="about__pill">
-              <span className="about__pill-number">38+</span>
+              <span className="about__pill-number">15+</span>
               <span className="about__pill-label">Years of Excellence</span>
             </div>
           </div>

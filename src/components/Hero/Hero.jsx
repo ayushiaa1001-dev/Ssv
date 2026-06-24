@@ -5,10 +5,10 @@ import './Hero.css'
 import heroBg from '../../assets/images/hero-bg.png'
 
 const stats = [
-  { number: 38, suffix: '+', label: 'Years of Excellence' },
-  { number: 200, suffix: '+', label: 'Product Portfolio' },
-  { number: 12, suffix: '+', label: 'Export Countries' },
-  { number: 500, suffix: '+', label: 'Professionals' },
+  { number: 15, suffix: '+', label: 'Years of Excellence' },
+  { number: 25, suffix: '+', label: 'Product Portfolio' },
+  { number: 40, suffix: '+', label: 'Dedicated Professionals' },
+  { number: 5000, suffix: '+', label: 'Valued Customers' },
 ]
 
 const Hero = () => {
@@ -28,13 +28,13 @@ const Hero = () => {
 
       <div className="hero__content">
         <div className={`hero__text ${visible ? 'hero__text--visible' : ''}`}>
-          <span className="hero__eyebrow">ADVANCING HEALTHCARE SINCE 1985</span>
+          <span className="hero__eyebrow">SERVING HUMANITY SINCE 2010</span>
           <h1 className="hero__title">
             Committed to Health,<br />
-            Driven by Science.
+            Nurtured by Knowledge.
           </h1>
           <p className="hero__description">
-            Ssv Pharmaceuticals delivers trusted, high-quality medicines across therapeutic categories — improving lives across India and beyond.
+            Ssv Pharmaceuticals delivers trusted, high-quality medicines across therapeutic categories — improving lives across India.
           </p>
           <div className="hero__buttons">
             <Link to="/about" className="btn btn-primary" id="hero-cta-story">
@@ -52,7 +52,7 @@ const Hero = () => {
           {stats.map((stat, i) => (
             <div className="hero__stat" key={i} style={{ animationDelay: `${0.6 + i * 0.15}s` }}>
               <span className="hero__stat-number">
-                <CountUp end={stat.number} suffix={stat.suffix} />
+                <CountUp end={stat.number} suffix={stat.suffix} duration={2500} />
               </span>
               <span className="hero__stat-label">{stat.label}</span>
             </div>
