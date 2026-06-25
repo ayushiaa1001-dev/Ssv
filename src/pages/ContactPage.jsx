@@ -10,6 +10,8 @@ const ContactPage = () => {
   const [heroVisible, setHeroVisible] = useState(false)
   useDocumentTitle('Contact Us')
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const [formName, setFormName] = useState('')
   const [formEmail, setFormEmail] = useState('')
@@ -25,29 +27,63 @@ const ContactPage = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
-    // NOTE: No backend is connected. Form data is shown in the console for debugging.
-    // Replace this with an actual API call when a backend is available.
-    console.warn('[Ssv Contact] Message submitted (no backend connected):', {
+    setSubmitting(true)
+    setErrorMessage('')
+
+    const submitUrl = import.meta.env.VITE_FORM_SUBMIT_URL
+    const isMock = !submitUrl || submitUrl === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE'
+
+    const payload = {
+      type: 'contact',
       name: formName,
       email: formEmail,
       phone: formPhone || undefined,
       subject: formSubject,
       message: formMessage,
-    })
-    setTimeout(() => {
+    }
+
+    if (isMock) {
+      console.warn('[Ssv Contact] Message submitted (mock mode - no backend URL configured):', payload)
+      setTimeout(() => {
+        setSubmitting(false)
+        setSubmitted(true)
+        setFormName('')
+        setFormEmail('')
+        setFormPhone('')
+        setFormSubject('')
+        setFormMessage('')
+      }, 800)
+      return
+    }
+
+    try {
+      await fetch(submitUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      setSubmitting(false)
       setSubmitted(true)
       setFormName('')
       setFormEmail('')
       setFormPhone('')
       setFormSubject('')
       setFormMessage('')
-    }, 400)
+    } catch (err) {
+      console.error('[Ssv Contact] Submission error:', err)
+      setErrorMessage('Failed to send message. Please try again or contact us directly.')
+      setSubmitting(false)
+    }
   }
 
   const resetForm = () => {
     setSubmitted(false)
+    setErrorMessage('')
   }
 
   return (
@@ -161,9 +197,17 @@ const ContactPage = () => {
                     ></textarea>
                   </div>
 
-                  <button type="submit" className="btn btn-dark ct-form__submit">
-                    {t('contact.sendButton')}
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  {errorMessage && (
+                    <div className="ct-form__error" style={{ color: 'var(--destructive)', fontSize: '0.85rem', marginBottom: '16px' }}>
+                      {errorMessage}
+                    </div>
+                  )}
+
+                  <button type="submit" className="btn btn-dark ct-form__submit" disabled={submitting}>
+                    {submitting ? 'Sending...' : t('contact.sendButton')}
+                    {!submitting && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    )}
                   </button>
                 </form>
               ) : (
@@ -191,7 +235,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4>{t('contact.addressTitle')}</h4>
-                  <p style={{ whiteSpace: 'pre-line' }}>{t('footer.address')}</p>
+                  <p style={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{ __html: t('footer.address') }} />
                 </div>
               </div>
 

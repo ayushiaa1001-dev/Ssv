@@ -329,6 +329,12 @@ a.ct-info__card:hover {
   margin: 0;
 }
 
+.ct-info__card p strong {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+
 /* ── Phone Pills ── */
 .ct-phone-pills {
   display: flex;

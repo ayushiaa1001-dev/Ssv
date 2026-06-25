@@ -13,7 +13,7 @@
 .footer__layout {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 60px;
 }
 
 /* Logos — vertically centered */
@@ -64,8 +64,10 @@
 /* Content Columns Grid */
 .footer__inner {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.8fr;
-  gap: 32px;
+  grid-template-columns: 2.2fr 1.1fr 2.7fr;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 /* Columns */
@@ -137,6 +139,12 @@
   color: var(--color-accent);
 }
 
+.footer__contact-item strong {
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+
 .footer__contact-item--static {
   cursor: default;
 }
@@ -171,6 +179,15 @@
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.35);
   cursor: default;
+}
+
+@media (max-width: 1280px) {
+  .footer__layout {
+    gap: 30px;
+  }
+  .footer__inner {
+    gap: 30px;
+  }
 }
 
 @media (max-width: 1024px) {

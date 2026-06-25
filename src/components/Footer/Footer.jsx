@@ -77,7 +77,7 @@ const Footer = () => {
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
                       <circle cx="12" cy="10" r="3"/>
                     </svg>
-                    <span style={{ whiteSpace: 'pre-line' }}>{t('footer.address')}</span>
+                    <span style={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{ __html: t('footer.address') }} />
                   </span>
                   <a href="tel:+918920606892" className="footer__contact-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

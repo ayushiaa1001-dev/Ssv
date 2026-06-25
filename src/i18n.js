@@ -31,7 +31,7 @@ const resources = {
         qualityCertifications: 'Quality & Certifications'
       },
       footer: {
-        brandDesc: 'Committed to <strong>Synergy, System and Values</strong>, along with stringent quality controls and a patient-centric approach.',
+        brandDesc: 'Committed to <strong>Synergy, System & Values</strong>, along with stringent quality controls and a patient-centric approach.',
         missionTitle: 'Our Mission',
         missionDesc: 'To deliver safe, effective, and affordable pharmaceutical solutions through continuous research, ethical practices, and unwavering commitment to quality.',
         quickLinksTitle: 'Quick Links',
@@ -43,7 +43,7 @@ const resources = {
           careers: 'Careers'
         },
         contactTitle: 'Contact Us',
-        address: 'Ssv Pharmaceuticals,\nPlot No. 2, 1st Floor,\nMalabar Colony,\nHazari Pahad Road,\nSeminary Hills,\nNagpur, 440006',
+        address: '<strong>Ssv Pharmaceuticals</strong>, Plot No. 2, 1st Floor,\nMalabar Colony, Hazari Pahad Road,\nSeminary Hills, Nagpur, 440006',
         phone1: '+91 89206 06892',
         phone2: '+91 98189 77444',
         emailInfo: 'info@ssvpharma.com',

@@ -88,6 +88,8 @@ const CareersPage = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedJobTitle, setSelectedJobTitle] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
 
   const [formName, setFormName] = useState('')
@@ -136,24 +138,70 @@ const CareersPage = () => {
     setSelectedJobTitle(jobTitle)
     setModalOpen(true)
     setSubmitted(false)
+    setSubmitting(false)
+    setErrorMessage('')
   }
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
     if (!formFile && !formResume) {
       return
     }
-    // NOTE: No backend is connected. Form data is shown in the console for debugging.
-    // Replace this with an actual API call when a backend is available.
-    console.warn('[Ssv Careers] Application submitted (no backend connected):', {
-      name: formName,
-      email: formEmail,
-      phone: formPhone,
-      resumeUrl: formResume || undefined,
-      fileName: formFile?.name || undefined,
-      position: selectedJobTitle,
-    })
-    setTimeout(() => {
+    setSubmitting(true)
+    setErrorMessage('')
+
+    const submitUrl = import.meta.env.VITE_FORM_SUBMIT_URL
+    const isMock = !submitUrl || submitUrl === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE'
+
+    try {
+      let fileData = ''
+      let fileName = ''
+      if (formFile) {
+        // Read file as base64 Data URL
+        fileData = await new Promise((resolve, reject) => {
+          const reader = new FileReader()
+          reader.readAsDataURL(formFile)
+          reader.onload = () => resolve(reader.result)
+          reader.onerror = err => reject(err)
+        })
+        fileName = formFile.name
+      }
+
+      const payload = {
+        type: 'careers',
+        name: formName,
+        email: formEmail,
+        phone: formPhone,
+        resumeUrl: formResume || undefined,
+        position: selectedJobTitle,
+        fileData: fileData || undefined,
+        fileName: fileName || undefined,
+      }
+
+      if (isMock) {
+        console.warn('[Ssv Careers] Application submitted (mock mode - no backend URL configured):', payload)
+        setTimeout(() => {
+          setSubmitting(false)
+          setSubmitted(true)
+          setFormName('')
+          setFormEmail('')
+          setFormPhone('')
+          setFormResume('')
+          setFormFile(null)
+          if (fileInputRef.current) fileInputRef.current.value = ''
+        }, 800)
+        return
+      }
+
+      await fetch(submitUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      setSubmitting(false)
       setSubmitted(true)
       setFormName('')
       setFormEmail('')
@@ -161,7 +209,11 @@ const CareersPage = () => {
       setFormResume('')
       setFormFile(null)
       if (fileInputRef.current) fileInputRef.current.value = ''
-    }, 400)
+    } catch (err) {
+      console.error('[Ssv Careers] Submission error:', err)
+      setErrorMessage('Failed to submit application. Please try again later.')
+      setSubmitting(false)
+    }
   }
 
   const handleFileChange = (e) => {
@@ -505,8 +557,14 @@ const CareersPage = () => {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-dark cp-modal__submit-btn">
-                  Submit Application
+                {errorMessage && (
+                  <div className="cp-modal__error" style={{ color: 'var(--destructive)', fontSize: '0.85rem', marginBottom: '16px', textAlign: 'center' }}>
+                    {errorMessage}
+                  </div>
+                )}
+
+                <button type="submit" className="btn btn-dark cp-modal__submit-btn" disabled={submitting}>
+                  {submitting ? 'Submitting Application...' : 'Submit Application'}
                 </button>
               </form>
             ) : (
