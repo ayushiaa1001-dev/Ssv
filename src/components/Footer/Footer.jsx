@@ -36,13 +36,7 @@ const Footer = () => {
         <div className="footer__inner container">
           {/* Brand Column */}
           <div className="footer__brand">
-            <Link to="/" className="footer__logo" onClick={(e) => handleScrollTo(e, 'hero')}>
-              <div className="footer__logo-icon">
-                <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="Ssv Logo" style={{ height: '100px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-              </div>
-            </Link>
-            <p className="footer__brand-desc" dangerouslySetInnerHTML={{ __html: t('footer.brandDesc') }} />
-
+            <p className="footer__brand-desc" style={{ marginTop: '0' }} dangerouslySetInnerHTML={{ __html: t('footer.brandDesc') }} />
           </div>
 
           {/* Mission Column */}
@@ -104,24 +98,27 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
-          {/* Quality Seal Column */}
-          <div className="footer__col footer__col--seal">
-            <h4 className="footer__col-title">{t('footer.qualitySealTitle')}</h4>
-            <div className="footer__seal" style={{ opacity: '0.85' }}>
-              <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ width: '140px', height: '140px', objectFit: 'contain' }} />
-            </div>
-          </div>
         </div>
+
       </div>
 
       <div className="footer__bottom">
         <div className="footer__bottom-inner container">
-          <p>{t('footer.copyright')}</p>
-          <div className="footer__bottom-links">
-            <span className="footer__bottom-link" aria-label="Privacy Policy (coming soon)">{t('footer.privacyPolicy')}</span>
-            <span className="footer__bottom-link" aria-label="Terms of Service (coming soon)">{t('footer.termsOfService')}</span>
-            <span className="footer__bottom-link" aria-label="Cookie Policy (coming soon)">{t('footer.cookiePolicy')}</span>
+          <Link to="/" className="footer__logo-bottom" onClick={(e) => handleScrollTo(e, 'hero')}>
+            <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="Ssv Logo" style={{ height: '50px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+          </Link>
+
+          <div className="footer__bottom-center">
+            <p>{t('footer.copyright')}</p>
+            <div className="footer__bottom-links">
+              <span className="footer__bottom-link" aria-label="Privacy Policy (coming soon)">{t('footer.privacyPolicy')}</span>
+              <span className="footer__bottom-link" aria-label="Terms of Service (coming soon)">{t('footer.termsOfService')}</span>
+              <span className="footer__bottom-link" aria-label="Cookie Policy (coming soon)">{t('footer.cookiePolicy')}</span>
+            </div>
+          </div>
+
+          <div className="footer__seal-bottom">
+            <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ height: '55px', objectFit: 'contain', opacity: '0.85' }} />
           </div>
         </div>
       </div>
