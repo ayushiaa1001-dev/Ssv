@@ -215,7 +215,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="navbar__logo" id="logo">
           <div className="navbar__logo-icon">
-            <img src={`${import.meta.env.BASE_URL}ssv-logo.png?v=2`} alt="Ssv Logo" style={{ width: '180px', height: '80px', objectFit: 'contain' }} />
+            <img src={`${import.meta.env.BASE_URL}ssv-logo.png?v=2`} alt="Ssv Logo" style={{ width: '215px', height: '95px', objectFit: 'contain' }} />
           </div>
         </Link>
 
@@ -388,9 +388,10 @@ const Navbar = () => {
           </div>
 
           <button className={`btn navbar__cta ${activePath === '/contact' ? 'navbar__cta--active' : ''}`} id="contact-btn" onClick={handleContactClick}>{t('navbar.contactUs')}</button>
-          <div className="navbar__badge" title="Ssv Pharmaceuticals Quality Seal">
-            <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ width: '95px', height: '95px', objectFit: 'contain' }} />
-          </div>
+        </div>
+
+        <div className="navbar__badge" title="Ssv Pharmaceuticals Quality Seal">
+          <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ width: '90px', height: '90px', objectFit: 'contain' }} />
         </div>
 
         {/* Mobile Toggle */}

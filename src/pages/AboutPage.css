@@ -241,6 +241,7 @@
 
 .ap-who__stats {
   display: flex;
+  flex-wrap: wrap;
   gap: 28px;
   margin-top: 28px;
   padding-top: 30px;

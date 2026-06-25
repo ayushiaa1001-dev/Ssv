@@ -25,7 +25,7 @@ const resources = {
         cultureAtSsv: 'Culture at Ssv',
         gallery: 'Gallery',
         careers: 'Careers',
-        searchPlaceholder: 'Search sections, products...',
+        searchPlaceholder: 'Search...',
         noResults: 'No results for',
         contactUs: 'Contact Us',
         qualityCertifications: 'Quality & Certifications'

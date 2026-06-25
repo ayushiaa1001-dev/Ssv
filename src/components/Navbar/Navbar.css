@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 110px;
 }
 
 /* Logo */
@@ -30,6 +30,7 @@
   gap: 10px;
   color: var(--color-navy);
   z-index: 10;
+  flex-shrink: 0;
 }
 
 .navbar__logo-icon svg {
@@ -167,6 +168,7 @@
   align-items: center;
   color: var(--primary);
   transition: var(--transition-fast);
+  flex-shrink: 0;
 }
 
 /* ── Search Bar ── */
@@ -201,6 +203,7 @@
 
 .navbar__search-input {
   flex: 1;
+  min-width: 0;
   border: none;
   outline: none;
   background: transparent;
@@ -422,13 +425,58 @@
 }
 
 /* Responsive */
-@media (max-width: 968px) {
+@media (max-width: 1200px) {
+  .navbar__inner {
+    height: 90px;
+  }
+  
+  .navbar__logo img {
+    width: 170px !important;
+    height: 75px !important;
+  }
+
+  .navbar__badge img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .navbar__link {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+
+  .navbar__search-box {
+    width: 160px;
+    padding: 6px 10px;
+  }
+
+  .navbar__search-box:focus-within {
+    width: 200px;
+  }
+  
+  .navbar__cta {
+    padding: 6px 16px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .navbar__inner {
+    height: 80px;
+  }
+
+  .navbar__logo img {
+    width: 150px !important;
+    height: 65px !important;
+  }
+
   .navbar__menu {
     display: none;
   }
 
   /* Keep search + CTA hidden on very small screens, but show on mid-size */
-  .navbar__actions {
+  .navbar__actions,
+  .navbar__badge {
     display: none;
   }
 
@@ -437,8 +485,9 @@
   }
 }
 
-@media (min-width: 969px) {
-  .navbar__actions {
+@media (min-width: 1101px) {
+  .navbar__actions,
+  .navbar__badge {
     display: flex;
   }
 }
