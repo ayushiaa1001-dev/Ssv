@@ -34,18 +34,18 @@ const Footer = () => {
     <footer className="footer" id="contact">
       <div className="footer__top">
         <div className="footer__inner container">
-          {/* Column 1: SSV Logo */}
-          <div className="footer__col footer__col--logo">
-            <Link to="/" onClick={(e) => handleScrollTo(e, 'hero')}>
-              <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="Ssv Logo" style={{ height: '80px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+          {/* Column 1: Brand Column */}
+          <div className="footer__col footer__col--brand">
+            <Link to="/" onClick={(e) => handleScrollTo(e, 'hero')} style={{ display: 'inline-block', marginBottom: '20px' }}>
+              <img src={`${import.meta.env.BASE_URL}ssv-logo.png?v=2`} alt="Ssv Logo" style={{ height: '70px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
             </Link>
+            <p className="footer__brand-desc" style={{ fontSize: '0.85rem', color: 'var(--color-gray-300)', lineHeight: '1.6' }} dangerouslySetInnerHTML={{ __html: t('footer.brandDesc') }} />
           </div>
 
-          {/* Column 2: Brand/Mission Column */}
+          {/* Column 2: Mission Column */}
           <div className="footer__col">
             <h4 className="footer__col-title">{t('footer.missionTitle')}</h4>
-            <p className="footer__brand-desc" style={{ marginTop: '0', fontSize: '0.85rem', color: 'var(--color-gray-300)', lineHeight: '1.6' }} dangerouslySetInnerHTML={{ __html: t('footer.brandDesc') }} />
-            <p className="footer__text" style={{ fontSize: '0.85rem', color: 'var(--color-gray-300)', lineHeight: '1.6', marginTop: '16px' }}>
+            <p className="footer__text" style={{ fontSize: '0.85rem', color: 'var(--color-gray-300)', lineHeight: '1.6' }}>
               {t('footer.missionDesc')}
             </p>
           </div>

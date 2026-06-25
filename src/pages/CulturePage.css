@@ -186,10 +186,12 @@
 }
 
 .cul-pillar-card {
-  background: var(--background);
+  background: #ffffff;
   border: 1px solid rgba(27, 79, 114, 0.08);
   border-radius: var(--radius-lg);
-  padding: 28px 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.7s ease, box-shadow 0.3s ease, opacity 0.7s ease;
   opacity: 0;
   transform: translateY(30px);
@@ -199,22 +201,52 @@
   opacity: 1;
   transform: translateY(0);
   /* After entrance animation completes, use snappy timing for hover */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.7s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, opacity 0.7s ease;
 }
 
 .cul-pillar-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(var(--pillar-rgb), 0.12);
+  border-color: rgba(var(--pillar-rgb), 0.15);
+}
+
+.cul-pillar-card__media {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  background-color: var(--muted);
+}
+
+.cul-pillar-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cul-pillar-card:hover .cul-pillar-card__media img {
+  transform: scale(1.05);
 }
 
 .cul-pillar-card__icon {
-  width: 48px;
-  height: 48px;
+  position: absolute;
+  top: 148px;
+  left: 20px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cul-pillar-card__body {
+  padding: 32px 20px 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .cul-pillar-card__title {

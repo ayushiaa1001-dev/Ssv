@@ -32,7 +32,21 @@
     "Prot",
     "womens",
     "Nutraceuticals",
-    "nutraceuticals"
+    "nutraceuticals",
+    "hackathons",
+    "Recognise",
+    "Honouring",
+    "Indore",
+    "Akola",
+    "Jabalpur",
+    "Raipur",
+    "Nagpur",
+    "Washim",
+    "Jalgaon",
+    "Nasik",
+    "Hardoi",
+    "Bhopal",
+    "Chhattisgarh"
   ],
   "ignorePaths": [
     "node_modules/**",

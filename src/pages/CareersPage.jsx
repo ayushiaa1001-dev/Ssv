@@ -6,82 +6,76 @@ import './CareersPage.css'
 
 const OPENINGS = [
   {
-    id: 'formulation-scientist',
-    title: 'Senior Formulation Scientist',
-    location: 'Mumbai (HQ)',
-    posted: 'Jun 2, 2026',
+    id: 'abm-indore',
+    title: 'Area Business Manager',
+    location: 'Indore, MP',
+    posted: 'Jun 20, 2026',
   },
   {
-    id: 'regulatory-manager',
-    title: 'Regulatory Affairs Manager',
-    location: 'Hyderabad',
-    posted: 'Jun 5, 2026',
+    id: 'abm-akola',
+    title: 'Area Business Manager',
+    location: 'Akola, Maharashtra',
+    posted: 'Jun 21, 2026',
   },
   {
-    id: 'clinical-analyst',
-    title: 'Clinical Data Analyst',
-    location: 'Bangalore',
-    posted: 'Jun 8, 2026',
+    id: 'abm-jabalpur',
+    title: 'Area Business Manager',
+    location: 'Jabalpur, MP',
+    posted: 'Jun 22, 2026',
   },
   {
-    id: 'qa-officer',
-    title: 'Quality Assurance Officer',
-    location: 'Mumbai (HQ)',
-    posted: 'Jun 10, 2026',
+    id: 'abm-raipur',
+    title: 'Area Business Manager',
+    location: 'Raipur, Chhattisgarh',
+    posted: 'Jun 22, 2026',
   },
   {
-    id: 'med-rep',
-    title: 'Medical Sales Representative',
-    location: 'Pan India',
-    posted: 'Jun 12, 2026',
+    id: 'tbe-nagpur',
+    title: 'Trainee Business Executive',
+    location: 'Nagpur, Maharashtra',
+    posted: 'Jun 23, 2026',
   },
   {
-    id: 'prod-manager',
-    title: 'Production Manager',
-    location: 'Ahmedabad',
-    posted: 'Jun 13, 2026',
+    id: 'tbe-akola',
+    title: 'Trainee Business Executive',
+    location: 'Akola, Maharashtra',
+    posted: 'Jun 23, 2026',
   },
   {
-    id: 'rd-associate',
-    title: 'R&D Associate — Analytical Chemistry',
-    location: 'Hyderabad',
-    posted: 'Jun 14, 2026',
+    id: 'tbe-washim',
+    title: 'Trainee Business Executive',
+    location: 'Washim, Maharashtra',
+    posted: 'Jun 24, 2026',
   },
   {
-    id: 'supply-chain',
-    title: 'Supply Chain Coordinator',
-    location: 'Mumbai (HQ)',
-    posted: 'Jun 14, 2026',
+    id: 'tbe-jalgaon',
+    title: 'Trainee Business Executive',
+    location: 'Jalgaon, Maharashtra',
+    posted: 'Jun 24, 2026',
   },
   {
-    id: 'pharma-exec',
-    title: 'Pharmacovigilance Executive',
-    location: 'Bangalore',
-    posted: 'Jun 15, 2026',
+    id: 'tbe-nasik',
+    title: 'Trainee Business Executive',
+    location: 'Nasik, Maharashtra',
+    posted: 'Jun 24, 2026',
   },
   {
-    id: 'pack-dev',
-    title: 'Packaging Development Specialist',
-    location: 'Ahmedabad',
-    posted: 'Jun 15, 2026',
+    id: 'tbe-lucknow',
+    title: 'Trainee Business Executive',
+    location: 'Lucknow, UP',
+    posted: 'Jun 25, 2026',
   },
   {
-    id: 'it-admin',
-    title: 'IT Systems Administrator',
-    location: 'Mumbai (HQ)',
-    posted: 'Jun 16, 2026',
+    id: 'tbe-hardoi',
+    title: 'Trainee Business Executive',
+    location: 'Hardoi, UP',
+    posted: 'Jun 25, 2026',
   },
   {
-    id: 'hr-exec',
-    title: 'HR Business Partner',
-    location: 'Mumbai (HQ)',
-    posted: 'Jun 16, 2026',
-  },
-  {
-    id: 'area-manager',
-    title: 'Area Sales Manager — West Region',
-    location: 'Pune',
-    posted: 'Jun 16, 2026',
+    id: 'tbe-bhopal',
+    title: 'Trainee Business Executive',
+    location: 'Bhopal, MP',
+    posted: 'Jun 25, 2026',
   },
 ]
 
@@ -206,7 +200,7 @@ const CareersPage = () => {
             <span className="cp-hero__label">JOIN OUR TEAM</span>
             <h1 className="cp-hero__title">Build a Career That Shapes Healthcare</h1>
             <p className="cp-hero__sub">
-              At Ssv Pharmaceuticals, every role contributes to something greater — better medicines, healthier lives, and a stronger healthcare ecosystem for India.
+              At Ssv Pharmaceuticals, every role is aligned through a synergistic approach to create healthier lives and build a stronger healthcare ecosystem for India.
             </p>
             <div className="cp-hero__buttons">
               <a href="#openings-section" onClick={(e) => {
@@ -247,11 +241,11 @@ const CareersPage = () => {
             <div className="cp-culture__pillars">
               <div className="cp-pillar">
                 <div className="cp-pillar__icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
                 </div>
                 <div className="cp-pillar__content">
-                  <h4>Innovative R&D Projects</h4>
-                  <p>Work on cutting-edge pharmaceutical research that directly impacts patient lives across India and beyond.</p>
+                  <h4>Respect & Care</h4>
+                  <p>Be part of a culture where every individual is valued, supported, and empowered. We believe in treating people with respect, fostering inclusivity, and creating an environment where everyone can thrive.</p>
                 </div>
               </div>
               
@@ -271,7 +265,7 @@ const CareersPage = () => {
                 </div>
                 <div className="cp-pillar__content">
                   <h4>Collaborative, Dynamic Environment</h4>
-                  <p>Join a team of 500+ passionate professionals who thrive on teamwork, curiosity, and purpose.</p>
+                  <p>Join a team of passionate professionals who thrive on teamwork, curiosity, and purpose.</p>
                 </div>
               </div>
 
@@ -290,7 +284,7 @@ const CareersPage = () => {
           <div className="cp-culture__image-container">
             <img className="cp-culture__image" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ssv Laboratory Professionals" loading="lazy" />
             <div className="cp-culture__stats-card">
-              <span className="cp-culture__stats-number">500+</span>
+              <span className="cp-culture__stats-number">40+</span>
               <span className="cp-culture__stats-label">Team Members</span>
             </div>
           </div>

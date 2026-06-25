@@ -10,44 +10,56 @@ const PILLARS = [
   {
     icon: 'heart',
     color: '#e84670',
+    colorRgb: '232, 70, 112',
     bgColor: 'rgba(232, 70, 112, 0.08)',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&auto=format&fit=crop&q=80',
     title: 'People First',
     desc: 'Every decision starts with what\'s best for our team. From flexible schedules to mental health support and an open-door policy — our people always come first.'
   },
   {
     icon: 'lightbulb',
     color: '#2e86ab',
+    colorRgb: '46, 134, 171',
     bgColor: 'rgba(46, 134, 171, 0.08)',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&q=80',
     title: 'Innovation Mindset',
-    desc: 'We celebrate curiosity. Cross-functional hackathons, internal R&D grants, and an open innovation culture ensure that great ideas can come from anywhere.'
+    desc: 'We celebrate curiosity and encourage new ideas. With an open innovation culture and a commitment to continuous improvement, we believe great ideas can come from anywhere.'
   },
   {
     icon: 'shield',
     color: '#22c55e',
+    colorRgb: '34, 197, 94',
     bgColor: 'rgba(34, 197, 94, 0.08)',
+    image: 'https://images.unsplash.com/photo-1521791055366-0d553872125f?w=600&auto=format&fit=crop&q=80',
     title: 'Integrity Always',
     desc: 'Ethical conduct is non-negotiable. We are transparent with our people, our partners, and our patients — always.'
   },
   {
     icon: 'star',
     color: '#d4a853',
+    colorRgb: '212, 168, 83',
     bgColor: 'rgba(212, 168, 83, 0.08)',
+    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&q=80',
     title: 'Recognise & Celebrate',
     desc: 'Monthly Star Performer awards, annual gala nights, and team milestones celebrated big — because great work deserves great recognition.'
   },
   {
     icon: 'clipboard',
     color: '#5a6a7a',
+    colorRgb: '90, 106, 122',
     bgColor: 'rgba(90, 106, 122, 0.08)',
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&auto=format&fit=crop&q=80',
     title: 'Work–Life Balance',
-    desc: 'Flexible hours, work-from-home provisions, and on-campus recreation rooms — we invest in the whole person, not just the professional.'
+    desc: 'From flexible hours to our empathetic approach — we invest in the whole person, not just the professional.'
   },
   {
     icon: 'globe',
     color: '#2e86ab',
+    colorRgb: '46, 134, 171',
     bgColor: 'rgba(46, 134, 171, 0.08)',
+    image: 'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=600&auto=format&fit=crop&q=80',
     title: 'Diversity & Inclusion',
-    desc: '500+ professionals across 12+ states, representing diverse backgrounds, languages, and disciplines — united by one mission to advance healthcare.'
+    desc: '40+ professionals across multiple states, representing diverse backgrounds, languages, and disciplines — united by one mission to advance healthcare.'
   }
 ]
 
@@ -181,13 +193,21 @@ const CulturePage = () => {
               <div
                 className={`cul-pillar-card ${pillarsVisible ? 'cul-pillar-card--visible' : ''}`}
                 key={i}
-                style={{ transitionDelay: pillarsVisible ? `${0.1 + i * 0.1}s` : '0s' }}
+                style={{
+                  transitionDelay: pillarsVisible ? `${0.1 + i * 0.1}s` : '0s',
+                  '--pillar-rgb': pillar.colorRgb
+                }}
               >
-                <div className="cul-pillar-card__icon" style={{ background: pillar.bgColor }}>
+                <div className="cul-pillar-card__media">
+                  <img src={pillar.image} alt={pillar.title} loading="lazy" />
+                </div>
+                <div className="cul-pillar-card__icon" style={{ background: '#ffffff', border: `2px solid ${pillar.color}` }}>
                   <PillarIcon type={pillar.icon} color={pillar.color} />
                 </div>
-                <h3 className="cul-pillar-card__title">{pillar.title}</h3>
-                <p className="cul-pillar-card__desc">{pillar.desc}</p>
+                <div className="cul-pillar-card__body">
+                  <h3 className="cul-pillar-card__title">{pillar.title}</h3>
+                  <p className="cul-pillar-card__desc">{pillar.desc}</p>
+                </div>
               </div>
             ))}
           </div>

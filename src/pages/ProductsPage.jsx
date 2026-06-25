@@ -666,9 +666,6 @@ const ProductsPage = () => {
                                     {product.quantity}
                                   </span>
                                 )}
-                                {product.desc && (
-                                  <p className="pp-product-card__desc">{product.desc}</p>
-                                )}
                               </div>
                             </motion.article>
                           ))}
@@ -722,9 +719,6 @@ const ProductsPage = () => {
               <span className="pp-modal__type">
                 {selectedProduct.type} {selectedProduct.quantity ? `· ${selectedProduct.quantity}` : ""}
               </span>
-            )}
-            {selectedProduct.desc && (
-              <p className="pp-modal__desc">{selectedProduct.desc}</p>
             )}
             <div
               className={`pp-modal__img-container ${zoom > 1 ? "pp-modal__img-container--zoomed" : ""}`}

@@ -15,13 +15,6 @@
   gap: 40px;
 }
 
-.footer__col--logo {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100%;
-}
-
 .footer__col--seal {
   display: flex;
   align-items: center;
@@ -166,12 +159,6 @@
     gap: 40px;
   }
 
-  .footer__col--logo {
-    grid-column: span 2;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-
   .footer__col--seal {
     grid-column: span 2;
     justify-content: center;
@@ -183,12 +170,6 @@
   .footer__inner {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
-  }
-
-  .footer__col--logo {
-    grid-column: span 2;
-    justify-content: center;
-    margin-bottom: 10px;
   }
 
   .footer__col--seal {
@@ -220,7 +201,6 @@
     gap: 28px;
   }
 
-  .footer__col--logo,
   .footer__col--seal {
     grid-column: span 1;
     justify-content: center;
