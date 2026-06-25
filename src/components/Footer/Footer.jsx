@@ -34,20 +34,23 @@ const Footer = () => {
     <footer className="footer" id="contact">
       <div className="footer__top">
         <div className="footer__inner container">
-          {/* Brand Column */}
-          <div className="footer__brand">
-            <p className="footer__brand-desc" style={{ marginTop: '0' }} dangerouslySetInnerHTML={{ __html: t('footer.brandDesc') }} />
+          {/* Column 1: SSV Logo */}
+          <div className="footer__col footer__col--logo">
+            <Link to="/" onClick={(e) => handleScrollTo(e, 'hero')}>
+              <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="Ssv Logo" style={{ height: '80px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+            </Link>
           </div>
 
-          {/* Mission Column */}
+          {/* Column 2: Brand/Mission Column */}
           <div className="footer__col">
             <h4 className="footer__col-title">{t('footer.missionTitle')}</h4>
-            <p className="footer__text" style={{ fontSize: '0.85rem', color: 'var(--color-gray-300)', lineHeight: '1.6' }}>
+            <p className="footer__brand-desc" style={{ marginTop: '0', fontSize: '0.85rem', color: 'var(--color-gray-300)', lineHeight: '1.6' }} dangerouslySetInnerHTML={{ __html: t('footer.brandDesc') }} />
+            <p className="footer__text" style={{ fontSize: '0.85rem', color: 'var(--color-gray-300)', lineHeight: '1.6', marginTop: '16px' }}>
               {t('footer.missionDesc')}
             </p>
           </div>
 
-          {/* Quick Links Column */}
+          {/* Column 3: Quick Links Column */}
           <div className="footer__col">
             <h4 className="footer__col-title">{t('footer.quickLinksTitle')}</h4>
             <ul className="footer__links">
@@ -59,7 +62,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Column */}
+          {/* Column 4: Contact Column */}
           <div className="footer__col">
             <h4 className="footer__col-title">{t('footer.contactTitle')}</h4>
             <div className="footer__contact-list">
@@ -98,27 +101,21 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
 
+          {/* Column 5: Pentagon Seal Logo */}
+          <div className="footer__col footer__col--seal">
+            <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ height: '85px', objectFit: 'contain', opacity: '0.85' }} />
+          </div>
+        </div>
       </div>
 
       <div className="footer__bottom">
         <div className="footer__bottom-inner container">
-          <Link to="/" className="footer__logo-bottom" onClick={(e) => handleScrollTo(e, 'hero')}>
-            <img src={`${import.meta.env.BASE_URL}ssv-logo.png`} alt="Ssv Logo" style={{ height: '50px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-          </Link>
-
-          <div className="footer__bottom-center">
-            <p>{t('footer.copyright')}</p>
-            <div className="footer__bottom-links">
-              <span className="footer__bottom-link" aria-label="Privacy Policy (coming soon)">{t('footer.privacyPolicy')}</span>
-              <span className="footer__bottom-link" aria-label="Terms of Service (coming soon)">{t('footer.termsOfService')}</span>
-              <span className="footer__bottom-link" aria-label="Cookie Policy (coming soon)">{t('footer.cookiePolicy')}</span>
-            </div>
-          </div>
-
-          <div className="footer__seal-bottom">
-            <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ height: '55px', objectFit: 'contain', opacity: '0.85' }} />
+          <p>{t('footer.copyright')}</p>
+          <div className="footer__bottom-links">
+            <span className="footer__bottom-link" aria-label="Privacy Policy (coming soon)">{t('footer.privacyPolicy')}</span>
+            <span className="footer__bottom-link" aria-label="Terms of Service (coming soon)">{t('footer.termsOfService')}</span>
+            <span className="footer__bottom-link" aria-label="Cookie Policy (coming soon)">{t('footer.cookiePolicy')}</span>
           </div>
         </div>
       </div>
