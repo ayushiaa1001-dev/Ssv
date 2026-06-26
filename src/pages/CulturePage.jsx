@@ -59,7 +59,7 @@ const PILLARS = [
     bgColor: 'rgba(46, 134, 171, 0.08)',
     image: 'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=600&auto=format&fit=crop&q=80',
     title: 'Diversity & Inclusion',
-    desc: '40+ professionals across multiple states, representing diverse backgrounds, languages, and disciplines — united by one mission to advance healthcare.'
+    desc: '60+ professionals across multiple states, representing diverse backgrounds, languages, and disciplines — united by one mission to advance healthcare.'
   }
 ]
 

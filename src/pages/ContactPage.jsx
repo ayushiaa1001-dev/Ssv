@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { countries, statesByCountry, citiesByState } from '../data/locationData'
 import './ContactPage.css'
 
 const ContactPage = () => {
@@ -16,8 +17,19 @@ const ContactPage = () => {
   const [formName, setFormName] = useState('')
   const [formEmail, setFormEmail] = useState('')
   const [formPhone, setFormPhone] = useState('')
+  const [formCountry, setFormCountry] = useState('')
+  const [formState, setFormState] = useState('')
+  const [formCity, setFormCity] = useState('')
+  const [formPincode, setFormPincode] = useState('')
   const [formSubject, setFormSubject] = useState('')
   const [formMessage, setFormMessage] = useState('')
+
+  // State dropdown control helpers
+  const [countryCode, setCountryCode] = useState('')
+  const [selectedStateName, setSelectedStateName] = useState('')
+  const [isCustomCountry, setIsCustomCountry] = useState(false)
+  const [isCustomState, setIsCustomState] = useState(false)
+  const [isCustomCity, setIsCustomCity] = useState(false)
 
   const [formRef, formVisible] = useIntersectionObserver()
   const [infoRef, infoVisible] = useIntersectionObserver()
@@ -27,8 +39,112 @@ const ContactPage = () => {
     return () => clearTimeout(timer)
   }, [])
 
+  const handleCountryChange = (e) => {
+    const val = e.target.value
+    setCountryCode(val)
+    
+    if (val === '') {
+      setFormCountry('')
+      setFormState('')
+      setFormCity('')
+      setSelectedStateName('')
+      setIsCustomCountry(false)
+      setIsCustomState(false)
+      setIsCustomCity(false)
+    } else if (val === 'OTHER') {
+      setFormCountry('')
+      setFormState('')
+      setFormCity('')
+      setSelectedStateName('')
+      setIsCustomCountry(true)
+      setIsCustomState(true)
+      setIsCustomCity(true)
+    } else {
+      const selectedCountryObj = countries.find(c => c.code === val)
+      const countryName = selectedCountryObj ? selectedCountryObj.name : ''
+      setFormCountry(countryName)
+      setFormState('')
+      setFormCity('')
+      setSelectedStateName('')
+      setIsCustomCountry(false)
+      
+      const hasStates = !!statesByCountry[val]
+      setIsCustomState(!hasStates)
+      setIsCustomCity(true)
+    }
+  }
+
+  const handleStateChange = (e) => {
+    const stateName = e.target.value
+    if (stateName === 'OTHER_STATE') {
+      setIsCustomState(true)
+      setFormState('')
+      setSelectedStateName('')
+      setFormCity('')
+      setIsCustomCity(true)
+    } else {
+      setFormState(stateName)
+      setSelectedStateName(stateName)
+      setFormCity('')
+      
+      if (stateName === '') {
+        setIsCustomCity(false)
+      } else {
+        const hasCities = !!citiesByState[stateName]
+        setIsCustomCity(!hasCities)
+      }
+    }
+  }
+
+  const handleCityChange = (e) => {
+    const cityName = e.target.value
+    if (cityName === 'OTHER_CITY') {
+      setIsCustomCity(true)
+      setFormCity('')
+    } else {
+      setFormCity(cityName)
+    }
+  }
+
+  const handlePhoneChange = (e) => {
+    const val = e.target.value
+    const onlyDigits = val.replace(/\D/g, '')
+    setFormPhone(onlyDigits)
+  }
+
+  const handlePincodeChange = (e) => {
+    const val = e.target.value
+    const onlyDigits = val.replace(/\D/g, '')
+    setFormPincode(onlyDigits)
+  }
+
+  const resetFormStateHelper = () => {
+    setFormName('')
+    setFormEmail('')
+    setFormPhone('')
+    setFormCountry('')
+    setFormState('')
+    setFormCity('')
+    setFormPincode('')
+    setFormSubject('')
+    setFormMessage('')
+    setCountryCode('')
+    setSelectedStateName('')
+    setIsCustomCountry(false)
+    setIsCustomState(false)
+    setIsCustomCity(false)
+  }
+
   const handleFormSubmit = async (e) => {
     e.preventDefault()
+    if (formPhone.length !== 10) {
+      setErrorMessage('Phone number must be exactly 10 digits.')
+      return
+    }
+    if (formPincode && formPincode.length !== 6) {
+      setErrorMessage('Pincode must be exactly 6 digits.')
+      return
+    }
     setSubmitting(true)
     setErrorMessage('')
 
@@ -39,7 +155,11 @@ const ContactPage = () => {
       type: 'contact',
       name: formName,
       email: formEmail,
-      phone: formPhone || undefined,
+      phone: `+91 ${formPhone}`,
+      country: formCountry || undefined,
+      state: formState || undefined,
+      city: formCity || undefined,
+      pincode: formPincode || undefined,
       subject: formSubject,
       message: formMessage,
     }
@@ -49,11 +169,7 @@ const ContactPage = () => {
       setTimeout(() => {
         setSubmitting(false)
         setSubmitted(true)
-        setFormName('')
-        setFormEmail('')
-        setFormPhone('')
-        setFormSubject('')
-        setFormMessage('')
+        resetFormStateHelper()
       }, 800)
       return
     }
@@ -61,6 +177,7 @@ const ContactPage = () => {
     try {
       await fetch(submitUrl, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'text/plain',
         },
@@ -69,11 +186,7 @@ const ContactPage = () => {
 
       setSubmitting(false)
       setSubmitted(true)
-      setFormName('')
-      setFormEmail('')
-      setFormPhone('')
-      setFormSubject('')
-      setFormMessage('')
+      resetFormStateHelper()
     } catch (err) {
       console.error('[Ssv Contact] Submission error:', err)
       setErrorMessage('Failed to send message. Please try again or contact us directly.')
@@ -84,6 +197,7 @@ const ContactPage = () => {
   const resetForm = () => {
     setSubmitted(false)
     setErrorMessage('')
+    resetFormStateHelper()
   }
 
   return (
@@ -137,6 +251,7 @@ const ContactPage = () => {
                         id="ct-name"
                         type="text"
                         required
+                        maxLength={100}
                         placeholder={t('contact.placeholderName')}
                         value={formName}
                         onChange={e => setFormName(e.target.value)}
@@ -148,6 +263,7 @@ const ContactPage = () => {
                         id="ct-email"
                         type="email"
                         required
+                        maxLength={100}
                         placeholder={t('contact.placeholderEmail')}
                         value={formEmail}
                         onChange={e => setFormEmail(e.target.value)}
@@ -158,13 +274,21 @@ const ContactPage = () => {
                   <div className="ct-form__row">
                     <div className="ct-form__group">
                       <label htmlFor="ct-phone">{t('contact.fieldPhone')}</label>
-                      <input
-                        id="ct-phone"
-                        type="tel"
-                        placeholder={t('contact.placeholderPhone')}
-                        value={formPhone}
-                        onChange={e => setFormPhone(e.target.value)}
-                      />
+                      <div className="ct-phone-input-wrapper">
+                        <span className="ct-phone-prefix">+91</span>
+                        <input
+                          id="ct-phone"
+                          type="tel"
+                          required
+                          pattern="[0-9]{10}"
+                          maxLength={10}
+                          title="Please enter exactly 10 digits"
+                          placeholder={t('contact.placeholderPhone')}
+                          value={formPhone}
+                          onChange={handlePhoneChange}
+                          className="ct-phone-input"
+                        />
+                      </div>
                     </div>
                     <div className="ct-form__group">
                       <label htmlFor="ct-subject">{t('contact.fieldSubject')}</label>
@@ -182,6 +306,149 @@ const ContactPage = () => {
                         <option value="careers">{t('contact.subjCareers')}</option>
                         <option value="other">{t('contact.subjOther')}</option>
                       </select>
+                    </div>
+                  </div>
+
+                  <div className="ct-form__row">
+                    <div className="ct-form__group">
+                      <label htmlFor="ct-country">{t('contact.fieldCountry')}</label>
+                      {isCustomCountry ? (
+                        <div className="ct-location-input-wrapper">
+                          <input
+                            id="ct-country"
+                            type="text"
+                            placeholder={t('contact.placeholderCountry')}
+                            value={formCountry}
+                            onChange={e => setFormCountry(e.target.value)}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setIsCustomCountry(false)
+                              setCountryCode('')
+                              setFormCountry('')
+                              setFormState('')
+                              setFormCity('')
+                              setSelectedStateName('')
+                              setIsCustomState(false)
+                              setIsCustomCity(false)
+                            }}
+                            className="ct-location-toggle-btn"
+                          >
+                            Reset
+                          </button>
+                        </div>
+                      ) : (
+                        <select
+                          id="ct-country"
+                          value={countryCode}
+                          onChange={handleCountryChange}
+                        >
+                          <option value="">{t('contact.selectCountry')}</option>
+                          {countries.map(c => (
+                            <option key={c.code} value={c.code}>{c.name}</option>
+                          ))}
+                        </select>
+                      )}
+                    </div>
+                    <div className="ct-form__group">
+                      <label htmlFor="ct-state">{t('contact.fieldState')}</label>
+                      {isCustomState ? (
+                        <div className="ct-location-input-wrapper">
+                          <input
+                            id="ct-state"
+                            type="text"
+                            required={formCountry !== ''}
+                            placeholder={t('contact.placeholderState')}
+                            value={formState}
+                            onChange={e => setFormState(e.target.value)}
+                          />
+                          {!isCustomCountry && statesByCountry[countryCode] && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setIsCustomState(false)
+                                setFormState('')
+                                setSelectedStateName('')
+                                setFormCity('')
+                                setIsCustomCity(false)
+                              }}
+                              className="ct-location-toggle-btn"
+                            >
+                              List
+                            </button>
+                          )}
+                        </div>
+                      ) : (
+                        <select
+                          id="ct-state"
+                          value={formState}
+                          onChange={handleStateChange}
+                          disabled={!countryCode}
+                        >
+                          <option value="">{t('contact.selectState')}</option>
+                          {(statesByCountry[countryCode] || []).map(st => (
+                            <option key={st} value={st}>{st}</option>
+                          ))}
+                          <option value="OTHER_STATE">Other (Type manually)</option>
+                        </select>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="ct-form__row">
+                    <div className="ct-form__group">
+                      <label htmlFor="ct-city">{t('contact.fieldCity')}</label>
+                      {isCustomCity ? (
+                        <div className="ct-location-input-wrapper">
+                          <input
+                            id="ct-city"
+                            type="text"
+                            required={formState !== ''}
+                            placeholder={t('contact.placeholderCity')}
+                            value={formCity}
+                            onChange={e => setFormCity(e.target.value)}
+                          />
+                          {!isCustomState && citiesByState[selectedStateName] && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setIsCustomCity(false)
+                                setFormCity('')
+                              }}
+                              className="ct-location-toggle-btn"
+                            >
+                              List
+                            </button>
+                          )}
+                        </div>
+                      ) : (
+                        <select
+                          id="ct-city"
+                          value={formCity}
+                          onChange={handleCityChange}
+                          disabled={!formState}
+                        >
+                          <option value="">{t('contact.selectCity')}</option>
+                          {(citiesByState[selectedStateName] || []).map(ct => (
+                            <option key={ct} value={ct}>{ct}</option>
+                          ))}
+                          <option value="OTHER_CITY">Other (Type manually)</option>
+                        </select>
+                      )}
+                    </div>
+                    <div className="ct-form__group">
+                      <label htmlFor="ct-pincode">{t('contact.fieldPincode')}</label>
+                      <input
+                        id="ct-pincode"
+                        type="text"
+                        pattern="[0-9]{6}"
+                        maxLength={6}
+                        title="Please enter exactly 6 digits"
+                        placeholder={t('contact.placeholderPincode')}
+                        value={formPincode}
+                        onChange={handlePincodeChange}
+                      />
                     </div>
                   </div>
 

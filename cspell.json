@@ -46,7 +46,9 @@
     "Nasik",
     "Hardoi",
     "Bhopal",
-    "Chhattisgarh"
+    "Chhattisgarh",
+    "VITE",
+    "vite"
   ],
   "ignorePaths": [
     "node_modules/**",

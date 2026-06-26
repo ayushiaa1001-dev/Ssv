@@ -87,6 +87,7 @@ const CareersPage = () => {
   useDocumentTitle('Careers')
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedJobTitle, setSelectedJobTitle] = useState('')
+  const [selectedJobLocation, setSelectedJobLocation] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
@@ -134,8 +135,9 @@ const CareersPage = () => {
     }
   }, [modalOpen])
 
-  const handleApplyClick = (jobTitle) => {
+  const handleApplyClick = (jobTitle, jobLocation) => {
     setSelectedJobTitle(jobTitle)
+    setSelectedJobLocation(jobLocation)
     setModalOpen(true)
     setSubmitted(false)
     setSubmitting(false)
@@ -144,7 +146,12 @@ const CareersPage = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault()
-    if (!formFile && !formResume) {
+    if (!formFile && !formResume.trim()) {
+      setErrorMessage('Please upload a resume PDF or paste a link to your resume.')
+      return
+    }
+    if (formPhone.length !== 10) {
+      setErrorMessage('Phone number must be exactly 10 digits.')
       return
     }
     setSubmitting(true)
@@ -171,9 +178,10 @@ const CareersPage = () => {
         type: 'careers',
         name: formName,
         email: formEmail,
-        phone: formPhone,
+        phone: `+91 ${formPhone}`,
         resumeUrl: formResume || undefined,
         position: selectedJobTitle,
+        location: selectedJobLocation,
         fileData: fileData || undefined,
         fileName: fileName || undefined,
       }
@@ -195,6 +203,7 @@ const CareersPage = () => {
 
       await fetch(submitUrl, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'text/plain',
         },
@@ -225,6 +234,12 @@ const CareersPage = () => {
       e.target.value = ''
       setFormFile(null)
     }
+  }
+
+  const handlePhoneChange = (e) => {
+    const val = e.target.value
+    const onlyDigits = val.replace(/\D/g, '')
+    setFormPhone(onlyDigits)
   }
 
   const removeFile = () => {
@@ -336,7 +351,7 @@ const CareersPage = () => {
           <div className="cp-culture__image-container">
             <img className="cp-culture__image" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ssv Laboratory Professionals" loading="lazy" />
             <div className="cp-culture__stats-card">
-              <span className="cp-culture__stats-number">40+</span>
+              <span className="cp-culture__stats-number">60+</span>
               <span className="cp-culture__stats-label">Team Members</span>
             </div>
           </div>
@@ -376,7 +391,7 @@ const CareersPage = () => {
                     <td className="cp-job-action-col">
                       <button 
                         className="btn btn-dark cp-apply-btn-sm"
-                        onClick={() => handleApplyClick(job.title)}
+                        onClick={() => handleApplyClick(job.title, job.location)}
                       >
                         Apply Now
                       </button>
@@ -467,7 +482,10 @@ const CareersPage = () => {
             {!submitted ? (
               <form className="cp-modal__form" onSubmit={handleFormSubmit}>
                 <h3 id="apply-modal-title">Apply for Position</h3>
-                <span className="cp-modal__job-badge">{selectedJobTitle}</span>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '20px' }}>
+                  <span className="cp-modal__job-badge" style={{ marginBottom: 0 }}>{selectedJobTitle}</span>
+                  <span className="cp-modal__job-badge" style={{ backgroundColor: 'var(--muted)', color: 'var(--muted-foreground)', border: '1.5px solid var(--color-gray-200)', marginBottom: 0 }}>{selectedJobLocation}</span>
+                </div>
                 
                 <div className="cp-modal__form-group">
                   <label htmlFor="applicant-name">Full Name *</label>
@@ -475,6 +493,7 @@ const CareersPage = () => {
                     id="applicant-name"
                     type="text" 
                     required 
+                    maxLength={100}
                     placeholder="John Doe"
                     value={formName}
                     onChange={e => setFormName(e.target.value)}
@@ -487,6 +506,7 @@ const CareersPage = () => {
                     id="applicant-email"
                     type="email" 
                     required 
+                    maxLength={100}
                     placeholder="john@example.com"
                     value={formEmail}
                     onChange={e => setFormEmail(e.target.value)}
@@ -495,18 +515,25 @@ const CareersPage = () => {
 
                 <div className="cp-modal__form-group">
                   <label htmlFor="applicant-phone">Phone Number *</label>
-                  <input 
-                    id="applicant-phone"
-                    type="tel" 
-                    required 
-                    placeholder="+91 98765 43210"
-                    value={formPhone}
-                    onChange={e => setFormPhone(e.target.value)}
-                  />
+                  <div className="cp-phone-input-wrapper">
+                    <span className="cp-phone-prefix">+91</span>
+                    <input 
+                      id="applicant-phone"
+                      type="tel" 
+                      required 
+                      pattern="[0-9]{10}"
+                      maxLength={10}
+                      title="Please enter exactly 10 digits"
+                      placeholder="9876543210"
+                      value={formPhone}
+                      onChange={handlePhoneChange}
+                      className="cp-phone-input"
+                    />
+                  </div>
                 </div>
 
                 <div className="cp-modal__form-group">
-                  <label>Upload Resume (PDF) *</label>
+                  <label>Upload Resume (PDF)</label>
                   <div
                     className={`cp-modal__file-drop ${formFile ? 'cp-modal__file-drop--has-file' : ''}`}
                     onClick={() => !formFile && fileInputRef.current?.click()}

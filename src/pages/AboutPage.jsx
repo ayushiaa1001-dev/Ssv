@@ -5,7 +5,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import CountUp from '../components/CountUp'
 import heroBg from '../assets/images/about-hero-bg.jpg'
 import aboutWhoImage from '../assets/images/about-who.jpg'
-import aboutMilestoneImage from '../assets/images/about-milestone.jpg'
+import aboutMilestoneImage from '../assets/images/about-milestone.png'
 // import aboutQualityImage from '../assets/images/about-quality.jpg'
 import aboutStoryNewImage from '../assets/images/about-story-new.jpg'
 import './AboutPage.css'
@@ -91,7 +91,7 @@ const AboutPage = () => {
             </div>
             <div className="ap-hero__stat" style={{ animationDelay: '0.9s' }}>
               <span className="ap-hero__stat-number">
-                <CountUp end="40" suffix="+" duration={2500} />
+                <CountUp end="60" suffix="+" duration={2500} />
               </span>
               <span className="ap-hero__stat-label">Dedicated Professionals</span>
             </div>
@@ -144,7 +144,7 @@ const AboutPage = () => {
               </div>
               <div className="ap-who__stat-item">
                 <span className="ap-who__stat-number">
-                  <CountUp end="40" suffix="+" duration={2500} />
+                  <CountUp end="60" suffix="+" duration={2500} />
                 </span>
                 <span className="ap-who__stat-label">Team Members</span>
               </div>

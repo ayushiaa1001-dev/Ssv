@@ -7,7 +7,7 @@ import heroBg from '../../assets/images/hero-bg.png'
 const stats = [
   { number: 15, suffix: '+', label: 'Years of Excellence' },
   { number: 25, suffix: '+', label: 'Product Portfolio' },
-  { number: 40, suffix: '+', label: 'Dedicated Professionals' },
+  { number: 60, suffix: '+', label: 'Dedicated Professionals' },
   { number: 5000, suffix: '+', label: 'Valued Customers' },
 ]
 
