@@ -2,13 +2,13 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Responsiveness and Regression', () => {
   const pages = [
-    '/ssv/',
-    '/ssv/about',
-    '/ssv/products',
-    '/ssv/careers',
-    '/ssv/contact',
-    '/ssv/events/culture',
-    '/ssv/events/gallery',
+    '/',
+    '/about',
+    '/products',
+    '/careers',
+    '/contact',
+    '/events/culture',
+    '/events/gallery',
   ];
 
   for (const pageUrl of pages) {
@@ -48,7 +48,7 @@ test.describe('Responsiveness and Regression', () => {
       if (pageUrl === '/products') {
         const firstCategory = page.locator('.pp-cat-card__banner').first();
         await firstCategory.click();
-        const productPanel = page.locator('.pp-cat-card__panel').first();
+        const productPanel = page.locator('.pp-expanded-panel-wrapper').first();
         await expect(productPanel).toBeVisible();
       }
     });
