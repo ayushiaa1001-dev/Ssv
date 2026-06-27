@@ -214,13 +214,16 @@
 
 /* ── Category Cards Grid ── */
 .pp-categories-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 28px;
 }
-
 /* ── Category Card ── */
 .pp-cat-card {
+  flex: 1 1 calc(33.333% - 19px); /* 19px is roughly 28px * 2 / 3 */
+  max-width: calc(33.333% - 19px);
+  min-width: 300px;
   position: relative;
   scroll-margin-top: 120px;
   transition: opacity 0.4s ease, filter 0.4s ease;

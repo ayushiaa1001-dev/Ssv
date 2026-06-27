@@ -1,3 +1,4 @@
+/* cspell:disable */
 export const countries = [
   { code: 'IN', name: 'India' },
   { code: 'US', name: 'United States' },

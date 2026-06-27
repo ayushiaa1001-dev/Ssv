@@ -510,7 +510,8 @@ const ContactPage = () => {
                 <div className="ct-info__icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
                 </div>
-                <h4>{t('contact.phoneTitle')}</h4>
+                <div>
+                  <h4>{t('contact.phoneTitle')}</h4>
                 <div className="ct-phone-pills">
                   <a href="tel:+918920606892" className="ct-phone-pill">
                     {t('footer.phone1')}
@@ -521,13 +522,15 @@ const ContactPage = () => {
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
                   </a>
                 </div>
+                </div>
               </div>
 
               <div className="ct-info__card">
                 <div className="ct-info__icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </div>
-                <h4>{t('contact.emailTitle')}</h4>
+                <div>
+                  <h4>{t('contact.emailTitle')}</h4>
                 <div className="ct-phone-pills">
                   <a href="mailto:info@ssvpharma.com" className="ct-phone-pill">
                     {t('footer.emailInfo')}
@@ -538,17 +541,20 @@ const ContactPage = () => {
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
                   </a>
                 </div>
+                </div>
               </div>
 
               <div className="ct-info__card">
                 <div className="ct-info__icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
-                <h4>{t('contact.hoursTitle')}</h4>
-                <p>
-                  {t('contact.hoursWeekdays')}<br/>
-                  {t('contact.hoursSunday')}
-                </p>
+                <div>
+                  <h4>{t('contact.hoursTitle')}</h4>
+                  <p>
+                    {t('contact.hoursWeekdays')}<br/>
+                    {t('contact.hoursSunday')}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

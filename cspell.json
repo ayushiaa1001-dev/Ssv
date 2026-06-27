@@ -48,11 +48,20 @@
     "Bhopal",
     "Chhattisgarh",
     "VITE",
-    "vite"
+    "vite",
+    "Pincode",
+    "pincode",
+    "inclusivity",
+    "autocannon",
+    "Csvg",
+    "Cpolyline"
   ],
   "ignorePaths": [
     "node_modules/**",
     "dist/**",
-    "build/**"
+    "build/**",
+    "playwright-report/**",
+    "lighthouse-report.html",
+    "docs/**"
   ]
 }

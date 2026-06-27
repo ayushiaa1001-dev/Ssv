@@ -62,7 +62,7 @@ const AboutPage = () => {
 
             <h1 className="ap-hero__title">About Us</h1>
             <p className="ap-hero__sub">
-              Serving healthcare through scientific approach, ISO certified processes , and an uncompromising commitment to quality.
+              Serving healthcare through scientific approach, ISO certified processes, and an uncompromising commitment to quality.
             </p>
             <div className="ap-hero__buttons">
               <Link to="/products" className="btn btn-primary">

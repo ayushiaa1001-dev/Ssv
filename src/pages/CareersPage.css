@@ -644,6 +644,7 @@
   color: var(--muted-foreground);
   background-color: var(--muted);
   border-right: 1.5px solid var(--color-gray-200);
+  -webkit-user-select: none;
   user-select: none;
   font-weight: 600;
 }

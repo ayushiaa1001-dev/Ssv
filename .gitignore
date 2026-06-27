@@ -12,6 +12,9 @@ dist
 dist-ssr
 .gh-pages
 *.local
+.env
+.env.*
+!*.example
 *.mp4
 
 # Editor directories and files
