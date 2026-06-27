@@ -31,18 +31,18 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
-  const [activeDropdown, setActiveDropdown] = useState(null)
+  const [activeDropdown, setActiveDropdown] = useState(/** @type {any} */ (null))
 
   // Derive active page from current path
   const activePath = location.pathname
 
   // Search state
   const [searchQuery, setSearchQuery] = useState('')
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState(/** @type {any[]} */ ([]))
   const [highlightIndex, setHighlightIndex] = useState(-1)
   const [dropdownVisible, setDropdownVisible] = useState(false)
-  const searchRef = useRef(null)
-  const inputRef = useRef(null)
+  const searchRef = useRef(/** @type {any} */ (null))
+  const inputRef = useRef(/** @type {any} */ (null))
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)

@@ -168,8 +168,8 @@ const categoriesData = [
       {
         id: "OMGOD",
         name: "OMGOD",
-        type: "Capsules",
-        quantity: "1 x 10 Soft Gelatin Capsules",
+        type: "Soft Gel Capsules",
+        quantity: "10 x 10 Soft Gel Capsules",
         desc: "Premium blend of multivitamins and antioxidants to support heart, brain, and daily vitality.",
         img: `${BASE}products/OMGOD.png`,
       },
@@ -288,13 +288,13 @@ const ProductsPage = () => {
   const { t } = useTranslation();
   const [heroVisible, setHeroVisible] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(/** @type {any} */ (null));
   const [isDragging, setIsDragging] = useState(false);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [cols, setCols] = useState(3);
   const location = useLocation();
-  const imgContainerRef = useRef(null);
+  const imgContainerRef = useRef(/** @type {any} */ (null));
   const dragStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
   const [headerRef, headerVisible] = useIntersectionObserver({ threshold: 0.15 });
 

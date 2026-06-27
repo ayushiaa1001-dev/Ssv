@@ -97,8 +97,8 @@ const CareersPage = () => {
   const [formEmail, setFormEmail] = useState('')
   const [formPhone, setFormPhone] = useState('')
   const [formResume, setFormResume] = useState('')
-  const [formFile, setFormFile] = useState(null)
-  const fileInputRef = useRef(null)
+  const [formFile, setFormFile] = useState(/** @type {any} */ (null))
+  const fileInputRef = useRef(/** @type {any} */ (null))
 
   const [cultureRef, cultureVisible] = useIntersectionObserver()
   const [openingsRef, openingsVisible] = useIntersectionObserver()
@@ -168,7 +168,7 @@ const CareersPage = () => {
         fileData = await new Promise((resolve, reject) => {
           const reader = new FileReader()
           reader.readAsDataURL(formFile)
-          reader.onload = () => resolve(reader.result)
+          reader.onload = () => resolve(/** @type {string} */ (reader.result))
           reader.onerror = err => reject(err)
         })
         fileName = formFile.name

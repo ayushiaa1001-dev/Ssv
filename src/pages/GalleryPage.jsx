@@ -4,23 +4,11 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import './GalleryPage.css'
 
-/* ── Gallery Data ── */
-const CATEGORIES = ['All', 'Events', 'Office', 'Team', 'Celebrations']
+import { GALLERY_ITEMS } from '../data/galleryData'
 
-const GALLERY_ITEMS = [
-  { src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80', alt: 'Team collaboration', category: 'Team', title: 'Team Collaboration' },
-  { src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80', alt: 'Modern office desk', category: 'Office', title: 'Modern Workspace' },
-  { src: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=700&q=80', alt: 'Workshop session', category: 'Office', title: 'Brainstorming Session' },
-  { src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80', alt: 'Team celebration', category: 'Celebrations', title: 'Annual Day Celebrations' },
-  { src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=700&q=80', alt: 'Open office space', category: 'Office', title: 'Ssv Campus — Block A' },
-  { src: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=700&q=80', alt: 'Team lunch', category: 'Team', title: 'Friday Team Lunch' },
-  { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80', alt: 'Ssv Summit', category: 'Events', title: 'Ssv Summit — New Delhi' },
-  { src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&q=80', alt: 'Presentation', category: 'Events', title: 'Innovation Week Keynote' },
-  { src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=700&q=80', alt: 'Outdoor activity', category: 'Team', title: 'Annual Outdoor Retreat' },
-  { src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=700&q=80', alt: 'Gala night', category: 'Celebrations', title: 'Annual Gala Night 2025' },
-  { src: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&q=80', alt: 'Wellness session', category: 'Events', title: 'Wellness Month — Yoga' },
-  { src: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=700&q=80', alt: 'Award ceremony', category: 'Celebrations', title: 'Star Performer Awards' },
-]
+/* ── Gallery Data ── */
+const CATEGORIES = ['All', 'Celebrations', 'Events', 'Office', 'Team']
+
 
 const INITIAL_COUNT = 9
 
@@ -29,11 +17,11 @@ const GalleryPage = () => {
   useDocumentTitle('Gallery')
   const [activeFilter, setActiveFilter] = useState('All')
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
-  const [lightbox, setLightbox] = useState(null)
+  const [lightbox, setLightbox] = useState(/** @type {any} */ (null))
 
   const [gridRef, gridVisible] = useIntersectionObserver()
   const [ctaRef, ctaVisible] = useIntersectionObserver()
-  const lightboxCloseRef = useRef(null)
+  const lightboxCloseRef = useRef(/** @type {any} */ (null))
 
   useEffect(() => {
     const timer = setTimeout(() => setHeroVisible(true), 200)
@@ -132,7 +120,7 @@ const GalleryPage = () => {
                 onKeyDown={e => e.key === 'Enter' && setLightbox(item)}
                 aria-label={`View ${item.title}`}
               >
-                <img src={item.src} alt={item.alt} loading="lazy" />
+                <img src={`${import.meta.env.BASE_URL}${item.src.replace(/^\//, '')}`} alt={item.alt} loading="lazy" />
                 <div className="gal-card__overlay">
                   <span className="gal-card__badge">{item.category}</span>
                 </div>
@@ -172,7 +160,7 @@ const GalleryPage = () => {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
           <div className="gal-lightbox__body" onClick={e => e.stopPropagation()}>
-            <img src={lightbox.src} alt={lightbox.alt} />
+            <img src={`${import.meta.env.BASE_URL}${(lightbox.fullSrc || lightbox.src).replace(/^\//, '')}`} alt={lightbox.alt} />
             <div className="gal-lightbox__caption">
               <span className="gal-card__badge">{lightbox.category}</span>
               <span className="gal-lightbox__title">{lightbox.title}</span>

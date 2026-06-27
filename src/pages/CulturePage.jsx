@@ -193,10 +193,10 @@ const CulturePage = () => {
               <div
                 className={`cul-pillar-card ${pillarsVisible ? 'cul-pillar-card--visible' : ''}`}
                 key={i}
-                style={{
+                style={/** @type {any} */ ({
                   transitionDelay: pillarsVisible ? `${0.1 + i * 0.1}s` : '0s',
                   '--pillar-rgb': pillar.colorRgb
-                }}
+                })}
               >
                 <div className="cul-pillar-card__media">
                   <img src={pillar.image} alt={pillar.title} loading="lazy" />

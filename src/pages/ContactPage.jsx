@@ -457,7 +457,7 @@ const ContactPage = () => {
                     <textarea
                       id="ct-message"
                       required
-                      rows="5"
+                      rows={5}
                       placeholder={t('contact.placeholderMessage')}
                       value={formMessage}
                       onChange={e => setFormMessage(e.target.value)}

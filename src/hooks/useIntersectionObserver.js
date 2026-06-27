@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 
+/**
+ * @param {any} [options]
+ * @returns {[import('react').RefObject<any>, boolean]}
+ */
 export function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false)
   const ref = useRef(null)
