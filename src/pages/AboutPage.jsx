@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import CountUp from '../components/CountUp'
@@ -12,6 +12,7 @@ import './AboutPage.css'
 
 const AboutPage = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const [heroVisible, setHeroVisible] = useState(false)
   useDocumentTitle('About Us')
 
@@ -29,7 +30,7 @@ const AboutPage = () => {
     if (location.state?.scrollTo) {
       const targetId = location.state.scrollTo
       // Clear state to prevent scrolling again on reload
-      window.history.replaceState({}, document.title)
+      navigate(location.pathname, { replace: true, state: {} })
       
       // Delay slightly to ensure elements are rendered
       setTimeout(() => {
@@ -40,7 +41,7 @@ const AboutPage = () => {
         }
       }, 100)
     }
-  }, [location])
+  }, [location, navigate])
 
   return (
     <div className="about-page">

@@ -1,6 +1,6 @@
 /* cspell:ignore Alnil Felocold Susp Felokof Felo Felodol Hemopeak Rabpad OMGOD Flupact Versadine */
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
@@ -294,6 +294,7 @@ const ProductsPage = () => {
   const [zoom, setZoom] = useState(1);
   const [cols, setCols] = useState(3);
   const location = useLocation();
+  const navigate = useNavigate();
   const imgContainerRef = useRef(/** @type {any} */ (null));
   const dragStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
   const [headerRef, headerVisible] = useIntersectionObserver({ threshold: 0.15 });
@@ -484,13 +485,13 @@ const ProductsPage = () => {
     const categoryId = location.state?.category;
     const productId = location.state?.product;
     if (categoryId) {
-      window.history.replaceState({}, document.title);
+      navigate(location.pathname, { replace: true, state: {} });
       // Wait for page to render then open
       setTimeout(() => {
         switchToCategory(categoryId, productId);
       }, 300);
     }
-  }, [location, switchToCategory]);
+  }, [location, switchToCategory, navigate]);
 
   // Check URL hash on load
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import './CareersPage.css'
@@ -83,6 +83,7 @@ const JOBS_PER_PAGE = 5
 
 const CareersPage = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const [heroVisible, setHeroVisible] = useState(false)
   useDocumentTitle('Careers')
   const [modalOpen, setModalOpen] = useState(false)
@@ -112,13 +113,13 @@ const CareersPage = () => {
   useEffect(() => {
     const scrollTarget = location.state?.scrollTo
     if (scrollTarget) {
-      window.history.replaceState({}, document.title)
+      navigate(location.pathname, { replace: true, state: {} })
       setTimeout(() => {
         const el = document.getElementById(scrollTarget)
         if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' })
       }, 100)
     }
-  }, [location])
+  }, [location, navigate])
 
   useEffect(() => {
     if (!modalOpen) return
