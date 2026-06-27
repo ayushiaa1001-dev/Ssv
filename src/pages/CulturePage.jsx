@@ -63,32 +63,6 @@ const PILLARS = [
   }
 ]
 
-const EVENTS = [
-  {
-    month: 'January',
-    title: "Founders' Day",
-    desc: "Honouring our founder's vision with speeches, awards, and a day of reflection on how far we've come — and how far we'll go.",
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80'
-  },
-  {
-    month: 'March',
-    title: 'Wellness Month',
-    desc: 'Yoga sessions, health screenings, nutrition workshops, and mental health awareness — a month dedicated to well-being.',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80'
-  },
-  {
-    month: 'June',
-    title: 'Innovation Week',
-    desc: 'A full week of hackathons, guest speakers from the industry, and unveiling of internal R&D projects and breakthroughs.',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80'
-  },
-  {
-    month: 'October',
-    title: 'Annual Gala Night',
-    desc: "A glamorous evening of awards, entertainment, and celebrating the year's achievements together as one Ssv family.",
-    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80'
-  }
-]
 
 
 /* ── Icon Components ── */
@@ -117,7 +91,6 @@ const CulturePage = () => {
   useDocumentTitle('Culture at Ssv')
 
   const [pillarsRef, pillarsVisible] = useIntersectionObserver()
-  const [eventsRef, eventsVisible] = useIntersectionObserver()
   const [ctaRef, ctaVisible] = useIntersectionObserver()
 
   useEffect(() => {
@@ -160,13 +133,6 @@ const CulturePage = () => {
               }} className="btn btn-primary cul-btn-filled">
                 {t('culture.btnPillars')}
               </a>
-              <a href="#culture-events" onClick={(e) => {
-                e.preventDefault()
-                const el = document.getElementById('culture-events')
-                if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }) }
-              }} className="btn btn-outline cul-btn-outline">
-                {t('culture.btnEvents')}
-              </a>
             </div>
           </div>
         </div>
@@ -207,38 +173,6 @@ const CulturePage = () => {
                 <div className="cul-pillar-card__body">
                   <h3 className="cul-pillar-card__title">{pillar.title}</h3>
                   <p className="cul-pillar-card__desc">{pillar.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Annual Events ── */}
-      <section
-        className={`cul-section cul-events scroll-reveal ${eventsVisible ? 'scroll-reveal--visible' : ''}`}
-        ref={eventsRef}
-        id="culture-events"
-      >
-        <div className="container">
-          <div className="cul-section__header">
-            <span className="section-label">{t('culture.traditions')}</span>
-            <h2 className="section-title">{t('culture.eventsTitle')}</h2>
-          </div>
-          <div className="cul-events__grid">
-            {EVENTS.map((event, i) => (
-              <div
-                className={`cul-event-card ${eventsVisible ? 'cul-event-card--visible' : ''}`}
-                key={i}
-                style={{ transitionDelay: eventsVisible ? `${0.15 + i * 0.12}s` : '0s' }}
-              >
-                <div className="cul-event-card__img">
-                  <img src={event.image} alt={event.title} loading="lazy" />
-                  <span className="cul-event-card__month">{event.month}</span>
-                </div>
-                <div className="cul-event-card__body">
-                  <h3 className="cul-event-card__title">{event.title}</h3>
-                  <p className="cul-event-card__desc">{event.desc}</p>
                 </div>
               </div>
             ))}

@@ -118,7 +118,7 @@ const GalleryPage = () => {
                 role="button"
                 tabIndex={0}
                 onKeyDown={e => e.key === 'Enter' && setLightbox(item)}
-                aria-label={`View ${item.title}`}
+                aria-label={`View photo from ${item.category}`}
               >
                 <img src={`${import.meta.env.BASE_URL}${item.src.replace(/^\//, '')}`} alt={item.alt} loading="lazy" />
                 <div className="gal-card__overlay">
@@ -154,7 +154,7 @@ const GalleryPage = () => {
 
       {/* ── Lightbox Modal ── */}
       {lightbox && (
-        <div className="gal-lightbox" role="dialog" aria-modal="true" aria-label={lightbox.title}>
+        <div className="gal-lightbox" role="dialog" aria-modal="true" aria-label={`${lightbox.category} photo`}>
           <div className="gal-lightbox__backdrop" onClick={() => setLightbox(null)} aria-hidden="true" />
           <button ref={lightboxCloseRef} className="gal-lightbox__close" onClick={() => setLightbox(null)} aria-label="Close lightbox">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -163,7 +163,6 @@ const GalleryPage = () => {
             <img src={`${import.meta.env.BASE_URL}${(lightbox.fullSrc || lightbox.src).replace(/^\//, '')}`} alt={lightbox.alt} />
             <div className="gal-lightbox__caption">
               <span className="gal-card__badge">{lightbox.category}</span>
-              <span className="gal-lightbox__title">{lightbox.title}</span>
             </div>
           </div>
         </div>

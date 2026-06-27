@@ -435,24 +435,43 @@ const ProductsPage = () => {
     }, 100);
   }, []);
 
-  // Core function: sequenced navigation from dropdown
+  // Core function: sequenced navigation from dropdown, optionally opening a specific product modal
   const switchToCategory = useCallback(
-    (categoryId) => {
+    (categoryId, productId = null) => {
+      const doOpenProduct = () => {
+        if (productId) {
+          const cat = categoriesData.find((c) => c.id === categoryId);
+          const prod = cat?.products.find((p) => p.id === productId);
+          if (prod) {
+            openProductModal(prod);
+          }
+        }
+      };
+
       if (expandedCategory === categoryId) {
         smoothScrollTo(categoryId);
+        doOpenProduct();
         return;
       }
 
       setExpandedCategory(categoryId);
       smoothScrollTo(categoryId);
+      if (productId) {
+        setTimeout(doOpenProduct, 350);
+      }
     },
-    [expandedCategory, smoothScrollTo]
+    [expandedCategory, smoothScrollTo, openProductModal]
   );
 
   // Listen for same-page category switches from Navbar (custom event)
   useEffect(() => {
     const handler = (e) => {
-      switchToCategory(e.detail);
+      const detail = e.detail;
+      if (typeof detail === "string") {
+        switchToCategory(detail);
+      } else if (detail && typeof detail === "object") {
+        switchToCategory(detail.categoryId, detail.productId);
+      }
     };
     window.addEventListener("ssv-switch-category", handler);
     return () => {
@@ -463,11 +482,12 @@ const ProductsPage = () => {
   // Handle navigation from another page (location.state)
   useEffect(() => {
     const categoryId = location.state?.category;
+    const productId = location.state?.product;
     if (categoryId) {
       window.history.replaceState({}, document.title);
       // Wait for page to render then open
       setTimeout(() => {
-        switchToCategory(categoryId);
+        switchToCategory(categoryId, productId);
       }, 300);
     }
   }, [location, switchToCategory]);

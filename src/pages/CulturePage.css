@@ -263,81 +263,7 @@
   color: var(--muted-foreground);
 }
 
-/* â”€â”€ Annual Events â”€â”€ */
-.cul-events__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
-}
 
-.cul-event-card {
-  background: var(--background);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid rgba(27, 79, 114, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.7s ease;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.cul-event-card--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cul-event-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-}
-
-.cul-event-card__img {
-  position: relative;
-  height: 150px;
-  overflow: hidden;
-}
-
-.cul-event-card__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.cul-event-card:hover .cul-event-card__img img {
-  transform: scale(1.06);
-}
-
-.cul-event-card__month {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: var(--primary);
-  color: #ffffff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-}
-
-.cul-event-card__body {
-  padding: 18px;
-}
-
-.cul-event-card__title {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--foreground);
-  margin-bottom: 10px;
-}
-
-.cul-event-card__desc {
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: var(--muted-foreground);
-}
 
 .cul-cta {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
@@ -388,11 +314,6 @@
    Responsive
    ========================================================================== */
 
-@media (max-width: 1024px) {
-  .cul-events__grid {
-    gap: 20px;
-  }
-}
 
 @media (max-width: 768px) {
   .cul-hero__content {
@@ -428,11 +349,6 @@
   }
 }
 
-@media (max-width: 640px) {
-  .cul-events__grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 @media (max-width: 480px) {
   .cul-hero__content {
@@ -456,13 +372,7 @@
     margin-bottom: 16px;
   }
 
-  .cul-event-card__img {
-    height: 150px;
-  }
 
-  .cul-event-card__body {
-    padding: 18px;
-  }
 
   .cul-cta {
     padding: 28px 0;

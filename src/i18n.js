@@ -105,11 +105,8 @@ const resources = {
         heroTitle: 'Culture at Ssv',
         heroSub: 'At Ssv, culture isn\'t a policy document — it\'s lived every day. From how we celebrate wins to how we support each other through challenges, our culture defines who we are.',
         btnPillars: 'Our Pillars',
-        btnEvents: 'Annual Events',
         standFor: 'What We Stand For',
         pillarsTitle: 'Our Cultural Pillars',
-        traditions: 'Annual Traditions',
-        eventsTitle: 'Events That Define Us',
         ctaTitle: 'Want to be part of this culture?',
         ctaSub: 'We\'re always looking for passionate people who want to make a difference in healthcare.',
         viewRoles: 'View Open Roles'

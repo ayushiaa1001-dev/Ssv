@@ -15,14 +15,37 @@ const SEARCH_INDEX = [
   { title: 'Anti Cold / Anti Asthmatics', description: 'Cough syrups, cold relief medicines', section: 'products/cough-cold', keywords: ['cough', 'cold', 'anti cold', 'syrup', 'fever', 'asthmatics', 'asthma'] },
   { title: 'Ortho and Pain Management', description: 'Pain relief and analgesic products', section: 'products/pain-management', keywords: ['pain', 'analgesic', 'relief', 'tablet', 'ortho', 'orthopedic', 'bone', 'joint'] },
   { title: "Women's Health", description: 'Gynaecology product range', section: 'products/gynae', keywords: ['gynae', 'gynaecology', 'women', 'health', 'womens'] },
-  { title: 'Gastro', description: 'Gastroenterology products', section: 'products/gastro', keywords: ['gastro', 'digestive', 'stomach', 'gastroenterology'] },
+  { title: 'Gastro Care', description: 'Gastroenterology products', section: 'products/gastro', keywords: ['gastro', 'digestive', 'stomach', 'gastroenterology'] },
   { title: 'Nutraceuticals', description: 'Vitamins, minerals and everyday immunity support', section: 'products/general', keywords: ['nutraceuticals', 'vitamins', 'minerals', 'immunity', 'tablets', 'capsules'] },
   { title: 'Careers', description: 'Join our team at Ssv Pharmaceuticals', section: 'careers', keywords: ['careers', 'jobs', 'hiring', 'work', 'employment', 'join'] },
-  { title: 'Culture at Ssv', description: 'Our cultural pillars and annual events', section: 'events/culture', keywords: ['culture', 'events', 'pillars', 'annual', 'gala', 'founders'] },
+  { title: 'Culture at Ssv', description: 'Our cultural pillars', section: 'events/culture', keywords: ['culture', 'events', 'pillars', 'annual', 'founders'] },
   { title: 'Gallery', description: 'Photo gallery of life at Ssv', section: 'events/gallery', keywords: ['gallery', 'photos', 'images', 'snapshots'] },
   { title: 'Contact Us', description: 'Get in touch with Ssv Pharmaceuticals', section: 'contact-page', keywords: ['contact', 'reach', 'email', 'phone', 'address', 'touch'] },
   { title: 'Export Countries', description: 'We export to 12+ countries globally', section: '#about-story', keywords: ['export', 'countries', 'global', 'international'] },
   { title: 'Professionals', description: '500+ skilled professionals in our team', section: '#about-story', keywords: ['professionals', 'team', 'staff', 'employees'] },
+  // Cough & Cold
+  { title: 'Alnil Tablets', description: 'Effective relief from joint pain, muscle aches, and fever', section: 'products/cough-cold/Alnil', keywords: ['alnil', 'tablets', 'cough', 'cold', 'fever', 'joint pain', 'muscle aches'] },
+  { title: 'Alnil-M Tablets', description: 'Fast-acting relief from severe pain, swelling, and inflammation', section: 'products/cough-cold/Alnil-M', keywords: ['alnil-m', 'tablets', 'cough', 'cold', 'severe pain', 'swelling', 'inflammation'] },
+  { title: 'Felocold Tablets', description: 'Comprehensive relief from cold, flu, fever, and nasal congestion', section: 'products/cough-cold/Felocold', keywords: ['felocold', 'tablets', 'cough', 'cold', 'flu', 'fever', 'nasal congestion'] },
+  { title: 'Felocold Suspension', description: 'Gentle and effective relief for children\'s cold, cough, and fever symptoms', section: 'products/cough-cold/Felocold Susp.', keywords: ['felocold susp.', 'suspension', 'cough', 'cold', 'children', 'fever'] },
+  { title: 'Felokof DX Syrup', description: 'Provides soothing relief from dry, irritating cough and nasal congestion', section: 'products/cough-cold/Felokof DX', keywords: ['felokof dx', 'syrup', 'cough', 'cold', 'dry cough', 'nasal congestion'] },
+  // Pain Management
+  { title: 'Felo Tablets', description: 'Dual-action formula for quick relief from acute pain and high fever', section: 'products/pain-management/Felo', keywords: ['felo', 'tablets', 'pain', 'acute pain', 'high fever'] },
+  { title: 'Felo-MR Tablets', description: 'Advanced relief from muscle spasms, stiffness, and joint inflammation', section: 'products/pain-management/Felo-MR', keywords: ['felo-mr', 'tablets', 'pain', 'muscle spasms', 'stiffness', 'joint inflammation'] },
+  { title: 'Felodol Tablets', description: 'Trusted painkiller for relieving backache, toothache, and mild joint pain', section: 'products/pain-management/Felodol', keywords: ['felodol', 'tablets', 'pain', 'backache', 'toothache', 'joint pain'] },
+  { title: 'Felodol-SP Tablets', description: 'Triple-action therapy for severe pain and rapid reduction of tissue swelling', section: 'products/pain-management/Felodol-SP', keywords: ['felodol-sp', 'tablets', 'pain', 'severe pain', 'tissue swelling', 'inflammation'] },
+  // Gynae
+  { title: 'SS Cal Tablets', description: 'Essential daily supplement for stronger bones, joints, and overall immunity', section: 'products/gynae/SS Cal', keywords: ['ss cal', 'tablets', 'gynae', 'supplement', 'bones', 'joints', 'immunity'] },
+  { title: 'Hemopeak Tablets', description: 'Boosts iron levels and energy, effectively combating anemia and fatigue', section: 'products/gynae/Hemopeak', keywords: ['hemopeak', 'tablets', 'gynae', 'iron', 'energy', 'anemia', 'fatigue'] },
+  // Gastro
+  { title: 'Rabpad-DSR Capsules', description: 'Fast, sustained relief from severe acidity, heartburn, and gastric discomfort', section: 'products/gastro/Rabpad-DSR', keywords: ['rabpad-dsr', 'capsules', 'gastro', 'acidity', 'heartburn', 'gastric discomfort'] },
+  { title: 'Rabpad 20 Tablets', description: 'Effectively reduces stomach acid to treat ulcers and chronic heartburn', section: 'products/gastro/Rabpad 20', keywords: ['rabpad 20', 'tablets', 'gastro', 'stomach acid', 'ulcers', 'heartburn'] },
+  // General (Nutraceuticals)
+  { title: 'OMGOD Soft Gel Capsules', description: 'Premium blend of multivitamins and antioxidants to support heart, brain, and daily vitality', section: 'products/general/OMGOD', keywords: ['omgod', 'capsules', 'nutraceuticals', 'multivitamins', 'antioxidants', 'heart', 'brain', 'vitality'] },
+  // General Care (All Products section)
+  { title: 'Ver-D Tablets', description: 'Provides rapid relief from vertigo, motion sickness, and associated nausea', section: 'products/all-products/Ver-D', keywords: ['ver-d', 'tablets', 'vertigo', 'motion sickness', 'nausea'] },
+  { title: 'Flupact Tablets', description: 'Effective preventative treatment for recurrent migraines and severe headaches', section: 'products/all-products/Flupact', keywords: ['flupact', 'tablets', 'migraines', 'headaches'] },
+  { title: 'Versadine Ointment', description: 'Broad-spectrum antiseptic ointment for preventing infections in cuts, burns, and wounds', section: 'products/all-products/Versadine', keywords: ['versadine', 'ointment', 'antiseptic', 'infections', 'cuts', 'burns', 'wounds'] },
 ]
 
 const Navbar = () => {
@@ -98,7 +121,12 @@ const Navbar = () => {
       if (section === 'products') {
         scrollToProductsSection(null)
       } else {
-        scrollToProductsSection(section.split('/')[1])
+        const parts = section.split('/')
+        if (parts.length > 2) {
+          scrollToProductsSection(parts[1], parts[2])
+        } else {
+          scrollToProductsSection(parts[1])
+        }
       }
     } else if (section.startsWith('#about-')) {
       scrollToAboutSection(section.substring(1))
@@ -179,8 +207,8 @@ const Navbar = () => {
     setActiveDropdown(null)
   }
 
-  // Navigate to Products page category
-  const scrollToProductsSection = (categoryId) => {
+  // Navigate to Products page category, optionally opening a specific product modal
+  const scrollToProductsSection = (categoryId, productId = null) => {
     const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
     const currentPath = window.location.pathname.replace(/\/$/, '')
     const isProducts = currentPath === `${basePath}/products` || currentPath.endsWith('/products')
@@ -194,10 +222,12 @@ const Navbar = () => {
       }
     } else if (isProducts) {
       // Already on products page — fire custom event for instant handling
-      window.dispatchEvent(new CustomEvent('ssv-switch-category', { detail: categoryId }))
+      window.dispatchEvent(new CustomEvent('ssv-switch-category', {
+        detail: { categoryId, productId }
+      }))
     } else {
       // Coming from another page — use navigate with state
-      navigate('/products', { state: { category: categoryId } })
+      navigate('/products', { state: { category: categoryId, product: productId } })
     }
     setMobileOpen(false)
     setActiveDropdown(null)

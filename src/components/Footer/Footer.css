@@ -29,6 +29,20 @@
 
 .footer__logo--right {
   justify-content: flex-end;
+  align-self: flex-end;
+}
+
+.footer__logo--right img {
+  height: 144px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer__logo--right img:hover {
+  transform: translateY(-2px);
+  opacity: 1;
 }
 
 /* Center Content — fills remaining space */
@@ -269,7 +283,9 @@
 
   .footer__logo--right {
     order: 2;
+    align-self: auto;
   }
+
 
   .footer__inner {
     grid-template-columns: 1fr 1fr;

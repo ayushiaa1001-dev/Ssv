@@ -112,7 +112,7 @@ const Footer = () => {
 
           {/* Right Logo */}
           <div className="footer__logo footer__logo--right">
-            <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" style={{ height: '120px', objectFit: 'contain', opacity: '0.85' }} />
+            <img src={`${import.meta.env.BASE_URL}logo-pentagon.png`} alt="Ssv Quality Seal" />
           </div>
         </div>
       </div>
