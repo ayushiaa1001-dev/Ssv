@@ -6,7 +6,7 @@
   "homepage": "https://www.ssvpharma.com",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node generate-routes.js",
     "preview": "vite preview",
     "lint": "eslint src"
   },
