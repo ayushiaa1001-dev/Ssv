@@ -101,7 +101,7 @@ const resources = {
       },
       culture: {
         backToHome: 'Back to Home',
-        heroLabel: 'Life at Ssv',
+        heroLabel: 'LIFE AT Ssv',
         heroTitle: 'Culture at Ssv',
         heroSub: 'At Ssv, culture isn\'t a policy document — it\'s lived every day. From how we celebrate wins to how we support each other through challenges, our culture defines who we are.',
         btnPillars: 'Our Pillars',
