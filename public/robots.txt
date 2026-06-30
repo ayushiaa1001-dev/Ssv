@@ -2,3 +2,11 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.ssvpharma.com/sitemap.xml
+
+# Allow direct crawling of route-specific pages
+Allow: /about
+Allow: /products
+Allow: /careers
+Allow: /contact
+Allow: /events/culture
+Allow: /events/gallery
