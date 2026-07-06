@@ -53,9 +53,11 @@ const GalleryPage = () => {
     }
   }, [lightbox])
 
+  const sortedGalleryItems = [...GALLERY_ITEMS].sort((a, b) => (b.mtimeMs || 0) - (a.mtimeMs || 0))
+
   const filtered = activeFilter === 'All'
-    ? GALLERY_ITEMS
-    : GALLERY_ITEMS.filter(item => item.category === activeFilter)
+    ? sortedGalleryItems
+    : sortedGalleryItems.filter(item => item.category === activeFilter)
 
   const visible = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
