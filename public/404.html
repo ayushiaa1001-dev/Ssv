@@ -3,21 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ssv Pharmaceuticals</title>
-  <script>
-    // Single Page App redirect for GitHub Pages
-    // Converts the path into a query string so index.html can restore it
-    var pathSegmentsToKeep = 0; // repo name segment (e.g., none for custom domain)
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
-  </script>
+  <title>Page Not Found | Ssv Pharmaceuticals</title>
+  <!--
+    NOTE: This file is REPLACED at build time by generate-routes.js.
+    dist/404.html becomes a copy of dist/index.html so that GitHub Pages
+    serves the React SPA shell (with no JS redirect) for unknown routes.
+
+    The old window.location.replace() SPA redirect hack has been removed.
+    It caused Google Search Console to report "Failed: Redirect error"
+    because Googlebot treats JS-based redirects differently from HTTP redirects.
+  -->
+  <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
+  <p>Page not found. <a href="/">Go to homepage</a></p>
 </body>
 </html>

@@ -205,4 +205,14 @@ Object.keys(routeMetadata).forEach((route) => {
   console.log(`Created dynamic static route fallback: ${route}/index.html`);
 });
 
+// ─── Fix for GSC "Failed: Redirect error" ────────────────────────────────────
+// Overwrite dist/404.html with the built index.html so that GitHub Pages serves
+// the React SPA shell (with correct hashed asset paths) instead of the old
+// window.location.replace() JS-redirect hack. The file is still served with a
+// 404 HTTP status by GitHub Pages for genuinely unknown routes, which is
+// correct — React loads and renders the <NotFound /> component.
+const dist404Path = path.join(distPath, '404.html');
+fs.copyFileSync(indexPath, dist404Path);
+console.log('Replaced 404.html with built index.html (SPA shell, no JS redirect).');
+
 console.log('Static route fallbacks generated and SEO injected successfully!');
