@@ -16,7 +16,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.ssvpharma.com">
     <meta property="og:image" content="https://www.ssvpharma.com/logo-pentagon.png">
-    <title>Ssv Pharmaceuticals | Ssv Pharma | Committed to Health, Nurtured by Knowledge</title>
+    <title>Ssv Pharmaceuticals | Committed to Health</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -58,7 +58,14 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- SPA SEO Fallback for Crawlers (replaced on React load) -->
+      <div style="display:none;" aria-hidden="true">
+        <h1>Ssv Pharmaceuticals</h1>
+        <h2>Committed to Health, Nurtured by Knowledge</h2>
+        <p>Ssv Pharmaceuticals has over 15 years of experience delivering high-quality pharmaceutical products across India.</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
