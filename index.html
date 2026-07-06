@@ -56,11 +56,16 @@
         }
       }
     </script>
+    <style>
+      .seo-only {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div id="root">
       <!-- SPA SEO Fallback for Crawlers (replaced on React load) -->
-      <div style="display:none;" aria-hidden="true">
+      <div class="seo-only" aria-hidden="true">
         <h1>Ssv Pharmaceuticals</h1>
         <h2>Committed to Health, Nurtured by Knowledge</h2>
         <p>Ssv Pharmaceuticals has over 15 years of experience delivering high-quality pharmaceutical products across India.</p>
