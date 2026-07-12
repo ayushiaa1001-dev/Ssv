@@ -29,6 +29,24 @@ async function main() {
     .toFile(path.join(publicDir, 'favicon-32x32.png'));
   console.log('Generated favicon-32x32.png');
 
+  // 2b. Generate favicon-48x48.png (Google Search target size)
+  await sharp(inputImage)
+    .resize(48, 48)
+    .toFile(path.join(publicDir, 'favicon-48x48.png'));
+  console.log('Generated favicon-48x48.png');
+
+  // 2c. Generate favicon-96x96.png (Google Search target size)
+  await sharp(inputImage)
+    .resize(96, 96)
+    .toFile(path.join(publicDir, 'favicon-96x96.png'));
+  console.log('Generated favicon-96x96.png');
+
+  // 2d. Generate favicon-192x192.png (Android / Web App target size)
+  await sharp(inputImage)
+    .resize(192, 192)
+    .toFile(path.join(publicDir, 'favicon-192x192.png'));
+  console.log('Generated favicon-192x192.png');
+
   // 3. Generate apple-touch-icon.png (180x180)
   await sharp(inputImage)
     .resize(180, 180)
