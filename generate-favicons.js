@@ -17,43 +17,43 @@ async function main() {
 
   console.log('Generating favicons from:', inputImage);
 
-  // 1. Generate favicon-16x16.png
+  // 1. Generate favicon-pentagon-16x16.png
   await sharp(inputImage)
     .resize(16, 16)
-    .toFile(path.join(publicDir, 'favicon-16x16.png'));
-  console.log('Generated favicon-16x16.png');
+    .toFile(path.join(publicDir, 'favicon-pentagon-16x16.png'));
+  console.log('Generated favicon-pentagon-16x16.png');
 
-  // 2. Generate favicon-32x32.png
+  // 2. Generate favicon-pentagon-32x32.png
   await sharp(inputImage)
     .resize(32, 32)
-    .toFile(path.join(publicDir, 'favicon-32x32.png'));
-  console.log('Generated favicon-32x32.png');
+    .toFile(path.join(publicDir, 'favicon-pentagon-32x32.png'));
+  console.log('Generated favicon-pentagon-32x32.png');
 
-  // 2b. Generate favicon-48x48.png (Google Search target size)
+  // 2b. Generate favicon-pentagon-48x48.png (Google Search target size)
   await sharp(inputImage)
     .resize(48, 48)
-    .toFile(path.join(publicDir, 'favicon-48x48.png'));
-  console.log('Generated favicon-48x48.png');
+    .toFile(path.join(publicDir, 'favicon-pentagon-48x48.png'));
+  console.log('Generated favicon-pentagon-48x48.png');
 
-  // 2c. Generate favicon-96x96.png (Google Search target size)
+  // 2c. Generate favicon-pentagon-96x96.png (Google Search target size)
   await sharp(inputImage)
     .resize(96, 96)
-    .toFile(path.join(publicDir, 'favicon-96x96.png'));
-  console.log('Generated favicon-96x96.png');
+    .toFile(path.join(publicDir, 'favicon-pentagon-96x96.png'));
+  console.log('Generated favicon-pentagon-96x96.png');
 
-  // 2d. Generate favicon-192x192.png (Android / Web App target size)
+  // 2d. Generate favicon-pentagon-192x192.png (Android / Web App target size)
   await sharp(inputImage)
     .resize(192, 192)
-    .toFile(path.join(publicDir, 'favicon-192x192.png'));
-  console.log('Generated favicon-192x192.png');
+    .toFile(path.join(publicDir, 'favicon-pentagon-192x192.png'));
+  console.log('Generated favicon-pentagon-192x192.png');
 
-  // 3. Generate apple-touch-icon.png (180x180)
+  // 3. Generate apple-touch-icon-pentagon.png (180x180)
   await sharp(inputImage)
     .resize(180, 180)
-    .toFile(path.join(publicDir, 'apple-touch-icon.png'));
-  console.log('Generated apple-touch-icon.png');
+    .toFile(path.join(publicDir, 'apple-touch-icon-pentagon.png'));
+  console.log('Generated apple-touch-icon-pentagon.png');
 
-  // 4. Generate favicon.ico (wrap 48x48 PNG)
+  // 4. Generate favicon-pentagon.ico (wrap 48x48 PNG)
   const png48Buffer = await sharp(inputImage)
     .resize(48, 48)
     .toBuffer();
@@ -75,21 +75,8 @@ async function main() {
   dirEntry.writeUInt32LE(22, 12); // Offset of image data
 
   const icoBuffer = Buffer.concat([header, dirEntry, png48Buffer]);
-  fs.writeFileSync(path.join(publicDir, 'favicon.ico'), icoBuffer);
-  console.log('Generated favicon.ico (48x48)');
-
-  // 5. Generate inline base64 favicon.svg (512x512)
-  const png512Buffer = await sharp(inputImage)
-    .resize(512, 512)
-    .toBuffer();
-  
-  const base64Png = png512Buffer.toString('base64');
-  const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
-  <image href="data:image/png;base64,${base64Png}" width="512" height="512"/>
-</svg>`;
-
-  fs.writeFileSync(path.join(publicDir, 'favicon.svg'), svgContent, 'utf-8');
-  console.log('Generated favicon.svg (self-contained base64)');
+  fs.writeFileSync(path.join(publicDir, 'favicon-pentagon.ico'), icoBuffer);
+  console.log('Generated favicon-pentagon.ico (48x48)');
 }
 
 main().catch(console.error);
